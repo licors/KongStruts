@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!DOCTYPE sqlMap PUBLIC 
+	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="qna">
+    <typeAlias alias="qna" type="admin.qna.qnaVO" />
+
+    <resultMap id="Res" class="qna">
+        <result property="qna_num" column="qna_num" />
+        <result property="subject" column="subject" />
+        <result property="content" column="content" />
+    </resultMap>
+    
+    <!-- select 정의 -->
+    <sql id="select-all">
+        SELECT * FROM QNA
+    </sql>
+    
+    <!-- where 정의 -->
+    <sql id="where-no">
+        WHERE qna_num=#qna_num#
+    </sql>
+
+    <!-- select 쿼리문 정의 -->
+    <select id="selectall" resultMap="qnaRes">
+        <include refid="select-all"/>
+        ORDER BY qna_num DESC
+    </select>
+<!--    <select id="select" resultMap="supportRes">
+        <include refid="select-all"/>
+        WHERE
+        type=#type#
+    </select>--><!-- 미사용 -->
+    <select id="selectOne" resultMap="qnaRes">
+        <include refid="select-all"/>
+        <include refid="where-no"/>
+    </select>
+
+    <!-- insert 쿼리문 정의 -->
+    <insert id="insert" parameterClass="qna">
+        INSERT INTO QNA (qna_num, subject, content)
+        VALUES(#qna_num#, #subject#, #content#)
+    </insert>
+
+    <!-- update 쿼리문 정의 -->
+    <update id="update" parameterClass="qna">
+        UPDATE QNA SET
+        subject=#subject#,
+        content=#content#
+        <include refid="where-no"/>
+    </update>
+
+    <!-- delete 쿼리문 정의 -->
+    <delete id="delete" parameterClass="qna">
+        DELETE QNA NOTICE
+        <include refid="where-no"/>
+    </delete>
+
+</sqlMap>
+	
+		
+	
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!DOCTYPE sqlMap PUBLIC 
+	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="support">
+    <typeAlias alias="support" type="admin.support.supportVO" />
+
+    <resultMap id="Res" class="support">
+        <result property="ref_num" column="ref_num" />
+        <result property="member_num" column="member_num" />
+        <result property="type" column="type" />
+        <result property="email" column="email" />
+        <result property="content" column="content" />
+        <result property="reg_date" column="reg_date" />
+        <result property="re_step" column="re_step" />
+        <result property="re_level" column="re_level" />
+    </resultMap>
+    
+    <!-- select 정의 -->
+    <sql id="select-all">
+        SELECT * FROM SUPPORT
+    </sql>
+    
+    <!-- where 정의 -->
+    <sql id="where-no">
+        WHERE ref_num=#ref_num#
+    </sql>
+
+    <!-- select 쿼리문 정의 -->
+    <select id="selectall" resultMap="supportRes">
+        <include refid="select-all"/>
+        ORDER BY ref_num DESC
+    </select>
+<!--    <select id="select" resultMap="supportRes">
+        <include refid="select-all"/>
+        WHERE
+        type=#type#
+    </select>--><!-- 미사용 -->
+    <select id="selectOne" resultMap="supportRes">
+        <include refid="select-all"/>
+        <include refid="where-no"/>
+    </select>
+
+    <!-- insert 쿼리문 정의 -->
+    <insert id="insert" parameterClass="support">
+        INSERT INTO SUPPORT (ref_num, member_num, type, email, content, reg_date, re_step, re_level)
+        VALUES(#ref_num#, #member_num#, #type#, #email#, #content#, #reg_date#, #re_step#, #re_level#)
+    </insert>
+
+    <!-- update 쿼리문 정의 -->
+    <update id="update" parameterClass="support">
+        UPDATE SUPPORT SET
+        type=#type#,
+        email=#email#,
+        content=#email#
+        <include refid="where-no"/>
+    </update>
+    
+    <update id="readcount" parameterClass="support"><!-- 조회수증가 -->
+        UPDATE SUPPORT SET readcount = readcount + 1
+        <include refid="where-no"/>
+    </update>
+
+    <!-- delete 쿼리문 정의 -->
+    <delete id="delete" parameterClass="support">
+        DELETE SUPPORT NOTICE
+        <include refid="where-no"/>
+    </delete>
+
+</sqlMap>
+	
+		
+	

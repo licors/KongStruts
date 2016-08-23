@@ -2,10 +2,10 @@
 <!DOCTYPE sqlMap PUBLIC 
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap>
+<sqlMap namespace="show">
     <typeAlias alias="show" type="admin.showcase.showVO" />
 
-    <resultMap id="showRes" class="show">
+    <resultMap id="Res" class="show">
         <result property="showboard_num" column="showboard_num" />
         <result property="subject" column="subject" />
         <result property="address1" column="address1" />
@@ -19,29 +19,41 @@
         <result property="readcount" column="readcount" />
         <result property="ordercount" column="ordercount" />
         <result property="map" column="map" />
+        <result property="status" column="status" />
     </resultMap>
+    
+    <!-- select 정의 -->
+    <sql id="select-all">
+        SELECT * FROM NOTICE
+    </sql>
     
     <!-- where 정의 -->
     <sql id="where-no">
-        WHERE showboard_num = #showboard_num#
+        WHERE showboard_num=#showboard_num#
     </sql>
 
     <!-- select 쿼리문 정의 -->
     <select id="selectall" resultMap="showRes">
-        SELECT * FROM SHOWBOARD
+        <include refid="select-all"/>
         ORDER BY showboard_num DESC
     </select>
     <select id="select" resultMap="showRes">
-        SELECT * FROM SHOWBOARD WHERE
+        <include refid="select-all"/>
+        WHERE
         subject=#subject#
     </select>
     <select id="selectOne" resultMap="showRes">
-        SELECT * FROM SHOWBOARD
-        showboard_num=#showboard_num#
+        <include refid="select-all"/>
+        <include refid="where-no"/>
+    </select>
+    <select id="selectOn" resultMap="showRes"><!-- 전시가 열린 것만 뽑기위한 sql -->
+        <include refid="select-all"/>
+        WHERE
+        status=0
     </select>
 
     <!-- insert 쿼리문 정의 -->
-    <insert id="insertshow" parameterClass="show">
+    <insert id="insert" parameterClass="show">
         INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tag, content, 
         file_orgname, file_savname, readcount, ordercount, map)
         
@@ -50,8 +62,8 @@
     </insert>
 
     <!-- update 쿼리문 정의 -->
-    <update id="updateshow" parameterClass="show">
-        UPDATE GOODS SET
+    <update id="update" parameterClass="show">
+        UPDATE SHOWBOARD SET
         subject=#subject#,
         address1=#address1#,
         address2=#address2#,
@@ -59,27 +71,25 @@
         tag=#tag#,
         content=#content#,
         map=#map#
-        WHERE showboard_num=#showboard_num#
+        <include refid="where-no"/>
     </update>
 
     <update id="updatefile" parameterClass="show"><!-- 사진변경용 -->
         UPDATE SHOWBOARD SET
         file_orgname=#file_orgname#,
         file_savname=#file_savname#
-        WHERE
-        showboard_num=#showboard_num#
+        <include refid="where-no"/>
     </update>
     
-    <update id="updatereadcount" parameterClass="show"><!-- 조회수증가 -->
+    <update id="readcount" parameterClass="show"><!-- 조회수증가 -->
         UPDATE SHOWBOARD SET readcount = readcount + 1
         <include refid="where-no"/>
     </update>
 
     <!-- delete 쿼리문 정의 -->
-    <delete id="deleteshow" parameterClass="show">
+    <delete id="delete" parameterClass="show">
         DELETE FROM SHOWBOARD
-        WHERE
-        showboard_num=#showboard_num#
+        <include refid="where-no"/>
     </delete>
 
 </sqlMap>
