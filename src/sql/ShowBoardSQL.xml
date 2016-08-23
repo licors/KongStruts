@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!DOCTYPE sqlMap PUBLIC 
+	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap>
+    <typeAlias alias="show" type="admin.showcase.showVO" />
+
+    <resultMap id="showRes" class="show">
+        <result property="showboard_num" column="showboard_num" />
+        <result property="subject" column="subject" />
+        <result property="address1" column="address1" />
+        <result property="address2" column="address2" />
+        <result property="date" column="date" />
+        <result property="pay" column="pay" />
+        <result property="tag" column="tag" />
+        <result property="content" column="content" />
+        <result property="file_orgname" column="file_orgname" />
+        <result property="file_savname" column="file_savname" />
+        <result property="readcount" column="readcount" />
+        <result property="ordercount" column="ordercount" />
+        <result property="map" column="map" />
+    </resultMap>
+    
+    <!-- where 정의 -->
+    <sql id="where-no">
+        WHERE showboard_num = #showboard_num#
+    </sql>
+
+    <!-- select 쿼리문 정의 -->
+    <select id="selectall" resultMap="showRes">
+        SELECT * FROM SHOWBOARD
+        ORDER BY showboard_num DESC
+    </select>
+    <select id="select" resultMap="showRes">
+        SELECT * FROM SHOWBOARD WHERE
+        subject=#subject#
+    </select>
+    <select id="selectOne" resultMap="showRes">
+        SELECT * FROM SHOWBOARD
+        showboard_num=#showboard_num#
+    </select>
+
+    <!-- insert 쿼리문 정의 -->
+    <insert id="insertshow" parameterClass="show">
+        INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tag, content, 
+        file_orgname, file_savname, readcount, ordercount, map)
+        
+        VALUES(showboard_num_SEQ.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tag#, #content#, 
+        #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#)
+    </insert>
+
+    <!-- update 쿼리문 정의 -->
+    <update id="updateshow" parameterClass="show">
+        UPDATE GOODS SET
+        subject=#subject#,
+        address1=#address1#,
+        address2=#address2#,
+        pay=#pay#,
+        tag=#tag#,
+        content=#content#,
+        map=#map#
+        WHERE showboard_num=#showboard_num#
+    </update>
+
+    <update id="updatefile" parameterClass="show"><!-- 사진변경용 -->
+        UPDATE SHOWBOARD SET
+        file_orgname=#file_orgname#,
+        file_savname=#file_savname#
+        WHERE
+        showboard_num=#showboard_num#
+    </update>
+    
+    <update id="updatereadcount" parameterClass="show"><!-- 조회수증가 -->
+        UPDATE SHOWBOARD SET readcount = readcount + 1
+        <include refid="where-no"/>
+    </update>
+
+    <!-- delete 쿼리문 정의 -->
+    <delete id="deleteshow" parameterClass="show">
+        DELETE FROM SHOWBOARD
+        WHERE
+        showboard_num=#showboard_num#
+    </delete>
+
+</sqlMap>
+	
+		
+	
