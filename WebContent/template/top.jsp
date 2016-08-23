@@ -1,4 +1,4 @@
-	<%@ page contentType="text/html; charset=euc-kr"%>
+	<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,11 +7,11 @@
 
 <script>
 function basketlogin(){
-	alert("·Î±×ÀÎÀ» ÇÏ¼Å¾ß º¼ ¼ö ÀÖ½À´Ï´Ù");
+	alert("ë¡œê·¸ì¸ì„ í•˜ì…”ì•¼ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤");
 	window.location.href='basketLOF.action';
 }
 function buylogin(){
-	alert("·Î±×ÀÎÀ» ÇÏ¼Å¾ß º¼ ¼ö ÀÖ½À´Ï´Ù");
+	alert("ë¡œê·¸ì¸ì„ í•˜ì…”ì•¼ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤");
 	window.location.href='buyLOF.action';
 }
 </script>
