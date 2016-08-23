@@ -22,7 +22,7 @@
 	
 	<!-- 여기에 각자 필요한 데이터베이스 쿼리문 작성해서 올려주세요 -->
 	
-	<sqlMap resource="/sql/boardSQL.xml"></sqlMap>
+	<sqlMap resource="/sql/showcaseCommentBoardSQL.xml"></sqlMap>
 	
 	
 	
