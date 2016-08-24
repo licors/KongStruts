@@ -1,15 +1,14 @@
-package showCase;
+package showcase;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Calendar;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class CommentWriteAction extends ActionSupport{
+public class CommentModifyAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
@@ -17,32 +16,30 @@ public class CommentWriteAction extends ActionSupport{
 	private CommentBoardVO resultClass;
 	
 	private int currentPage;
-	private int no;
+	
+	private int comment_num;
 	private String name;
 	private String content;
-
-	Calendar today = Calendar.getInstance();
 	
-	public CommentWriteAction() throws IOException {
-		reader=Resources.getResourceAsReader("sqlMapConfig.xml");
-		sqlMapper=SqlMapClientBuilder.buildSqlMapClient(reader);
+	public CommentModifyAction() throws IOException {
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	
-	public String form() throws Exception {
-		return SUCCESS;
-	}
-	
+	 
+	@Override
 	public String execute() throws Exception {
+		// TODO Auto-generated method stub
 		paramClass = new CommentBoardVO();
 		resultClass = new CommentBoardVO();
 		
+		paramClass.setComment_num(comment_num);
 		paramClass.setName(getName());
 		paramClass.setContent(getContent());
-		paramClass.setReg_date(today.getTime());
 		
-		sqlMapper.insert("insertBoard",paramClass);
-
+		sqlMapper.update("updateBoard",paramClass);
+		
+		resultClass = (CommentBoardVO) sqlMapper.queryForObject("selectOne",getComment_num());
 		return SUCCESS;
 	}
 
@@ -58,8 +55,8 @@ public class CommentWriteAction extends ActionSupport{
 		return currentPage;
 	}
 
-	public int getNo() {
-		return no;
+	public int getComment_num() {
+		return comment_num;
 	}
 
 	public String getName() {
@@ -68,10 +65,6 @@ public class CommentWriteAction extends ActionSupport{
 
 	public String getContent() {
 		return content;
-	}
-
-	public Calendar getToday() {
-		return today;
 	}
 
 	public void setParamClass(CommentBoardVO paramClass) {
@@ -86,8 +79,8 @@ public class CommentWriteAction extends ActionSupport{
 		this.currentPage = currentPage;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setComment_num(int comment_num) {
+		this.comment_num = comment_num;
 	}
 
 	public void setName(String name) {
@@ -98,7 +91,5 @@ public class CommentWriteAction extends ActionSupport{
 		this.content = content;
 	}
 
-	public void setToday(Calendar today) {
-		this.today = today;
-	}
+
 }

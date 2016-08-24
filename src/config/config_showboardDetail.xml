@@ -6,10 +6,6 @@
 <struts>
 <constant name="struts.multipart.maxSize" value="104857600" />
 
-	<package name="showcaseCommentBoard" extends="struts-default">
-		<action name="listAction" class="showcase.CommentListAction">
-			<result>/showcase/listComment.jsp</result>
-		</action>
-	</package>
+
 	 	
 </struts>

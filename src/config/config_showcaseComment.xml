@@ -4,5 +4,19 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 	
+	 <package name="showcaseCommentBoard" extends="struts-default">
+		<action name="listAction" class="showcase.CommentListAction">
+			<result>/showcase/listComment.jsp</result>
+		</action>
+		
+		<action name="writeForm" class="showcase.CommentWriteAction" method="form">
+			<result>/showcase/writeComment.jsp</result>
+		</action>
+		
+		<action name="writeAction" class="showcase.CommentWriteAction">
+			<result type="redirect-action">
+				<param name="actionName">listAction</param>
+			</result>
+		</action>
+	</package>
 </struts>
