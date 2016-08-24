@@ -5,7 +5,7 @@
  */
 package admin.support;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *

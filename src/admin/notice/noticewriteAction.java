@@ -12,7 +12,8 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.Date;
+import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -24,9 +25,9 @@ public class noticewriteAction extends ActionSupport {
     public static SqlMapClient sql;
     private noticeVO pc, rc;
 
-    private int notice_num, readCount;
     private Date reg_date;
     private String subject, content;
+    Calendar today = Calendar.getInstance();
 
     public noticewriteAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
@@ -39,6 +40,53 @@ public class noticewriteAction extends ActionSupport {
         pc = new noticeVO();
         rc = new noticeVO();
 
+        pc.setSubject(getSubject());
+        pc.setContent(getContent());
+        pc.setReg_date(today.getTime());
+
+        sql.insert("insert", pc);
+
         return SUCCESS;
     }
+
+    public noticeVO getPc() {
+        return pc;
+    }
+
+    public void setPc(noticeVO pc) {
+        this.pc = pc;
+    }
+
+    public noticeVO getRc() {
+        return rc;
+    }
+
+    public void setRc(noticeVO rc) {
+        this.rc = rc;
+    }
+
+    public Date getReg_date() {
+        return reg_date;
+    }
+
+    public void setReg_date(Date reg_date) {
+        this.reg_date = reg_date;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }
