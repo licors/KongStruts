@@ -12,6 +12,7 @@
         <result property="address2" column="address2" />
         <result property="date" column="date" />
         <result property="pay" column="pay" />
+        <result property="tel" column="tel" />
         <result property="tag" column="tag" />
         <result property="content" column="content" />
         <result property="file_orgname" column="file_orgname" />
@@ -20,6 +21,7 @@
         <result property="ordercount" column="ordercount" />
         <result property="map" column="map" />
         <result property="status" column="status" />
+        <result property="showboard_category" column="showboard_category" />
     </resultMap>
     
     <!-- select 정의 -->
@@ -51,6 +53,10 @@
         WHERE
         status=0
     </select>
+    <select id="selectLastNo" resultClass="show" parameterClass="int">
+        <include refid="select-all"/>
+        ORDER BY showboard_num DESC LIMIT 1
+    </select>
 
     <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="show">
@@ -70,7 +76,9 @@
         pay=#pay#,
         tag=#tag#,
         content=#content#,
-        map=#map#
+        map=#map#,
+        status=#status#,
+        showboard_category=#showboard_category#
         <include refid="where-no"/>
     </update>
 
