@@ -1,4 +1,4 @@
-package mypage;
+package basket;
 
 public class WriteBasketAction {
 

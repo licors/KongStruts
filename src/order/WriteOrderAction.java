@@ -1,4 +1,4 @@
-package mypage;
+package order;
 
 public class WriteOrderAction {
 
