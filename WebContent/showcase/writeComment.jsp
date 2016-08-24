@@ -12,15 +12,16 @@
 		
 			var frm = document.forms(0);
 			
-			else if(frm.content.value == "") {
+			if(frm.content.value == "") {
 				alert("내용을 입력해주세요.");
 				return false;			
 			} 
-			
+			 
 			return true;
 		}
-	</SCRIPT>
-</head>
+</SCRIPT>
+
+</head> 
 <body>
 	<s:if test="resultClass == NULL">
 		<form action="writeAction.action" method="post" enctype="multipart/form-data" onsubmit="return validation();">

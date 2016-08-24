@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 	
-<sqlMap namespace="showcaseDetailComment">
+<!-- <sqlMap namespace="showcaseDetailComment">
 	<typeAlias alias="comment" type="showcase.CommentBoardVO" />
 	
 	<resultMap id="commentRes" class="comment">
@@ -15,42 +15,25 @@
 		<result property="re_step" column="RE_STEP" />
 		<result property="re_level" column="RE_LEVEL" />
 	</resultMap> 
-	
-	
-<!-- 	<resultMap id="commentRes" class="comment">
-		<result property="comment_num" column="COMMENT_NUM" />
-		<result property="showboard_num" column="SHOWBOARD_NUM" />
-		<result property="member_num" column="MEMBER_NUM" />
-		<result property="content" column="CONTENT" />
-		<result property="reg_date" column="REG_DATE" />
-		<result property="ref" column="REF"/>
-		<result property="re_step" column="RE_STEP" />
-		<result property="re_level" column="RE_LEVEL" />
-	</resultMap>  -->
 
-	<!-- 공통으로 사용할 select 절 정의 -->
+	공통으로 사용할 select 절 정의
 	<sql id="select-all">
 		SELECT * FROM SHOWCASECOMMENT
 	</sql>
 
-	<!-- 공통으로 사용할 where-no 절 정의 -->
+	공통으로 사용할 where-no 절 정의
 	<sql id="where-no">
 		WHERE no = #no#
 	</sql>
 	
-	<!-- select 쿼리문 정의 -->	
+	select 쿼리문 정의	
+	조인 사용 시 맵객체 사용하는 것 추천함
 	<select id="selectAll" resultMap="java.lang.Map" parameterClass="int">
 		SELECT cm.COMMENT_NUM, cm.SHOWBOARD_NUM, cm.MEMBER_NUM, cm.CONTENT, cm.REG_DATE, cm.RE_STEP, cm.RE_LEVEL, cm."REF", mb."NAME"
 		FROM SHOWCASECOMMENT cm join MEMBER mb
 		on cm.MEMBER_NUM = mb.MEMBER_NUM
 		ORDER BY ref DESC, re_step ASC
 	</select>
-	
-	<!-- select 쿼리문 정의 -->	
-<!-- 	<select id="selectAll" resultMap="commentRes" parameterClass="int">
-		<include refid="select-all" />
-		 ORDER BY ref DESC, re_step ASC
-	</select> -->
 	
 	<select id="selectOne" resultMap="commentRes" parameterClass="int">
 		<include refid="select-all" />
@@ -62,7 +45,7 @@
 	</select>
 	
 	
-	<!-- insert 쿼리문 정의 -->
+	insert 쿼리문 정의
 	<insert id="insertBoard" parameterClass="comment">
 		INSERT INTO SHOWCASECOMMENT(COMMENT_NUM, SHOWBOARD_NUM, MEMBER_NUM, CONTENT, REG_DATE, RE_STEP, RE_LEVEL, REF)
 		VALUES (COMMENT_NUM_SEQ.NEXTVAL, #showboard_num#, #member_num#, #content#, #reg_date#, #re_step#, #re_level#, COMMENT_NUM_SEQ.CURRVAL)
@@ -73,7 +56,7 @@
 		VALUES (COMMENT_NUM_SEQ.NEXTVAL, #showboard_num#, #member_num#, #content#, #reg_date#, #re_step#, #re_level#, #ref#)
 	</insert>
 
-	<!-- update 쿼리문 정의 -->
+	update 쿼리문 정의
 	<update id="updateBoard" parameterClass="board">
 	UPDATE SHOWCASECOMMENT SET CONTENT = #content#
 	<include refid = "where-no" />
@@ -87,14 +70,14 @@
 	
 	
 	
-	<!-- delete 쿼리문 정의 -->
+	delete 쿼리문 정의
 	<delete id="deleteBoard" parameterClass="board">
 		DELETE FROM SHOWCASECOMMENT
 		<include refid="where-no" />
 	</delete>
 
 
-</sqlMap>
+</sqlMap> -->
 
 	<!-- <typeAlias alias="review" type="review.reviewVO" />
 	<typeAlias alias="rcomment" type="review.commnetVO" />

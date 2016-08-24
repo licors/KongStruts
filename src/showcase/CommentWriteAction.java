@@ -51,7 +51,7 @@ public class CommentWriteAction extends ActionSupport{
 		reply=true;
 		resultClass = new CommentBoardVO();
 		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("selectOne", getComment_num());
+		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
 		resultClass.setContent("[답변] " + resultClass.getContent());
 		resultClass.setName("");
 		
@@ -69,13 +69,9 @@ public class CommentWriteAction extends ActionSupport{
 		{
 			paramClass.setRe_step(0);
 			paramClass.setRe_level(0);
-			
-			
-			
 		}
 		else
 		{
-			
 			paramClass.setRef(getRef());
 			paramClass.setRe_step(getRe_step());
 			sqlMapper.update("updateReplyStep", paramClass);
