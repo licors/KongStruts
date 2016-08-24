@@ -3,15 +3,16 @@
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="support">
-    <typeAlias alias="support" type="admin.support.supportVO" />
+    <typeAlias alias="support" type="admin.support.supportVO" /><!-- 글 -->
 
     <resultMap id="Res" class="support">
-        <result property="ref_num" column="ref_num" />
+        <result property="support_num" column="support_num" />
         <result property="member_num" column="member_num" />
         <result property="type" column="type" />
         <result property="email" column="email" />
         <result property="content" column="content" />
         <result property="reg_date" column="reg_date" />
+        <result property="ref" column="ref" />
         <result property="re_step" column="re_step" />
         <result property="re_level" column="re_level" />
     </resultMap>
@@ -29,9 +30,9 @@
     <!-- select 쿼리문 정의 -->
     <select id="selectall" resultMap="supportRes">
         <include refid="select-all"/>
-        ORDER BY ref_num DESC
+        ORDER BY ref DESC, re_step ASC
     </select>
-<!--    <select id="select" resultMap="supportRes">
+    <!--    <select id="select" resultMap="supportRes">
         <include refid="select-all"/>
         WHERE
         type=#type#
@@ -42,7 +43,7 @@
     </select>
 
     <!-- insert 쿼리문 정의 -->
-    <insert id="insert" parameterClass="support">
+    <insert id="insert" parameterClass="support"> support_num, ref_num, member_num, type, email, content, reg_date, re_step, re_level
         INSERT INTO SUPPORT (ref_num, member_num, type, email, content, reg_date, re_step, re_level)
         VALUES(#ref_num#, #member_num#, #type#, #email#, #content#, #reg_date#, #re_step#, #re_level#)
     </insert>

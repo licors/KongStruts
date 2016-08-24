@@ -13,16 +13,15 @@ import java.sql.Date;
  */
 public class showVO {
 
-    private int num, pay, readCount, orderCount;
-    private String subject, address, tel, tag, content, file_orgname, file_savname, map;
-    private Date date;
+    private int showboard_num, pay, readCount, orderCount;
+    private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, status, showboard_category;
 
-    public int getNum() {
-        return num;
+    public int getShowboard_num() {
+        return showboard_num;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setShowboard_num(int showboard_num) {
+        this.showboard_num = showboard_num;
     }
 
     public int getPay() {
@@ -57,12 +56,20 @@ public class showVO {
         this.subject = subject;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddress1() {
+        return address1;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
     }
 
     public String getTel() {
@@ -113,12 +120,28 @@ public class showVO {
         this.map = map;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getShowboard_category() {
+        return showboard_category;
+    }
+
+    public void setShowboard_category(String showboard_category) {
+        this.showboard_category = showboard_category;
     }
 
 }
