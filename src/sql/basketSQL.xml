@@ -1,1 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC 
+	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
+	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap>
+	<typeAlias alias="basket" type="basket.BasketVO" />
+
+	<resultMap id="basketRes" class="basket">
+		<result property="basket_num" column="basket_num" />
+		<result property="member_num" column="member_num" />
+		<result property="showboard_num" column="showboard_num" />
+		<result property="basket_date" column="basket_date" />
+		<result property="subject" column="subject" />
+		<result property="file_orgname" column="file_orgname" />
+		<result property="file_savname" column="file_savname" />
+		<result property="date" column="date" />
+		<result property="address2" column="address2" />
+		<result property="readcount" column="readcount" />
+		<result property="ordercount" column="ordercount" />
+	</resultMap>
+
+
+	<!-- list 보이기 -->
+	<sql id="select-all">
+		select bs.BASKET_NUM, bs.MEMBER_NUM, bs.BASKET_DATE,
+		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
+		sb.READCOUNT, sb.ORDERCOUNT
+		from BASKET bs join SHOWBOARD sb
+		on bs.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
+	</sql>
+
+	<select id="basketList" resultMap="basketRes" parameterClass="string">
+		<include refid="select-all"/>
+		and bs.basket_num=#basket_num#
+		ORDER BY basket_num DESC
+	</select>
+
+	<!-- 장바구니 추가 -->
+	<insert id="basketInsert" parameterClass="basket">
+		INSERT INTO
+		BASKET(basket_num, basket_member_id, basket_goods_num,
+		basket_goods_name, basket_goods_price, basket_goods_amount,
+		basket_goods_size, basket_goods_color, basket_goods_image,
+		basket_date)
+		VALUES(BASKET_SEQ.NEXTVAL, #basket_member_id#,
+		#basket_goods_num#, #basket_goods_name#, #basket_goods_price#,
+		#basket_goods_amount#, #basket_goods_size#, #basket_goods_color#,
+		#basket_goods_image#, #basket_date#)
+	</insert>
+
+
+	<!-- 장바구니 삭제 -->
+	<delete id="basketDelete" parameterClass="basket">
+		DELETE FROM BASKET
+		WHERE basket_num=#basket_num#
+	</delete>
+
+	<!-- 장바구니 전체 삭제 -->
+	<delete id="basketDelete_all" parameterClass="basket">
+		DELETE FROM BASKET
+		WHERE BASKET_MEMBER_ID=#basket_member_id#
+	</delete>
+
+
+</sqlMap>
+
+select bs.basket_num, bs.member_num, bs.basket_date,
+sb.subject, sb.file_orgname, sb.file_savname, "sb.date", sb.address2, sb.readcount,
+sb.ordercount
+from "basket" bs join "showboard" sb
+on bs.showboard_num =
+sb.showboard_num 

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD Sql Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="showcaseDetailComment">
+	<typeAlias alias="comment" type="showcase.CommentBoardVO" />
+	
+	<resultMap id="commentRes" class="comment">
+		<result property="comment_num" column="COMMENT_NUM" />
+		<result property="showboard_num" column="SHOWBOARD_NUM" />
+		<result property="member_num" column="MEMBER_NUM" />
+		<result property="content" column="CONTENT" />
+		<result property="reg_date" column="REG_DATE" />
+		<result property="ref" column="REF"/>
+		<result property="re_step" column="RE_STEP" />
+		<result property="re_level" column="RE_LEVEL" />
+	</resultMap> 
+	
+	
+<!-- 	<resultMap id="commentRes" class="comment">
+		<result property="comment_num" column="COMMENT_NUM" />
+		<result property="showboard_num" column="SHOWBOARD_NUM" />
+		<result property="member_num" column="MEMBER_NUM" />
+		<result property="content" column="CONTENT" />
+		<result property="reg_date" column="REG_DATE" />
+		<result property="ref" column="REF"/>
+		<result property="re_step" column="RE_STEP" />
+		<result property="re_level" column="RE_LEVEL" />
+	</resultMap>  -->
+
+	<!-- 공통으로 사용할 select 절 정의 -->
+	<sql id="select-all">
+		SELECT * FROM SHOWCASECOMMENT
+	</sql>
+
+	<!-- 공통으로 사용할 where-no 절 정의 -->
+	<sql id="where-no">
+		WHERE no = #no#
+	</sql>
+	
+	<!-- select 쿼리문 정의 -->	
+	<select id="selectAll" resultMap="java.lang.Map" parameterClass="int">
+		SELECT cm.COMMENT_NUM, cm.SHOWBOARD_NUM, cm.MEMBER_NUM, cm.CONTENT, cm.REG_DATE, cm.RE_STEP, cm.RE_LEVEL, cm."REF", mb."NAME"
+		FROM SHOWCASECOMMENT cm join MEMBER mb
+		on cm.MEMBER_NUM = mb.MEMBER_NUM
+		ORDER BY ref DESC, re_step ASC
+	</select>
+	
+	<!-- select 쿼리문 정의 -->	
+<!-- 	<select id="selectAll" resultMap="commentRes" parameterClass="int">
+		<include refid="select-all" />
+		 ORDER BY ref DESC, re_step ASC
+	</select> -->
+	
+	<select id="selectOne" resultMap="commentRes" parameterClass="int">
+		<include refid="select-all" />
+		<include refid="where-no" />
+	</select>
+
+	<select id="selectLastNo" resultClass="commentRes" parameterClass="int">
+		SELECT max(no) as no FROM SHOWCASECOMMENT
+	</select>
+	
+	
+	<!-- insert 쿼리문 정의 -->
+	<insert id="insertBoard" parameterClass="comment">
+		INSERT INTO SHOWCASECOMMENT(COMMENT_NUM, SHOWBOARD_NUM, MEMBER_NUM, CONTENT, REG_DATE, RE_STEP, RE_LEVEL, REF)
+		VALUES (COMMENT_NUM_SEQ.NEXTVAL, #showboard_num#, #member_num#, #content#, #reg_date#, #re_step#, #re_level#, COMMENT_NUM_SEQ.CURRVAL)
+	</insert>
+	
+	<insert id="insertBoardReply" parameterClass="comment">
+		INSERT INTO SHOWCASECOMMENT(COMMENT_NUM, SHOWBOARD_NUM, MEMBER_NUM, CONTENT, REG_DATE,  RE_STEP, RE_LEVEL, REF)
+		VALUES (COMMENT_NUM_SEQ.NEXTVAL, #showboard_num#, #member_num#, #content#, #reg_date#, #re_step#, #re_level#, #ref#)
+	</insert>
+
+	<!-- update 쿼리문 정의 -->
+	<update id="updateBoard" parameterClass="board">
+	UPDATE SHOWCASECOMMENT SET CONTENT = #content#
+	<include refid = "where-no" />
+	</update>
+
+	
+	<update id="updateReplyStep" parameterClass="board">
+		UPDATE SHOWCASECOMMENT SET re_step=re_step+1 WHERE ref=#ref# AND re_step>#re_step#
+		
+	</update>
+	
+	
+	
+	<!-- delete 쿼리문 정의 -->
+	<delete id="deleteBoard" parameterClass="board">
+		DELETE FROM SHOWCASECOMMENT
+		<include refid="where-no" />
+	</delete>
+
+
+</sqlMap>
+
+	<!-- <typeAlias alias="review" type="review.reviewVO" />
+	<typeAlias alias="rcomment" type="review.commnetVO" />
+	
+	<resultMap id="reviewRes" class="review">
+		<result property="no" column="no" />
+		<result property="name" column="name" />
+		<result property="subject" column="subject" />
+		<result property="content" column="content" />
+		<result property="regdate" column="regdate" />
+		<result property="readcount" column="readcount" />
+		<result property="imagefile_orgname" column="imagefile_orgname" />
+		<result property="imagefile_savname" column="imagefile_savname" />
+	</resultMap>
+	
+	<resultMap id="commentRes" class="rcomment">
+		<result property="content_num" column="content_num" />
+		<result property="commenter" column="commenter" />
+		<result property="commentt" column="comment" />
+		<result property="passwd" column="passwd" />
+		<result property="reg_date" column="reg_date" />
+		<result property="comment_num" column="comment_num" />
+	</resultMap>
+	
+	
+	SELECT 쿼리
+	 <select id="reviewSelectAll" resultMap="reviewRes">
+	 	SELECT * FROM REVIEW
+	 	ORDER BY no DESC	
+	 </select>
+	 
+	 <select id="reviewSelect" resultMap="reviewRes" parameterClass="int">
+	 	SELECT * FROM REVIEW
+	 	WHERE no=#no#
+	 </select>
+	 
+	 <select id="commentAll" resultMap="commentRes">
+	 	SELECT * FROM RCOMMENT
+	 	WHERE 
+	 </select>
+	 
+	 SEARCH 쿼리
+	 <select id="reviewName" resultMap="reviewRes" parameterClass="string">
+	 	SELECT * FROM REVIEW
+	 	WHERE name like #searchKeyword#
+	 	ORDER BY no DESC
+	 </select>
+	 
+	 <select id="reviewSubject" resultMap="reviewRes" parameterClass="string">
+	 	SELECT * FROM REVIEW
+	 	WHERE subject like #subject#
+	 	ORDER BY no DESC
+	 </select>
+	 
+	 <select id="reviewContent" resultMap="reviewRes" parameterClass="string">
+	 	SELECT * FROM REVIEW
+	 	WHERE content like #searchKeyword#
+	 	ORDER BY no DESC
+	 </select>
+	 
+	 
+	 INSERT 쿼리
+	 <insert id="reviewInsert" parameterClass="review">
+	 	INSERT INTO REVIEW(no, name, subject, content, regdate, readcount, imagefile_orgname, imagefile_savname)
+	 	VALUES(REVIEW_SEQ.NEXTVAL, #subject#, #content#, #regdate#, #readcount#, #imagefile_orgname#, #imagefile_savname#)
+	 </insert>
+	  
+	 UPDATE 쿼리	
+	 <update id="reviewUpdate" parameterClass="review">
+	 	UPDATE REVIEW SET name=#name#, subject=#subject#, content=#content#
+	 	WHERE no=#no#
+	 </update>
+	 
+	 <update id="readcountUpdate" parameterClass="review">
+	 	UPDATE REVIEW SET readcount=readcount+1
+	 	WHERE no=#no#
+	 </update>
+	 
+	 <update id="imageUpdate" parameterClass="review">
+	 	UPDATE REVIEW SET imagefile_orgname=#imagefile_orgname#, imagefile_savname=#imagefile_savname#
+	 	WHERE no=#no#
+	 </update>
+	 
+	 DELETE 쿼리
+	 <delete id="reviewDelete" parameterClass="review">
+	 	DELETE FROM REVIEW
+	 	WHERE no=#no#
+	 </delete>
+</sqlMap> -->

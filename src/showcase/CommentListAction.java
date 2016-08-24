@@ -1,4 +1,4 @@
-package showCase;
+package showcase;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -23,6 +23,7 @@ public class CommentListAction extends ActionSupport{
 	private String pagingHtml;
 	private CommentPagingAction page;
 	
+	
 	public CommentListAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -30,7 +31,7 @@ public class CommentListAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception {
-		list = sqlMapper.queryForList("selectAll");
+		list = sqlMapper.queryForList("showcaseDetailComment.selectAll");
 		
 		totalCount = list.size();
 		page = new CommentPagingAction(currentPage, totalCount, blockCount, blockPage);

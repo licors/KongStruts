@@ -1,4 +1,4 @@
-package showCase;
+package showcase;
 
 public class ReadAction {
 
