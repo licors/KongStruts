@@ -66,9 +66,9 @@
 
 </sqlMap>
 
-select bs.basket_num, bs.member_num, bs.basket_date,
+<!-- select bs.basket_num, bs.member_num, bs.basket_date,
 sb.subject, sb.file_orgname, sb.file_savname, "sb.date", sb.address2, sb.readcount,
 sb.ordercount
 from "basket" bs join "showboard" sb
 on bs.showboard_num =
-sb.showboard_num 
+sb.showboard_num  -->
