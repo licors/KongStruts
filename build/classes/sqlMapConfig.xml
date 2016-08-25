@@ -23,9 +23,10 @@
 	<!-- 여기에 각자 필요한 데이터베이스 쿼리문 작성해서 올려주세요 -->
 	
 	<sqlMap resource="/sql/showcaseDetailSQL.xml"></sqlMap>
-	<sqlMap resource="/sql/showcaseCommentBoardSQL.xml"/> 
+	<sqlMap resource="/sql/showcaseCommentSQL.xml"/> 
 	<sqlMap resource="/sql/ShowBoardSQL.xml"/>  <!-- 수호 -->
-	
+	<sqlMap resource="/sql/orderSQL.xml"/>	<!-- 주문(신청티켓) -->
+	<sqlMap resource="/sql/basketSQL.xml"/> <!-- 장바구니(관심티켓) -->
 	
 	
 </sqlMapConfig>
