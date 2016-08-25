@@ -5,7 +5,7 @@
  */
 package admin.qna;
 
-import admin.showcase.path;
+import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;

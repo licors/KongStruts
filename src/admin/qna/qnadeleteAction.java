@@ -5,7 +5,7 @@
  */
 package admin.qna;
 
-import admin.showcase.path;
+import admin.path;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
