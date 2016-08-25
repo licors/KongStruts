@@ -13,14 +13,14 @@
 		<tr>
 			<td align="center">이메일</td>
 			<td valign="middle" align="left">
-			<input class="email" type="text" name="id" size="20" maxlength="15"></td>
+			<input type="text" name="email" size="20" maxlength="15"></td>
 
 
 		</tr>
 		<tr>
 			<td align="center">비밀번호</td>
 			<td valign="middle" align="left">
-			<input class="password" type="password" name="password" size="20" maxlength="12"></td>
+			<input type="password" name="passwd" size="20" maxlength="12"></td>
 
 		</tr>
 

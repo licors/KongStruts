@@ -16,8 +16,14 @@
 			<result>member/membeLoginForm.jsp</result>
 		</action>
 		
+		<!-- 로그인 처리-->
 		<action name="memberLogin" class="member.MemberLoginAction">
 			<result>member/membeLogin.jsp</result>
+		</action>
+		
+		<!--  로그아웃 처리  -->
+		<action name="memberLogout" class="member.MemberLoginAction" method="logout">
+			<result>member/memberLogin.jsp</result>
 		</action>
 	</package>
 
