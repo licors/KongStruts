@@ -7,8 +7,8 @@
 <sqlMap>
 	<typeAlias alias="order" type="order.OrderVO" />
 
-	<resultMap id="orderRes" class="order">
-		<result property="order_num" column="order_num" />
+	<resultMap id="orderRes" class="order"> <!-- //위에 자바빈 클래스 별칭 해줬음 -->
+		<result property="order_num" column="order_num" />		<!-- //column: 우리가가진 테이블 컬럼명, property: order자바빈의 변수 -->
 		<result property="member_num" column="member_num" />
 		<result property="showboard_num" column="showboard_num" />
 		<result property="name" column="name" />
@@ -47,8 +47,8 @@
 		and sb.SUBJECT=#subject#
 	</select>
 	
-	<select id="orderDetail" resultMap="orderRes" parameterClass="int">
-		<include refid="select-all" />
+	<select id="orderDetail" resultMap="orderRes" parameterClass="int">		<!-- //parameterClass: 받아오는값,재료,메개변수, resultMap: 맨위에 선언한 resultMap 갖다쓰는것 -->
+		<include refid="select-all" />										<!-- //resultClass: 꺼내온데이터를 별칭 자바빈클래스로 넣어라, 컬럼이 하나면 값에 따라 int나 string 이 될수고있다(리턴함) -->
 		and od.ORDER_NUM=#order_num#
 	</select>
 	
