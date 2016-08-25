@@ -28,8 +28,13 @@
     </sql>
 
     <!-- select 쿼리문 정의 -->
-    <select id="selectall" resultMap="supportRes">
+    <select id="selectall" resultMap="supportRes"><!-- 관리자용 -->
         <include refid="select-all"/>
+        ORDER BY ref DESC, re_step ASC
+    </select>
+    <select id="selectmemberall" resultMap="supportRes"><!-- 유저용 -->
+        <include refid="select-all"/>
+        WHERE MEMBER_NUM=#MEMBER_NUM#
         ORDER BY ref DESC, re_step ASC
     </select>
     <!--    <select id="select" resultMap="supportRes">

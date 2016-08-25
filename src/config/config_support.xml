@@ -4,5 +4,15 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 	
+    <package name="support" extends="struts-default">
+        <!--문의글 작성--> 
+        <action name="supportwrite" class="admin.support.supportwriteAction">
+            <result type="tiles">showboard_list</result> <!-- 전시글 작성후 메인이동 -->
+        </action>
+        <!--문의글 수정--> 
+        <action name="scmodify" class="admin.support.supportwriteAction">
+            <result type="tiles">showboard_list</result> <!-- 전시글 작성후 메인이동 -->
+        </action>
+        
+    </package>
 </struts>

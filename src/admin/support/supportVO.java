@@ -13,16 +13,16 @@ import java.util.Date;
  */
 public class supportVO {
 
-    private int ref_num, member_num, re_step, re_level;
+    private int support_num, member_num, ref, re_step, re_level;
     private Date reg_date;
     private String type, email, content;
 
-    public int getRef_num() {
-        return ref_num;
+    public int getSupport_num() {
+        return support_num;
     }
 
-    public void setRef_num(int ref_num) {
-        this.ref_num = ref_num;
+    public void setSupport_num(int support_num) {
+        this.support_num = support_num;
     }
 
     public int getMember_num() {
@@ -31,6 +31,14 @@ public class supportVO {
 
     public void setMember_num(int member_num) {
         this.member_num = member_num;
+    }
+
+    public int getRef() {
+        return ref;
+    }
+
+    public void setRef(int ref) {
+        this.ref = ref;
     }
 
     public int getRe_step() {

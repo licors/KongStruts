@@ -13,5 +13,6 @@ public class path {
 
     public static String path = "c:\\temp\\";
     public static String sql = "sqlMapConfig.xml";
-    public static String listaction = "";
+    public static String support_listaction = "";
+    public static String notice_listaction = "";
 }

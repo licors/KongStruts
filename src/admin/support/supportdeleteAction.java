@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin.qna;
+package admin.support;
 
 import admin.path;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,15 +17,15 @@ import java.io.Reader;
  *
  * @author user2
  */
-public class qnaviewAction extends ActionSupport {
+public class supportdeleteAction extends ActionSupport {
 
     public static Reader reader;
     public static SqlMapClient sql;
-    private qnaVO pc, rc;
+    private supportVO pc, rc;
 
-    private int qna_num;
+    private int support_num;
 
-    public qnaviewAction() throws IOException {
+    public supportdeleteAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
@@ -33,36 +33,38 @@ public class qnaviewAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        pc = new qnaVO();
-        rc = new qnaVO();
+        pc = new supportVO();
+        rc = new supportVO();
 
-        rc = (qnaVO) sql.queryForObject("qna.selectOne", getQna_num());
+        pc.setSupport_num(getSupport_num());
+
+        sql.update("support.udelete", pc);
 
         return SUCCESS;
     }
 
-    public qnaVO getPc() {
+    public supportVO getPc() {
         return pc;
     }
 
-    public void setPc(qnaVO pc) {
+    public void setPc(supportVO pc) {
         this.pc = pc;
     }
 
-    public qnaVO getRc() {
+    public supportVO getRc() {
         return rc;
     }
 
-    public void setRc(qnaVO rc) {
+    public void setRc(supportVO rc) {
         this.rc = rc;
     }
 
-    public int getQna_num() {
-        return qna_num;
+    public int getSupport_num() {
+        return support_num;
     }
 
-    public void setQna_num(int qna_num) {
-        this.qna_num = qna_num;
+    public void setSupport_num(int support_num) {
+        this.support_num = support_num;
     }
 
 }

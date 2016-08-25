@@ -9,8 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class MemberJoinAction extends ActionSupport {
 	
-	public static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader
-	public static SqlMapClient sqlMapper;// SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÔ
+	public static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader
+	public static SqlMapClient sqlMapper;// SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•¨
 	private MemberVO memresultClass;
 	private MemberVO memparamClass;
 	
@@ -20,9 +20,9 @@ public class MemberJoinAction extends ActionSupport {
 	private String passwd;
 	
 	public MemberJoinAction() throws Exception {
-		// sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤ ³»¿ëÀ» °¡Á®¿Â´Ù
+		// sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì • ë‚´ìš©ì„ ê°€ì ¸ì˜¨ë‹¤
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// sqlMapConfig.xml ÀÇ ³»¿ëÀ» Àû¿ëÇÑ sqlMapper °´Ã¼ »ı¼º
+		// sqlMapConfig.xml ì˜ ë‚´ìš©ì„ ì ìš©í•œ sqlMapper ê°ì²´ ìƒì„±
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
@@ -39,6 +39,10 @@ public class MemberJoinAction extends ActionSupport {
 		sqlMapper.insert("joinMember", memparamClass);
 		memresultClass=(MemberVO)sqlMapper.queryForObject("UserCheck",memparamClass.getEmail());
 		
+		return SUCCESS;
+	}
+	
+	public String form() throws Exception{
 		return SUCCESS;
 	}
 

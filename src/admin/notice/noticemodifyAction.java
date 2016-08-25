@@ -40,7 +40,7 @@ public class noticemodifyAction extends ActionSupport{
         
         sql.update("notice.update", pc);
 
-        rc = (noticeVO) sql.queryForObject("selectOne", getNotice_num());
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
 
         return SUCCESS;
     }

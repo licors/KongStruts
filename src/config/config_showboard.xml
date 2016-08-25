@@ -4,5 +4,16 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 	
+    <!---->
+<!--    <package name="showBoard" extends="struts-default">
+         전시글작성 
+        <action name="scwrit" class="admin.showcase.showcasewriteAction">
+            <result type="tiles">showboard_list</result> 전시글 작성후 메인이동 
+        </action>
+         전시글 수정 
+        <action name="scmodify" class="admin.showcase.showcasemodifyAction">
+            <result type="tiles">showboard_list</result> 전시글 작성후 메인이동 
+        </action>
+        
+    </package>-->
 </struts>

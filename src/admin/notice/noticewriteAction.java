@@ -44,7 +44,7 @@ public class noticewriteAction extends ActionSupport {
         pc.setContent(getContent());
         pc.setReg_date(today.getTime());
 
-        sql.insert("insert", pc);
+        sql.insert("notice.insert", pc);
 
         return SUCCESS;
     }

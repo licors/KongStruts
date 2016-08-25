@@ -19,9 +19,23 @@
 
 
 	<!-- 로그인//기타 값 얻어오기 -->
-	<select id="UserCheck" resultMap="memberRes" parameterClass="string">
+	<select id="userCheck" resultMap="memberRes" parameterClass="string">
 		SELECT * FROM MEMBER WHERE ID=#id#
 	</select>
+
+	<!-- 관리자인지 확인 -->
+	<select id="adminCheck" resultClass="java.lang.Integer" parameterClass="string">
+		SELECT admin FROM MEMBER WHERE ID=#id#
+	</select>
+
+
+
+	<!-- 회원가입 -->
+	<insert id="joinMember" parameterClass="member">
+		INSERT INTO MEMBER(member_num, email, password, name, address, company) VALUES
+		(member_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#)
+	</insert>
+
 
 
 
@@ -59,12 +73,7 @@
 		SELECT * FROM MEMBER WHERE ID=#id# AND PHONE=#phone#
 	</select>
 
-	<!-- 회원가입 -->
-	<insert id="joinMember" parameterClass="member">
-		INSERT INTO MEMBER VALUES
-		(member_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#,#admin#
-		)
-	</insert>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="deleteMember" parameterClass="member">
 		DELETE FROM MEMBER WHERE ID=#id#
