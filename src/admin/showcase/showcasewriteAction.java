@@ -13,11 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 
@@ -32,18 +28,29 @@ public class showcasewriteAction extends ActionSupport {
 
     private showVO pc, rc;
 
-    private int show_num, pay, readCount, orderCount;
-    private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, status, showboard_category;
+    private int showboard_num, pay, readCount, orderCount;
+    private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, showboard_category;
 
-    private List<File> upload = new ArrayList<File>();
-//    private List<String> uploadname = new ArrayList<String>();
-    private List<String> uploadtype = new ArrayList<String>();
+    private List<File> upload = new ArrayList<File>(); // 파일 객체
+    private List<String> uploadType = new ArrayList<String>(); // 컨텐츠 타입
+    private List<String> uploadName = new ArrayList<String>(); // 파일 이름
     private String uploadpath = path.path;
+    private int index; // 경로
 
     public showcasewriteAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
+    }
+
+    public String showcasehide() throws Exception { //기간 지난 전시글 숨기기(수동)
+        pc = new showVO();
+        rc = new showVO();
+
+        pc.setShowboard_num(getShowboard_num());
+        sql.update("show.updatestatus", pc);
+
+        return SUCCESS;
     }
 
     @Override
@@ -61,33 +68,31 @@ public class showcasewriteAction extends ActionSupport {
         pc.setContent(getContent());
         pc.setShowboard_category(getShowboard_category());
         sql.insert("show.insert", pc);
-//        if (getUpload() != null) {
-//            rc = (showVO) sql.queryForList("show.selectLastNo");
-////            String file_name = "", file_ext = "";
-//            StringBuilder orgname = new StringBuilder();
-//            StringBuilder savname = new StringBuilder();
-//
-//            for (Iterator<File> itFile = upload.iterator(); itFile.hasNext();) {
-////            for (int i = 0; i < upload.size(); i++) {
-//                File k = itFile.next();
-//                String file_name = "file_" + rc.getShowboard_num();
-//                String file_ext = k.substring(getUploadname().lastIndexOf('.') + 1, getUploadname().length());
-//                File destFile = new File(uploadpath + file_name + "." + file_ext);
-//                FileUtils.copyFile(k, destFile);
-//                if (upload.) {
-//                    orgname.append(getUploadname().get(i));
-//                }
-//                savname.append()
-//            }
-//            for (Iterator<File> itName = uploadname.iterator(); itName.hasNext();) {
-//                
-//            }
-//
-//            pc.setShowboard_num(rc.getShowboard_num());
-//            pc.setFile_orgname(getUploadname().get(i));
-//            pc.setFile_savname(file_name + "." + file_ext);
-//            sql.update("show.updatefile", pc);
-//        }
+        pc = (showVO) sql.queryForObject("show.selectLastNo");
+
+        if (getUpload() != null) { //업로드 객체가 널이 아니면
+            for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
+                File destFile = new File(uploadpath + getUploadName().get(i));
+                FileUtils.copyFile((getUpload()).get(i), destFile);
+            }
+            if (upload.size() > 0) { //파일을 업로드했다면
+                file_savname = getUploadName().get(0) + ",";
+                for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
+                    file_savname += getUploadName().get(i) + ",";
+                }
+
+                index = file_savname.lastIndexOf(',');
+                file_savname = file_savname.substring(0, index);
+            }
+
+            // 파일 정보 파라미터 설정.
+            pc.setShowboard_num(rc.getShowboard_num());
+            pc.setFile_orgname(getFile_savname()); // 원래 파일 이름         근데 이게 getsavname(원본)인지 getorgname인지 모르겠네(수호 08.25)
+            pc.setFile_savname(getFile_savname());
+            // 파일 정보 업데이트
+            sql.update("updatefile", pc);
+
+        }
         return SUCCESS;
     }
 
@@ -107,12 +112,20 @@ public class showcasewriteAction extends ActionSupport {
         this.rc = rc;
     }
 
-    public int getShow_num() {
-        return show_num;
+    public int getShowboard_num() {
+        return showboard_num;
     }
 
-    public void setShow_num(int show_num) {
-        this.show_num = show_num;
+    public void setShowboard_num(int showboard_num) {
+        this.showboard_num = showboard_num;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public int getPay() {
@@ -227,20 +240,20 @@ public class showcasewriteAction extends ActionSupport {
         this.upload = upload;
     }
 
-//    public List<String> getUploadname() {
-//        return uploadname;
-//    }
-//
-//    public void setUploadname(List<String> uploadname) {
-//        this.uploadname = uploadname;
-//    }
-
-    public List<String> getUploadtype() {
-        return uploadtype;
+    public List<String> getUploadType() {
+        return uploadType;
     }
 
-    public void setUploadtype(List<String> uploadtype) {
-        this.uploadtype = uploadtype;
+    public void setUploadType(List<String> uploadType) {
+        this.uploadType = uploadType;
+    }
+
+    public List<String> getUploadName() {
+        return uploadName;
+    }
+
+    public void setUploadName(List<String> uploadName) {
+        this.uploadName = uploadName;
     }
 
     public String getUploadpath() {
