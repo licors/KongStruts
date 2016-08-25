@@ -69,11 +69,12 @@
 		#address#, #email#, #qrcode#, #order_date#, #tel#, #status#)
 	</insert>
 	
-	<!-- delete -->
-	<delete id="orderDelete" parameterClass="orderBean">
-		DELETE FROM ORDER
+	<!-- update (주문취소: status 값 수정) -->
+	<update id="updateOrder" parameterClass="orderBean">
+		UPDATE ORDER SET
+		STATUS=1
 		WHERE ORDER_NUM=#ORDER_NUM#
-	</delete>
+	</update>
 	
 	
 </sqlMap>
