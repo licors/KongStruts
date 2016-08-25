@@ -5,6 +5,7 @@
  */
 package admin.notice;
 
+import admin.pagingAction;
 import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -19,7 +20,7 @@ import java.util.List;
  *
  * @author user2
  */
-public class noticenoticelistAction extends ActionSupport {
+public class noticelistAction extends ActionSupport {
 
     public static Reader reader;
     public static SqlMapClient sql;
@@ -27,9 +28,9 @@ public class noticenoticelistAction extends ActionSupport {
     private List<noticeVO> list = new ArrayList<noticeVO>();
     private int currentPage = 1, totalCount, blockCount = 10, blockPage = 5;
     private String pagingHtml;
-    private noticepagingAction page;
+    private pagingAction page;
 
-    public noticenoticelistAction() throws IOException {
+    public noticelistAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
@@ -37,10 +38,10 @@ public class noticenoticelistAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        list = sql.queryForList("selectAll");
+        list = sql.queryForList("notice.selectall");
 
         totalCount = list.size();
-        page = new noticepagingAction(currentPage, totalCount, blockCount, blockPage);
+        page = new pagingAction(path.notice_listaction, currentPage, totalCount, blockCount, blockPage);
         pagingHtml = page.getPagingHtml().toString();
         int lastCount = totalCount;
 
@@ -99,11 +100,11 @@ public class noticenoticelistAction extends ActionSupport {
         this.pagingHtml = pagingHtml;
     }
 
-    public noticepagingAction getPage() {
+    public pagingAction getPage() {
         return page;
     }
 
-    public void setPage(noticepagingAction page) {
+    public void setPage(pagingAction page) {
         this.page = page;
     }
 

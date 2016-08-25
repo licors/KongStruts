@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin.notice;
-
-import admin.path;
+package admin;
 
 /**
  *
  * @author user2
  */
-public class noticepagingAction {
+public class pagingAction {
 
     private int currentPage;     // 현재페이지
     private int totalCount;	 // 전체 게시물 수
@@ -22,13 +20,11 @@ public class noticepagingAction {
     private int endCount;	 // 한 페이지에서 보여줄 게시글의 끝 번호
     private int startPage;	 // 시작 페이지
     private int endPage;	 // 마지막 페이지
-    
-    private String listAction = path.listaction;
 
     private StringBuffer pagingHtml;
 
     // 페이징 생성자
-    public noticepagingAction(int currentPage, int totalCount, int blockCount, int blockPage) {
+    public pagingAction(String action_name, int currentPage, int totalCount, int blockCount, int blockPage) {
 
         this.blockCount = blockCount;
         this.blockPage = blockPage;
@@ -62,7 +58,7 @@ public class noticepagingAction {
         // 이전 block 페이지
         pagingHtml = new StringBuffer();
         if (currentPage > blockPage) {
-            pagingHtml.append("<a href=" + listAction + ".action?currentPage=" + (startPage - 1) + ">");
+            pagingHtml.append("<a href=" + action_name + ".action?currentPage=" + (startPage - 1) + ">");
             pagingHtml.append("이전");
             pagingHtml.append("</a>");
         }
@@ -79,7 +75,7 @@ public class noticepagingAction {
                 pagingHtml.append(i);
                 pagingHtml.append("</font></b>");
             } else {
-                pagingHtml.append("&nbsp;<a href='" + listAction + ".action?currentPage=");
+                pagingHtml.append("&nbsp;<a href='" + action_name + ".action?currentPage=");
                 pagingHtml.append(i);
                 pagingHtml.append("'>");
                 pagingHtml.append(i);
@@ -93,7 +89,7 @@ public class noticepagingAction {
 
         // 다음 block 페이지
         if (totalPage - startPage >= blockPage) {
-            pagingHtml.append("<a href=" + listAction + ".action?currentPage=" + (endPage + 1) + ">");
+            pagingHtml.append("<a href=" + action_name + ".action?currentPage=" + (endPage + 1) + ">");
             pagingHtml.append("다음");
             pagingHtml.append("</a>");
         }

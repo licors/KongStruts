@@ -11,9 +11,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import member.MemberVO;
 
-import admin.member.MemberVO;
-import order.OrderPagingAction;
 
 public class OrderListAction extends ActionSupport{
 	public static Reader reader;

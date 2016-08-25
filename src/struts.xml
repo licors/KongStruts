@@ -17,41 +17,41 @@
     <!-- 여기에 각자의 package 와 action 을 추가해 주세요 -->
     
     <!-- 운영자 목록(수호) -->
-    <package name="admin" extends="struts-default, tiles-default">
-        <!--  운영자가 상품 목록 리스트 처리(수호) -->
+<!--    <package name="admin" extends="struts-default, tiles-default">
+          운영자가 상품 목록 리스트 처리(수호) 
         <action name="adminshowcaseL" class="main.listAction" method="execute2">
             <result type="tiles">admin_showboardlist</result>
         </action>
-        <!--  운영자가 상품 등록 폼 -->
+          운영자가 상품 등록 폼 
         <action name="adminshowcaseWF" class="admin.showcase.showcasewriteAction" method="form">
             <result type="tiles">goods_write</result> 
         </action>
-        <!--  운영자가 상품 등록 처리 -->
+          운영자가 상품 등록 처리 
         <action name="adminshowcaseW" class="admin.showcase.showcasewriteAction">
             <result type="redirect-action">
                 <param name="actionName">admingoodsL</param>
             </result>
         </action>
-        <!--  운영자가 상품 수정 폼 -->
+          운영자가 상품 수정 폼 
         <action name="adminshowcaseMF" class="admin.showcase.showcasemodifyAction" method="form">
             <result type="tiles">goods_modify</result>
         </action>
-        <!--  운영자가 상품 수정 처리 -->
+          운영자가 상품 수정 처리 
         <action name="adminshowcaseM" class="admin.showcase.showcasemodifyAction">
             <result>/admin/modifySuccess.jsp</result>
         </action>
-        <!--  운영자가 상품 삭제 처리(수호) -->
+          운영자가 상품 삭제 처리(수호) 
         <action name="adminshowcaseD" class="admin.showcase.showcasedeleteAction">
             <result>/admin/deleteSuccess.jsp</result>
         </action>	
     </package>
 		
-    <!-- 전시행사 목록(수호) -->
+     전시행사 목록(수호) 
     <package name="showboard" extends="struts-default, tiles-default">
-        <!-- 전시행사 리스트 처리(수호) -->
+         전시행사 리스트 처리(수호) 
         <action name="showboardL" class="main.listAction">
             <result type="tiles">showboard_list</result>
         </action>
-    </package>
+    </package>-->
     
 </struts>
