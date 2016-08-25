@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="EUC-KR"?>
+<!DOCTYPE sqlMap PUBLIC
+'-//ibatis.apache.org//DTD SQL MAP 2.0//EN'
+'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="member">
+	<!-- member -->
+	<typeAlias alias="member" type="member.MemberVO" />
+	<resultMap id="memberRes" class="member">
+
+		<result property="member_num" column="member_num" />
+		<result property="email" column="email" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="address" column="address" />
+		<result property="company" column="company" />
+		<result property="admin" column="admin" />
+	
+	</resultMap>
+
+
+	<!-- 로그인//기타 값 얻어오기 -->
+	<select id="UserCheck" resultMap="memberRes" parameterClass="string">
+		SELECT * FROM MEMBER WHERE ID=#id#
+	</select>
+
+
+
+
+
+	<!-- 관리자 회원관리 Search -->
+	<select id="memberSearchId" resultMap="memberRes"
+		parameterClass="string">
+		SELECT * FROM MEMBER WHERE ID like #searchKeyword#
+		ORDER BY num DESC
+	</select>
+	<select id="memberSearchPhone" resultMap="memberRes"
+		parameterClass="string">
+		SELECT * FROM MEMBER WHERE PHONE like #searchKeyword#
+		ORDER BY num DESC
+	</select>
+	<!-- 관리자 회원관리 List -->
+	<select id="memberList" resultMap="memberRes" parameterClass="int">
+		SELECT * FROM MEMBER ORDER BY num DESC
+	</select>
+	<!-- 우편번호 검색 -->
+	<select id="zipCheck" resultMap="zipcodeRes" parameterClass="string">
+		SELECT * FROM ZIPCODE WHERE area3 LIKE #area3#
+	</select>
+	<!-- 아이디 중복 체크 -->
+	<select id="IdCheck" resultMap="memberRes" parameterClass="string">
+		SELECT * FROM MEMBER WHERE ID=#id#
+	</select>
+	<!--아이디 비밀번호 찾기 -->
+	<select id="FindId" resultMap="memberRes">
+		SELECT * FROM MEMBER WHERE NAME=#name# AND PHONE=#phone#
+	</select>
+
+	<select id="FindPassword" resultMap="memberRes">
+		SELECT * FROM MEMBER WHERE ID=#id# AND PHONE=#phone#
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="joinMember" parameterClass="member">
+		INSERT INTO MEMBER VALUES
+		(member_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#,#admin#
+		)
+	</insert>
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterClass="member">
+		DELETE FROM MEMBER WHERE ID=#id#
+	</delete>
+	<!-- 회원정보 변경 -->
+	<update id="memberUpdate" parameterClass="member">
+		UPDATE MEMBER SET
+		EMAIL=#email#,
+		ZIPCODE=#zipcode#,
+		ADDR1=#addr1#,
+		ADDR2=#addr2#
+		WHERE ID=#id#
+	</update>
+	<!-- 관리자 회원정보 변경 -->
+	<update id="memberUpdate1" parameterClass="member">
+		UPDATE MEMBER SET
+		NAME=#name#,
+		EMAIL=#email#,
+		PHONE=#phone#,
+		ZIPCODE=#zipcode#,
+		ADDR1=#addr1#,
+		ADDR2=#addr2#
+		WHERE ID=#id#
+	</update>
+	<!-- 비밀번호 변경 -->
+	<update id="passwordUpdate" parameterClass="member">
+		UPDATE MEMBER SET PASSWORD=#password# WHERE ID=#id#
+	</update>
+	<!-- member -->
+
+
+</sqlMap>
