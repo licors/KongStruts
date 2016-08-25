@@ -52,7 +52,7 @@ public class OrderListAction extends ActionSupport{
 		orderresultClass = new OrderVO();
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession(); 
-		int sessionid = (int) session.get("memId");		//세션 id명을 memId로
+		int sessionid = (Integer) session.get("memId");		//세션 id명을 memId로
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
 		
 		orderList = sqlMapper.queryForList("order.orderList", sessionid);
