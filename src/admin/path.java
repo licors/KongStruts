@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin.showcase;
+package admin;
 
 /**
  *
@@ -13,4 +13,5 @@ public class path {
 
     public static String path = "c:\\temp\\";
     public static String sql = "sqlMapConfig.xml";
+    public static String listaction = "";
 }

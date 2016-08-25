@@ -5,6 +5,7 @@
  */
 package admin.showcase;
 
+import admin.path;
 import static admin.showcase.showcasedeleteAction.reader;
 import static admin.showcase.showcasedeleteAction.sql;
 import com.opensymphony.xwork2.ActionSupport;

@@ -4,27 +4,26 @@
  * and open the template in the editor.
  */
 package admin.notice;
-import admin.showcase.path;
+
+import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.Date;
 
 /**
  *
  * @author user2
  */
-public class noticeviewAction extends ActionSupport{
+public class noticeviewAction extends ActionSupport {
+
     public static Reader reader;
     public static SqlMapClient sql;
     private noticeVO pc, rc;
 
     private int notice_num, readCount;
-    private Date reg_date;
-    private String subject, content;
 
     public noticeviewAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
@@ -37,6 +36,44 @@ public class noticeviewAction extends ActionSupport{
         pc = new noticeVO();
         rc = new noticeVO();
 
+        pc.setNotice_num(getNotice_num());
+        sql.update("notice.readcount", pc);
+
+        rc = (noticeVO) sql.queryForObject("selectOne", getNotice_num());
+
         return SUCCESS;
     }
+
+    public int getReadCount() {
+        return readCount;
+    }
+
+    public void setReadCount(int readCount) {
+        this.readCount = readCount;
+    }
+
+    public noticeVO getPc() {
+        return pc;
+    }
+
+    public void setPc(noticeVO pc) {
+        this.pc = pc;
+    }
+
+    public noticeVO getRc() {
+        return rc;
+    }
+
+    public void setRc(noticeVO rc) {
+        this.rc = rc;
+    }
+
+    public int getNotice_num() {
+        return notice_num;
+    }
+
+    public void setNotice_num(int notice_num) {
+        this.notice_num = notice_num;
+    }
+
 }
