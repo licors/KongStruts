@@ -4,9 +4,13 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	<package name="order" extends="struts-default">
+	<package name="order" namespace="/" extends="struts-default">
 	 	<action name="orderList" class="order.OrderListAction">
 			<result>/order/orderList.jsp</result>
+		</action>
+		
+		<action name="orderForm" class="order.OrderFormAction">
+			<result>/order/orderSuccess.jsp</result>
 		</action>
 	</package>
 </struts>
