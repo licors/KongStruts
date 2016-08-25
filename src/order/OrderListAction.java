@@ -12,20 +12,20 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import admin.member.MemberVO;
+import member.MemberVO;
 import order.OrderPagingAction;
 
-public class OrderListAction extends ActionSupport{
+public class OrderListAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
-	
+
 	private MemberVO memparamClass;
 	private MemberVO memresultClass;
 	private OrderVO orderparamClass;
 	private OrderVO orderresultClass;
-	
+
 	private List<OrderVO> orderList = new ArrayList<OrderVO>();
-	
+
 	private int currentPage = 1; // 현재 페이지
 	private int totalCount;// 총 게시물의 수
 	private int blockCount = 10; // 한 페이지의 게시물 수
@@ -35,7 +35,7 @@ public class OrderListAction extends ActionSupport{
 	private AdminOrderPagingAction adpage;
 	private String adpagingHtml;
 	private int num = 0;
-	
+
 	private String searchKeyword;
 	private List<OrderVO> list = new ArrayList<OrderVO>();
 
@@ -44,34 +44,34 @@ public class OrderListAction extends ActionSupport{
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	
+
 	public String execute() throws Exception {
 		memparamClass = new MemberVO();
 		memresultClass = new MemberVO();
 		orderparamClass = new OrderVO();
 		orderresultClass = new OrderVO();
 		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession(); 
-		int sessionid = (Integer) session.get("memId");		//세션 id명을 memId로
+		Map<String, Object> session = context.getSession();
+		int sessionid = (Integer) session.get("memId"); // 세션 id명을 memId로
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
-		
+
 		orderList = sqlMapper.queryForList("order.orderList", sessionid);
-		
+
 		totalCount = orderList.size();
-		
+
 		page = new OrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
 		pagingHtml = page.getPagingHtml().toString();
 		int lastCount = totalCount;
-		
-		if(page.getEndCount() < totalCount) {
+
+		if (page.getEndCount() < totalCount) {
 			lastCount = page.getEndCount() + 1;
 		}
-		
+
 		orderList = orderList.subList(page.getStartCount(), lastCount);
-		
-		return SUCCESS;	
+
+		return SUCCESS;
 	}
-	
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -191,5 +191,5 @@ public class OrderListAction extends ActionSupport{
 	public void setNum(int num) {
 		this.num = num;
 	}
-	
+
 }
