@@ -2,17 +2,18 @@ package member;
 
 public class MemberVO {
 	
-	private String member_num;
+	private int member_num;
 	private String email;
 	private String passwd;
 	private String name;
 	private String address;
 	private String company;
+	private String admin;
 	
-	public String getMember_num() {
+	public int getMember_num() {
 		return member_num;
 	}
-	public void setMember_num(String member_num) {
+	public void setMember_num(int member_num) {
 		this.member_num = member_num;
 	}
 	public String getEmail() {
@@ -44,6 +45,12 @@ public class MemberVO {
 	}
 	public void setCompany(String company) {
 		this.company = company;
+	}
+	public String getAdmin() {
+		return admin;
+	}
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 	
 	
