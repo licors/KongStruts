@@ -14,7 +14,7 @@
 		<table width="700" align="center">
 			<tr>
 				<td colspan="6" align="center">
-					<h1>주문 페이지</h1>
+					<h1>주문 내역 페이지</h1>
 				</td>
 			</tr>
 			<tr>
@@ -31,7 +31,7 @@
 				<td align="center">관심티켓수</td>
 			</tr>
 
-			<s:iterator value="orderList" status="stat">
+			<s:iterator value="orderList" status="stat">	//반복문
 				<tr>
 					<td></td>
 					<td width="360" align="center" colspan="2"><a
@@ -41,17 +41,21 @@
 					<td width="80" align="center">${address2 }</td>
 					<td width="80" align="center">${readcount }</td>
 					<td width="80" align="center">${ordercount }</td>
-
-					<td>
-						<hr>
-					</td>
 				</tr>
 			</s:iterator>
 
 			<tr>
-				<td colspan="6" align="center"><s:property value="pagingHtml"
-						escape="false" /></td>
+				<td colspan="6" align="center">
+					<hr>
+				</td>
 			</tr>
+			
+			<tr>
+				<td colspan="6" align="center">
+					<s:property value="pagingHtml" escape="false" />
+				</td>
+			</tr>
+			
 			<s:if test="orderList.size() == 0">
 				<tr>
 					<td colspan="6" align="center"><font size="2">구매하신 상품이
