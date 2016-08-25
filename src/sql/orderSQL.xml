@@ -4,10 +4,11 @@
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
-<sqlMap>
-	<typeAlias alias="order" type="order.OrderVO" />
+<sqlMap namespace="order">	<!-- namespace를 지정하면 아이디가 각파일마다 겹쳐도 오류가 안남
+								java에서 예를들어 select-all 갖다쓸때 order.select-all 이라고 갖다씀--> 
+	<typeAlias alias="orderBean" type="order.OrderVO" />
 
-	<resultMap id="orderRes" class="order"> <!-- //위에 자바빈 클래스 별칭 해줬음 -->
+	<resultMap id="orderRes" class="orderBean"> <!-- //위에 자바빈 클래스 별칭 해줬음 -->
 		<result property="order_num" column="order_num" />		<!-- //column: 우리가가진 테이블 컬럼명, property: order자바빈의 변수 -->
 		<result property="member_num" column="member_num" />
 		<result property="showboard_num" column="showboard_num" />
@@ -52,14 +53,14 @@
 		and od.ORDER_NUM=#order_num#
 	</select>
 	
-	<select id="orderList" resultMap="orderRes" parameterClass="string">
+	<select id="orderList" resultMap="orderRes" parameterClass="int">
 		<include refid="select-all" />
 		and od.MEMBER_NUM=#member_num#
 		order by od.ORDER_NUM DESC
 	</select>
 	
 	<!-- insert -->
-	<insert id="insert_order" parameterClass="order">
+	<insert id="insert_order" parameterClass="orderBean">
 		INSERT INTO
 		ORDER(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
 		ADDRESS, EMAIL, QRCODE, ORDER_DATE, TEL, STATUS)
@@ -69,7 +70,7 @@
 	</insert>
 	
 	<!-- delete -->
-	<delete id="orderDelete" parameterClass="order">
+	<delete id="orderDelete" parameterClass="orderBean">
 		DELETE FROM ORDER
 		WHERE ORDER_NUM=#ORDER_NUM#
 	</delete>
