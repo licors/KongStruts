@@ -3,28 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin.notice;
+package admin.support;
+
 import admin.path;
+import admin.qna.qnaVO;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Date;
 
 /**
  *
  * @author user2
  */
-public class noticemodifyAction extends ActionSupport{
+public class supportmodifyAction extends ActionSupport {
+
     public static Reader reader;
     public static SqlMapClient sql;
-    private noticeVO pc, rc;
+    private supportVO pc, rc;
 
-    private int notice_num;
-    private String subject, content;
+    private int support_num;
+    private String type, email, content;
 
-    public noticemodifyAction() throws IOException {
+    public supportmodifyAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
@@ -32,50 +36,60 @@ public class noticemodifyAction extends ActionSupport{
 
     @Override
     public String execute() throws Exception {
-        pc = new noticeVO();
-        rc = new noticeVO();
+        pc = new supportVO();
+        rc = new supportVO();
 
-        pc.setSubject(getSubject());
+        pc.setType(getType());
+        pc.setEmail(getEmail());
         pc.setContent(getContent());
-        
-        sql.update("notice.update", pc);
 
-        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
+        sql.update("support.update", pc);
+        
+        rc = (supportVO) sql.queryForObject("support.selectOne", getSupport_num());
 
         return SUCCESS;
     }
 
-    public noticeVO getPc() {
+    public supportVO getPc() {
         return pc;
     }
 
-    public void setPc(noticeVO pc) {
+    public void setPc(supportVO pc) {
         this.pc = pc;
     }
 
-    public noticeVO getRc() {
+    public supportVO getRc() {
         return rc;
     }
 
-    public void setRc(noticeVO rc) {
+    public void setRc(supportVO rc) {
         this.rc = rc;
     }
 
-    public int getNotice_num() {
-        return notice_num;
+    public int getSupport_num() {
+        return support_num;
     }
 
-    public void setNotice_num(int notice_num) {
-        this.notice_num = notice_num;
+    public void setSupport_num(int support_num) {
+        this.support_num = support_num;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getType() {
+        return type;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setType(String type) {
+        this.type = type;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 
     public String getContent() {
         return content;
@@ -84,6 +98,5 @@ public class noticemodifyAction extends ActionSupport{
     public void setContent(String content) {
         this.content = content;
     }
-    
-    
+
 }

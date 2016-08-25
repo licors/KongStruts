@@ -43,7 +43,7 @@ public class showcasedeleteAction extends ActionSupport {
         delFile.delete();
 
         pc.setShowboard_num(getShowboard_num());
-        sql.update("delete", pc);
+        sql.update("show.delete", pc);
         return SUCCESS;
     }
 

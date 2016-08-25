@@ -39,7 +39,7 @@ public class noticeviewAction extends ActionSupport {
         pc.setNotice_num(getNotice_num());
         sql.update("notice.readcount", pc);
 
-        rc = (noticeVO) sql.queryForObject("selectOne", getNotice_num());
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
 
         return SUCCESS;
     }

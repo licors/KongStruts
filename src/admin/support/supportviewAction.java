@@ -36,7 +36,7 @@ public class supportviewAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
         
-        rc = (supportVO) sql.queryForObject("selectOne", getSupport_num());
+        rc = (supportVO) sql.queryForObject("support.selectOne", getSupport_num());
 
         return SUCCESS;
     }

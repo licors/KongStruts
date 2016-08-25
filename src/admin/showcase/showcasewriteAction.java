@@ -90,7 +90,7 @@ public class showcasewriteAction extends ActionSupport {
             pc.setFile_orgname(getFile_savname()); // 원래 파일 이름         근데 이게 getsavname(원본)인지 getorgname인지 모르겠네(수호 08.25)
             pc.setFile_savname(getFile_savname());
             // 파일 정보 업데이트
-            sql.update("updatefile", pc);
+            sql.update("show.updatefile", pc);
 
         }
         return SUCCESS;

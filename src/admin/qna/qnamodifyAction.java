@@ -43,7 +43,7 @@ public class qnamodifyAction extends ActionSupport {
 
         sql.update("qna.update", pc);
         
-        rc = (qnaVO) sql.queryForObject("selectOne", getQna_num());
+        rc = (qnaVO) sql.queryForObject("qna.selectOne", getQna_num());
 
         return SUCCESS;
     }

@@ -38,7 +38,7 @@ public class qnadeleteAction extends ActionSupport {
 
         pc.setQna_num(getQna_num());
 
-        sql.update("delete", pc);
+        sql.update("qna.delete", pc);
 
         return SUCCESS;
     }

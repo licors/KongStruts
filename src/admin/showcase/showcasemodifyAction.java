@@ -58,7 +58,7 @@ public class showcasemodifyAction extends ActionSupport {
         pc.setMap(getMap());
         pc.setStatus(getStatus());
 
-        sql.update("showupdate", pc);
+        sql.update("show.update", pc);
 
         //파일 업로드 부분 추가
         return SUCCESS;

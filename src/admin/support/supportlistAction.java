@@ -48,22 +48,16 @@ public class supportlistAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
-        /*
-        작성자는 맴버 아이디로 검색해서 본인 문의글만 샐랙
-        관리자는 모든 문의글 셀렉 (selectall 쿼리사용)
-        하도록 코드작성
-         */
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
         String sessionid = (String) session.get("id");
         mc = (MemberVO) sql.queryForObject("member.adminCheck", sessionid);
-//        if (mc.getAdmin() > 0) {
-//            list = sql.queryForList("support.selectall"); //관리자용
-//        } else {
-//            pc.setMember_num(getMember_num());
-//            list = sql.queryForList("support.selectmemberall", pc); //유저용
-//        }
-
+        if (mc.getAdmin() > 0) { //운영자 구분 1이면 운영자임
+            list = sql.queryForList("support.selectall"); //관리자용
+        } else {
+            pc.setMember_num(getMember_num());
+            list = sql.queryForList("support.selectmemberall", pc); //유저용
+        }
         totalCount = list.size();
         page = new pagingAction(path.support_listaction, currentPage, totalCount, blockCount, blockPage);
         pagingHtml = page.getPagingHtml().toString();
@@ -73,6 +67,7 @@ public class supportlistAction extends ActionSupport {
             lastCount = page.getEndCount() + 1;
         }
         list = list.subList(page.getStartCount(), lastCount);
+
         return SUCCESS;
     }
 

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : scwrite
-    Created on : 2016. 8. 25, 오후 6:51:53
+    Document   : supportwrite
+    Created on : 2016. 8. 25, 오후 8:43:11
     Author     : user2
 --%>
 
@@ -16,14 +16,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>전시글 쓰기</title>
         <script type="text/javascript">
-            function check() {
-                var frm = document.scwrite;
-
-                if (frm.subject.value == "") {
-                    alert("전시명을 입력해주세요.");
-                    return false;
-                }
-            }
+//            function check() {
+//                var frm = document.scwrite;
+//
+//                if (frm.subject.value == "") {
+//                    alert("전시명을 입력해주세요.");
+//                    return false;
+//                }
+//            }
         </script>
     </head>
     <body>
