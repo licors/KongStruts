@@ -37,7 +37,22 @@
     <!-- select 쿼리문 정의 -->
     <select id="selectall" resultMap="showRes">
         <include refid="select-all"/>
-        ORDER BY showboard_num DESC
+        ORDER BY showboard_num DESC LIMIT 9
+    </select>
+    <select id="select_9_showacse" resultMap="showRes">
+        <include refid="select-all"/>
+        WHERE showboard_category = "전시"
+        ORDER BY showboard_num DESC LIMIT 9
+    </select>
+    <select id="select_9_art" resultMap="showRes">
+        <include refid="select-all"/>
+        WHERE showboard_category = "미술"
+        ORDER BY showboard_num DESC LIMIT 9
+    </select>
+    <select id="select_9_event" resultMap="showRes">
+        <include refid="select-all"/>
+        WHERE showboard_category = "이벤트"
+        ORDER BY showboard_num DESC LIMIT 9
     </select>
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>
@@ -65,7 +80,7 @@
         ORDER BY showboard_num DESC
     </select>
     <!-- 마지막 등록 행사 검색(수호) 08.25.04:50 -->
-<!--    <select id="selectLastNum" resultClass="show">
+    <!--    <select id="selectLastNum" resultClass="show">
         SELECT max(showboard_num)
         as showboard_num FROM showboard
     </select>-->
