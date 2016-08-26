@@ -28,7 +28,7 @@ public class CommentDeleteAction extends ActionSupport{
 		paramClass = new CommentBoardVO();
 		resultClass = new CommentBoardVO();
 		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("selectOne",getComment_num());
+		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
 		
 		paramClass.setComment_num(getComment_num());
 		

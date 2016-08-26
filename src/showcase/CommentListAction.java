@@ -15,7 +15,6 @@ public class CommentListAction extends ActionSupport{
 	public static SqlMapClient sqlMapper;
 	
 	private List<CommentBoardVO> list = new ArrayList<CommentBoardVO>();
-	
 	private int currentPage=1;
 	private int totalCount;
 	private int blockCount = 10;
@@ -32,7 +31,7 @@ public class CommentListAction extends ActionSupport{
 	
 	public String execute() throws Exception {
 		list = sqlMapper.queryForList("showcaseDetailComment.selectAll");
-		
+
 		totalCount = list.size();
 		page = new CommentPagingAction(currentPage, totalCount, blockCount, blockPage);
 		pagingHtml = page.getPagingHtml().toString();

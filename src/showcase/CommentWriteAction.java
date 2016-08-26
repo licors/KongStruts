@@ -34,7 +34,7 @@ public class CommentWriteAction extends ActionSupport{
 	
 	public CommentWriteAction() throws IOException
 	{
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+		reader = Resources.getResourceAsReader("showcaseDetailComment.sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 
@@ -53,7 +53,7 @@ public class CommentWriteAction extends ActionSupport{
 		
 		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
 		resultClass.setContent("[답변] " + resultClass.getContent());
-		resultClass.setName("");
+		//resultClass.setName("");
 		
 		return SUCCESS;
 		
@@ -80,8 +80,9 @@ public class CommentWriteAction extends ActionSupport{
 			paramClass.setRe_level(getRe_level() + 1);
 			paramClass.setRef(getRef());
 		}
-		
-		paramClass.setName(getName());
+		//session에서  member_num 가져오는거로 구현 할까 말까...
+		paramClass.setComment_num(getComment_num());
+		//paramClass.setName(getName());
 		paramClass.setContent(getContent());
 		paramClass.setReg_date(today.getTime());
 		

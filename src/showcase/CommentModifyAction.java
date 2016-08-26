@@ -34,12 +34,16 @@ public class CommentModifyAction extends ActionSupport {
 		resultClass = new CommentBoardVO();
 		
 		paramClass.setComment_num(comment_num);
-		paramClass.setName(getName());
+		
+		//session에서  member_num 가져오는거로 구현	
+		
+		//paramClass.setName(getName());
+		paramClass.setComment_num(getComment_num());
 		paramClass.setContent(getContent());
 		
-		sqlMapper.update("updateBoard",paramClass);
+		sqlMapper.update("showcaseDetailComment.updateBoard",paramClass);
 		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("selectOne",getComment_num());
+		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
 		return SUCCESS;
 	}
 

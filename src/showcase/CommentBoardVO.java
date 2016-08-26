@@ -21,7 +21,6 @@ public class CommentBoardVO {
 	private int comment_num;
 	private int member_num;
 	private int showboard_num;
-	private String name;
 	private String content;
 	private Date reg_date;
 	private int ref;
@@ -37,9 +36,6 @@ public class CommentBoardVO {
 	}
 	public int getShowboard_num() {
 		return showboard_num;
-	}
-	public String getName() {
-		return name;
 	}
 	public String getContent() {
 		return content;
@@ -64,9 +60,6 @@ public class CommentBoardVO {
 	}
 	public void setShowboard_num(int showboard_num) {
 		this.showboard_num = showboard_num;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public void setContent(String content) {
 		this.content = content;

@@ -28,10 +28,15 @@
 	
 	<!-- select 쿼리문 정의 -->	
 	<!-- 조인 사용 시 맵객체 사용하는 것 추천함 -->
-	<select id="selectAll" resultMap="java.lang.Map" parameterClass="int">
+	<!-- <select id="selectAll" resultMap="java.util.Map" parameterClass="int">
 		SELECT cm.COMMENT_NUM, cm.SHOWBOARD_NUM, cm.MEMBER_NUM, cm.CONTENT, cm.REG_DATE, cm.RE_STEP, cm.RE_LEVEL, cm."REF", mb."NAME"
 		FROM SHOWCASECOMMENT cm join MEMBER mb
 		on cm.MEMBER_NUM = mb.MEMBER_NUM
+		ORDER BY ref DESC, re_step ASC
+	</select> -->
+	
+	<select id="selectAll" resultMap="commentRes" parameterClass="int">
+		<include refid="select-all" />
 		ORDER BY ref DESC, re_step ASC
 	</select>
 	
@@ -40,7 +45,7 @@
 		<include refid="where-no" />
 	</select>
 
-	<select id="selectLastNo" resultClass="commentRes" parameterClass="int">
+	<select id="selectLastNo" resultClass="int" parameterClass="int">
 		SELECT max(no) as no FROM SHOWCASECOMMENT
 	</select>
 	
@@ -57,13 +62,13 @@
 	</insert>
 
 	<!-- update 쿼리문 정의 -->
-	<update id="updateBoard" parameterClass="board">
+	<update id="updateBoard" parameterClass="comment">
 	UPDATE SHOWCASECOMMENT SET CONTENT = #content#
 	<include refid = "where-no" />
 	</update>
 
 	
-	<update id="updateReplyStep" parameterClass="board">
+	<update id="updateReplyStep" parameterClass="comment">
 		UPDATE SHOWCASECOMMENT SET re_step=re_step+1 WHERE ref=#ref# AND re_step>#re_step#
 		
 	</update>
@@ -71,7 +76,7 @@
 	
 	
 	<!-- delete 쿼리문 정의 -->
-	<delete id="deleteBoard" parameterClass="board">
+	<delete id="deleteBoard" parameterClass="comment">
 		DELETE FROM SHOWCASECOMMENT
 		<include refid="where-no" />
 	</delete>
