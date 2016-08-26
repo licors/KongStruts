@@ -34,10 +34,10 @@
 	<!-- list 보이기 -->
 	<sql id="select-all">
 		select od.ORDER_NUM, od.MEMBER_NUM, od.NAME, od.SEX, od.COMPANY,
-		od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS
+		od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS,
 		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
 		sb.READCOUNT, sb.ORDERCOUNT
-		from ORDER od join SHOWBOARD sb
+		from "ORDER" od join SHOWBOARD sb
 		on od.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
 	</sql>
 
@@ -62,8 +62,8 @@
 	<!-- insert -->
 	<insert id="insert_order" parameterClass="orderBean">
 		INSERT INTO
-		ORDER(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
-		ADDRESS, EMAIL, barcode, ORDER_DATE, TEL, STATUS)
+		"ORDER"(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
+		ADDRESS, EMAIL, BARCODE, ORDER_DATE, TEL, STATUS)
 		VALUES (ORDER_NUM_SEQ.NEXTVAL,
 		#member_num#, #showboard_num#, #name#, #sex#, #company#,
 		#address#, #email#, #barcode#, #order_date#, #tel#, #status#)
@@ -71,7 +71,7 @@
 	
 	<!-- update (주문취소: status 값 수정) -->
 	<update id="updateOrder" parameterClass="orderBean">
-		UPDATE ORDER SET
+		UPDATE "ORDER" SET
 		STATUS=1
 		WHERE ORDER_NUM=#ORDER_NUM#
 	</update>
