@@ -4,7 +4,7 @@
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
-<sqlMap>
+<sqlMap namespace="basket">
 	<typeAlias alias="basket" type="basket.BasketVO" />
 
 	<resultMap id="basketRes" class="basket">
@@ -31,9 +31,9 @@
 		on bs.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
 	</sql>
 
-	<select id="basketList" resultMap="basketRes" parameterClass="string">
+	<select id="basketList" resultMap="basketRes" parameterClass="int">
 		<include refid="select-all"/>
-		and bs.basket_num=#basket_num#
+		and bs.member_num=#member_num#
 		ORDER BY basket_num DESC
 	</select>
 
