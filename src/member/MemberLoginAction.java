@@ -46,7 +46,7 @@ public class MemberLoginAction extends ActionSupport {
 
 		if (memresultClass == null) {
 		} else {
-			if (memresultClass.getPasswd().equals(password)) {
+			if (memresultClass.getPassword().equals(password)) {
 				ActionContext context = ActionContext.getContext();
 				Map<String, Object> session = context.getSession();
 				session.put("member_num",memresultClass.getMember_num());

@@ -4,7 +4,7 @@ public class MemberVO {
 
     private int member_num;
     private String email;
-    private String passwd;
+    private String password;
     private String name;
     private String address;
     private String company;
@@ -26,12 +26,12 @@ public class MemberVO {
         this.email = email;
     }
 
-    public String getPasswd() {
-        return passwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {

@@ -15,6 +15,10 @@ function joinCheck() {
 		alert("비밀번호를 입력해주세요.");
 		return false;
 	}
+	if (!document.joinform.name.value) {
+		alert("이름을 입력해주세요.");
+		return false;
+	}
 }
 </script>
 </head>
@@ -28,14 +32,23 @@ function joinCheck() {
 		
 	<p>
 	</p>
-
-	<tr>
-	<form name="joinform" method="post" action="memberJoinForm.action" onSubmit="return joinCheck()">
-			<input type="text" name="email" size="20"></input> <br> </br> 
-			<input type="text" name="passwd" size="20"></input> <br> </br> 
-			<input type="submit" name="join" value="가입하기" />
+	
+	<form name="joinform" method="post" action="memberJoinForm.action" onsubmit="return joinCheck()">
+		<table>
+			<tr>
+				<td>email</td> <td><input type="text" name="email" size="20"/> </td>
+			</tr>
+			<tr>
+				<td>password</td> <td><input type="text" name="passwd" size="20"/> </td>
+			</tr>
+			<tr> 
+				<td>name</td> <td><input type="text" name="name" size="20"/> </td>
+			</tr>
+			<tr>	
+				<td><input type="submit" name="join" value="가입하기" /></td>
+			</tr>
+		</table>
 	</form>
-	</tr>
 
 
 

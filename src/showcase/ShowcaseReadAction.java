@@ -8,6 +8,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+import admin.showcase.showVO;
+
 /*	CREATE TABLE showboard(
 SHOWBOARD_NUM NUMBER PRIMARY KEY,
 SUBJECT VARCHAR2(100) NOT NULL,
@@ -26,12 +28,15 @@ MAP VARCHAR2(50),
 STATUS NUMBER DEFAULT 0,
 SHOWBOARD_CATEGORY VARCHAR2(25) NOT NULL
 )
-*/
+*/ 
 
 public class ShowcaseReadAction extends ActionSupport{
 
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
+	
+	private showVO paramClass;
+	private showVO resultClass;
 	
 	private int showboard_num;
 	private int pay;                //무료는 0원
@@ -58,9 +63,35 @@ public class ShowcaseReadAction extends ActionSupport{
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		sqlMapper.update("");
+		// 해당 글의 조회수 +1.
+		paramClass.setShowboard_num(getShowboard_num());
+		sqlMapper.update("show.readcount", paramClass);
+
+		// 해당 번호의 글을 가져온다.
+		resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", getShowboard_num());
+
 		
 		return SUCCESS;
+	}
+
+
+	public showVO getParamClass() {
+		return paramClass;
+	}
+
+
+	public showVO getResultClass() {
+		return resultClass;
+	}
+
+
+	public void setParamClass(showVO paramClass) {
+		this.paramClass = paramClass;
+	}
+
+
+	public void setResultClass(showVO resultClass) {
+		this.resultClass = resultClass;
 	}
 
 

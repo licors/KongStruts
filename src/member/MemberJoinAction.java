@@ -17,7 +17,8 @@ public class MemberJoinAction extends ActionSupport {
 	
 	
 	private String email;
-	private String passwd;
+	private String password;
+	private String name;
 	
 	public MemberJoinAction() throws Exception {
 		// sqlMapConfig.xml 파일의 설정 내용을 가져온다
@@ -29,21 +30,30 @@ public class MemberJoinAction extends ActionSupport {
 	
 	public String execute() throws Exception {
 		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-		
+		//memresultClass = new MemberVO();
 		
 		memparamClass.setEmail(getEmail());
-		memparamClass.setPasswd(getPasswd());
+		memparamClass.setPassword(getPassword());
+		memparamClass.setName(getName());
+		memparamClass.setAddress("");
+		memparamClass.setCompany("");
 		
-		
-		sqlMapper.insert("joinMember", memparamClass);
-		memresultClass=(MemberVO)sqlMapper.queryForObject("UserCheck",memparamClass.getEmail());
+		sqlMapper.insert("member.joinMember", memparamClass);
+		//memresultClass=(MemberVO)sqlMapper.queryForObject("member.userCheck",memparamClass.getEmail());
 		
 		return SUCCESS;
 	}
 	
 	public String form() throws Exception{
 		return SUCCESS;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -54,12 +64,12 @@ public class MemberJoinAction extends ActionSupport {
 		this.email = email;
 	}
 
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public MemberVO getMemresultClass() {
