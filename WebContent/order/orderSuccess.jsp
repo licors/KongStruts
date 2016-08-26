@@ -18,23 +18,19 @@
 					bgcolor="#E1E1E1" style="margin: 20px 0 0 0;">
 					<tbody>
 						
-						<s:if test='order_trade_payer != null'>
-						<tr height=30>
-						    <td bgcolor="white" height="20" align="center" width="50"><b>입금 계좌 </b></td>
-						    <td bgcolor="white" height="20" align="center" width="120">
-						    <b><s:property value="order_paramClass.order_trade_num"/></b>
-						    </td>
-						</tr>
-						<tr height=30>
-						    <td bgcolor="white" height="20" align="center" width="50"><b>입금자 성명 </b></td>
-						    <td bgcolor="white" height="20" align="center" width="120">
-						    <b><s:property value="order_trade_payer"/></b>
-						    </td>
-						</tr>
+						<s:if test='barcode == null'>
+							<tr height="40" align="center">
+								<b> 전시회에 입장하실 때 바코드를 제시해 주세요. </b>
+							</tr>
+							<tr height=30>	<!-- //바코드 이미지 -->
+								<td>
+							    <b><s:property value="order_paramClass.barcode"/></b>
+							    </td>
+							</tr>
 						</s:if>
 						<tr>
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-							<a href="orderL.action?currentPage=1"> 구매목록  </a>
+							<a href="orderList.action?currentPage=1"> 구매목록  </a>
 							</td>
 							
 						</tr>
