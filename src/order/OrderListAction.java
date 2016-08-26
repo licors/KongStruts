@@ -71,6 +71,11 @@ public class OrderListAction extends ActionSupport {
 
 		return SUCCESS;
 	}
+	
+	public String deleteOrder() throws Exception {
+		//주문리스트에서 주문취소하기
+		return SUCCESS;
+	}
 
 	public String getSearchKeyword() {
 		return searchKeyword;
