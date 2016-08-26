@@ -4,13 +4,13 @@
 		"http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
     <constant name="struts.multipart.maxSize" value="104857600" />	
-    <include file="/config/config_showboardDetail.xml"></include>
+    <include file="/config/config_showcaseDetail.xml"></include>
     <include file="/config/config_basket.xml"></include>
     <include file="/config/config_member.xml"></include>
     <include file="/config/config_notice.xml"></include>
     <include file="/config/config_order.xml"></include>
     <include file="/config/config_qna.xml"></include>
-    <include file="/config/config_showboard.xml"></include>
+    <include file="/config/config_showcase.xml"></include>
     <include file="/config/config_showcaseComment.xml"></include>
     <include file="/config/config_support.xml"></include>
 

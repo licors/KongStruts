@@ -5,7 +5,9 @@
     
 <struts>
 <!-- <constant name="struts.multipart.maxSize" value="104857600" /> -->
-
-
-	 	
+ 	<package name="showcaseDetail" namespace="/showcaseDetail" extends="struts-default">
+		<action name="readAction" class="showcase.ShowcaseReadAction">
+			<result>/showcase/showcaseView.jsp</result>
+		</action>
+	</package> 	
 </struts>
