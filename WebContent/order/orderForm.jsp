@@ -8,31 +8,35 @@
 <title>Insert title here</title>
 
 <script language="javascript">
+	function begin() {
+		document.orderForm.name.focus();
+	}
 	function checkIt() {
 		var orderForm = evar("document.orderForm");
-		
-		if(!orderForm.name.value) {
+
+		if (!orderForm.name.value) {
 			alert("신청인 이름을 입력하세요");
 			document.orderForm.name.focus();
-			return;
+			return false;
 		}
-		else if(!orderForm.tel.value) {
-			alert("신청인 전화번호를 입력하세요");
+		if (!orderForm.tel.value) {
+			alert("신청인 핸드폰번호를 입력하세요");
 			document.orderForm.tel.focus();
-			return;
+			return false;
 		}
-
-		return true;
+/* 
+		document.orderForm.action = "orderInsert.action"
+		document.orderForm.submit(); */
 	}
 </script> 
 </head>
-<body>
+<body onload="begin()">
 <!-- 장바구니에서 넘어왔을때 -->
 
 <!-- 상세보기에서 넘어왔을때 -->
 
 <!-- 메인화면에서 넘어왔을때 -->
-	<form action="orderForm.action" name="orderForm" method="post" enctype="multipart/form-data" onsubmit="return checkIt();">	<!-- 수정! memresultClass=MemberVO, goods_resultClass= --> 
+	<form action="orderInsert.action" name="orderForm" method="post" enctype="multipart/form-data" onsubmit="return checkIt();">	<!-- 수정! memresultClass=MemberVO, goods_resultClass= --> 
 		<s:hidden name="member_num" value="%{memresultClass.getMember_num()}"/>
 		<s:hidden name="showboard_num" value="%{goods_resultClass.showboard_num}"/>	<!-- 클래스명 수정하기 -->
 		<s:hidden name="subject" value="%{good_resultClass.subject}"/>
@@ -100,6 +104,15 @@
 							</tbody>
 						</table>
 					</td>
+					<td>
+						기타
+					</td>
+					<td>
+						<%-- <s:if test="%{status == 0}">
+						</s:if>
+						<s:else>
+						</s:else> status에 따라 주문취소 구현--%>
+					</td>							
 				</tr>
 			</tbody>
 		</table>
@@ -228,9 +241,9 @@
 						<tr>
 							<td width="30" colspan="2">▶ <b><font color="black"
 									size="2">개인정보제3자 제공동의</font> </b> &nbsp;<input
-								type="radio" name="same" value="y" onclick="senddata()">
-								예 <input type="radio" name="same" value="n" checked=""
-								onclick="deldata()"> 아니오
+								type="radio" name="same" value="y">
+								예 
+								<input type="radio" name="same" value="n" checked=""> 아니오
 							</td>
 						</tr>
 					</tbody>
@@ -250,7 +263,6 @@
 			<td colspan="2" bgcolor="white" align="center">
 				<input type="submit" name="submit" value="신청하기">
 				&nbsp;&nbsp;
-				</input>
 				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"/>
 		</tr>
 		
