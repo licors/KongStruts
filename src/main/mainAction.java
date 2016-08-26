@@ -66,155 +66,156 @@ public class mainAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public MemberVO getMemresultClass() {
-        return memresultClass;
-    }
+	public MemberVO getMemresultClass() {
+		return memresultClass;
+	}
 
-    public void setMemresultClass(MemberVO memresultClass) {
-        this.memresultClass = memresultClass;
-    }
+	public void setMemresultClass(MemberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
 
-    public MemberVO getMemparamClass() {
-        return memparamClass;
-    }
+	public MemberVO getMemparamClass() {
+		return memparamClass;
+	}
 
-    public void setMemparamClass(MemberVO memparamClass) {
-        this.memparamClass = memparamClass;
-    }
+	public void setMemparamClass(MemberVO memparamClass) {
+		this.memparamClass = memparamClass;
+	}
 
-    public static Reader getReader() {
-        return reader;
-    }
+	public static Reader getReader() {
+		return reader;
+	}
 
-    public static void setReader(Reader reader) {
-        mainAction.reader = reader;
-    }
+	public static void setReader(Reader reader) {
+		mainAction.reader = reader;
+	}
 
-    public static SqlMapClient getSqlMapper() {
-        return sqlMapper;
-    }
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
 
-    public static void setSqlMapper(SqlMapClient sqlMapper) {
-        mainAction.sqlMapper = sqlMapper;
-    }
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		mainAction.sqlMapper = sqlMapper;
+	}
 
-    public List<showVO> getList1() {
-        return list1;
-    }
+	public List<showVO> getList1() {
+		return list1;
+	}
 
-    public void setList1(List<showVO> list1) {
-        this.list1 = list1;
-    }
+	public void setList1(List<showVO> list1) {
+		this.list1 = list1;
+	}
 
-    public List<showVO> getList2() {
-        return list2;
-    }
+	public List<showVO> getList2() {
+		return list2;
+	}
 
-    public void setList2(List<showVO> list2) {
-        this.list2 = list2;
-    }
+	public void setList2(List<showVO> list2) {
+		this.list2 = list2;
+	}
 
-    public List<showVO> getList3() {
-        return list3;
-    }
+	public List<showVO> getList3() {
+		return list3;
+	}
 
-    public void setList3(List<showVO> list3) {
-        this.list3 = list3;
-    }
+	public void setList3(List<showVO> list3) {
+		this.list3 = list3;
+	}
 
-    public showVO getshowboard_paramClass() {
-        return showboard_paramClass;
-    }
+	public showVO getShowboard_paramClass() {
+		return showboard_paramClass;
+	}
 
-    public void setshowboard_paramClass(showVO showboard_paramClass) {
-        this.showboard_paramClass = showboard_paramClass;
-    }
+	public void setShowboard_paramClass(showVO showboard_paramClass) {
+		this.showboard_paramClass = showboard_paramClass;
+	}
 
-    public showVO getshowboard_resultClass() {
-        return showboard_resultClass;
-    }
+	public showVO getShowboard_resultClass() {
+		return showboard_resultClass;
+	}
 
-    public void setshowboard_resultClass(showVO showboard_resultClass) {
-        this.showboard_resultClass = showboard_resultClass;
-    }
+	public void setShowboard_resultClass(showVO showboard_resultClass) {
+		this.showboard_resultClass = showboard_resultClass;
+	}
 
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
 
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 
-    public String getGoods_category() {
-        return goods_category;
-    }
+	public String getShowboard_category() {
+		return showboard_category;
+	}
 
-    public void setGoods_category(String goods_category) {
-        this.goods_category = goods_category;
-    }
+	public void setShowboard_category(String showboard_category) {
+		this.showboard_category = showboard_category;
+	}
 
-    public int getCurrentPage() {
-        return currentPage;
-    }
+	public int getCurrentPage() {
+		return currentPage;
+	}
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
 
-    public int getTotalCount() {
-        return totalCount;
-    }
+	public int getTotalCount() {
+		return totalCount;
+	}
 
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 
-    public int getBlockCount() {
-        return blockCount;
-    }
+	public int getBlockCount() {
+		return blockCount;
+	}
 
-    public void setBlockCount(int blockCount) {
-        this.blockCount = blockCount;
-    }
+	public void setBlockCount(int blockCount) {
+		this.blockCount = blockCount;
+	}
 
-    public int getBlockPage() {
-        return blockPage;
-    }
+	public int getBlockPage() {
+		return blockPage;
+	}
 
-    public void setBlockPage(int blockPage) {
-        this.blockPage = blockPage;
-    }
+	public void setBlockPage(int blockPage) {
+		this.blockPage = blockPage;
+	}
 
-    public String getPagingHtml() {
-        return pagingHtml;
-    }
+	public String getPagingHtml() {
+		return pagingHtml;
+	}
 
-    public void setPagingHtml(String pagingHtml) {
-        this.pagingHtml = pagingHtml;
-    }
+	public void setPagingHtml(String pagingHtml) {
+		this.pagingHtml = pagingHtml;
+	}
 
-    public String getAdpagingHtml() {
-        return adpagingHtml;
-    }
+	public String getAdpagingHtml() {
+		return adpagingHtml;
+	}
 
-    public void setAdpagingHtml(String adpagingHtml) {
-        this.adpagingHtml = adpagingHtml;
-    }
+	public void setAdpagingHtml(String adpagingHtml) {
+		this.adpagingHtml = adpagingHtml;
+	}
 
-    public pagingAction getPage() {
-        return page;
-    }
+	public pagingAction getPage() {
+		return page;
+	}
 
-    public void setPage(pagingAction page) {
-        this.page = page;
-    }
+	public void setPage(pagingAction page) {
+		this.page = page;
+	}
 
-    public int getNum() {
-        return num;
-    }
+	public int getNum() {
+		return num;
+	}
 
-    public void setNum(int num) {
-        this.num = num;
-    }
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 }
