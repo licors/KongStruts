@@ -17,7 +17,7 @@
 		<result property="company" column="company" />
 		<result property="address" column="address" />
 		<result property="email" column="email" />
-		<result property="qrcode" column="qrcode" />
+		<result property="barcode" column="barcode" />
 		<result property="order_date" column="order_date" />
 		<result property="tel" column="tel" />
 		<result property="status" column="status" />
@@ -34,7 +34,7 @@
 	<!-- list 보이기 -->
 	<sql id="select-all">
 		select od.ORDER_NUM, od.MEMBER_NUM, od.NAME, od.SEX, od.COMPANY,
-		od.ADDRESS, od.EMAIL, od.QRCODE, od.ORDER_DATE, od.TEL, od.STATUS
+		od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS
 		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
 		sb.READCOUNT, sb.ORDERCOUNT
 		from ORDER od join SHOWBOARD sb
@@ -63,10 +63,10 @@
 	<insert id="insert_order" parameterClass="orderBean">
 		INSERT INTO
 		ORDER(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
-		ADDRESS, EMAIL, QRCODE, ORDER_DATE, TEL, STATUS)
+		ADDRESS, EMAIL, barcode, ORDER_DATE, TEL, STATUS)
 		VALUES (ORDER_NUM_SEQ.NEXTVAL,
 		#member_num#, #showboard_num#, #name#, #sex#, #company#,
-		#address#, #email#, #qrcode#, #order_date#, #tel#, #status#)
+		#address#, #email#, #barcode#, #order_date#, #tel#, #status#)
 	</insert>
 	
 	<!-- update (주문취소: status 값 수정) -->
