@@ -1,53 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-<script language="javascript">
+<script type="text/javascript">
 	function begin() {
 		document.orderForm.name.focus();
-	}
+	}       
 	function checkIt() {
-		var orderForm = evar("document.orderForm");
+		var orderForm = eval("document.orderForm");
 
 		if (!orderForm.name.value) {
-			alert("½ÅÃ»ÀÎ ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
+			alert("ì‹ ì²­ì¸ ì´ë¦„ì„ ìž…ë ¥í•˜ì„¸ìš”");
 			document.orderForm.name.focus();
 			return false;
 		}
 		if (!orderForm.tel.value) {
-			alert("½ÅÃ»ÀÎ ÇÚµåÆù¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+			alert("ì‹ ì²­ì¸ í•¸ë“œí°ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
 			document.orderForm.tel.focus();
 			return false;
 		}
-/* 
+ 
 		document.orderForm.action = "orderInsert.action"
-		document.orderForm.submit(); */
+		document.orderForm.submit();
 	}
 </script> 
 </head>
 <body onload="begin()">
-<!-- Àå¹Ù±¸´Ï¿¡¼­ ³Ñ¾î¿ÔÀ»¶§ -->
+<!-- ìž¥ë°”êµ¬ë‹ˆì—ì„œ ë„˜ì–´ì™”ì„ë•Œ -->
 
-<!-- »ó¼¼º¸±â¿¡¼­ ³Ñ¾î¿ÔÀ»¶§ -->
+<!-- ìƒì„¸ë³´ê¸°ì—ì„œ ë„˜ì–´ì™”ì„ë•Œ -->
 
-<!-- ¸ÞÀÎÈ­¸é¿¡¼­ ³Ñ¾î¿ÔÀ»¶§ -->
-	<form action="orderInsert.action" name="orderForm" method="post" enctype="multipart/form-data" onsubmit="return checkIt();">	<!-- ¼öÁ¤! memresultClass=MemberVO, goods_resultClass= --> 
+<!-- ë©”ì¸í™”ë©´ì—ì„œ ë„˜ì–´ì™”ì„ë•Œ -->
+	<form name="orderForm" method="post" enctype="multipart/form-data" onsubmit="return checkIt();">	<!-- ìˆ˜ì •! memresultClass=MemberVO, goods_resultClass= --> 
 		<s:hidden name="member_num" value="%{memresultClass.getMember_num()}"/>
-		<s:hidden name="showboard_num" value="%{goods_resultClass.showboard_num}"/>	<!-- Å¬·¡½º¸í ¼öÁ¤ÇÏ±â -->
+		<s:hidden name="showboard_num" value="%{goods_resultClass.showboard_num}"/>	<!-- í´ëž˜ìŠ¤ëª… ìˆ˜ì •í•˜ê¸° -->
 		<s:hidden name="subject" value="%{good_resultClass.subject}"/>
 		<s:hidden name="pay" value="%{goods_resultClass.address1}"/>
-		<%-- <s:hidden name="order_num" value="±âÁ¸°Í + 1"> --%>
+		<%-- <s:hidden name="order_num" value="ê¸°ì¡´ê²ƒ + 1"> --%>
 		
 		<table width="700" border="0" cellspacing="0" cellpadding="2" align="center">
 			<tbody>
 				<tr>
-					<td width="15">¡Ý</td>
-					<td><b><font size="2">½ÅÃ»ÀÎÁ¤º¸¿Í °áÁ¦¹æ½ÄÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.</font></b></td>
+					<td width="15">â—Ž</td>
+					<td><b><font size="2">ì‹ ì²­ì¸ì •ë³´ì™€ ê²°ì œë°©ì‹ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”.</font></b></td>
 				</tr>
 			</tbody>
 			<tr>
@@ -63,40 +63,40 @@
 
 			<tbody>
 				<tr height=30 bgcolor="#F0F0F0">
-					<td colspan="5" align="center"><strong>½ÅÃ» Æ¼ÄÏ</strong></td>
+					<td colspan="5" align="center"><strong>ì‹ ì²­ í‹°ì¼“</strong></td>
 				</tr>
 				<tr bgcolor="#FFFFFF" align="center">
-					<td width="90">Àü½Ã</td>
-					<td>Àü½ÃÈ¸ Á¾·ù</td>
-					<td width="200">Àü½Ã ±âÅ¸»çÇ×</td>
-					<td width="60">ÁÖ¹®/Ãë¼Ò</td>
+					<td width="90">ì „ì‹œ</td>
+					<td>ì „ì‹œíšŒ ì¢…ë¥˜</td>
+					<td width="200">ì „ì‹œ ê¸°íƒ€ì‚¬í•­</td>
+					<td width="60">ì£¼ë¬¸/ì·¨ì†Œ</td>
 				</tr>
 
 				<tr bgcolor="#FFFFFF" align="center">
 					<td><img
 						src="goods/upload/<s:property value="goods_resultClass.file_savname.split(',')[0]"/>"
 						width="90" /></td>
-					<!-- ¼öÁ¤! ÀÌ¹ÌÁö url¼öÁ¤ -->
+					<!-- ìˆ˜ì •! ì´ë¯¸ì§€ urlìˆ˜ì • -->
 					<td>
 						<table width="100%" border="0" cellspacing="0" cellpadding="2">
 							<tbody>
 								<tr>
-									<td width="80" align="left">Àü½Ã¹øÈ£ :</td>
+									<td width="80" align="left">ì „ì‹œë²ˆí˜¸ :</td>
 									<td align="center"><b><s:property
 												value="%{getshowboard_num()}" /></b><br></td>
 								</tr>
 								<tr>
-									<td width="80" align="left">Àü½Ã¸í :</td>
+									<td width="80" align="left">ì „ì‹œëª… :</td>
 									<td align="center"><b><s:property
 												value="goods_resultClass.subject" /></b></td>
 								</tr>
 								<tr>
-									<td width="80" align="left">Àü½ÃÀå¼Ò :</td>
+									<td width="80" align="left">ì „ì‹œìž¥ì†Œ :</td>
 									<td align="center"><b> <s:property
-												value="goods_resultClass.address2" /></b></td>	<!-- ¼öÁ¤: °Ç¹°¸í »Ì±â goods_resultClass.address2.split(',')[0]-->
+												value="goods_resultClass.address2" /></b></td>	<!-- ìˆ˜ì •: ê±´ë¬¼ëª… ë½‘ê¸° goods_resultClass.address2.split(',')[0]-->
 								</tr>
 								<tr>
-									<td width="80" align="left">Àü½Ã³¯Â¥ :</td>
+									<td width="80" align="left">ì „ì‹œë‚ ì§œ :</td>
 									<td align="center"><b> <s:property
 												value="goods_resultClass.date" />
 									</b></td>
@@ -105,13 +105,13 @@
 						</table>
 					</td>
 					<td>
-						±âÅ¸
+						ê¸°íƒ€
 					</td>
 					<td>
 						<%-- <s:if test="%{status == 0}">
 						</s:if>
 						<s:else>
-						</s:else> status¿¡ µû¶ó ÁÖ¹®Ãë¼Ò ±¸Çö--%>
+						</s:else> statusì— ë”°ë¼ ì£¼ë¬¸ì·¨ì†Œ êµ¬í˜„--%>
 					</td>							
 				</tr>
 			</tbody>
@@ -127,7 +127,7 @@
 					<tbody>
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>½ÅÃ»ÀÎ Á¤º¸</b></font></td>
+								valign="middle"><font size="2"><b>ì‹ ì²­ì¸ ì •ë³´</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="600" border="0" cellspacing="0" cellpadding="1"
 									align="center">
@@ -141,7 +141,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;¼º<font color="#F7F7F7">_</font>¸í :
+											<td width="80">&nbsp;ì„±<font color="#F7F7F7">_</font>ëª… :
 											</td>
 											<td>
 											<input class="order" type="text" name="name" size="10" maxlength="20"
@@ -152,15 +152,15 @@
 											<td>&nbsp;</td>
 										</tr> -->
 										<tr>
-											<td width="80">&nbsp;¼º<font color="#F7F7F7">_</font>º° :
+											<td width="80">&nbsp;ì„±<font color="#F7F7F7">_</font>ë³„ :
 											</td>
 											<td>
-											<input class="order" type="radio" name="sex" value="³²¼º"/> ³²¼º
-											<input class="order" type="radio" name="sex" value="¿©¼º"/> ¿©¼º
+											<input class="order" type="radio" name="sex" value="ë‚¨ì„±"/> ë‚¨ì„±
+											<input class="order" type="radio" name="sex" value="ì—¬ì„±"/> ì—¬ì„±
 											</td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;È¸<font color="#F7F7F7">_</font>»ç :
+											<td width="80">&nbsp;íšŒ<font color="#F7F7F7">_</font>ì‚¬ :
 											</td>
 											<td>
 											<input class="order" type="text" name="company" size="10" maxlength="20"
@@ -168,7 +168,7 @@
 											</td>
 										</tr>
 										<%-- <tr>
-											<td width="110">&nbsp;¿ìÆí¹øÈ£ :</td>
+											<td width="110">&nbsp;ìš°íŽ¸ë²ˆí˜¸ :</td>
 											<td>
 												<table width="210" border="0" cellspacing="0"
 													cellpadding="0">
@@ -185,7 +185,7 @@
 											</td>
 										</tr> --%>
 										<tr>
-											<td width="110">&nbsp;ÁÖ<font color="#F7F7F7">_</font>¼Ò :
+											<td width="110">&nbsp;ì£¼<font color="#F7F7F7">_</font>ì†Œ :
 											</td>
 											<td>
 											<input class="order" type="text" name="address" size="60" maxlength="100"
@@ -197,7 +197,7 @@
 											<td></td>
 										</tr>
 										<tr>
-											<td width="110">&nbsp;ÀüÈ­¹øÈ£ :</td>
+											<td width="110">&nbsp;ì „í™”ë²ˆí˜¸ :</td>
 											<td>
 											<input class="order" type="text" name="tel" size="15" maxlength="15"/>
 											</td>
@@ -219,7 +219,7 @@
 					bordercolordark="white" bordercolorlight="#626262" align="center"
 					bgcolor="#E1E1E1">
 		<tbody>	
-		<!-- °³ÀÎÁ¤º¸È°¿ëµ¿ÀÇ·Î -->
+		<!-- ê°œì¸ì •ë³´í™œìš©ë™ì˜ë¡œ -->
 		<tr>
 			<td align="center">
 				<table width="700" border="0" cellspacing="0" cellpadding="2"
@@ -227,23 +227,23 @@
 					<tbody>
 						<tr>
 							<td width="30" colspan="2">
-								<textarea name="agreecheck" cols="100" rows="10">Çà»ç ¹× ¼­ºñ½º¸¦ ¿¹¾à ¹× ±¸¸ÅÇÏ°íÀÚ ÇÒ °æ¿ì, ¿øÈ°ÇÑ ¼­ºñ½º Á¦°øÀ» À§ÇØ ÇÊ¿äÇÑ ÃÖ¼ÒÇÑÀÇ °³ÀÎÁ¤º¸¸¸À» °ü·Ã ±â¾÷¿¡°Ô ¾Æ·¡¿Í °°ÀÌ °øÀ¯ÇÏ°í ÀÖ½À´Ï´Ù.
+								<textarea name="agreecheck" cols="100" rows="10">í–‰ì‚¬ ë° ì„œë¹„ìŠ¤ë¥¼ ì˜ˆì•½ ë° êµ¬ë§¤í•˜ê³ ìž í•  ê²½ìš°, ì›í™œí•œ ì„œë¹„ìŠ¤ ì œê³µì„ ìœ„í•´ í•„ìš”í•œ ìµœì†Œí•œì˜ ê°œì¸ì •ë³´ë§Œì„ ê´€ë ¨ ê¸°ì—…ì—ê²Œ ì•„ëž˜ì™€ ê°™ì´ ê³µìœ í•˜ê³  ìžˆìŠµë‹ˆë‹¤.
 
-±ÍÇÏ²²¼­ Çà»ç ¹× ¼­ºñ½ºÀÇ ÁÖÃÖ±â¾÷(ÆÇ¸ÅÀÚ)·ÎºÎÅÍ »óÇ° ¹× ÀÔÀå±Ç ¹× ¼­ºñ½º¸¦ ¿¹¾àÇÏ°Å³ª ±¸¸ÅÇÏ°íÀÚ ÇÒ °æ¿ì, ¿øÈ°ÇÑ ¼­ºñ½º Á¦°øÀ» À§ÇØ¼­ ÇÊ¿äÇÑ ÃÖ¼ÒÇÑÀÇ °³ÀÎÁ¤º¸¸¸À», Á¤º¸Åë½Å¸Á ÀÌ¿ëÃËÁø ¹× Á¤º¸º¸È£ µî¿¡ °üÇÑ ¹ý·ü Á¦ 24Á¶ÀÇ 2 (°³ÀÎÁ¤º¸ Á¦°ø µ¿ÀÇ µî)¿¡ µû¶ó ¾Æ·¡¿Í °°Àº »çÇ×Àº ¾È³»ÇÏ°í µ¿ÀÇ¸¦ ¹Þ¾Æ ±ÍÇÏÀÇ °³ÀÎÁ¤º¸¸¦ ÆÇ¸ÅÀÚ¿¡°Ô °øÀ¯ÇÕ´Ï´Ù. ¡°°³ÀÎÁ¤º¸°øÀ¯ µ¿ÀÇ¡±¸¦ Ã¼Å©ÇÏ½Ã¸é °³ÀÎÁ¤º¸ °øÀ¯¿¡ ´ëÇØ µ¿ÀÇÇÑ °ÍÀ¸·Î °£ÁÖÇÕ´Ï´Ù. ÀÌ¿ë¸ñÀûÀÌ ´Þ¼ºµÇ°í º¸À¯±â°£ÀÌ Á¾·áµÈ ÀÌÈÄ¿¡´Â °í°´ÀÇ °³ÀÎÁ¤º¸¸¦ ÁöÃ¼¾øÀÌ ÆÄ±âÇÕ´Ï´Ù.
+ê·€í•˜ê»˜ì„œ í–‰ì‚¬ ë° ì„œë¹„ìŠ¤ì˜ ì£¼ìµœê¸°ì—…(íŒë§¤ìž)ë¡œë¶€í„° ìƒí’ˆ ë° ìž…ìž¥ê¶Œ ë° ì„œë¹„ìŠ¤ë¥¼ ì˜ˆì•½í•˜ê±°ë‚˜ êµ¬ë§¤í•˜ê³ ìž í•  ê²½ìš°, ì›í™œí•œ ì„œë¹„ìŠ¤ ì œê³µì„ ìœ„í•´ì„œ í•„ìš”í•œ ìµœì†Œí•œì˜ ê°œì¸ì •ë³´ë§Œì„, ì •ë³´í†µì‹ ë§ ì´ìš©ì´‰ì§„ ë° ì •ë³´ë³´í˜¸ ë“±ì— ê´€í•œ ë²•ë¥  ì œ 24ì¡°ì˜ 2 (ê°œì¸ì •ë³´ ì œê³µ ë™ì˜ ë“±)ì— ë”°ë¼ ì•„ëž˜ì™€ ê°™ì€ ì‚¬í•­ì€ ì•ˆë‚´í•˜ê³  ë™ì˜ë¥¼ ë°›ì•„ ê·€í•˜ì˜ ê°œì¸ì •ë³´ë¥¼ íŒë§¤ìžì—ê²Œ ê³µìœ í•©ë‹ˆë‹¤. â€œê°œì¸ì •ë³´ê³µìœ  ë™ì˜â€ë¥¼ ì²´í¬í•˜ì‹œë©´ ê°œì¸ì •ë³´ ê³µìœ ì— ëŒ€í•´ ë™ì˜í•œ ê²ƒìœ¼ë¡œ ê°„ì£¼í•©ë‹ˆë‹¤. ì´ìš©ëª©ì ì´ ë‹¬ì„±ë˜ê³  ë³´ìœ ê¸°ê°„ì´ ì¢…ë£Œëœ ì´í›„ì—ëŠ” ê³ ê°ì˜ ê°œì¸ì •ë³´ë¥¼ ì§€ì²´ì—†ì´ íŒŒê¸°í•©ë‹ˆë‹¤.
 
-¡°°³ÀÎÁ¤º¸ °øÀ¯ µ¿ÀÇ¡±¸¦ Ã¼Å©ÇÏ½Ã¸é °³ÀÎÁ¤º¸ °øÀ¯¿¡ ´ëÇØ µ¿ÀÇÇÑ °ÍÀ¸·Î °£ÁÖÇÕ´Ï´Ù.
+â€œê°œì¸ì •ë³´ ê³µìœ  ë™ì˜â€ë¥¼ ì²´í¬í•˜ì‹œë©´ ê°œì¸ì •ë³´ ê³µìœ ì— ëŒ€í•´ ë™ì˜í•œ ê²ƒìœ¼ë¡œ ê°„ì£¼í•©ë‹ˆë‹¤.
 
-µ¿ÀÇ °ÅºÎ ½Ã ºÒÀÌÀÍ :
-º» °³ÀÎÁ¤º¸ °øÀ¯¿¡ µ¿ÀÇÇÏÁö ¾ÊÀ¸½Ã´Â °æ¿ì, µ¿ÀÇ¸¦ °ÅºÎÇÒ ¼ö ÀÖÀ¸¸ç, ÀÌ °æ¿ì Çà»çÀÇ Âü¿©³ª »óÇ°±¸¸Å°¡ Á¦ÇÑµÉ ¼öÀÖ½À´Ï´Ù. È¸¿ø °¡ÀÔ ½Ã µ¿ÀÇÇÏ½Å ¹Ù ÀÖ´Â °³ÀÎÁ¤º¸ Á¦3ÀÚ Á¦°ø ¹× °³ÀÎÁ¤º¸ Ãë±Þ À§Å¹¿¡ ´ëÇÑ µ¿ÀÇ¸¦ Ã¶È¸ÇÏ°íÀÚ ÇÏ´Â°æ¿ì¿¡´Â °í°´¼¾ÅÍ·Î ¿¬¶ô ÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.
+ë™ì˜ ê±°ë¶€ ì‹œ ë¶ˆì´ìµ :
+ë³¸ ê°œì¸ì •ë³´ ê³µìœ ì— ë™ì˜í•˜ì§€ ì•Šìœ¼ì‹œëŠ” ê²½ìš°, ë™ì˜ë¥¼ ê±°ë¶€í•  ìˆ˜ ìžˆìœ¼ë©°, ì´ ê²½ìš° í–‰ì‚¬ì˜ ì°¸ì—¬ë‚˜ ìƒí’ˆêµ¬ë§¤ê°€ ì œí•œë  ìˆ˜ìžˆìŠµë‹ˆë‹¤. íšŒì› ê°€ìž… ì‹œ ë™ì˜í•˜ì‹  ë°” ìžˆëŠ” ê°œì¸ì •ë³´ ì œ3ìž ì œê³µ ë° ê°œì¸ì •ë³´ ì·¨ê¸‰ ìœ„íƒì— ëŒ€í•œ ë™ì˜ë¥¼ ì² íšŒí•˜ê³ ìž í•˜ëŠ”ê²½ìš°ì—ëŠ” ê³ ê°ì„¼í„°ë¡œ ì—°ë½ ì£¼ì‹œê¸° ë°”ëžë‹ˆë‹¤.
 								</textarea>
 							</td>
 						</tr>
 						<tr>
-							<td width="30" colspan="2">¢º <b><font color="black"
-									size="2">°³ÀÎÁ¤º¸Á¦3ÀÚ Á¦°øµ¿ÀÇ</font> </b> &nbsp;<input
+							<td width="30" colspan="2">â–¶ <b><font color="black"
+									size="2">ê°œì¸ì •ë³´ì œ3ìž ì œê³µë™ì˜</font> </b> &nbsp;<input
 								type="radio" name="same" value="y">
-								¿¹ 
-								<input type="radio" name="same" value="n" checked=""> ¾Æ´Ï¿À
+								ì˜ˆ 
+								<input type="radio" name="same" value="n" checked=""> ì•„ë‹ˆì˜¤
 							</td>
 						</tr>
 					</tbody>
@@ -253,20 +253,19 @@
 		<!-- <tr height="50">
 			<td colspan="2" bgcolor="white" align="center"><a
 								href="javascript:checkIt()">
-								ÁÖ¹®ÇÏ±â
+								ì£¼ë¬¸í•˜ê¸°
 								</a>&nbsp;&nbsp; <a
 								href="javascript:history.go(-1)">
-								ÁÖ¹®Ãë¼Ò
+								ì£¼ë¬¸ì·¨ì†Œ
 								</a></td>
 		</tr> -->
 		<tr height="50">
 			<td colspan="2" bgcolor="white" align="center">
-				<input type="submit" name="submit" value="½ÅÃ»ÇÏ±â">
+				<input type="submit" name="submit" value="ì‹ ì²­í•˜ê¸°">
 				&nbsp;&nbsp;
-				<input type="button" name="back" value="µ¹¾Æ°¡±â" onClick="javascript:history.go(-1)"/>
+				<input type="button" name="back" value="ëŒì•„ê°€ê¸°" onClick="javascript:history.go(-1)"/>
+			</td>
 		</tr>
-		
-		
 	</tbody>
 </table>
 </td>
