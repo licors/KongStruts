@@ -10,6 +10,10 @@
 		</action>
 		
 		<action name="orderForm" class="order.OrderFormAction">
+			<result>/order/orderForm.jsp</result>
+		</action>
+		
+		<action name="orderInsert" class="order.OrderProcessAction">
 			<result>/order/orderSuccess.jsp</result>
 		</action>
 	</package>
