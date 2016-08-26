@@ -11,9 +11,10 @@ public class OrderVO {
 	private String company; //회사
 	private String address; //주소
 	private String email; 	//이메일
-	private String qrcode;	//큐알코드
+	private String barcode;	//큐알코드
 	private Date order_date;//주문날짜
 	private String tel;		//핸드폰 번호
+	private String status;
 	
 	// showboard테이블에서 show_num으로 가져올 정보
 	private String subject;
@@ -72,11 +73,11 @@ public class OrderVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getQrcode() {
-		return qrcode;
+	public String getBarcode() {
+		return barcode;
 	}
-	public void setQrcode(String qrcode) {
-		this.qrcode = qrcode;
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
 	}
 	public Date getOrder_date() {
 		return order_date;
@@ -131,6 +132,12 @@ public class OrderVO {
 	}
 	public void setOrdercount(int ordercount) {
 		this.ordercount = ordercount;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }
