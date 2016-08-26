@@ -5,7 +5,7 @@
 <sqlMap namespace="show">
     <typeAlias alias="show" type="admin.showcase.showVO" />
 
-    <resultMap id="Res" class="show">
+    <resultMap id="showRes" class="show">
         <result property="showboard_num" column="showboard_num" />
         <result property="subject" column="subject" />
         <result property="address1" column="address1" />
