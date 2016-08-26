@@ -19,13 +19,13 @@
 
 
 	<!-- 로그인//기타 값 얻어오기 -->
-	<select id="userCheck" resultMap="memberRes" parameterClass="string">
-		SELECT * FROM MEMBER WHERE ID=#id#
+	<select id="userCheck" resultMap="memberRes" parameterClass="int">
+		SELECT * FROM MEMBER WHERE MEMBER_NUM=#member_num#
 	</select>
 
 	<!-- 관리자인지 확인 -->
-	<select id="adminCheck" resultClass="java.lang.Integer" parameterClass="string">
-		SELECT admin FROM MEMBER WHERE ID=#id#
+	<select id="adminCheck" resultClass="java.lang.Integer" parameterClass="int">
+		SELECT admin FROM MEMBER WHERE MEMBER_NUM=#member_num#
 	</select>
 
 
