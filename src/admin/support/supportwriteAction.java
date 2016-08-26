@@ -9,11 +9,14 @@ import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
+import member.MemberVO;
 
 /**
  *
@@ -24,6 +27,7 @@ public class supportwriteAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
+    private MemberVO mc;
 
     private int support_num, member_num, ref, re_step, re_level;
     private Date reg_date;
@@ -34,6 +38,15 @@ public class supportwriteAction extends ActionSupport {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
+    }
+
+    public String form() throws Exception {
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionid = (String) session.get("id");
+        mc = (MemberVO) sql.queryForObject("member.UserCheck", sessionid);
+        
+        return SUCCESS;
     }
 
     @Override
@@ -148,6 +161,14 @@ public class supportwriteAction extends ActionSupport {
 
     public void setToday(Calendar today) {
         this.today = today;
+    }
+
+    public MemberVO getMc() {
+        return mc;
+    }
+
+    public void setMc(MemberVO mc) {
+        this.mc = mc;
     }
 
 }

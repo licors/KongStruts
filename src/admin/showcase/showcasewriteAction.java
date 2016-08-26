@@ -6,15 +6,19 @@
 package admin.showcase;
 
 import admin.path;
+import static admin.support.supportlistAction.sql;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import member.MemberVO;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -27,6 +31,7 @@ public class showcasewriteAction extends ActionSupport {
     public static SqlMapClient sql;
 
     private showVO pc, rc;
+    private MemberVO mc;
 
     private int showboard_num, pay, readCount, orderCount;
     private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, showboard_category;
@@ -49,6 +54,15 @@ public class showcasewriteAction extends ActionSupport {
 
         pc.setShowboard_num(getShowboard_num());
         sql.update("show.updatestatus", pc);
+
+        return SUCCESS;
+    }
+
+    public String form() throws Exception {
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionid = (String) session.get("id");
+        mc = (MemberVO) sql.queryForObject("member.adminCheck", sessionid);
 
         return SUCCESS;
     }
@@ -80,16 +94,14 @@ public class showcasewriteAction extends ActionSupport {
                 for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
                     file_savname += getUploadName().get(i) + ",";
                 }
-
                 index = file_savname.lastIndexOf(',');
                 file_savname = file_savname.substring(0, index);
             }
 
-            // 파일 정보 파라미터 설정.
             pc.setShowboard_num(rc.getShowboard_num());
-            pc.setFile_orgname(getFile_savname()); // 원래 파일 이름         근데 이게 getsavname(원본)인지 getorgname인지 모르겠네(수호 08.25)
+//            pc.setFile_orgname(getFile_savname()); // 원래 파일 이름         근데 이게 getsavname(원본)인지 getorgname인지 모르겠네(수호 08.25)
             pc.setFile_savname(getFile_savname());
-            // 파일 정보 업데이트
+
             sql.update("show.updatefile", pc);
 
         }
@@ -270,6 +282,14 @@ public class showcasewriteAction extends ActionSupport {
 
     public void setShowboard_category(String showboard_category) {
         this.showboard_category = showboard_category;
+    }
+
+    public MemberVO getMc() {
+        return mc;
+    }
+
+    public void setMc(MemberVO mc) {
+        this.mc = mc;
     }
 
 }

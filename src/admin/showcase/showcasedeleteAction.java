@@ -13,6 +13,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -26,6 +29,7 @@ public class showcasedeleteAction extends ActionSupport {
     private showVO pc, rc;
     private int showboard_num;
     private String uploadpath = path.path;
+    private String file_savname;
 
     public showcasedeleteAction() throws IOException {
         reader = Resources.getResourceAsReader(path.path);
@@ -38,9 +42,12 @@ public class showcasedeleteAction extends ActionSupport {
         pc = new showVO();
         rc = new showVO();
         rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
-        //여러파일을 지우도록 수정해야함
-        File delFile = new File(uploadpath + rc.getFile_savname());
-        delFile.delete();
+
+        String[] file = rc.getFile_savname().split(",");
+        for (String file_ : file) {
+            File destFile = new File(uploadpath + file_);
+            destFile.delete();
+        }
 
         pc.setShowboard_num(getShowboard_num());
         sql.update("show.delete", pc);
@@ -77,6 +84,14 @@ public class showcasedeleteAction extends ActionSupport {
 
     public void setUploadpath(String uploadpath) {
         this.uploadpath = uploadpath;
+    }
+
+    public String getFile_savname() {
+        return file_savname;
+    }
+
+    public void setFile_savname(String file_savname) {
+        this.file_savname = file_savname;
     }
 
 }

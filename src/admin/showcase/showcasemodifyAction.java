@@ -6,8 +6,6 @@
 package admin.showcase;
 
 import admin.path;
-import static admin.showcase.showcasedeleteAction.reader;
-import static admin.showcase.showcasedeleteAction.sql;
 import com.opensymphony.xwork2.ActionSupport;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -17,6 +15,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import member.MemberVO;
+import static org.apache.commons.collections.CollectionUtils.index;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -30,18 +30,28 @@ public class showcasemodifyAction extends ActionSupport {
 
     private showVO pc, rc;
 
-    private int show_num, pay, readCount, orderCount;
+    private int showboard_num, pay, readCount, orderCount;
     private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, status, showboard_category;
 
-    private List<File> upload = new ArrayList<File>();
-    private List<String> uploadname = new ArrayList<String>();
-    private List<String> uploadtype = new ArrayList<String>();
+    private List<File> upload = new ArrayList<File>(); // 파일 객체
+    private List<String> uploadType = new ArrayList<String>(); // 컨텐츠 타입
+    private List<String> uploadName = new ArrayList<String>(); // 파일 이름
     private String uploadpath = path.path;
+    private int index; // 경로
 
     public showcasemodifyAction() throws IOException {
         reader = Resources.getResourceAsReader(path.path);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
+    }
+
+    public String form() throws Exception {
+        pc = new showVO();
+        rc = new showVO();
+
+        pc.setShowboard_num(getShowboard_num());
+        rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
+        return SUCCESS;
     }
 
     @Override
@@ -60,7 +70,25 @@ public class showcasemodifyAction extends ActionSupport {
 
         sql.update("show.update", pc);
 
-        //파일 업로드 부분 추가
+        for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
+            File destFile = new File(uploadpath + getUploadName().get(i));
+            FileUtils.copyFile((getUpload()).get(i), destFile);
+        }
+        if (upload.size() > 0) { //파일을 업로드했다면
+            file_savname = getUploadName().get(0) + ",";
+            for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
+                file_savname += getUploadName().get(i) + ",";
+            }
+            index = file_savname.lastIndexOf(',');
+            file_savname = file_savname.substring(0, index);
+
+            pc.setShowboard_num(rc.getShowboard_num());
+            pc.setFile_savname(getFile_savname());
+            if (getFile_savname() != null) {
+                sql.update("show.updatefile", pc);
+            }
+            rc = (showVO) sql.queryForObject("show.selectOne", pc);
+        }
         return SUCCESS;
     }
 
@@ -80,12 +108,12 @@ public class showcasemodifyAction extends ActionSupport {
         this.rc = rc;
     }
 
-    public int getShow_num() {
-        return show_num;
+    public int getShowboard_num() {
+        return showboard_num;
     }
 
-    public void setShow_num(int show_num) {
-        this.show_num = show_num;
+    public void setShowboard_num(int showboard_num) {
+        this.showboard_num = showboard_num;
     }
 
     public int getPay() {
@@ -208,20 +236,20 @@ public class showcasemodifyAction extends ActionSupport {
         this.upload = upload;
     }
 
-    public List<String> getUploadname() {
-        return uploadname;
+    public List<String> getUploadType() {
+        return uploadType;
     }
 
-    public void setUploadname(List<String> uploadname) {
-        this.uploadname = uploadname;
+    public void setUploadType(List<String> uploadType) {
+        this.uploadType = uploadType;
     }
 
-    public List<String> getUploadtype() {
-        return uploadtype;
+    public List<String> getUploadName() {
+        return uploadName;
     }
 
-    public void setUploadtype(List<String> uploadtype) {
-        this.uploadtype = uploadtype;
+    public void setUploadName(List<String> uploadName) {
+        this.uploadName = uploadName;
     }
 
     public String getUploadpath() {

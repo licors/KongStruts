@@ -7,9 +7,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%!
-    String mainpage = ""; //메인 타일즈? 입력
-%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,18 +19,36 @@
                 if (frm.subject.value == "") {
                     alert("전시명을 입력해주세요.");
                     return false;
+                } else if (frm.showboard_category.value == "") {
+                    alert("카테고리를 선택해주세요.");
+                    return false;
+                } else if (frm.address1.value == "" || frm.address2.value == "") {
+                    alert("전시 장소를 입력해주세요.");
+                    return false;
+                } else if (frm.pay.value == "") {
+                    alert("입장료를 입력해주세요.");
+                    return false;
+                } else if (frm.tel.value == "") {
+                    alert("문의전화번호를 입력해주세요.");
+                    return false;
+                } else if (frm.content.value == "") {
+                    alert("내용을 입력해주세요.");
+                    return false;
+                } else if (frm.map.value == "") {
+                    alert("지도위치를 입력해주세요.");
+                    return false;
                 }
             }
         </script>
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="scwrite" action="scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+            <form name="scwrite" action="showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
                 <s:hidden name="currentPage" value="%{currentPage}"/>
                 <s:hidden name="upload" value="%{rc.file_savname}"/>
             </s:if>
             <s:else>
-                <form name="scmodify" action="scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+                <form name="scmodify" action="showcase/scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
                     <s:hidden name="showboard_num" value="%{rc.showboard_num}"/>
                     <s:hidden name="currentPage" value="%{currentPage}"/>
                     <s:hidden name="upload" value="%{rc.file_savname}"/>
@@ -41,7 +56,7 @@
                 <table align="center" width="600">
                     <tr>
                         <td align="right" colspan="2">
-                            <font color="#FF0000">*</font>는 필수 입력 사항입니다.</td>
+                            <font color="#FF0000">*</font>는 필수 입력 사항입니다.
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 전시명 -->
@@ -61,6 +76,7 @@
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>카테고리</td>
                         <td width="500" bgcolor="#FFFFFF">
                             <select name="showboard_category" size="1" >
+                                <option value="">카테고리</option>
                                 <option value="showcase">전시</option>
                                 <option value="art">미술</option>
                                 <option value="event">이벤트</option>
@@ -110,7 +126,7 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <textarea name="content" cols="50" rows="10"><s:property value="rc.content"/></textarea> 
+                            <textarea name="content" cols="67" rows="10"><s:property value="rc.content"/></textarea> 
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 전시 위치 -->
@@ -162,7 +178,7 @@
                         <td align="right" colspan="2">
                             <input name="submit" type="submit" value="작성" class="write">
                             <input name="list" type="button" value="돌아가기" class="list" 
-                                   onClick="javascript:location.href = mainpage">
+                                   onClick="javascript:location.href = '메인 링크'">
                         </td>
                     </tr>
                 </table>
