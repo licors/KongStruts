@@ -65,7 +65,7 @@ public class ShowcaseReadAction extends ActionSupport{
 		// TODO Auto-generated method stub
 		// 해당 글의 조회수 +1.
 		paramClass.setShowboard_num(getShowboard_num());
-		sqlMapper.update("show.readcount", paramClass);
+		sqlMapper.update("show.readcountPlus", paramClass);
 
 		// 해당 번호의 글을 가져온다.
 		resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", getShowboard_num());
@@ -74,6 +74,7 @@ public class ShowcaseReadAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	
 
 	public showVO getParamClass() {
 		return paramClass;

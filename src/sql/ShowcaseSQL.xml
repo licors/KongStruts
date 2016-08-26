@@ -125,8 +125,8 @@
         <include refid="where-no"/>
     </update>
     
-    <update id="readcount" parameterClass="show"><!-- 조회수증가 -->
-        UPDATE SHOWBOARD SET readcount = readcount + 1
+    <update id="readcountPlus" parameterClass="show"><!-- 조회수증가 -->
+        UPDATE SHOWBOARD SET readcount = #readcount# + 1
         <include refid="where-no"/>
     </update>
 

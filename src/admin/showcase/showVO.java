@@ -11,7 +11,7 @@ package admin.showcase;
  */
 public class showVO {
 
-    private int showboard_num, pay, readCount, orderCount;
+    private int showboard_num, pay, readcount, ordercount;
     private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, status, showboard_category;
 
     public int getShowboard_num() {
@@ -30,23 +30,25 @@ public class showVO {
         this.pay = pay;
     }
 
-    public int getReadCount() {
-        return readCount;
-    }
 
-    public void setReadCount(int readCount) {
-        this.readCount = readCount;
-    }
 
-    public int getOrderCount() {
-        return orderCount;
-    }
+    public int getReadcount() {
+		return readcount;
+	}
 
-    public void setOrderCount(int orderCount) {
-        this.orderCount = orderCount;
-    }
+	public int getOrdercount() {
+		return ordercount;
+	}
 
-    public String getSubject() {
+	public void setReadcount(int readcount) {
+		this.readcount = readcount;
+	}
+
+	public void setOrdercount(int ordercount) {
+		this.ordercount = ordercount;
+	}
+
+	public String getSubject() {
         return subject;
     }
 
