@@ -37,18 +37,21 @@
     <!-- select 쿼리문 정의 -->
     <select id="selectall" resultMap="showRes">
         <include refid="select-all"/>
-        ORDER BY showboard_num DESC LIMIT 9
+        ORDER BY showboard_num
     </select>
+    <!-- 전시 카테고리 9개 검색 -->
     <select id="select_9_showacse" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = "전시"
         ORDER BY showboard_num DESC LIMIT 9
     </select>
+    <!-- 미술 카테고리 9개 검색 -->
     <select id="select_9_art" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = "미술"
         ORDER BY showboard_num DESC LIMIT 9
     </select>
+    <!-- 이벤트 카테고리 9개 검색 -->
     <select id="select_9_event" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = "이벤트"

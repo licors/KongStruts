@@ -27,11 +27,11 @@ public class mainAction extends ActionSupport {
     private List<showVO> list2 = new ArrayList<showVO>();
     private List<showVO> list3 = new ArrayList<showVO>();
 
-    private showVO goods_paramClass = new showVO();
-    private showVO goods_resultClass = new showVO();
+    private showVO showboard_paramClass = new showVO();
+    private showVO showboard_resultClass = new showVO();
 
     private String searchKeyword;
-    private String goods_category;
+    private String showboard_category;
 
     private int currentPage = 1;
     private int totalCount;
@@ -122,20 +122,20 @@ public class mainAction extends ActionSupport {
         this.list3 = list3;
     }
 
-    public showVO getGoods_paramClass() {
-        return goods_paramClass;
+    public showVO getshowboard_paramClass() {
+        return showboard_paramClass;
     }
 
-    public void setGoods_paramClass(showVO goods_paramClass) {
-        this.goods_paramClass = goods_paramClass;
+    public void setshowboard_paramClass(showVO showboard_paramClass) {
+        this.showboard_paramClass = showboard_paramClass;
     }
 
-    public showVO getGoods_resultClass() {
-        return goods_resultClass;
+    public showVO getshowboard_resultClass() {
+        return showboard_resultClass;
     }
 
-    public void setGoods_resultClass(showVO goods_resultClass) {
-        this.goods_resultClass = goods_resultClass;
+    public void setshowboard_resultClass(showVO showboard_resultClass) {
+        this.showboard_resultClass = showboard_resultClass;
     }
 
     public String getSearchKeyword() {
