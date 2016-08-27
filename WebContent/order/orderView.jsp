@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
 	function deletecheck() {
-		if (confirm("аж╧╝ю╩ цК╪рго╫ц╟з╫ю╢о╠Н?")) {
+		if (confirm("Лё╪К╛╦Л²└ Л╥╗Л├▄М∙≤Л▀°Й╡═Л┼╣К▀┬Й╧▄?")) {
 		} else {
-			alert("цК╪р╣г╬З╫ю╢о╢ы");
+			alert("Л╥╗Л├▄К░≤Л≈┬Л┼╣К▀┬К▀╓");
 			return false;
 		}
 	}
 	function deleteError(){
-		alert("ф╪до ╠Б╟ёюл ╦╦╥А╣г╬Н цК╪р╟║ ╨р╟║╢и гу╢о╢ы."+"\n"+"╟М╟╢╪╬ем╥н ©╛╤Таж╪╪©Д"+"\n"+"\t1544-1234 (аж)KOnG");
+		alert("М▀╟Л╪⌠ Й╦╟Й╟└Л²╢ К╖▄Кё▄К░≤Л√╢ Л╥╗Л├▄Й╟─ К╤┬Й╟─К┼╔ М∙╘К▀┬К▀╓."+"\n"+"ЙЁ═Й╟²Л└╪М└╟К║° Л≈╟К²╫Лё╪Л└╦Л ■"+"\n"+"\t1544-1234 (Лё╪)KOnG");
 	}
 	function deleteError2(){
-		alert("юл╧л ф╪доюл цК╪р ╣г╬З╫ю╢о╢ы."+"\n"+"╟М╟╢╪╬ем╥н ©╛╤Таж╪╪©Д"+"\n"+"\t1544-1234 (аж)KOnG");
+		alert("Л²╢К╞╦ М▀╟Л╪⌠Л²╢ Л╥╗Л├▄ К░≤Л≈┬Л┼╣К▀┬К▀╓."+"\n"+"ЙЁ═Й╟²Л└╪М└╟К║° Л≈╟К²╫Лё╪Л└╦Л ■"+"\n"+"\t1544-1234 (Лё╪)KOnG");
 	}
 </script>
 </head>
@@ -29,7 +29,7 @@
 			align="center">
 			<s:hidden name="order_num" value="%{order_resultClass.order_num}" />
 			<s:hidden name="barcode"
-				value="%{order_resultClass.barcode}" />	<!-- ╢У Ёя╟эаЮ╬ъ╣гЁ╙ -->
+				value="%{order_resultClass.barcode}" />	<!-- К█■ К└≤Й╡╗Л╓≤Л∙╪К░≤К┌≤ -->
 			<tbody>
 			</tbody>
 		</table>
@@ -43,30 +43,30 @@
 
 					<tbody>
 						<tr bgcolor="#F0F0F0">
-							<td colspan="5" align="center"><strong>╫ец╩ ф╪до</strong></td>
+							<td colspan="5" align="center"><strong>Л▀═Л╡╜ М▀╟Л╪⌠</strong></td>
 						</tr>
 						<tr bgcolor="#FFFFFF" align="center">
-							<td width="90">юл╧лаЖ</td>
-							<td colspan="2">╫ец╩ ф╪до ╩С╪╪а╓╨╦</td>
-							<td width="90">╫ец╩ ╩Себ</td>
+							<td width="90">Л²╢К╞╦Л╖─</td>
+							<td colspan="2">Л▀═Л╡╜ М▀╟Л╪⌠ Л┐│Л└╦Л═∙КЁ╢</td>
+							<td width="90">Л▀═Л╡╜ Л┐│М┐°</td>
 						</tr>
 
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
-							<a href="readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- ╪Жа╓╪Жа╓╪Жа╓ -->
+							<a href="readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- Л┬≤Л═∙Л┬≤Л═∙Л┬≤Л═∙ -->
 							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
-									width="90" />	<!-- ╪Жа╓╪Жа╓ -->
+									width="90" />	<!-- Л┬≤Л═∙Л┬≤Л═∙ -->
 							</a>
 							</td>
 							<td>
 								<table width="100%" border="0" cellspacing="0" cellpadding="2">
 									<tbody>	
 										<tr height="25">
-											<td width="120" align="left">╫ец╩ ╧Ьхё</td>
+											<td width="120" align="left">Л▀═Л╡╜ К╡┬М≤╦</td>
 											<td align="center"><b><s:property value="order_resultClass.order_num" /></b><br></td>
 										</tr>		
 										<tr height="25">
-											<td width="120" align="left">╫ец╩ юоюз</td>
+											<td width="120" align="left">Л▀═Л╡╜ Л²╪Л·░</td>
 											<td align="center"><b><s:property value="order_resultClass.order_date" /></b></td>
 										</tr>										
 									</tbody>
@@ -75,16 +75,16 @@
 							<td>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr height="23">
-										<td width="70" align="left">юЭ╫ц╦М</td>
+										<td width="70" align="left">Л═└Л▀°К╙┘</td>
 										<td width="120" align="center"><b><s:property value="order_resultClass.subject" /></b></td>
 									</tr>
 									<tr height="23">
-										<td width="60" align="left">юЭ╫цюоа╓</td>
+										<td width="60" align="left">Л═└Л▀°Л²╪Л═∙</td>
 										<td align="center"><b><s:property value="order_resultClass.date" /></b></td>
 									</tr>
 
 									<tr height="23">
-										<td width="60" align="left">юЭ╫цюЕ╪р</td>
+										<td width="60" align="left">Л═└Л▀°Л·╔Л├▄</td>
 										<td align="center"><b><s:property value="order_resultClass.address2" /></b></td>
 									</tr>
 								</table>
@@ -112,7 +112,7 @@
 					<tbody>
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>╫ец╩юн а╓╨╦</b></font></td>
+								valign="middle"><font size="2"><b>Л▀═Л╡╜Л²╦ Л═∙КЁ╢</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
@@ -126,7 +126,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;╪╨<font color="#F7F7F7">_</font>╦М :
+											<td width="80">&nbsp;Л└╠<font color="#F7F7F7">_</font>К╙┘ :
 											</td>
 											<td>
 											<input class="order" type="text" name="name" size="10" maxlength="20"
@@ -137,7 +137,7 @@
 											<td>&nbsp;</td>
 										</tr> -->
 										<tr>
-											<td width="80">&nbsp;╪╨<font color="#F7F7F7">_</font>╨╟ :
+											<td width="80">&nbsp;Л└╠<font color="#F7F7F7">_</font>КЁ└ :
 											</td>
 											<td>
 											<input class="order" type="text" name="sex" size="10" maxlength="20"
@@ -145,7 +145,7 @@
 											</td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;х╦<font color="#F7F7F7">_</font>╩Г :
+											<td width="80">&nbsp;М ▄<font color="#F7F7F7">_</font>Л┌╛ :
 											</td>
 											<td>
 											<input class="order" type="text" name="company" size="10" maxlength="20"
@@ -153,7 +153,7 @@
 											</td>
 										</tr>
 										<%-- <tr>
-											<td width="110">&nbsp;©ЛфМ╧Ьхё :</td>
+											<td width="110">&nbsp;Л ╟М▌╦К╡┬М≤╦ :</td>
 											<td>
 												<table width="210" border="0" cellspacing="0"
 													cellpadding="0">
@@ -170,7 +170,7 @@
 											</td>
 										</tr> --%>
 										<tr>
-											<td width="110">&nbsp;аж<font color="#F7F7F7">_</font>╪р :
+											<td width="110">&nbsp;Лё╪<font color="#F7F7F7">_</font>Л├▄ :
 											</td>
 											<td>
 											<input class="order" type="text" name="address" size="60" maxlength="100"
@@ -182,7 +182,7 @@
 											<td></td>
 										</tr>
 										<tr>
-											<td width="110">&nbsp;юЭх╜╧Ьхё :</td>
+											<td width="110">&nbsp;Л═└М≥■К╡┬М≤╦ :</td>
 											<td>
 											<input class="order" type="text" name="tel" size="15" maxlength="15"
 														value="${order_resultClass.tel}" readonly/>
@@ -205,7 +205,7 @@
 					<tbody>
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>юЭ╫ц ютюЕ ╧ыдз╣Е</b></font></td>
+								valign="middle"><font size="2"><b>Л═└Л▀° Л·┘Л·╔ К╟■Л╫■К⌠°</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
@@ -230,18 +230,18 @@
 		<table width="700">
 		<tr>
 				<td align="right">
-					<s:if test="order_resultClass.status == 'ф╪до ╦╦╥А'">
-						<input type="button" name="cancelTicket" value="ф╪доцК╪р" onClick="javascript:deleteError()">
+					<s:if test="order_resultClass.status == 'М▀╟Л╪⌠ К╖▄Кё▄'">
+						<input type="button" name="cancelTicket" value="М▀╟Л╪⌠Л╥╗Л├▄" onClick="javascript:deleteError()">
 					</s:if>
-					<s:elseif test="order_resultClass.status =='ф╪до цК╪р'">
-						<input type="button" name="cancelTicket" value="ф╪доцК╪р" onClick="javascript:deleteError2()">
+					<s:elseif test="order_resultClass.status =='М▀╟Л╪⌠ Л╥╗Л├▄'">
+						<input type="button" name="cancelTicket" value="М▀╟Л╪⌠Л╥╗Л├▄" onClick="javascript:deleteError2()">
 					</s:elseif>
 					<s:else>
-						<input type="submit" name="cancelTicket" value="ф╪доцК╪р">
+						<input type="submit" name="cancelTicket" value="М▀╟Л╪⌠Л╥╗Л├▄">
 					</s:else> 
 					
-					<!-- ╦╝╫╨ф╝╥н -->
-					<input type="button" name="list" value="╦Я╥ою╦╥н" onClick="location.href='orderList.action?currentPage=<s:property value="currentPage"/>'">
+					<!-- К╕╛Л┼╓М┼╦К║° -->
+					<input type="button" name="list" value="К╙╘К║²Л°╪К║°" onClick="location.href='orderList.action?currentPage=<s:property value="currentPage"/>'">
 				</td>
 			</tr>
 		</table>

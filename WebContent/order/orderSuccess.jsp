@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>ÁÖ ¹® ¼º °ø</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ì£¼ ë¬¸ ì„± ê³µ</title>
 </head>
 <body>
 	<center>
 	<tr>
 		<td bgcolor="white" height="50" align="center" width="170" colspan="2">
-							<h3>½ÅÃ»ÀÌ <font color="red"><b>¿Ï·á</b></font>µÇ¾ú½À´Ï´Ù.</h3></td></tr>
+							<h3>ì‹ ì²­ì´ <font color="red"><b>ì™„ë£Œ</b></font>ë˜ì—ˆìŠµë‹ˆë‹¤.</h3></td></tr>
 		<table width="400" cellpadding="7" cellspacing="2"
 					bordercolordark="white" bordercolorlight="white"
 					bgcolor="#E1E1E1" style="margin: 20px 0 0 0;">
@@ -20,9 +20,9 @@
 						
 						<s:if test='barcode == null'>
 							<tr height="40" align="center">
-								<b> Àü½ÃÈ¸¿¡ ÀÔÀåÇÏ½Ç ¶§ ¹ÙÄÚµå¸¦ Á¦½ÃÇØ ÁÖ¼¼¿ä. </b>
+								<b> ì „ì‹œíšŒì— ìž…ìž¥í•˜ì‹¤ ë•Œ ë°”ì½”ë“œë¥¼ ì œì‹œí•´ ì£¼ì„¸ìš”. </b>
 							</tr>
-							<tr height=30>	<!-- //¹ÙÄÚµå ÀÌ¹ÌÁö -->
+							<tr height=30>	<!-- //ë°”ì½”ë“œ ì´ë¯¸ì§€ -->
 								<td>
 							    <b><s:property value="order_paramClass.barcode"/></b>
 							    </td>
@@ -30,7 +30,7 @@
 						</s:if>
 						<tr>
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-							<a href="orderList.action?currentPage=1"> ±¸¸Å¸ñ·Ï  </a>
+							<a href="orderList.action?currentPage=1"> êµ¬ë§¤ëª©ë¡  </a>
 							</td>
 							
 						</tr>
