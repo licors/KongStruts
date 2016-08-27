@@ -133,7 +133,7 @@
 									align="center">
 									<tbody>
 										<tr>
-											<td width="110">&nbsp;I   <font color="#F7F7F7">_</font>   D :
+											<td width="110">&nbsp;I   &nbsp;<font color="#F7F7F7">_</font>   D &nbsp;:
 											</td>
 											<td>
 											<input class="order" type="text" name="email" size="50" maxlength="70"
@@ -145,7 +145,7 @@
 											</td>
 											<td>
 											<input class="order" type="text" name="name" size="10" maxlength="20"
-											value="${memresultClass.name }" readonly></input>	
+											value="${memresultClass.name }"></input>	
 											</td>
 										</tr>
 										<!-- <tr>

@@ -23,16 +23,16 @@
 	<form name="orderList" method="post">
 		<table width="700" align="center">
 			<tr>
-				<td colspan="6" align="center">
+				<td colspan="7" align="center">
 					<h1>주문 내역 페이지</h1>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="6" align="center">
+				<td colspan="7" align="center">
 					<hr>
 				</td>
 			</tr>
-			<tr>
+			<tr bgcolor="#FFFFFF" align="center">
 				<td align="center"></td>
 				<td align="center">신청일자</td>
 				<td align="center">전시명</td>
@@ -40,6 +40,11 @@
 				<td align="center">장소</td>
 				<td align="center">바코드</td>
 				<td align="center">신청/취소</td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center">
+					<hr>
+				</td>
 			</tr>
 
 			<s:iterator value="orderList" status="stat">
@@ -66,13 +71,13 @@
 			</s:iterator>
 
 			<tr>
-				<td colspan="6" align="center">
+				<td colspan="7" align="center">
 					<hr>
 				</td>
 			</tr>
 			
 			<tr>
-				<td colspan="6" align="center">
+				<td colspan="7" align="center">
 					<s:property value="pagingHtml" escape="false" />
 				</td>
 			</tr>

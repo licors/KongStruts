@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script>
+<script type="text/javascript">
 	function deletecheck() {
 		if (confirm("주문을 취소하시겠습니까?")) {
 		} else {
@@ -14,10 +14,16 @@
 			return false;
 		}
 	}
+	function deleteError(){
+		alert("티켓 기간이 만료되어 취소가 불가능 합니다."+"\n"+"고객센터로 연락주세요"+"\n"+"\t1544-1234 (주)KOnG");
+	}
+	function deleteError2(){
+		alert("이미 티켓이 취소 되었습니다."+"\n"+"고객센터로 연락주세요"+"\n"+"\t1544-1234 (주)KOnG");
+	}
 </script>
 </head>
 <body>
-	<form name="detailForm" method="post" action="orderDelete.action"
+	<form name="detailForm" method="post" action="orderCancel.action"
 		onsubmit="return deletecheck()">
 		<table width="700" border="0" cellspacing="0" cellpadding="2"
 			align="center">
@@ -41,79 +47,50 @@
 						</tr>
 						<tr bgcolor="#FFFFFF" align="center">
 							<td width="90">이미지</td>
-							<td colspan="2">주문상품 상세정보</td>
-							<td width="90">바코드</td>
+							<td colspan="2">신청 티켓 상세정보</td>
+							<td width="90">신청 상태</td>
 						</tr>
 
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
-							<a href="gboardV.action?goods_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
+							<a href="readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
 							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
-									width="90" />
+									width="90" />	<!-- 수정수정 -->
 							</a>
 							</td>
 							<td>
 								<table width="100%" border="0" cellspacing="0" cellpadding="2">
-									<tbody>
-										<tr height="25">
-											<td width="120" align="left">결제방식</td>
-											<td width="150" align="center"><b><s:property value="order_resultClass.order_trade_type" /></b>
-											<s:if test="order_resultClass.order_trade_payer!=null">
-											(<s:property value="order_resultClass.order_trade_payer"/>)
-											</s:if>
-											<br></td>
-										</tr>
-										<tr height="25">
-											<td width="120" align="left">신청 상태</td>
-											<td align="center"><b><s:property value="order_resultClass.order_status" /></b></td>
-										</tr>
+									<tbody>	
 										<tr height="25">
 											<td width="120" align="left">신청 번호</td>
-											<td align="center"><b><s:property value="order_resultClass.barcode" /></b><br></td>
-										</tr>
+											<td align="center"><b><s:property value="order_resultClass.order_num" /></b><br></td>
+										</tr>		
+										<tr height="25">
+											<td width="120" align="left">신청 일자</td>
+											<td align="center"><b><s:property value="order_resultClass.order_date" /></b></td>
+										</tr>										
 									</tbody>
 								</table>
 							</td>
 							<td>
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr height="23">
-										<td width="70" align="left">상품명</td>
-										<td width="120" align="center"><b><s:property value="order_resultClass.order_goods_name" /></b></td>
+										<td width="70" align="left">전시명</td>
+										<td width="120" align="center"><b><s:property value="order_resultClass.subject" /></b></td>
 									</tr>
 									<tr height="23">
-										<td width="60" align="left">사이즈</td>
-										<td align="center"><b><s:property value="order_resultClass.order_goods_size" /></b></td>
+										<td width="60" align="left">전시일정</td>
+										<td align="center"><b><s:property value="order_resultClass.date" /></b></td>
 									</tr>
 
 									<tr height="23">
-										<td width="60" align="left">색상</td>
-										<td align="center"><b><s:property value="order_resultClass.order_goods_color" /></b></td>
+										<td width="60" align="left">전시장소</td>
+										<td align="center"><b><s:property value="order_resultClass.address2" /></b></td>
 									</tr>
-									<tr height="23">
-											<td width="60" align="left">가격</td>
-											<td align="center"><b>
-											<s:property value="order_resultClass.order_goods_price" />&nbsp;원</b></td>
-									</tr>
-									
 								</table>
 							</td>
-							<td><s:property value="order_resultClass.order_goods_amount" />개</td>
-						</tr>
-
-						<tr bgcolor="#FFFFFF" align="center">
-							<td colspan="4" align="right">
-								<table width="700" border="0" cellpadding="0" cellspacing="0">
-									<tbody>
-										<tr>
-											<td align="left">
-											<s:if test="order_resultClass.order_trade_num != null">
-											입금계좌 : <s:property value="order_resultClass.order_trade_num" />
-											</s:if>
-											</td>
-											<td colspan="2" align="right" width="180"><b>총 결제금액 : </b><s:property value="order_resultClass.order_sum_money" />원</td>
-										</tr>
-									</tbody>
-								</table>
+							<td>
+								<b><s:property value="order_resultClass.state" /></b>
 							</td>
 						</tr>
 					</tbody>
@@ -135,46 +112,81 @@
 					<tbody>
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>수취인 정보</b></font></td>
+								valign="middle"><font size="2"><b>신청인 정보</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
 									<tbody>
 										<tr>
-											<td width="80">&nbsp;&nbsp;성<font color="#F7F7F7">____</font>명
+											<td width="110">&nbsp;I   &nbsp;<font color="#F7F7F7">_</font>   D &nbsp;:
 											</td>
-											<td width="361"><input class="inputb" name="order_receive_name" value="${order_resultClass.order_receive_name}"
-												size="10" readonly></td>
+											<td>
+											<input class="order" type="text" name="email" size="50" maxlength="70"
+														value="${order_resultClass.email}" readonly/>
+											</td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;&nbsp;우편번호</td>
-											<td width="361">
+											<td width="80">&nbsp;성<font color="#F7F7F7">_</font>명 :
+											</td>
+											<td>
+											<input class="order" type="text" name="name" size="10" maxlength="20"
+														value="${order_resultClass.name}" readonly></input>	
+											</td>
+										</tr>
+										<!-- <tr>
+											<td>&nbsp;</td>
+										</tr> -->
+										<tr>
+											<td width="80">&nbsp;성<font color="#F7F7F7">_</font>별 :
+											</td>
+											<td>
+											<input class="order" type="text" name="sex" size="10" maxlength="20"
+														value="${order_resultClass.sex}" readonly/>
+											</td>
+										</tr>
+										<tr>
+											<td width="80">&nbsp;회<font color="#F7F7F7">_</font>사 :
+											</td>
+											<td>
+											<input class="order" type="text" name="company" size="10" maxlength="20"
+														value="${order_resultClass.company}" readonly/>	
+											</td>
+										</tr>
+										<%-- <tr>
+											<td width="110">&nbsp;우편번호 :</td>
+											<td>
 												<table width="210" border="0" cellspacing="0"
 													cellpadding="0">
 													<tbody>
 														<tr>
-															<td width="34"><input class="inputb" name="order_receive_zipcode" 
-															value="${order_resultClass.order_receive_zipcode}"
-																size="7" maxlength="7" readonly></td>
-															<td width="100">
+															<td width="34">
+															<input class="order" type="text" name="order_zipcode" size="7" maxlength="7"
+															value="${memresultClass.zipcode}" readonly></input>
+															</td>	
+															<td width="100"></td>
 														</tr>
 													</tbody>
 												</table>
 											</td>
-										</tr>
+										</tr> --%>
 										<tr>
-											<td width="80">&nbsp;&nbsp;주<font color="#F7F7F7">____</font>소
+											<td width="110">&nbsp;주<font color="#F7F7F7">_</font>소 :
 											</td>
-											<td width="361"><input class="inputb" name="order_receive_addr1"
-												value="${order_resultClass.order_receive_addr1}" size="50" readonly></td>
+											<td>
+											<input class="order" type="text" name="address" size="60" maxlength="100"
+														value="${order_resultClass.address}" readonly/>
+											</td>
 										</tr>
 										<tr>
+											<td width="110"></td>
+											<td></td>
 										</tr>
 										<tr>
-											<td width="80">&nbsp;&nbsp;전화번호</td>
-											<td width="361"><input class="inputb" type="text" name="order_receive_mobile"
-											
-											value="${order_resultClass.order_receive_mobile}" size="15" maxlength="15" readonly></td>
+											<td width="110">&nbsp;전화번호 :</td>
+											<td>
+											<input class="order" type="text" name="tel" size="15" maxlength="15"
+														value="${order_resultClass.tel}" readonly/>
+											</td>
 										</tr>
 									</tbody>
 								</table>
@@ -193,14 +205,15 @@
 					<tbody>
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>추가입력 </b></font></td>
+								valign="middle"><font size="2"><b>전시 입장 바코드</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
 									<tbody>
 										<tr bgcolor="#F7F7F7">
-											<td>
-											<textarea name="order_memo" cols="98" rows="4" readonly>&nbsp;<s:property value="order_resultClass.order_memo"/></textarea>
+											<td align="center">
+											<img src="C:\\java\\YJ\\kong\\WebContent\\order\\barcode_images\\<s:property value="order_resultClass.barcode"/>"
+									width="90" />
 											</td>
 										</tr>
 									</tbody>
@@ -216,20 +229,21 @@
 		</tr>
 		<table width="700">
 		<tr>
-									<td align="right">
-									<s:if test="order_resultClass.order_trans_num != null">
-									<a onclick="return deleteError()">
-									<img src="images/goods/delete.png" style="cursor: pointer;"></img>
-									</a>
-									</s:if>
-									<s:else>
-									<input type="image" src="images/goods/delete.png" style="cursor: pointer;"></input>
-									</s:else>
-									<a href="orderL.action?currentPage=<s:property value="currentPage"/>">
-									<img src="images/goods/list.png" style="cursor: pointer;"></img>
-									</a>
-									</td>
-		</tr>
+				<td align="right">
+					<s:if test="order_resultClass.status == '티켓 만료'">
+						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()">
+					</s:if>
+					<s:elseif test="order_resultClass.status =='티켓 취소'">
+						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError2()">
+					</s:elseif>
+					<s:else>
+						<input type="submit" name="cancelTicket" value="티켓취소">
+					</s:else> 
+					
+					<!-- 리스트로 -->
+					<input type="button" name="list" value="목록으로" onClick="location.href='orderList.action?currentPage=<s:property value="currentPage"/>'">
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>
