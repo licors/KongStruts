@@ -60,7 +60,7 @@ public class OrderProcessAction extends ActionSupport {
 	
 	private List<BasketVO> basketList = new ArrayList<BasketVO>(); // ++
 	private List<showVO> showList = new ArrayList<showVO>(); // ++
-	private String basket_num; // ++
+	private int basket_num; // ++
 
 	public OrderProcessAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -220,7 +220,7 @@ public class OrderProcessAction extends ActionSupport {
 		
 		return SUCCESS;
 		
-		//orderNum 안넣어줬음
+		//orderNum 안넣어줬음 : 시퀀스로 넣어줌
 	}
 	
 	public String orderInsert() throws Exception {
@@ -244,7 +244,7 @@ public class OrderProcessAction extends ActionSupport {
 		String codeStr = str1 + str2;
 		try {
 			Barcode barcode = BarcodeFactory.createCode128B(codeStr);
-			File file = new File("C:\\kong\\WebContent\\barcodeImg"+codeStr);
+			File file = new File("C:\\java\\YJ\\kong\\WebContent\\order\\barcode_images\\"+codeStr);
 			BarcodeImageHandler.savePNG(barcode, file);			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -276,7 +276,7 @@ public class OrderProcessAction extends ActionSupport {
 	}
 	
 	//장바구니에서 구매
-	public String basketorderInsert() throws Exception { // ++	
+	public String orderInsertB() throws Exception { // ++	
 		paramBas = new BasketVO();
 		resultBas = new BasketVO();
 
@@ -341,6 +341,20 @@ public class OrderProcessAction extends ActionSupport {
 
 		paramBas.setMember_num(sessionid);
 		sqlMapper.update("basket.basketDelete_all", paramBas);
+		return SUCCESS;
+	}
+	
+	public String orderCancel() throws Exception {	
+		//status값변경해야됨 (order.update_order, OrderVO)
+		//orderList에서 order_num,currentPage 넘겨줌
+		//currentPage=getCurrentPage();
+		order_paramClass = new OrderVO();
+		show_paramClass = new showVO();
+		order_paramClass.setOrder_num(order_num);
+		sqlMapper.update("order.update_order", order_paramClass);
+		System.out.println("티켓 취소됨");
+		
+		//바코드 파일 지워야됨	
 		return SUCCESS;
 	}
 
@@ -576,11 +590,11 @@ public class OrderProcessAction extends ActionSupport {
 		this.showList = showList;
 	}
 
-	public String getBasket_num() {
+	public int getBasket_num() {
 		return basket_num;
 	}
 
-	public void setBasket_num(String basket_num) {
+	public void setBasket_num(int basket_num) {
 		this.basket_num = basket_num;
 	}
 
