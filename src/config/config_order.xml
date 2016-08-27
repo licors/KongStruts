@@ -4,17 +4,51 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	<package name="order" namespace="/" extends="struts-default">
-	 	<action name="orderList" class="order.OrderListAction">
-			<result>/order/orderList.jsp</result>
-		</action>
-		
-		<action name="orderForm" class="order.OrderFormAction">
+	<package name="order" namespace="order" extends="struts-default">
+		<!-- 상세보기,메인에서 신청폼 (get방식으로 showboard_num 받음)-->
+		<action name="orderForm" class="order.OrderFormAction" method="form">
 			<result>/order/orderForm.jsp</result>
 		</action>
 		
-		<action name="orderInsert" class="order.OrderProcessAction">
+		<!-- 장바구니에서 신청폼 -->
+		<action name="orderFormB" class="order.OrderFormAction" method="form_B">
+			<result>/order/orderForm.jsp</result>
+		</action>
+		
+		<!-- 신청처리(상세보기,메인) / 바코드 생성-->
+		<action name="orderPro" class="order.OrderProcessAction">
 			<result>/order/orderSuccess.jsp</result>
+		</action>
+		
+		<!-- 신청처리(장바구니) /바코드 생성 -->
+		<action name="orderProB" class="order.OrderProcessAction" method="execute2">
+			<result>/order/orderSuccess.jsp</result>
+		</action>
+		
+		<!-- 신청 db처리(상세보기,메인)-->
+		<action name="orderInsert" class="order.OrderProcessAction" method="orderInsert">
+			<result type="chain">
+				<param name="actionName">orderList</param>
+			</result>
+		</action>
+		
+		<!-- 신청 db처리(장바구니) / 주문성공후 장바구니에서 주문항목 삭제-->
+		<action name="orderInsertB" class="order.OrderProcessAction" method="orderInsertB">
+			<result type="chain">
+				<param name="actionName">orderList</param>
+			</result>
+		</action>
+		
+		<!-- 리스트  -->
+	 	<action name="orderList" class="order.OrderListAction">
+			<result>/order/orderList.jsp</result>
+		</action>
+
+		<!-- 티켓 취소 ==orderDelete.action-->
+		<action name="orderCancel" class="order.OrderProcessAction" method="orderCancel">
+			<result type="chain">
+				<param name="actionName">orderList</param>
+			</result>
 		</action>
 	</package>
 </struts>
