@@ -61,7 +61,7 @@
 		<s:hidden name="address2" value="%{resultBas.address2}" />
 		<s:hidden name="date" value="%{resultBas.date}" />
 		
-		<s:property value="resultBas.showboard_num"/>	//resultBas.basket_goods_name
+		<s:property value="resultBas.showboard_num"/>	<!-- //resultBas.basket_goods_name -->
 	
 		<table width="770" border="0" cellspacing="0" cellpadding="2"
 			align="center">
@@ -238,11 +238,18 @@
 		</tr>
 		<tr>
 			<td align="center">
+				<table border="0" width="700" cellpadding="7" cellspacing="2"
+					bordercolordark="white" bordercolorlight="#626262" align="center"
+					bgcolor="#E1E1E1">
+		<tbody>	
+		<!-- 개인정보활용동의로 -->
+		<tr>
+			<td align="center">
 				<table width="700" border="0" cellspacing="0" cellpadding="2"
 					align="center">
 					<tbody>
 						<tr>
-							<td width="30" colspan="2">
+							<td width="30" colspan="2" align="center">
 								<textarea name="agreecheck" cols="100" rows="10">행사 및 서비스를 예약 및 구매하고자 할 경우, 원활한 서비스 제공을 위해 필요한 최소한의 개인정보만을 관련 기업에게 아래와 같이 공유하고 있습니다.
 
 귀하께서 행사 및 서비스의 주최기업(판매자)로부터 상품 및 입장권 및 서비스를 예약하거나 구매하고자 할 경우, 원활한 서비스 제공을 위해서 필요한 최소한의 개인정보만을, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제 24조의 2 (개인정보 제공 동의 등)에 따라 아래와 같은 사항은 안내하고 동의를 받아 귀하의 개인정보를 판매자에게 공유합니다. “개인정보공유 동의”를 체크하시면 개인정보 공유에 대해 동의한 것으로 간주합니다. 이용목적이 달성되고 보유기간이 종료된 이후에는 고객의 개인정보를 지체없이 파기합니다.
@@ -255,60 +262,25 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="30" colspan="2">▶ <b><font color="black"
+							<td width="30" colspan="2" align="center">▶ <b><font color="black"
 									size="2">개인정보제3자 제공동의</font> </b> &nbsp;<input
 								type="radio" name="same" value="y">
 								예 
 								<input type="radio" name="same" value="n" checked=""> 아니오
 							</td>
 						</tr>
-									</tbody>
-								</table>
-							</td>
-						</tr>
 					</tbody>
 				</table>
 			</td>
 		</tr>
-				<tr height=20></tr>
-		
-		
-		<td>
-						<table border="0" width="700" cellpadding="7" cellspacing="2"
-					bordercolordark="white" bordercolorlight="#626262" align="center"
-					bgcolor="#E1E1E1">
-					<tbody>
-						<tr valign="top">
-							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>배송요청사항</b></font></td>
-							<td bgcolor="#F7F7F7">
-
-								<table width="600" border="0" cellspacing="0" cellpadding="1"
-									align="center">
-
-									
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>			
-		<tr>
-			<td align="center" height="20">&nbsp;</td>
-		</tr>
-		<tr>
-			<td align="center">
-				<table border="0" width="700" cellpadding="7" cellspacing="2"
-					bordercolordark="white" bordercolorlight="#626262" align="center"
-					bgcolor="#E1E1E1">
-					<tbody>
-						<tr height="50">
+		<tr height="50">
 			<td colspan="2" bgcolor="white" align="center">
 				<input type="submit" name="submit" value="신청하기">
 				&nbsp;&nbsp;
 				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"/>
 			</td>
 		</tr>
-					</tbody>
+	</tbody>
 				</table>
 			</td>
 		</tr>
@@ -321,7 +293,6 @@
 		<s:hidden name="showboard_num" value="%{show_resultClass.showboard_num}"/>	<!-- 클래스명 수정하기 -->
 		<s:hidden name="subject" value="%{show_resultClass.subject}"/>
 		<s:hidden name="pay" value="%{show_resultClass.address2}"/>
-		<%-- <s:hidden name="order_num" value="기존것 + 1"> --%>
 		
 		<table width="700" border="0" cellspacing="0" cellpadding="2" align="center">
 			<tbody>
@@ -500,7 +471,7 @@
 					align="center">
 					<tbody>
 						<tr>
-							<td width="30" colspan="2">
+							<td width="30" colspan="2" align="center">
 								<textarea name="agreecheck" cols="100" rows="10">행사 및 서비스를 예약 및 구매하고자 할 경우, 원활한 서비스 제공을 위해 필요한 최소한의 개인정보만을 관련 기업에게 아래와 같이 공유하고 있습니다.
 
 귀하께서 행사 및 서비스의 주최기업(판매자)로부터 상품 및 입장권 및 서비스를 예약하거나 구매하고자 할 경우, 원활한 서비스 제공을 위해서 필요한 최소한의 개인정보만을, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제 24조의 2 (개인정보 제공 동의 등)에 따라 아래와 같은 사항은 안내하고 동의를 받아 귀하의 개인정보를 판매자에게 공유합니다. “개인정보공유 동의”를 체크하시면 개인정보 공유에 대해 동의한 것으로 간주합니다. 이용목적이 달성되고 보유기간이 종료된 이후에는 고객의 개인정보를 지체없이 파기합니다.
@@ -513,7 +484,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="30" colspan="2">▶ <b><font color="black"
+							<td width="30" colspan="2" align="center">▶ <b><font color="black"
 									size="2">개인정보제3자 제공동의</font> </b> &nbsp;<input
 								type="radio" name="same" value="y">
 								예 
