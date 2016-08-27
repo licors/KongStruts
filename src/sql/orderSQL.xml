@@ -33,7 +33,7 @@
 
 	<!-- list 보이기 -->
 	<sql id="select-all">
-		select od.ORDER_NUM, od.MEMBER_NUM, od.NAME, od.SEX, od.COMPANY,
+		select od.ORDER_NUM, od.MEMBER_NUM, od.SHOWBOARD_NUM, od.NAME, od.SEX, od.COMPANY,
 		od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS,
 		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
 		sb.READCOUNT, sb.ORDERCOUNT
@@ -69,12 +69,17 @@
 		#address#, #email#, #barcode#, #order_date#, #tel#, #status#)
 	</insert>
 	
-	<!-- update (주문취소: status 값 수정) -->
-	<update id="updateOrder" parameterClass="orderBean">
+	<!-- update (주문취소: order삭제가 아닌 status 값 수정) -->
+	<update id="update_order" parameterClass="orderBean">	<!-- orderProcess.java / orderCancel() -->
 		UPDATE "ORDER" SET
-		STATUS=1
-		WHERE ORDER_NUM=#ORDER_NUM#
+		STATUS="주문취소"
+		WHERE ORDER_NUM=#order_num#
 	</update>
+	
+	<!-- delete -->
+<!-- 	<delete id="adminOrderDelete" parameterClass="order">
+		DELETE FROM GOODS_ORDER WHERE SHOW_NUM=#show_num#
+	</delete> -->
 	
 	
 </sqlMap>
