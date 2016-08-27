@@ -60,7 +60,8 @@
 						<%--바코드 이미지 가져오기 --%>
 					</td>
 					<td width="80" align="center">
-						<%-- <tr>${status }</tr>
+						<%-- 
+						<tr>${status }</tr>
 						<tr>
 							<s:if test=${status == "티켓 신청" }>
 							<input type="button" name="status" value="취소하기" onclick="checkIt();">
