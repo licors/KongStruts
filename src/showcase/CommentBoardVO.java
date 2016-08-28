@@ -26,6 +26,7 @@ public class CommentBoardVO {
 	private int ref;
 	private int re_step;
 	private int re_level;
+	private String name;
 	
 	
 	public int getComment_num() {
@@ -75,6 +76,12 @@ public class CommentBoardVO {
 	}
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

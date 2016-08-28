@@ -3,11 +3,15 @@ package showcase;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
+import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import member.MemberVO;
 
 public class CommentWriteAction extends ActionSupport{
 	public static Reader reader;
@@ -15,11 +19,13 @@ public class CommentWriteAction extends ActionSupport{
 	
 	private CommentBoardVO paramClass;
 	private CommentBoardVO resultClass;
-
+	private MemberVO memberDataClass;
 	
 	private int currentPage;
 	
 	private int comment_num;
+	private int member_num;
+	private int showboard_num;
 	private String subject;
 	private String name;
 	private String content;
@@ -29,12 +35,11 @@ public class CommentWriteAction extends ActionSupport{
 	private int re_step;
 	private int re_level;
 	
-
-	boolean reply = false;
+//	boolean reply = false;
 	
 	public CommentWriteAction() throws IOException
 	{
-		reader = Resources.getResourceAsReader("showcaseDetailComment.sqlMapConfig.xml");
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 
@@ -46,21 +51,21 @@ public class CommentWriteAction extends ActionSupport{
 		
 	}
 	
-	public String reply() throws Exception
-	{
-		reply=true;
-		resultClass = new CommentBoardVO();
-		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
-		resultClass.setContent("[답변] " + resultClass.getContent());
-		//resultClass.setName("");
-		
-		return SUCCESS;
-		
-	}
+//	public String reply() throws Exception
+//	{
+//		reply=true;
+//		resultClass = new CommentBoardVO();
+//		
+//		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
+//		resultClass.setContent("[답변] " + resultClass.getContent());
+//		//resultClass.setName("");
+//		
+//		return SUCCESS;
+//		
+//	}
 
 	public String execute() throws Exception {
-		
+		memberDataClass = new MemberVO();
 		paramClass = new CommentBoardVO();
 		resultClass = new CommentBoardVO();
 		
@@ -74,23 +79,32 @@ public class CommentWriteAction extends ActionSupport{
 		{
 			paramClass.setRef(getRef());
 			paramClass.setRe_step(getRe_step());
-			sqlMapper.update("updateReplyStep", paramClass);
+			sqlMapper.update("showcaseDetailComment.updateReplyStep", paramClass);
 			
 			paramClass.setRe_step(getRe_step() + 1);
 			paramClass.setRe_level(getRe_level() + 1);
 			paramClass.setRef(getRef());
 		}
-		//session에서  member_num 가져오는거로 구현 할까 말까...
+		
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		//session 에 정보 없으면 로그인 창 갔다오는 기능 추가 예정
+		
+		int sessionNum = (Integer) session.get("member_num");
+		memberDataClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionNum);
+		
+		
 		paramClass.setComment_num(getComment_num());
-		//paramClass.setName(getName());
+		paramClass.setMember_num(memberDataClass.getMember_num());
+		paramClass.setShowboard_num(getShowboard_num());
 		paramClass.setContent(getContent());
 		paramClass.setReg_date(today.getTime());
 		
 		
 		if(ref == 0)
-			sqlMapper.insert("insertBoard", paramClass);
+			sqlMapper.insert("showcaseDetailComment.insertBoard", paramClass);
 		else
-			sqlMapper.insert("insertBoardReply", paramClass);
+			sqlMapper.insert("showcaseDetailComment.insertBoardReply", paramClass);
 
 		return SUCCESS;
 	}
@@ -173,6 +187,30 @@ public class CommentWriteAction extends ActionSupport{
 
 	public void setRe_level(int re_level) {
 		this.re_level = re_level;
+	}
+
+	public MemberVO getMemberDataClass() {
+		return memberDataClass;
+	}
+
+	public void setMemberDataClass(MemberVO memberDataClass) {
+		this.memberDataClass = memberDataClass;
+	}
+
+	public int getMember_num() {
+		return member_num;
+	}
+
+	public void setMember_num(int member_num) {
+		this.member_num = member_num;
+	}
+
+	public int getShowboard_num() {
+		return showboard_num;
+	}
+
+	public void setShowboard_num(int showboard_num) {
+		this.showboard_num = showboard_num;
 	}
 	
 	

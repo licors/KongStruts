@@ -2,11 +2,15 @@ package showcase;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import member.MemberVO;
 
 public class CommentDeleteAction extends ActionSupport{
 	public static Reader reader;
@@ -14,7 +18,7 @@ public class CommentDeleteAction extends ActionSupport{
 	
 	private CommentBoardVO paramClass;
 	private CommentBoardVO resultClass;
-	
+	private MemberVO memberDataClass;
 	private int currentPage;
 	private int comment_num;
 	
@@ -25,14 +29,25 @@ public class CommentDeleteAction extends ActionSupport{
 	}
 	
 	public String execute() throws Exception {
+		memberDataClass = new MemberVO();
 		paramClass = new CommentBoardVO();
-		resultClass = new CommentBoardVO();
+//		resultClass = new CommentBoardVO();
 		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+		paramClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		//session 에 정보 없으면 로그인 창 갔다오는 기능 추가 예정
 		
-		paramClass.setComment_num(getComment_num());
+		int sessionNum = (Integer) session.get("member_num");
+		memberDataClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionNum);
 		
-		sqlMapper.update("deleteBoard",paramClass);
+//		paramClass.setMember_num(memberDataClass.getMember_num());
+		
+		if(paramClass.getMember_num() != memberDataClass.getMember_num()) {
+			return ERROR;
+		}
+		sqlMapper.update("showcaseDetailComment.deleteBoard",paramClass);
 		return SUCCESS;
 	}
 
