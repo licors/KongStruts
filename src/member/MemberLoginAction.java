@@ -42,7 +42,7 @@ public class MemberLoginAction extends ActionSupport {
 		memparamClass = new MemberVO();
 		memresultClass = new MemberVO();
 
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",getEmail());
+		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",getEmail());
 
 		if (memresultClass == null) {
 		} else {
@@ -51,6 +51,9 @@ public class MemberLoginAction extends ActionSupport {
 				Map<String, Object> session = context.getSession();
 				session.put("member_num",memresultClass.getMember_num());
 				session.put("id", email);
+				
+//				System.out.println(session.get("member_num").toString());
+//				System.out.println(session.get("id").toString());
 				return SUCCESS;
 			}
 		}

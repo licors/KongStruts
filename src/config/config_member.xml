@@ -5,25 +5,30 @@
 
 <struts>
 	<!-- 회원관련 -->
-	<package name="member" extends="struts-default, tiles-default">
+	<package name="member" extends="struts-default">
 		<!-- 회원가입 폼 -->
 		<action name="memberJoinForm" class="member.MemberJoinAction" method="form">
+			<result>/member/memberJoin.jsp</result>
+		</action>
+		
+		<!-- 회원가입 -->
+		<action name="memberJoin" class="member.MemberJoinAction">
 			<result>/member/memberLogin.jsp</result>
 		</action>
 		
 		<!-- 로그인 폼 -->
 		<action name="memberLoginForm" class="member.MemberLoginAction" method="form">
-			<result>member/membeLoginForm.jsp</result>
+			<result>/member/memberLogin.jsp</result>
 		</action>
 		
 		<!-- 로그인 처리-->
 		<action name="memberLogin" class="member.MemberLoginAction">
-			<result>member/membeLogin.jsp</result>
+			 <result>/member/loginResult.jsp</result> <!-- 메인페이지로 이동? -->
 		</action>
 		
 		<!--  로그아웃 처리  -->
 		<action name="memberLogout" class="member.MemberLoginAction" method="logout">
-			<result>member/memberLogin.jsp</result>
+			<result>/member/memberLogin.jsp</result>
 		</action>
 	</package>
 

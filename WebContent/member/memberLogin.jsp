@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form name="loginform" action="/kong/member/memberLogin.action" method="post" onsubmit="return checkIt()">
 	<table>
-	<form name="loginform" action="LoginAction.action" method="post" onsubmit="return checkIt()">
 		<tr>
 			<td align="center">이메일</td>
 			<td valign="middle" align="left">
@@ -20,21 +19,19 @@
 		<tr>
 			<td align="center">비밀번호</td>
 			<td valign="middle" align="left">
-			<input type="password" name="passwd" size="20" maxlength="12"></td>
+			<input type="password" name="password" size="20" maxlength="12"></td>
 
 		</tr>
-
-
 		<tr>
 			<td align="right" colspan="2">
 				<input name="submit" type="submit" value="로그인" class="inputb"> 
+				<input type="button" value="회원가입" 	onClick="javascript:location.href='/kong/member/memberJoinForm.action'">
 				<!-- 추후 경로 수정해야함 -->
-				<input name="list" type="button" value="메인으로" class="inputb"
+				<input type="button" value="메인으로" class="inputb"
 				onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
 			</td>
 		</tr>
-
-</form>
 	</table>
+	</form>
 </body>
 </html>

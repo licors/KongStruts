@@ -33,13 +33,13 @@ function joinCheck() {
 	<p>
 	</p>
 	
-	<form name="joinform" method="post" action="memberJoinForm.action" onsubmit="return joinCheck()">
+	<form name="joinform" method="post" action="/kong/member/memberJoin.action" onsubmit="return joinCheck()">
 		<table>
 			<tr>
 				<td>email</td> <td><input type="text" name="email" size="20"/> </td>
 			</tr>
 			<tr>
-				<td>password</td> <td><input type="text" name="passwd" size="20"/> </td>
+				<td>password</td> <td><input type="password" name="password" size="20"/> </td>
 			</tr>
 			<tr> 
 				<td>name</td> <td><input type="text" name="name" size="20"/> </td>

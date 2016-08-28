@@ -44,16 +44,24 @@ public class MemberJoinAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String form() throws Exception{
+	public String form() {
 		return SUCCESS;
 	}
-	
-	public String getName() {
-		return name;
+
+	public MemberVO getMemresultClass() {
+		return memresultClass;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMemresultClass(MemberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
+
+	public MemberVO getMemparamClass() {
+		return memparamClass;
+	}
+
+	public void setMemparamClass(MemberVO memparamClass) {
+		this.memparamClass = memparamClass;
 	}
 
 	public String getEmail() {
@@ -72,24 +80,13 @@ public class MemberJoinAction extends ActionSupport {
 		this.password = password;
 	}
 
-	public MemberVO getMemresultClass() {
-		return memresultClass;
+	public String getName() {
+		return name;
 	}
 
-	public void setMemresultClass(MemberVO memresultClass) {
-		this.memresultClass = memresultClass;
-	}
-
-	public MemberVO getMemparamClass() {
-		return memparamClass;
-	}
-
-	public void setMemparamClass(MemberVO memparamClass) {
-		this.memparamClass = memparamClass;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
-	
-
-
 }
