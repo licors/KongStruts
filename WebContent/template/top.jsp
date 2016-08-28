@@ -93,13 +93,13 @@ function logout(){
       				<s:else>
       				<s:if test="memresultClass.getEmail() != null">
                 	<li><input type="button"  value="로그아웃" onclick="return logout()"/></li>
-                	<li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li> //memberMF 액션경로 수정필요
-                	<li><a href="basketL.action"><input type="button" value="장바구니" /></a></li>  //basketL 액션경로 수정필요
+                	<li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li> <!-- //memberMF 액션경로 수정필요 -->
+                	<li><a href="basketL.action"><input type="button" value="장바구니" /></a></li>  <!-- basketL 액션경로 수정필요 -->
                     <li><a href="orderList.action"><input type="button" value="주문목록"/></a></li>
                 	</s:if>
                 	<s:else>
       				<li><a href="memberLoginForm.action"><input type="button" value="로그인"  /></a></li>
-                    <li><a href="joinRule.action"><input type="button" value="회원가입" /></a></li>     //joinRule.action 이용약관 동의처리로가는 액션명 수정필요
+                    <li><a href="joinRule.action"><input type="button" value="회원가입" /></a></li>     <!-- joinRule.action 이용약관 동의처리로가는 액션명 수정필요 -->
                     <li><input type="button" class="basket" value="장바구니" onclick="return basketlogin()"/></li>
                     <li><input type="button" class="order" value="주문목록" onclick="return buylogin()"></li>
                     </s:else>
