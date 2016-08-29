@@ -67,7 +67,7 @@ public class ShowcaseReadAction extends ActionSupport {
         sqlMapper.update("show.readcountPlus", paramClass);
 
         // 해당 번호의 글을 가져온다.
-        resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass);
+        resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass.getShowboard_num());
 
         return SUCCESS;
     }
