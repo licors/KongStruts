@@ -122,7 +122,7 @@ public class OrderFormAction extends ActionSupport {
 			for (int i = 0; i < basketList.size(); i++) {
 				paramBas = basketList.get(i);
 				
-				showList = sqlMapper.queryForList("show.select_2", paramBas.getShowboard_num());
+				showList = sqlMapper.queryForList("show.selectOne", paramBas.getShowboard_num());
 				for (int j = 0; j < showList.size(); j++) {
 					show_resultClass = showList.get(j);
 				}
