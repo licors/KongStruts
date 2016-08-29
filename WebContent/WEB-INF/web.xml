@@ -24,7 +24,7 @@
                 org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG
             </param-name>
             <param-value>
-                /WEB-INF/tiles-service.xml
+                /WEB-INF/tiles/tiles-main.xml,/WEB-INF/tiles/tiles-qna.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

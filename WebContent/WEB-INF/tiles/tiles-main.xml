@@ -12,9 +12,5 @@
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
 
-    <definition name="qnalist" extends="main">
-        <put-attribute name="body" value="/admin/qna/qnalist.jsp" />
-    </definition>
-
 </tiles-definitions>
 
