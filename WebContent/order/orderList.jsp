@@ -33,7 +33,7 @@
 				</td>
 			</tr>
 			<tr bgcolor="#FFFFFF" align="center">
-				<td align="center"></td>
+				<td align="center">사진</td>
 				<td align="center">신청일자</td>
 				<td align="center">전시명</td>
 				<td align="center">전시기간</td>
