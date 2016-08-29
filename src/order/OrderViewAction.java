@@ -73,8 +73,8 @@ public class OrderViewAction extends ActionSupport{
 		order_resultClass = (OrderVO) sqlMapper.queryForObject("order.orderDetail",
 				order_num);	//orderList.jsp에서 get방식으로 order_num&currentPage 넘겨주므로 order_num 사용가능
 		
-		show_resultClass = (showVO) sqlMapper.queryForObject("show.select",
-				order_resultClass.getName());
+		show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne",
+				order_resultClass.getShowboard_num());
 		
 		if (show_resultClass.getFile_savname() != null) {
 			String images = show_resultClass.getFile_savname();
