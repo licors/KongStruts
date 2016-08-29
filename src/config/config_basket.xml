@@ -4,5 +4,20 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-
+	<package name="basket" namespace="/basket" extends="struts-default">
+		<!-- basket list -->
+		<action name="basketList" class="basket.BasketAction">
+			<result>/basket/basketList.jsp</result>
+		</action>
+		
+		<!--  basket add -->
+		<action name="addBasket" class="basket.AddBasketAction">
+			<result>/basket/addBasket.jsp</result>
+		</action>
+		
+		<!-- basket list에서 개별 삭제-->
+		<action name="deleteBasket" class="basket.BasketAction" method="delete">
+			<result>/basket/deleteBasket.jsp</result>
+		</action>
+	</package>
 </struts>
