@@ -23,7 +23,7 @@
 </script>
 </head>
 <body>
-	<form name="detailForm" method="post" action="orderCancel.action"
+	<form name="detailForm" method="post" action="/kong/order/orderCancel.action"
 		onsubmit="return deletecheck()">
 		<table width="700" border="0" cellspacing="0" cellpadding="2"
 			align="center">
@@ -53,7 +53,7 @@
 
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
-							<a href="readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
+							<a href="/kong/order/readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
 							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
 									width="90" />	<!-- 수정수정 -->
 							</a>
@@ -241,7 +241,7 @@
 					</s:else> 
 					
 					<!-- 리스트로 -->
-					<input type="button" name="list" value="목록으로" onClick="location.href='orderList.action?currentPage=<s:property value="currentPage"/>'">
+					<input type="button" name="list" value="목록으로" onClick="location.href='/kong/order/orderList.action?currentPage=<s:property value="currentPage"/>'">
 				</td>
 			</tr>
 		</table>

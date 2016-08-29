@@ -25,7 +25,7 @@
 			return false;
 		}
  
-		document.orderForm.action = "orderPro.action"
+		document.orderForm.action = "/kong/order/orderPro.action"
 		document.orderForm.submit();
 	}
 	function checkIt2() {
@@ -42,7 +42,7 @@
 			return false;
 		}
 		
-		document.orderForm.action = "orderProB.action";
+		document.orderForm.action = "/kong/order/orderProB.action";
 		document.orderForm.submit();
 
 	}
