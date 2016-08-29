@@ -50,16 +50,9 @@
         WHERE
         subject=#subject#
     </select>
-  	
-  	<!-- 유진 : 08.28.03:14 / showboard_num으로 select -->  
-    <select id="select_2" resultMap="showRes">
-        <include refid="select-all"/>
-        WHERE
-        showboard_num=#showboard_num#
-    </select>
        
-    <!-- 유진 : 08.28.02:38 / parameterClass="show"추가 -->
-    <select id="selectOne" resultMap="showRes" parameterClass="show">
+    <!-- 유진 : 08.28.02:38 / parameterClass="int"추가 -->
+    <select id="selectOne" resultMap="showRes" parameterClass="int">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>

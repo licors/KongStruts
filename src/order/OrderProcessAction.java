@@ -60,6 +60,7 @@ public class OrderProcessAction extends ActionSupport {
 	
 	private List<BasketVO> basketList = new ArrayList<BasketVO>(); // ++
 	private List<showVO> showList = new ArrayList<showVO>(); // ++
+	private List<OrderVO> orderList = new ArrayList<OrderVO>();
 	private int basket_num; // ++
 
 	public OrderProcessAction() throws IOException {
@@ -92,12 +93,10 @@ public class OrderProcessAction extends ActionSupport {
 		show_resultClass = (showVO) sqlMapper.queryForObject(
 				"show.selectOne", show_paramClass);
 
-		
 		/*order_goods_amount = getGoods_amount();
 		order_goods_size = getGoods_size();
 		order_goods_color = getGoods_color();*/
-		
-		
+
 		showboard_num = show_paramClass.getShowboard_num();
 		/*qr코드는 여기에서 생성! barcode = 
 		order_sum_money = (getGoods_price() * order_goods_amount);*/
@@ -155,9 +154,6 @@ public class OrderProcessAction extends ActionSupport {
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
 				sessionid);
 
-		// memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck",
-		// getOrder_id());
-
 		show_resultClass = new showVO();
 		show_resultClass = (showVO) sqlMapper.queryForObject(
 				"show.selectOne", getShowboard_num());
@@ -177,7 +173,23 @@ public class OrderProcessAction extends ActionSupport {
 		order_paramClass.setShowboard_num(getShowboard_num());
 
 		order_paramClass.setStatus("티켓 신청");
+		
+		String str1 = Integer.toString(getMember_num());
+		String str2 = Integer.toString(resultBas.getShowboard_num());
 
+		String codeStr = str1 + str2;
+		try {
+			Barcode barcode = BarcodeFactory.createCode128B(codeStr);
+			File file = new File("C:\\java\\YJ\\kong\\WebContent\\order\\barcode_images\\"+codeStr);
+			BarcodeImageHandler.savePNG(barcode, file);			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		order_paramClass.setBarcode(codeStr);
+		
+		sqlMapper.insert("order.insert_order", order_paramClass);
+		
 		return SUCCESS;
 		//orderNum안했음
 	}
@@ -199,31 +211,65 @@ public class OrderProcessAction extends ActionSupport {
 		order_paramClass = new OrderVO();
 		order_resultClass = new OrderVO();
 
+		resultBas = new BasketVO();
+		
+		System.out.println(memresultClass.getMember_num());
+		
 		basketList = sqlMapper.queryForList("basket.basketList", sessionid);
 		
 		/*for(int i = 0; i < basketList.size(); i++) {
 			order_paramClass.setbarcode(barcode);
 		} 애매함  수정필요*/
 
-		order_paramClass.setMember_num(sessionid);
-		order_paramClass.setShowboard_num(getShowboard_num());
+		for (int i = 0; i < basketList.size(); i++) {
+			resultBas = basketList.get(i);
+			
+			order_paramClass.setShowboard_num(resultBas.getShowboard_num());
+			
+			/*if (getOrder_member_id() == null) {
+				return INPUT;			//로그인이 안되어있을때 구매하기가 되면 처리하기위해 한듯?
+			}*/
+			
+			order_paramClass.setMember_num(memresultClass.getMember_num());
+			order_paramClass.setName(getName());
+			order_paramClass.setSex(getSex());
+			order_paramClass.setCompany(getCompany());
+			order_paramClass.setAddress(getAddress());
+			order_paramClass.setEmail(getEmail());
+			order_paramClass.setOrder_date(getOrder_date());
+			order_paramClass.setOrder_date(today.getTime());
+			order_paramClass.setTel(getTel());
+			order_paramClass.setStatus("티켓 신청");
+
+			/*각 전시회마다 다른 바코드 생성*/
+			String str1 = Integer.toString(memresultClass.getMember_num());
+			String str2 = Integer.toString(resultBas.getShowboard_num()); 
+
+			String codeStr = str1 + str2;
+			
+			try {
+				Barcode barcode = BarcodeFactory.createCode128B(codeStr);
+				File file = new File("C:\\kong\\WebContent\\barcodeImg"+codeStr);
+				BarcodeImageHandler.savePNG(barcode, file);			
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			order_paramClass.setBarcode(codeStr);
+			
+			sqlMapper.insert("order.insert_order", order_paramClass);
+
+			show_resultClass = (showVO) sqlMapper.queryForObject("show.select", resultBas.getSubject());
+			
+			//orderList = sqlMapper.queryForList("show.select", resultBas.getSubject()); 이번에 주문한 바코드 뽑기위해서
+		}
 		
-		order_paramClass.setName(getName());
-		order_paramClass.setSex(getSex());
-		order_paramClass.setCompany(getCompany());
-		order_paramClass.setAddress(getAddress());
-		order_paramClass.setEmail(getEmail());
-		//order_paramClass.setbarcode(barcode);	//barcode는 계산해서 넣어야되므로
-		order_paramClass.setTel(getTel());
-		
-		order_paramClass.setStatus("티켓 신청");
-		
+		orderList = sqlMapper.queryForList("order.order_date_list", getOrder_date());
+
 		return SUCCESS;
-		
-		//orderNum 안넣어줬음 : 시퀀스로 넣어줌
 	}
 	
-	public String orderInsert() throws Exception {
+/*	public String orderInsert() throws Exception {
 		memparamClass = new MemberVO();
 		memresultClass = new MemberVO();
 		ActionContext context = ActionContext.getContext();
@@ -237,7 +283,7 @@ public class OrderProcessAction extends ActionSupport {
 		show_paramClass = new showVO();
 		show_resultClass = new showVO();
 		
-/*바코드 생성*/
+바코드 생성
 		String str1 = Integer.toString(getMember_num());
 		String str2 = Integer.toString(resultBas.getShowboard_num());
 
@@ -252,9 +298,9 @@ public class OrderProcessAction extends ActionSupport {
 		
 		order_paramClass.setBarcode(codeStr);
 
-		/*if (getOrder_member_id() == null) {
+		if (getOrder_member_id() == null) {
 			return INPUT;
-		}*/
+		}
 		
 		order_paramClass.setMember_num(memresultClass.getMember_num());
 		order_paramClass.setShowboard_num(getShowboard_num());
@@ -274,8 +320,8 @@ public class OrderProcessAction extends ActionSupport {
 		
 		return SUCCESS;
 	}
-	
-	//장바구니에서 구매
+	*/
+/*	//장바구니에서 구매
 	public String orderInsertB() throws Exception { // ++	
 		paramBas = new BasketVO();
 		resultBas = new BasketVO();
@@ -304,9 +350,9 @@ public class OrderProcessAction extends ActionSupport {
 			
 			order_paramClass.setShowboard_num(resultBas.getShowboard_num());
 			
-			/*if (getOrder_member_id() == null) {
+			if (getOrder_member_id() == null) {
 				return INPUT;			//로그인이 안되어있을때 구매하기가 되면 처리하기위해 한듯?
-			}*/
+			}
 			
 			order_paramClass.setMember_num(memresultClass.getMember_num());
 			order_paramClass.setName(getName());
@@ -319,7 +365,7 @@ public class OrderProcessAction extends ActionSupport {
 			order_paramClass.setTel(getTel());
 			order_paramClass.setStatus("티켓 신청");
 
-			/*바코드 생성*/
+			바코드 생성
 			String str1 = Integer.toString(getMember_num());
 			String str2 = Integer.toString(resultBas.getShowboard_num()); 
 
@@ -342,7 +388,7 @@ public class OrderProcessAction extends ActionSupport {
 		paramBas.setMember_num(sessionid);
 		sqlMapper.update("basket.basketDelete_all", paramBas);
 		return SUCCESS;
-	}
+	}*/
 	
 	public String orderCancel() throws Exception {	
 		//status값변경해야됨 (order.update_order, OrderVO)

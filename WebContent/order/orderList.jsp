@@ -52,7 +52,7 @@
 					<td></td>
 					<td width="80" align="center">${order_date }</td>
 					<td width="360" align="center" colspan="2"><a
-						href="orderView.action?order_num=${order_num}&currentPage=${currentPage }">
+						href="/kong/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
 							${subject } </a></td>
 					<td width="80" align="center">${date }</td>
 					<td width="80" align="center">${address2 }</td>
@@ -70,7 +70,14 @@
 					</td>
 				</tr>
 			</s:iterator>
-
+			
+			<s:if test="orderList.size() == 0">
+				<tr>
+					<td colspan="6" align="center"><font size="2">
+					구매하신 상품이 없습니다.</font></td>
+				</tr>
+			</s:if>
+			
 			<tr>
 				<td colspan="7" align="center">
 					<hr>
@@ -82,13 +89,6 @@
 					<s:property value="pagingHtml" escape="false" />
 				</td>
 			</tr>
-			
-			<s:if test="orderList.size() == 0">
-				<tr>
-					<td colspan="6" align="center"><font size="2">구매하신 상품이
-							없습니다.</font></td>
-				</tr>
-			</s:if>
 
 		</table>
 	</form>
