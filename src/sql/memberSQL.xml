@@ -28,23 +28,11 @@
 		SELECT * FROM MEMBER WHERE EMAIL=#email#
 	</select>
 
-	<!-- 관리자인지 확인 -->
-	<select id="adminCheck" resultClass="int" parameterClass="int">
-		SELECT admin FROM MEMBER WHERE MEMBER_NUM=#member_num#
-	</select>
-
-
-
 	<!-- 회원가입 -->
 	<insert id="joinMember" parameterClass="member">
 		INSERT INTO MEMBER(member_num, email, password, name, address, company) VALUES
 		(MEMBER_NUM_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#)
 	</insert>
-
-
-
-
-
 
 	<!-- 관리자 회원관리 Search -->
 	<!-- <select id="memberSearchId" resultMap="memberRes"
@@ -79,35 +67,35 @@
 	</select>
 
 	
-	회원탈퇴
-	<delete id="deleteMember" parameterClass="member">
-		DELETE FROM MEMBER WHERE ID=#id#
-	</delete>
-	회원정보 변경
-	<update id="memberUpdate" parameterClass="member">
-		UPDATE MEMBER SET
-		EMAIL=#email#,
-		ZIPCODE=#zipcode#,
-		ADDR1=#addr1#,
-		ADDR2=#addr2#
-		WHERE ID=#id#
-	</update>
-	관리자 회원정보 변경
-	<update id="memberUpdate1" parameterClass="member">
-		UPDATE MEMBER SET
-		NAME=#name#,
-		EMAIL=#email#,
-		PHONE=#phone#,
-		ZIPCODE=#zipcode#,
-		ADDR1=#addr1#,
-		ADDR2=#addr2#
-		WHERE ID=#id#
-	</update>
-	비밀번호 변경
-	<update id="passwordUpdate" parameterClass="member">
-		UPDATE MEMBER SET PASSWORD=#password# WHERE ID=#id#
-	</update> -->
-	<!-- member -->
+    회원탈퇴
+    <delete id="deleteMember" parameterClass="member">
+            DELETE FROM MEMBER WHERE ID=#id#
+    </delete>
+    회원정보 변경
+    <update id="memberUpdate" parameterClass="member">
+            UPDATE MEMBER SET
+            EMAIL=#email#,
+            ZIPCODE=#zipcode#,
+            ADDR1=#addr1#,
+            ADDR2=#addr2#
+            WHERE ID=#id#
+    </update>
+    관리자 회원정보 변경
+    <update id="memberUpdate1" parameterClass="member">
+            UPDATE MEMBER SET
+            NAME=#name#,
+            EMAIL=#email#,
+            PHONE=#phone#,
+            ZIPCODE=#zipcode#,
+            ADDR1=#addr1#,
+            ADDR2=#addr2#
+            WHERE ID=#id#
+    </update>
+    비밀번호 변경
+    <update id="passwordUpdate" parameterClass="member">
+            UPDATE MEMBER SET PASSWORD=#password# WHERE ID=#id#
+    </update> -->
+    <!-- member -->
 
 
 </sqlMap>
