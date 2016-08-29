@@ -11,6 +11,10 @@
         <put-attribute name="body" value="/main.jsp" />
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
+    
+    <definition name="test" extends="main">
+        <put-attribute name="body" value="/main/mainT.jsp" />
+    </definition>
 
 </tiles-definitions>
 

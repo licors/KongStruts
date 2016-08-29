@@ -39,23 +39,11 @@
         <include refid="select-all"/>
         ORDER BY showboard_num
     </select>
-    <!-- 전시 카테고리 9개 검색 -->
-    <select id="select_9_showacse" resultMap="showRes">
+    <!-- 카테고리 9개 검색 -->
+    <select id="select_9" resultMap="showRes" parameterClass="show">
         <include refid="select-all"/>
-        WHERE showboard_category = "전시"
-        ORDER BY showboard_num DESC LIMIT 9
-    </select>
-    <!-- 미술 카테고리 9개 검색 -->
-    <select id="select_9_art" resultMap="showRes">
-        <include refid="select-all"/>
-        WHERE showboard_category = "미술"
-        ORDER BY showboard_num DESC LIMIT 9
-    </select>
-    <!-- 이벤트 카테고리 9개 검색 -->
-    <select id="select_9_event" resultMap="showRes">
-        <include refid="select-all"/>
-        WHERE showboard_category = "이벤트"
-        ORDER BY showboard_num DESC LIMIT 9
+        WHERE showboard_category = #showboard_category# and rownum <![CDATA[<=]]> 9
+        ORDER BY showboard_num DESC
     </select>
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>
@@ -82,7 +70,8 @@
     </select>
     <select id="selectLastNo" resultClass="show" parameterClass="int">
         <include refid="select-all"/>
-        ORDER BY showboard_num DESC LIMIT 1
+        WHERE rownum <![CDATA[<=]]> 1
+        ORDER BY showboard_num DESC
     </select>
     
     <!-- 행사 검색(수호) 08.25.04:00  -->
@@ -102,7 +91,7 @@
         INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tel tag, content, 
         file_orgname, file_savname, readcount, ordercount, map)
         
-        VALUES(showboard_num_SEQ.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
+        VALUES(showboard_num_seq.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
         #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#)
     </insert>
 
