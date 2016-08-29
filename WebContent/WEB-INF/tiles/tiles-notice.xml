@@ -5,9 +5,9 @@
 
 <tiles-definitions>
 
-<!--    <definition name="타일즈이름" extends="main">
+    <definition name="타일즈이름" extends="main">
         <put-attribute name="body" value="jsp경로" />
-    </definition>-->
+    </definition>
 
 </tiles-definitions>
 
