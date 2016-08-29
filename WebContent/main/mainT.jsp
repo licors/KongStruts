@@ -17,10 +17,9 @@
         <table align="center" width="600">
             <tr>
                 <td align="right" colspan="5">
-                    <input name="support" type="button" value="1:1 문의" class="list" 
-                           onClick="javascript:location.href = '/qna/qnawrite_form.action'">
-                    <s:if test="mc.admin > 0"><!-- 어드민 qna 작성 -->
-                        <input type="button" name="qna" value="QnA 추가">
+                    <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
+                        <input name="support" type="button" value="전시글 작성"
+                               onClick="javascript:location.href = '/showcase/scwrite_form.action'">
                     </s:if>
                 </td>
             </tr>
@@ -31,7 +30,7 @@
             </tr>
             <tr align="center" bgcolor="#F3F3F3">
                 <td width="50"><strong>번호</strong></td>
-                <td width="350"<strong>제목</strong></td>
+                <td width="350"><strong>제목</strong></td>
                 <td width="70"><strong>상태</strong></td>
                 <td width="80"><strong>조회수</strong></td>
                 <td width="50"><strong>예매</strong></td>
@@ -48,7 +47,7 @@
                     <%--<s:property value="currentPage"/>--%>
                     <%--</s:param>--%>
                 </s:url>
-                <tr bgcolor="#FFFFFF" aglin="certer">
+                <tr bgcolor="#FFFFFF" align="center">
                     <td><s:property value="showboard_num"/></td>
                     <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="subject"/></s:a></td>
                     <td align="center"><s:property value="status"/></td>
@@ -67,7 +66,7 @@
             </tr>
             <tr align="center" bgcolor="#F3F3F3">
                 <td width="50"><strong>번호</strong></td>
-                <td width="350"<strong>제목</strong></td>
+                <td width="350"><strong>제목</strong></td>
                 <td width="70"><strong>상태</strong></td>
                 <td width="80"><strong>조회수</strong></td>
                 <td width="50"><strong>예매</strong></td>
@@ -84,7 +83,7 @@
                     <%--<s:property value="currentPage"/>--%>
                     <%--</s:param>--%>
                 </s:url>
-                <tr bgcolor="#FFFFFF" aglin="certer">
+                <tr bgcolor="#FFFFFF" align="center">
                     <td><s:property value="showboard_num"/></td>
                     <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="subject"/></s:a></td>
                     <td align="center"><s:property value="status"/></td>
@@ -103,7 +102,7 @@
             </tr>
             <tr align="center" bgcolor="#F3F3F3">
                 <td width="50"><strong>번호</strong></td>
-                <td width="350"<strong>제목</strong></td>
+                <td width="350"><strong>제목</strong></td>
                 <td width="70"><strong>상태</strong></td>
                 <td width="80"><strong>조회수</strong></td>
                 <td width="50"><strong>예매</strong></td>
@@ -120,7 +119,7 @@
                     <%--<s:property value="currentPage"/>--%>
                     <%--</s:param>--%>
                 </s:url>
-                <tr bgcolor="#FFFFFF" aglin="certer">
+                <tr bgcolor="#FFFFFF" align="center">
                     <td><s:property value="showboard_num"/></td>
                     <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="subject"/></s:a></td>
                     <td align="center"><s:property value="status"/></td>
