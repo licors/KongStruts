@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	<package name="order" namespace="order" extends="struts-default">
+	<package name="order" namespace="/order" extends="struts-default">
 		<!-- 상세보기,메인에서 신청폼 (get방식으로 showboard_num 받음)-->
 		<action name="orderForm" class="order.OrderFormAction" method="form">
 			<result>/order/orderForm.jsp</result>
