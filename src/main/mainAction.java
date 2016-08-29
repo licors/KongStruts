@@ -56,7 +56,7 @@ public class mainAction extends ActionSupport {
         
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
+        String sessionid = (String) session.get("name");
         memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
 
         list1 = sqlMapper.queryForList("support.select_9_showacse");
