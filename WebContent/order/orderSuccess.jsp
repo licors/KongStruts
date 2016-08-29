@@ -18,24 +18,35 @@
 					bgcolor="#E1E1E1" style="margin: 20px 0 0 0;">
 					<tbody>
 						
-						<s:if test='barcode == null'>
+						<s:if test='barcode != null'>
 							<tr height="40" align="center">
 								<b> 전시회에 입장하실 때 바코드를 제시해 주세요. </b>
 							</tr>
 							<tr height=30>	<!-- //바코드 이미지 -->
 								<td>
-							    <b><s:property value="order_paramClass.barcode"/></b>
+							    <b><img src="<s:property value="order_paramClass.barcode"/>"></b>
 							    </td>
 							</tr>
 						</s:if>
 						<tr>
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-							<a href="orderList.action?currentPage=1"> 구매목록  </a>
+							<a href="/kong/order/orderList.action?currentPage=1"> 구매목록  </a>
+							</td>
+							&nbsp;&nbsp;&nbsp;
+							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
+								<input type="button" value="메인으로" onclick="location:href='/kong/main/main.action'">
 							</td>
 							
+							<!-- 수정 : 메인으로가기
+							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
+							<a href="/kong/order/main.action?currentPage=1"> 구매목록  </a>
+							</td>		
+								 -->			
 						</tr>
-						
-
+						<tr>
+							5초후에 메인으로 이동합니다.
+							<meta http-equiv="Refresh" content="5;url=/kong/main/main.action" >
+						</tr>
 					</tbody>
 				</table>
 	</center>
