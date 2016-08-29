@@ -4,18 +4,29 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-    <!---->
-<!--    <package name="showBoard" extends="struts-default">
-         전시글작성 
-        <action name="scwrit" class="admin.showcase.showcasewriteAction">
-            <result type="tiles">showboard_list</result> 전시글 작성후 메인이동 
-        </action>
-         전시글 수정 
-        <action name="scmodify" class="admin.showcase.showcasemodifyAction">
-            <result type="tiles">showboard_list</result> 전시글 작성후 메인이동 
-        </action>
+<!--<package name="showcase" namespace="/showcase" extends="struts-default">-->
+
+        <!-- 쓰기폼 -->
+<!--        <action name="scwrit_form" class="admin.showcase.showcasewriteAction" method="form">
+            <result type="redirect-action">
+                <param name="actionName"> 전시글리스트 </param>
+            </result>	
+        </action>-->
         
-    </package>-->
+        <!-- 쓰기 -->
+<!--        <action name="scwrit" class="admin.showcase.showcasewriteAction">
+            <result type="tiles"></result>
+        </action>-->
+
+        <!-- 수정폼 -->
+<!--        <action name="scmodify_form" class="admin.showcase.showcasemodifyAction" method="form">
+            <result type="tiles"></result>
+        </action>-->
+        
+        <!-- 수정 -->
+<!--        <action name="scmodify" class="admin.showcase.showcasemodifyAction">
+            <result type="tiles"></result>
+        </action>-->
     
     <!--     
          운영자 목록(수호)
