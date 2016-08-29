@@ -397,6 +397,7 @@ public class OrderProcessAction extends ActionSupport {
 		order_paramClass = new OrderVO();
 		show_paramClass = new showVO();
 		order_paramClass.setOrder_num(order_num);
+		order_paramClass.setStatus("티켓 취소");
 		sqlMapper.update("order.update_order", order_paramClass);
 		System.out.println("티켓 취소됨");
 		

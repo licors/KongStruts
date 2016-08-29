@@ -78,7 +78,7 @@
 	<!-- update (주문취소: order삭제가 아닌 status 값 수정) -->
 	<update id="update_order" parameterClass="orderBean">	<!-- orderProcess.java / orderCancel() -->
 		UPDATE "ORDER" SET
-		STATUS="주문취소"
+		STATUS=#status#
 		WHERE ORDER_NUM=#order_num#
 	</update>
 	
