@@ -4,5 +4,42 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 	
+    <package name="qna" namespace="/qna" extends="struts-default, tiles-default">
+        
+        <!-- 리스트 -->
+        <action name="qnalist" class="admin.qna.qnalistAction">
+            <!--<result>/admin/qna/qnalist.jsp</result>-->
+            <result type="tiles">qnalist</result>
+        </action>
+
+        <!-- 쓰기폼 -->
+        <action name="qnawrite_form" class="admin.qna.qnawriteAction" method="form">
+            <result>/admin/qna/qnawrite.jsp</result>	
+        </action>
+        
+        <!-- 쓰기 -->
+        <action name="qnawrite" class="admin.qna.qnawriteAction">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>	
+            <!--<result type="tiles"></result>-->
+        </action>
+
+        <!-- 수정폼 -->
+<!--        <action name="qnamodify_form" class="admin.qna.qnamodifyAction" method="form">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>	
+            <result type="tiles"></result>
+        </action>-->
+        
+        <!-- 수정 -->
+<!--        <action name="qnamodify" class="admin.qna.qnamodifyAction">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>	
+            <result type="tiles"></result>
+        </action>-->
+    </package>
+    
 </struts>

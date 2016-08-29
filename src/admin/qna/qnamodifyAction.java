@@ -32,6 +32,10 @@ public class qnamodifyAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new qnaVO();
@@ -42,7 +46,7 @@ public class qnamodifyAction extends ActionSupport {
         pc.setContent(getContent());
 
         sql.update("qna.update", pc);
-        
+
         rc = (qnaVO) sql.queryForObject("qna.selectOne", getQna_num());
 
         return SUCCESS;

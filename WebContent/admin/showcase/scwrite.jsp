@@ -77,9 +77,9 @@
                         <td width="500" bgcolor="#FFFFFF">
                             <select name="showboard_category" size="1" >
                                 <option value="">카테고리</option>
-                                <option value="showcase">전시</option>
-                                <option value="art">미술</option>
-                                <option value="event">이벤트</option>
+                                <option value="전시">전시</option>
+                                <option value="미술">미술</option>
+                                <option value="이벤트">이벤트</option>
                             </select>                        
                         </td>
                     </tr>
@@ -91,6 +91,15 @@
                         <td width="500" bgcolor="#FFFFFF">
                             <input class="input" type="text" name="address1" value="<s:property value="rc.address1"/>" size="20" maxlength="50"/><br>
                             <input class="input" type="text" name="address2" value="<s:property value="rc.address2"/>" size="20" maxlength="50"/>
+                        </td>
+                    </tr>
+                    <tr bgcolor="#777777"><!-- 전시기간 -->
+                        <td height="1" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>일정</td>
+                        <td width="500" bgcolor="#FFFFFF">
+                            <input class="input" type="text" name="date" value="<s:property value="rc.date"/>" size="20" maxlength="50"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 입장료 -->
@@ -178,7 +187,7 @@
                         <td align="right" colspan="2">
                             <input name="submit" type="submit" value="작성" class="write">
                             <input name="list" type="button" value="돌아가기" class="list" 
-                                   onClick="javascript:location.href = '메인 링크'">
+                                   onClick="javascript:location.href = ''">
                         </td>
                     </tr>
                 </table>

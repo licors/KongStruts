@@ -32,6 +32,10 @@ public class qnawriteAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new qnaVO();
@@ -39,7 +43,7 @@ public class qnawriteAction extends ActionSupport {
 
         pc.setSubject(getSubject());
         pc.setContent(getContent());
-        
+
         sql.insert("qna.insert", pc);
 
         return SUCCESS;

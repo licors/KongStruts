@@ -6,18 +6,15 @@
 package admin.showcase;
 
 import admin.path;
-import static admin.support.supportlistAction.sql;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import member.MemberVO;
 import org.apache.commons.io.FileUtils;
 
@@ -59,10 +56,10 @@ public class showcasewriteAction extends ActionSupport {
     }
 
     public String form() throws Exception {
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.adminCheck", sessionid);
+//        ActionContext context = ActionContext.getContext();
+//        Map<String, Object> session = context.getSession();
+//        int sessionid = (Integer) session.get("member_num");
+//        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
 
         return SUCCESS;
     }
@@ -72,6 +69,7 @@ public class showcasewriteAction extends ActionSupport {
         pc = new showVO();
         rc = new showVO();
 
+        System.out.println("ddd:" + toString());
         pc.setSubject(getSubject());
         pc.setAddress1(getAddress1());
         pc.setAddress2(getAddress2());
@@ -81,6 +79,7 @@ public class showcasewriteAction extends ActionSupport {
         pc.setTag(getTag());
         pc.setContent(getContent());
         pc.setShowboard_category(getShowboard_category());
+        pc.setMap(getMap());
         sql.insert("show.insert", pc);
         pc = (showVO) sql.queryForObject("show.selectLastNo");
 
@@ -106,6 +105,11 @@ public class showcasewriteAction extends ActionSupport {
 
         }
         return SUCCESS;
+    }
+
+    @Override
+    public String toString() {
+        return "showcasewriteAction{" + "pay=" + pay + ", readCount=" + readCount + ", orderCount=" + orderCount + ", subject=" + subject + ", address1=" + address1 + ", address2=" + address2 + ", tel=" + tel + ", tag=" + tag + ", content=" + content + ", file_orgname=" + file_orgname + ", file_savname=" + file_savname + ", map=" + map + ", date=" + date + ", showboard_category=" + showboard_category + '}';
     }
 
     public showVO getPc() {

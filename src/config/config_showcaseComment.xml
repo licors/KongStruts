@@ -4,8 +4,8 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 <package name="showcaseCommentBoard" namespace="/comment" extends="struts-default">
-		<action name="listAction" class="showcase.CommentListAction">
+	 <!--<package name="showcaseCommentBoard" namespace="/comment" extends="struts-default">-->
+<!--		<action name="listAction" class="showcase.CommentListAction">
 			<result>/showcase/listComment.jsp</result>
 		</action>
 		
@@ -17,7 +17,7 @@
 			<result type="redirect-action">
 				<param name="actionName">listAction</param>
 			</result>
-		</action>
+		</action>-->
 		
 	<!-- 	<action name="deleteAction" class="showcase.CommentDeleteAction">
 			<result type="redirect-action">
@@ -27,5 +27,5 @@
 				세션에 있는 유저정보와	해당코맨트 작성자가 불일치하는 경우		
 			</result>
 		</action> -->
-	</package>
+	<!--</package>-->
 </struts>

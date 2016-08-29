@@ -41,7 +41,7 @@
     <!-- insert Äõ¸®¹® Á¤ÀÇ -->
     <insert id="insert" parameterClass="notice">
         INSERT INTO NOTICE (notice_num, subject, content, reg_date, readcount)
-        VALUES(#notice_num#, #subject#, #content#, #reg_date#, #readcount#)
+        VALUES(notice_num_seq.NEXTVAL, #subject#, #content#, #reg_date#, #readcount#)
     </insert>
 
     <!-- update Äõ¸®¹® Á¤ÀÇ -->
