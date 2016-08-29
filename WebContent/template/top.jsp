@@ -51,7 +51,7 @@ function logout(){
        		 <div class="searchKeyword">
         			<form name="findshowcase" action="showboardL.action" method="post" >
             			<input type="text" name="searchKeyword" size="10" value=""/>
-                		<input type="submit" value=""/> 
+                		<input type="submit" value="검색"/> 
            			 </form>
        		 </div>
        		 
