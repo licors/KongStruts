@@ -24,7 +24,16 @@
                 org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG
             </param-name>
             <param-value>
-                /WEB-INF/tiles/tiles-main.xml,/WEB-INF/tiles/tiles-qna.xml
+                /WEB-INF/tiles/tiles-main.xml,
+                /WEB-INF/tiles/tiles-basket.xml,
+                /WEB-INF/tiles/tiles-member.xml,
+                /WEB-INF/tiles/tiles-notice.xml,
+                /WEB-INF/tiles/tiles-order.xml,
+                /WEB-INF/tiles/tiles-qna.xml,
+                /WEB-INF/tiles/tiles-showcase.xml,
+                /WEB-INF/tiles/tiles-showcaseComment.xml,
+                /WEB-INF/tiles/tiles-showcaseDetail.xml,
+                /WEB-INF/tiles/tiles-support.xml
             </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
