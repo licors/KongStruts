@@ -31,7 +31,7 @@
 		on bs.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
 	</sql>
 
-	<select id="basketList" resultMap="basketRes" parameterClass="int">
+	<select id="basket_list" resultMap="basketRes" parameterClass="int">
 		<include refid="select-all"/>
 		and bs.member_num=#member_num#
 		ORDER BY basket_num DESC
