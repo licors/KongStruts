@@ -49,7 +49,7 @@ function logout(){
 				<a href="main.action">
 	        	</a>
        		 <div class="searchKeyword">
-        			<form name="findshowcase" action="showboardL.action" method="post" >
+        			<form name="findshowcase" action="showcaselist.action" method="post" >
             			<input type="text" name="searchKeyword" size="10" value=""/>
                 		<input type="submit" value="검색"/> 
            			 </form>
@@ -84,24 +84,44 @@ function logout(){
 		</div> --%>
 		             <div class="memberArea">
              	<ul>
-             	    <s:if test="memresultClass.getEmail() == 'admin'">
+             	    <!-- #####관리자일 때##### -->
+             	    <s:if test="memresultClass.getEmail() == 'admin'">    <!-- admin 맞나? -->
                 	<li><input type="button" value="로그아웃" onclick="return logout()"/></li>
-                	<li><a href="adminmemberL.action"><input type="button" value="회원목록"/></a></li>
-                	<li><a href="adminorderL.action"><input type="button" value="주문목록"/></a></li>
-                	<li><a href="admingoodsL.action"><input type="button" value="행사목록"/></a></li>
+                	<!-- <li><a href="adminmemberL.action"><input type="button" value="회원목록"/></a></li> -->
+                	<li><input type="button" value="회원목록" onClick="javascript:location.href='memberLoginForm.action'"> <!-- 관리자 회원목록리스트 경로수정필요(수호 0829) -->
+                	<!-- <li><a href="adminorderL.action"><input type="button" value="주문목록"/></a></li> -->
+                	<li><input type="button" value="주문목록" onClick="javascript:location.href='orderList.action'"> <!-- 관리자 주문목록리스트 경로수정필요(수호 0829) -->
+                	<!-- <li><a href="admingoodsL.action"><input type="button" value="행사목록"/></a></li> -->
+                    <li><input type="button" value="행사목록" onClick="javascript:location.href='scwrit_form.action'"> <!-- 관리자 상품리스트 경로수정필요(수호 0829) -->
                 	</s:if>
+                	
+                	
+                	
+                	
+                	<!-- #####회원일 때##### -->
       				<s:else>
       				<s:if test="memresultClass.getEmail() != null">
                 	<li><input type="button"  value="로그아웃" onclick="return logout()"/></li>
-                	<li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li> <!-- //memberMF 액션경로 수정필요 -->
-                	<li><a href="basketL.action"><input type="button" value="장바구니" /></a></li>  <!-- basketL 액션경로 수정필요 -->
-                    <li><a href="orderList.action"><input type="button" value="주문목록"/></a></li>
+                	<!-- <li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li>  -->
+                	<li><input type="button" value="회원정보 수정" onClick="javascript:location.href='memberLoginForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
+
+                	<!-- <li><a href="basketL.action"><input type="button" value="장바구니" /></a></li> -->
+                	<li><input type="button" value="장바구니" onClick="javascript:location.href='basketList.action'"><!-- 장바구니리스트로 경로 수정필요(수호 0829) -->
+                    <!-- <li><a href="orderList.action"><input type="button" value="주문목록"/></a></li> -->
+                    <li><input type="button" value="주문목록" onClick="javascript:location.href='orderList.action'">
                 	</s:if>
+                	
+                	
+                	
+                	
+                	<!-- #####비회원일 때##### -->
                 	<s:else>
-      				<li><a href="memberLoginForm.action"><input type="button" value="로그인"  /></a></li>
-                    <li><a href="memberJoinForm.action"><input type="button" value="회원가입" /></a></li>     <!-- joinRule.action 이용약관 동의처리로가는 액션명 수정필요 -->
-                    <li><input type="button" class="basket" value="장바구니" onclick="return basketlogin()"/></li>
-                    <li><input type="button" class="order" value="주문목록" onclick="return buylogin()"></li>
+      				<!-- <li><a href="memberLoginForm.action"><input type="button" value="로그인"  /></a></li> -->
+      				<li><input type="button" value="로그인" onClick="javascript:location.href='memberLoginForm.action'">
+                    <!--  <li><a href="memberJoinForm.action"><input type="button" value="회원가입" /></a></li> -->
+                    <li><input type="button" value="회원가입" onClick="javascript:location.href='memberJoinForm.action'">
+                    <li><input type="button" value="장바구니" onclick="return basketlogin()"/></li>
+                    <li><input type="button" value="주문목록" onclick="return buylogin()"></li>
                     </s:else>
                     </s:else>
                 </ul>
