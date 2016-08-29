@@ -86,7 +86,7 @@ public class OrderFormAction extends ActionSupport {
 		// 상품번호로 상품정보 꺼내오기
 		show_paramClass.setShowboard_num(getShowboard_num());
 		show_resultClass = (showVO) sqlMapper.queryForObject(
-				"show.selectOne", show_paramClass);
+				"show.selectOne", show_paramClass.getShowboard_num());
 		
 		showboard_num = show_paramClass.getShowboard_num();
 
