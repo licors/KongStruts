@@ -99,7 +99,7 @@ function logout(){
                 	</s:if>
                 	<s:else>
       				<li><a href="memberLoginForm.action"><input type="button" value="로그인"  /></a></li>
-                    <li><a href="joinRule.action"><input type="button" value="회원가입" /></a></li>     <!-- joinRule.action 이용약관 동의처리로가는 액션명 수정필요 -->
+                    <li><a href="memberJoinForm.action"><input type="button" value="회원가입" /></a></li>     <!-- joinRule.action 이용약관 동의처리로가는 액션명 수정필요 -->
                     <li><input type="button" class="basket" value="장바구니" onclick="return basketlogin()"/></li>
                     <li><input type="button" class="order" value="주문목록" onclick="return buylogin()"></li>
                     </s:else>
