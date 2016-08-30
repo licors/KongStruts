@@ -16,16 +16,26 @@
 <script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
 <script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
 <script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script src="../js/google_map.js" type="text/javascript"></script>
- 
-
+<%-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> --%>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRSeEVl3pSPGUVWwW4DSwZNDu0Q3AuSpc"></script> 
+<%-- <script src="../js/google_map.js" type="text/javascript"></script> --%>
 <link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen">
 
 <script type="text/javascript">
     $(function() {
       $('#container-5').tabs({ fxSlide: true, fxFade: true, fxSpeed: 'normal' });
     });
+    
+    var map;
+    function initialize() {
+      var mapOptions = {
+        zoom: 16,
+        center: new google.maps.LatLng(35.87110100714382, 128.60169690333006)
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+          mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 </head>
 
@@ -97,7 +107,8 @@
 				    
 				    
 				    <div id="fragment-15">
-				         <div id="map_view" style="width:500px; height:300px;"></div>
+				         <!-- <div id="map_view" style="width:500px; height:300px;"></div> -->
+				         <div id="map-canvas" style="height:300px; width:500px"></div>
 				    </div>
 				    
 				    
