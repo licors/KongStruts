@@ -10,11 +10,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
 <title>전시 상세보기</title>
 <script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
 <script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
 <script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="../js/google_map.js" type="text/javascript"></script>
  
 
 <link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen">
@@ -81,12 +84,26 @@
 						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0">
 						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0"> 
 				    </div>
+				    
+				    
+				    
+				    
 				    <div id="fragment-14">
 				        두번째 탭 
 				    </div>
+				    
+				    
+				    
+				    
+				    
 				    <div id="fragment-15">
-				         세번째 탭
+				         <div id="map_view" style="width:500px; height:300px;"></div>
 				    </div>
+				    
+				    
+				    
+				    
+				    
 				    <div id="fragment-12">
 				        <!-- 코멘트 입력 폼 -->
 						<form name="commentForm" action="/kong/showcase/commentWriteAction.action" method="post" onsubmit="return validation();">
