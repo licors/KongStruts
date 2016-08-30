@@ -41,7 +41,7 @@
     <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="notice">
         INSERT INTO NOTICE (notice_num, subject, content, reg_date, readcount)
-        VALUES(#notice_num#, #subject#, #content#, #reg_date#, #readcount#)
+        VALUES(notice_num_seq.NEXTVAL, #subject#, #content#, #reg_date#, #readcount#)
     </insert>
 
     <!-- update 쿼리문 정의 -->
@@ -51,9 +51,9 @@
         content=#content#
         <include refid="where-no"/>
     </update>
-    
-    <update id="readcount" parameterClass="notice"><!-- 조회수증가 -->
-        UPDATE NOTICE SET readcount = readcount + 1
+    <!-- 조회수증가 -->
+    <update id="readcount" parameterClass="notice">
+        UPDATE NOTICE SET readcount = #readcount# + 1
         <include refid="where-no"/>
     </update>
 

@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class noticeVO {
 
-    private int notice_num, readCount;
+    private int notice_num, readcount;
     private Date reg_date;
     private String subject, content;
 
@@ -33,12 +33,12 @@ public class noticeVO {
         this.reg_date = reg_date;
     }
 
-    public int getReadCount() {
-        return readCount;
+    public int getReadcount() {
+        return readcount;
     }
 
-    public void setReadCount(int readCount) {
-        this.readCount = readCount;
+    public void setReadcount(int readcount) {
+        this.readcount = readcount;
     }
 
     public String getSubject() {

@@ -24,15 +24,15 @@
     
     <!-- where 정의 -->
     <sql id="where-no">
-        WHERE ref_num=#ref_num#
+        WHERE support_num=#support_num#
     </sql>
 
     <!-- select 쿼리문 정의 -->
-    <select id="selectall" resultMap="supportRes"><!-- 관리자용 -->
+    <select id="selectall" resultMap="Res"><!-- 관리자용 -->
         <include refid="select-all"/>
         ORDER BY ref DESC, re_step ASC
     </select>
-    <select id="selectmemberall" resultMap="supportRes"><!-- 유저용 -->
+    <select id="selectmemberall" resultMap="Res"><!-- 유저용 -->
         <include refid="select-all"/>
         WHERE MEMBER_NUM=#MEMBER_NUM#
         ORDER BY ref DESC, re_step ASC
@@ -42,15 +42,15 @@
         WHERE
         type=#type#
     </select>--><!-- 미사용 -->
-    <select id="selectOne" resultMap="supportRes">
+    <select id="selectOne" resultMap="Res">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
 
     <!-- insert 쿼리문 정의 -->
-    <insert id="insert" parameterClass="support"> support_num, ref_num, member_num, type, email, content, reg_date, re_step, re_level
-        INSERT INTO SUPPORT (ref_num, member_num, type, email, content, reg_date, re_step, re_level)
-        VALUES(#ref_num#, #member_num#, #type#, #email#, #content#, #reg_date#, #re_step#, #re_level#)
+    <insert id="insert" parameterClass="support">
+        INSERT INTO SUPPORT (support_num, member_num, type, email, content, reg_date, re_step, re_level)
+        VALUES(ref_num_seq.NEXTVAL, #member_num#, #type#, #email#, #content#, #reg_date#, #re_step#, #re_level#)
     </insert>
 
     <!-- update 쿼리문 정의 -->

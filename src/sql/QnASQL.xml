@@ -22,7 +22,7 @@
     </sql>
 
     <!-- select 쿼리문 정의 -->
-    <select id="selectall" resultMap="qnaRes">
+    <select id="selectall" resultMap="Res">
         <include refid="select-all"/>
         ORDER BY qna_num DESC
     </select>
@@ -31,7 +31,7 @@
         WHERE
         type=#type#
     </select>--><!-- 미사용 -->
-    <select id="selectOne" resultMap="qnaRes">
+    <select id="selectOne" resultMap="Res">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
@@ -39,7 +39,7 @@
     <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="qna">
         INSERT INTO QNA (qna_num, subject, content)
-        VALUES(#qna_num#, #subject#, #content#)
+        VALUES(qna_num_seq.NEXTVAL, #subject#, #content#)
     </insert>
 
     <!-- update 쿼리문 정의 -->

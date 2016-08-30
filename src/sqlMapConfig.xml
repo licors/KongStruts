@@ -22,13 +22,15 @@
 	
     <!-- 여기에 각자 필요한 데이터베이스 쿼리문 작성해서 올려주세요 -->
     <!-- 제가 했습니다... -->
+    <sqlMap resource="/sql/memberSQL.xml"/>
+    <sqlMap resource="/sql/showcaseCommentSQL.xml"/> 
+    <sqlMap resource="/sql/ShowcaseSQL.xml"/>
+    
     <sqlMap resource="/sql/NoticeSQL.xml"/>
     <sqlMap resource="/sql/QnASQL.xml"/>
-    <sqlMap resource="/sql/ShowcaseSQL.xml"/>
     <sqlMap resource="/sql/SupportSQL.xml"/>
     <sqlMap resource="/sql/basketSQL.xml"/>
-    <sqlMap resource="/sql/memberSQL.xml"/>
     <sqlMap resource="/sql/orderSQL.xml"/>
-    <sqlMap resource="/sql/showcaseCommentSQL.xml"/> 
+    
 
 </sqlMapConfig>
