@@ -74,6 +74,7 @@
 				    </ul>
 				    <div id="fragment-13">
 				      	<s:property value="resultClass.content" />
+				      	${content}
 						
 						<!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
 						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0">
@@ -87,92 +88,92 @@
 				         세번째 탭
 				    </div>
 				    <div id="fragment-12">
-				         네번째 탭
+				        <!-- 코멘트 입력 폼 -->
+						<form name="commentForm" action="/kong/showcase/commentWriteAction.action" method="post" onsubmit="return validation();">
+						  <s:hidden name="showboard_num" value="%{showboard_num}" />
+						
+						<table width="600" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td align="right" colspan="2"><font color="#FF0000">*</font> 는 필수 입력사항</td>
+							</tr>
+							<tr bgcolor="#777777">
+								<td height="1" colspan="2"></td>
+							</tr>
+							<tr>
+								<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>내용</td>
+								<td bgcolor="#FFFFFF">
+									<s:textarea name="content" value="%{resultClass.content}" cols="50" rows="10"></s:textarea>
+								</td>
+							</tr>
+							<tr bgcolor="#777777">
+								<td height="1" colspan="2"></td>
+							</tr>
+							<tr>
+								<td height="10" colspan="2"></td>
+							</tr>
+							<tr>
+								<td align="right" colspan="2">
+									<input name="submit" type="submit" value="댓글입력" class="inputb">
+								</td>
+							</tr>	
+						</table>
+						</form>
+						
+						<!-- 코멘트 리스트 -->
+						<table width="600" border="0" cellspacing="0" cellpadding="2">
+							<tr align="center" bgcolor="#f3f3f3">
+								<td width="350"><strong>내용</strong></td>
+								<td width="70"><strong>글쓴이</strong></td>
+								<td width="80"><strong>날짜</strong></td>
+							</tr>
+					
+							<tr bgcolor="#777777">
+								<td height="1" colspan="5"></td>
+							</tr>
+					
+							<s:iterator value="list" status="stat">
+								<s:url id="viewURL" action="viewAction">
+									<s:param name="no">
+										<s:property value="no" />
+									</s:param>
+									<s:param name="currentPage">
+										<s:property value="currentPage" />
+									</s:param>
+								</s:url>
+							
+								<tr>
+									<td align="left">
+										<s:if test="re_level != 0"> 
+											<c:forEach var = "i" begin = "${re_level}" end = "0">&nbsp;</c:forEach>→
+										</s:if>	
+						 				<s:property value="content" />
+						 			</td>
+									<td><s:property value="name" /></td>
+									<td><s:property value="reg_date" /></td>
+								</tr>
+						
+								<tr bgcolor="#777777">
+									<td height="1" colspan="5"></td>
+								</tr>
+						
+							</s:iterator>
+						
+							<s:if test="list.size() <= 0">
+								<tr>
+									<td colspan="5" align="center">등록된 게시물이 없습니다</td>
+								</tr>
+							</s:if>
+						
+							<tr align="center">
+								<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
+							</tr>
 				    </div>
 				</div>
 			</td>
 		</tr>
 	</table>
 	
-	<!-- 코멘트 입력 폼 -->
-	<form name="commentForm" action="/kong/showcase/commentWriteAction.action" method="post" onsubmit="return validation();">
-	  <s:hidden name="showboard_num" value="%{showboard_num}" />
 	
-	<table width="600" border="0" cellspacing="0" cellpadding="0">
-		<tr>
-			<td align="right" colspan="2"><font color="#FF0000">*</font> 는 필수 입력사항</td>
-		</tr>
-		<tr bgcolor="#777777">
-			<td height="1" colspan="2"></td>
-		</tr>
-		<tr>
-			<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>내용</td>
-			<td bgcolor="#FFFFFF">
-				<s:textarea name="content" value="%{resultClass.content}" cols="50" rows="10"></s:textarea>
-			</td>
-		</tr>
-		<tr bgcolor="#777777">
-			<td height="1" colspan="2"></td>
-		</tr>
-		<tr>
-			<td height="10" colspan="2"></td>
-		</tr>
-		<tr>
-			<td align="right" colspan="2">
-				<input name="submit" type="submit" value="댓글입력" class="inputb">
-			</td>
-		</tr>	
-	</table>
-	</form>
-	
-	<!-- 코멘트 리스트 -->
-	<table width="600" border="0" cellspacing="0" cellpadding="2">
-		<tr align="center" bgcolor="#f3f3f3">
-			<td width="350"><strong>내용</strong></td>
-			<td width="70"><strong>글쓴이</strong></td>
-			<td width="80"><strong>날짜</strong></td>
-		</tr>
-
-		<tr bgcolor="#777777">
-			<td height="1" colspan="5"></td>
-		</tr>
-
-		<s:iterator value="list" status="stat">
-			<s:url id="viewURL" action="viewAction">
-				<s:param name="no">
-					<s:property value="no" />
-				</s:param>
-				<s:param name="currentPage">
-					<s:property value="currentPage" />
-				</s:param>
-			</s:url>
-		
-			<tr>
-				<td align="left">
-					<s:if test="re_level != 0"> 
-						<c:forEach var = "i" begin = "${re_level}" end = "0">&nbsp;</c:forEach>→
-					</s:if>	
-	 				<s:property value="content" />
-	 			</td>
-				<td><s:property value="name" /></td>
-				<td><s:property value="reg_date" /></td>
-			</tr>
-	
-			<tr bgcolor="#777777">
-				<td height="1" colspan="5"></td>
-			</tr>
-	
-		</s:iterator>
-	
-		<s:if test="list.size() <= 0">
-			<tr>
-				<td colspan="5" align="center">등록된 게시물이 없습니다</td>
-			</tr>
-		</s:if>
-	
-		<tr align="center">
-			<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
-		</tr>
 	
 		<%-- <tr align="right">
 			<td colspan="5">

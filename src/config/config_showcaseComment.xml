@@ -4,9 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 <package name="showcaseCommentBoard" namespace="/comment" extends="struts-default, tiles-default">
+	 <!-- <package name="showcaseCommentBoard" namespace="/comment" extends="struts-default, tiles-default">
 		<action name="listAction" class="showcase.CommentListAction">
-			<!-- <result>/showcase/listComment.jsp</result> -->
+			<result>/showcase/listComment.jsp</result>
 			<interceptor-ref name="chain"></interceptor-ref>
 			<result type="tiles">showcaseView</result>
 		</action>
@@ -21,13 +21,13 @@
 			</result>
 		</action>
 		
-	<!-- 	<action name="deleteAction" class="showcase.CommentDeleteAction">
+	 	<action name="deleteAction" class="showcase.CommentDeleteAction">
 			<result type="redirect-action">
 				<param name="actionName">listAction</param>
 			</result>
 			<result type="ERROR">
 				세션에 있는 유저정보와	해당코맨트 작성자가 불일치하는 경우		
 			</result>
-		</action> -->
-	</package>
+		</action>
+	</package> -->
 </struts>
