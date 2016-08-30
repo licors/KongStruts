@@ -57,7 +57,7 @@ public class AddBasketAction extends ActionSupport {
 		paramBas.setShowboard_num(getShowboard_num());
 		paramBas.setBasket_date(today.getTime());
 
-		sqlMapper.insert("basketInsert", paramBas);
+		sqlMapper.insert("basket.basketInsert", paramBas);
 		return SUCCESS;
 	}
 

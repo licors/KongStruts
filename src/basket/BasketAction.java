@@ -91,7 +91,7 @@ public class BasketAction extends ActionSupport {
 				sessionid);
 		basketList = sqlMapper.queryForList("basket.basket_list", sessionid);
 		paramBas.setBasket_num(basket_num);
-		sqlMapper.delete("basketDelete", paramBas);
+		sqlMapper.delete("basket.basketDelete", paramBas);
 		return SUCCESS;
 	}
 
