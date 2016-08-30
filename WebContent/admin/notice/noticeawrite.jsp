@@ -1,6 +1,6 @@
 <%-- 
-    Document   : qnawrite
-    Created on : 2016. 8. 29, 오후 3:53:24
+    Document   : noticeawrite
+    Created on : 2016. 8. 30, 오후 7:21:13
     Author     : user2
 --%>
 
@@ -14,10 +14,10 @@
         <title>QnA 추가</title>
         <script type="text/javascript">
             function check() {
-                var frm = document.qnawrite;
+                var frm = document.scwrite;
 
-                if (frm.type.value == "") {
-                    alert("문의분류를 선택해주세요.");
+                if (frm.subject.value == "") {
+                    alert("제목을 입력해주세요.");
                     return false;
                 } else if (frm.content.value == "") {
                     alert("내용을 입력해주세요.");
@@ -28,10 +28,10 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="qnawrite" action="qnawrite.action" method="post" onsubmit="return check()">
+            <form name="noticewrite" action="noticewrite.action" method="post" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="qnamodify" action="qnamodify.action" method="post" onsubmit="return check()">
+                <form name="noticemodify" action="noticemodify.action" method="post" onsubmit="return check()">
                 </s:else>
                 <table align="center" width="600">
                     <tr>
@@ -39,11 +39,11 @@
                             <font color="#FF0000">*</font>는 필수 입력 사항입니다.
                         </td>
                     </tr>
-                    <tr bgcolor="#777777"><!-- q -->
+                    <tr bgcolor="#777777"><!-- 제목 -->
                         <td height="1" colspan="2"></td>
                     </tr>
                     <tr>
-                        <td width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>Q.</td>
+                        <td width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>제목</td>
                         <td width="420" bgcolor="#FFFFFF">
                             <s:if test="rc == null">
                                 <input class="input" type="text" name="subject" value="" size="20" maxlength="50"/>
@@ -57,7 +57,7 @@
                         <td height="1" colspan="2"></td>
                     </tr>
                     <tr>
-                        <td rowspan="2" width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>A.</td>
+                        <td rowspan="2" width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</td>
                         <td rowspan="2" width="420" bgcolor="#FFFFFF">
                             <s:if test="rc == null">
                                 <textarea name="content" cols="57" rows="10"></textarea> 

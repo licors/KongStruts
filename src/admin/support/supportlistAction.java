@@ -50,8 +50,8 @@ public class supportlistAction extends ActionSupport {
 
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.adminCheck", sessionid);
+        int sessionid = (Integer) session.get("member_num");
+        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
         if (mc.getAdmin() > 0) { //운영자 구분 1이면 운영자임
             list = sql.queryForList("support.selectall"); //관리자용
         } else {

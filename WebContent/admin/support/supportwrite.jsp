@@ -14,7 +14,7 @@
         <title>문의하기</title>
         <script type="text/javascript">
             function check() {
-                var frm = document.scwrite;
+                var frm = document.supportwrite;
 
                 if (frm.type.value == "") {
                     alert("문의분류를 선택해주세요.");

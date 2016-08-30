@@ -4,5 +4,33 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 	
+    <package name="notice" namespace="/notice" extends="struts-default, tiles-default">
+        <!-- 테스트용 메인리스트 -->
+        <action name="noticelist" class="admin.notice.noticelistAction">
+            <result type="tiles">notice_list</result>
+        </action>
+
+        <!-- 쓰기폼 -->
+        <action name="noticewrite_form" class="admin.notice.noticewriteAction" method="form">
+            <result>/admin/notice/noticeawrite.jsp</result>	
+        </action>
+        
+        <!-- 쓰기 -->
+        <action name="noticewrite" class="admin.notice.noticewriteAction">
+            <result type="redirect-action">
+                <param name="actionName">noticelist</param>
+            </result>	
+            <!--<result type="tiles"></result>-->
+        </action>
+        
+        <!-- 읽기 -->
+        <action name="noticeread" class="admin.notice.noticeviewAction">
+            <result type="tiles">notice_view</result>
+        </action>
+        
+        <!-- 수정 -->
+        <action name="noticemodify_form" class="admin.notice.noticemodifyAction">
+            <result>/admin/notice/noticemodify.jsp</result>
+        </action>
+    </package>
 </struts>

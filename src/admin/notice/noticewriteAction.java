@@ -35,6 +35,10 @@ public class noticewriteAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new noticeVO();

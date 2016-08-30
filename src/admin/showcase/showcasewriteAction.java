@@ -61,8 +61,8 @@ public class showcasewriteAction extends ActionSupport {
     public String form() throws Exception {
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.adminCheck", sessionid);
+        int sessionid = (Integer) session.get("member_num");
+        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
 
         return SUCCESS;
     }

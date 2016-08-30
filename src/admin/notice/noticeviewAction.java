@@ -23,7 +23,8 @@ public class noticeviewAction extends ActionSupport {
     public static SqlMapClient sql;
     private noticeVO pc, rc;
 
-    private int notice_num, readCount;
+    private int notice_num;
+    private int currentPage = 1;
 
     public noticeviewAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
@@ -39,17 +40,16 @@ public class noticeviewAction extends ActionSupport {
         pc.setNotice_num(getNotice_num());
         sql.update("notice.readcount", pc);
 
-        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
+        currentPage = getCurrentPage();
+
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", pc);
 
         return SUCCESS;
     }
 
-    public int getReadCount() {
-        return readCount;
-    }
-
-    public void setReadCount(int readCount) {
-        this.readCount = readCount;
+    @Override
+    public String toString() {
+        return "noticeviewAction{" + "notice_num=" + notice_num + ", currentPage=" + currentPage + '}';
     }
 
     public noticeVO getPc() {
@@ -74,6 +74,14 @@ public class noticeviewAction extends ActionSupport {
 
     public void setNotice_num(int notice_num) {
         this.notice_num = notice_num;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
 }
