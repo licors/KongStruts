@@ -6,15 +6,6 @@
 <%@ page import = "java.util.HashMap" %>	
 
 <script>
-/* function basketlogin(){
-	alert("로그인을 하셔야 볼 수 있습니다");
-	window.location.href='basketLOF.action';
-}
-function buylogin(){
-	alert("로그인을 하셔야 볼 수 있습니다");
-	window.location.href='buyLOF.action';
-} */
-
 function basketlogin(){
 	alert("로그인을 하셔야 볼 수 있습니다");
 	window.location.href='memberLoginForm.action';
@@ -85,7 +76,7 @@ function logout(){
 		             <div class="memberArea">
              	<ul>
              	    <!-- #####관리자일 때##### -->
-             	    <s:if test="memresultClass.getEmail() == 'admin'">    <!-- admin 맞나? -->
+             	    <s:if test="memresultClass.getEmail() == 'admin@localhot'">
                 	<li><input type="button" value="로그아웃" onclick="return logout()"/></li>
                 	<!-- <li><a href="adminmemberL.action"><input type="button" value="회원목록"/></a></li> -->
                 	<li><input type="button" value="회원목록" onClick="javascript:location.href='memberLoginForm.action'"> <!-- 관리자 회원목록리스트 경로수정필요(수호 0829) -->
