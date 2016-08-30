@@ -8,27 +8,32 @@
 <html>
 
 <head>
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
 
 	<title><tiles:getAsString name="title"/></title>
 
-	<script type="text/javascript" src="js/index.js"></script>
+	<%-- <script type="text/javascript" src="js/index.js"></script> --%>
 
 </head>
 
 
 <body>
 	
-	<div id="wrap">
-		<div id="header">
+<!-- 	<div id="wrap">
+		<div id="header"> -->
+		<div>
+		<div>
     	    <tiles:insertAttribute name="top" />
  		</div>
 	</div>
 
 	<br /><br />
-	<div id="wrap">
-		<div id="content_wrap">
-		<div id="main_content">
+<!-- 	<div id="wrap">
+ 		<div id="content_wrap">
+		<div id="main_content"> -->
+		<div>
+		<div>
+		<div>
 			<tiles:insertAttribute name="body" />
 		</div>
 		</div>
@@ -36,8 +41,10 @@
 
 	<br /><br />
 	
-	<div id="wrap">
-		<div id="footer">
+<!-- 	<div id="wrap">
+		<div id="footer"> -->
+		<div>
+		<div>
 			<tiles:insertAttribute name="bottom" />
 		</div>
 	</div>
