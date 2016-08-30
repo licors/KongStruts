@@ -2,32 +2,33 @@
 <!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
-	<properties resource="/dbconnect.properties"/>
-	<settings cacheModelsEnabled="true"
-			enhancementEnabled="true"
-			lazyLoadingEnabled="true"
-			maxRequests="32"
-			maxSessions="10"
-			maxTransactions="5"
-			useStatementNamespaces="true" />
+    <properties resource="/dbconnect.properties"/>
+    <settings cacheModelsEnabled="true"
+                  enhancementEnabled="true"
+                  lazyLoadingEnabled="true"
+                  maxRequests="32"
+                  maxSessions="10"
+                  maxTransactions="5"
+                  useStatementNamespaces="true" />
 			
-	<transactionManager type="JDBC" commitRequired="false">
-		<dataSource type="SIMPLE">
-			<property name="JDBC.Driver" value="${driver}"/>
-			<property name="JDBC.ConnectionURL" value="${url}"/>
-			<property name="JDBC.Username" value="${username}"/>
-			<property name="JDBC.Password" value="${password}"/>
-		</dataSource>
-	</transactionManager>
+    <transactionManager type="JDBC" commitRequired="false">
+        <dataSource type="SIMPLE">
+            <property name="JDBC.Driver" value="${driver}"/>
+            <property name="JDBC.ConnectionURL" value="${url}"/>
+            <property name="JDBC.Username" value="${username}"/>
+            <property name="JDBC.Password" value="${password}"/>
+        </dataSource>
+    </transactionManager>
 	
-	<!-- 여기에 각자 필요한 데이터베이스 쿼리문 작성해서 올려주세요 -->
-	
+    <!-- 여기에 각자 필요한 데이터베이스 쿼리문 작성해서 올려주세요 -->
+    <!-- 제가 했습니다... -->
+    <sqlMap resource="/sql/NoticeSQL.xml"/>
+    <sqlMap resource="/sql/QnASQL.xml"/>
+    <sqlMap resource="/sql/ShowcaseSQL.xml"/>
+    <sqlMap resource="/sql/SupportSQL.xml"/>
+    <sqlMap resource="/sql/basketSQL.xml"/>
+    <sqlMap resource="/sql/memberSQL.xml"/>
+    <sqlMap resource="/sql/orderSQL.xml"/>
+    <sqlMap resource="/sql/showcaseCommentSQL.xml"/> 
 
-	<sqlMap resource="/sql/showcaseCommentSQL.xml"/> 
-	<sqlMap resource="/sql/ShowcaseSQL.xml"/>  <!-- 수호 -->
-	<sqlMap resource="/sql/orderSQL.xml"/>	<!-- 주문(신청티켓) -->
-	<sqlMap resource="/sql/basketSQL.xml"/> <!-- 장바구니(관심티켓) -->
-	<sqlMap resource="/sql/memberSQL.xml"/>
-	
-	
 </sqlMapConfig>
