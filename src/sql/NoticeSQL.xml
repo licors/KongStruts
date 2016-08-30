@@ -33,7 +33,7 @@
         WHERE
         subject=#subject#
     </select>
-    <select id="selectOne" resultMap="noticeRes">
+    <select id="selectOne" resultMap="noticeRes" parameterClass="notice">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
