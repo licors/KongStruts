@@ -35,38 +35,45 @@
     </sql>
 
     <!-- select 쿼리문 정의 -->
+    <!-- 전시, 미술, 이벤트 전부 쓸 일이 있을려나? -->
     <select id="selectall" resultMap="showRes">
         <include refid="select-all"/>
         ORDER BY showboard_num
     </select>
-    <!-- 카테고리 9개 검색 -->
+    <!-- 카테고리 9개"만" 검색 -->
     <select id="select_9" resultMap="showRes" parameterClass="show">
         <include refid="select-all"/>
-        WHERE showboard_category = #showboard_category# and rownum <![CDATA[<=]]> 9
+        WHERE showboard_category = #showboard_category#
+        AND rownum <![CDATA[<=]]> 9
+        AND status = 0
         ORDER BY showboard_num DESC
     </select>
+    <!-- 카테고리를 기준으로 열린 글만 뽑아오는 sql문 -->
+    <!-- 수호씨 쇼케이스디테일리스트? 용으로 사용하세요 -->
+    <select id="select_category" resultMap="showRes" parameterClass="show">
+        <include refid="select-all"/>
+        WHERE showboard_category = #showboard_category#
+        AND status = 0
+        ORDER BY showboard_num DESC
+    </select>
+    <!-- 제목 눌러서 들고오는 것 같은대... 무결성이... -->
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>
         WHERE
         subject=#subject#
     </select>
-       
     <!-- 유진 : 08.28.02:38 / parameterClass="int"추가 -->
+    <!-- 글_num으로 글 하나 가져오는 sql -->
     <select id="selectOne" resultMap="showRes" parameterClass="int">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
-    <select id="selectOn" resultMap="showRes"><!-- 전시가 열린 것만 뽑기위한 sql -->
-        <include refid="select-all"/>
-        WHERE
-        status=0
-    </select>
+    <!-- 이미지 업로드를 위해 마지막 글 번호 따오는 sql문 -->
     <select id="selectLastNo" resultClass="show" parameterClass="int">
         <include refid="select-all"/>
         WHERE rownum <![CDATA[<=]]> 1
         ORDER BY showboard_num DESC
     </select>
-    
     <!-- 행사 검색(수호) 08.25.04:00  -->
     <select id="selectSearch" parameterClass="string" resultMap="showRes">
         <include refid="select-all"/>
@@ -78,12 +85,11 @@
         SELECT max(showboard_num)
         as showboard_num FROM showboard
     </select>-->
-
+    
     <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="show">
         INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tel tag, content, 
         file_orgname, file_savname, readcount, ordercount, map)
-        
         VALUES(showboard_num_seq.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
         #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#)
     </insert>
@@ -102,21 +108,21 @@
         showboard_category=#showboard_category#
         <include refid="where-no"/>
     </update>
-    
-    <update id="updatestatus" parameterClass="show"><!-- 기간 지난 전시글 숨기기 -->
+    <!-- 기간 지난 전시글 숨기기 -->
+    <update id="updatestatus" parameterClass="show">
         UPDATE SHOWBOARD SET
         status=#status#
         <include refid="where-no"/>
     </update>
-
-    <update id="updatefile" parameterClass="show"><!-- 사진변경용 -->
+    <!-- 사진변경용 -->
+    <update id="updatefile" parameterClass="show">
         UPDATE SHOWBOARD SET
         file_orgname=#file_orgname#,
         file_savname=#file_savname#
         <include refid="where-no"/>
     </update>
-    
-    <update id="readcountPlus" parameterClass="show"><!-- 조회수증가 -->
+    <!-- 조회수증가 -->
+    <update id="readcountPlus" parameterClass="show">
         UPDATE SHOWBOARD SET readcount = #readcount# + 1
         <include refid="where-no"/>
     </update>
