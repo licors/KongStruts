@@ -1,14 +1,12 @@
-
-<!-- 
-<div class="ft_lt">
-	<center>
-	<img src="./images/footer/footer_bot.jpg" width="900px" height="250px" />
-	</center>
-</div>
-
- -->
- <div>
- 	<center>
-	<img src="./images/footer/footer_bot.jpg" width="900px" height="250px" />
-	</center>
-</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<p align="center"><img src="/project/template/image/footer.png"></p>
+</body>
+</html>
