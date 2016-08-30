@@ -20,8 +20,8 @@
 </head> 
 <body>
 	
-	<form name="commentForm" action="writeAction.action" method="post" onsubmit="return validation();">
-	  <s:hidden name="currentPage" value="%{currentPage}" />
+	<form name="commentForm" action="/kong/comment/writeAction.action" method="post" onsubmit="return validation();">
+	  <s:hidden name="showboard_num" value="%{showboard_num}" />
 	
 	<table width="600" border="0" cellspacing="0" cellpadding="0">
 		<tr>

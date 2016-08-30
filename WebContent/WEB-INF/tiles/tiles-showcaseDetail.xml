@@ -5,9 +5,23 @@
 
 <tiles-definitions>
 
-    <definition name="타일즈이름" extends="main">
-        <put-attribute name="body" value="jsp경로" />
+   <!--  <definition name="showboardDetail" template="/template/layout2.jsp">
+        <put-attribute name="title" value="켄고루" />
+        <put-attribute name="top" value="/template/top.jsp" />
+        <put-attribute name="body1" value="/showcase/showcaseView.jsp" />
+        <put-attribute name="body2" value="/showcase/writeComment.jsp" />
+        <put-attribute name="body3" value="/showcase/listComment.jsp" />
+        <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
+    
+    <definition name="commentRedirect" extends="showboardDetail">
+        <put-attribute name="body" value="/showcase/listComment.jsp" />
+    </definition> -->
+    
+    <definition name="showcaseView" extends="main">
+        <put-attribute name="body" value="/showcase/showcaseView.jsp" />
+    </definition>
+    
 
 </tiles-definitions>
 
