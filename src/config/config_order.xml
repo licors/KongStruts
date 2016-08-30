@@ -43,6 +43,11 @@
 	 	<action name="orderList" class="order.OrderListAction">
 			<result>/order/orderList.jsp</result>
 		</action>
+		
+		<!-- 주문 상세보기 -->
+		<action name="orderView" class="order.OrderViewAction">
+			<result>/order/orderView.jsp</result>
+		</action>
 
 		<!-- 티켓 취소 ==orderDelete.action-->
 		<action name="orderCancel" class="order.OrderProcessAction" method="orderCancel">
