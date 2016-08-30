@@ -4,8 +4,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+
 <title>전시 상세보기</title>
+<script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
+<script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
+<script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
+ 
+
+<link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen">
+
+<script type="text/javascript">
+    $(function() {
+      $('#container-5').tabs({ fxSlide: true, fxFade: true, fxSpeed: 'normal' });
+    });
+</script>
 </head>
 
 <body>
@@ -47,15 +63,33 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				탭구현? , 상세내용
-				<s:property value="resultClass.content" />
-				<!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
-				<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0">
-				<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0">
-				<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0">
+				<div id="container-5">
+				    <ul>
+				        <li><a href="#fragment-13"><span>상세보기</span></a></li>
+				        <li><a href="#fragment-14"><span>두번째</span></a></li>
+				        <li><a href="#fragment-15"><span>지도</span></a></li>
+				        <li><a href="#fragment-12"><span>Comment</span></a></li>
+				    </ul>
+				    <div id="fragment-13">
+				      	<s:property value="resultClass.content" />
+						
+						<!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
+						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0">
+						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0">
+						<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0"> 
+				    </div>
+				    <div id="fragment-14">
+				        두번째 탭 
+				    </div>
+				    <div id="fragment-15">
+				         세번째 탭
+				    </div>
+				    <div id="fragment-12">
+				         네번째 탭
+				    </div>
+				</div>
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>
