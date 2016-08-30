@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package admin.notice;
+
 import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -16,7 +17,8 @@ import java.io.Reader;
  *
  * @author user2
  */
-public class noticemodifyAction extends ActionSupport{
+public class noticemodifyAction extends ActionSupport {
+
     public static Reader reader;
     public static SqlMapClient sql;
     private noticeVO pc, rc;
@@ -30,6 +32,17 @@ public class noticemodifyAction extends ActionSupport{
         reader.close();
     }
 
+    /* 수정을 위해 원레 글의 내용을 전송! */
+    public String form() throws Exception {
+        pc = new noticeVO();
+        rc = new noticeVO();
+
+        pc.setNotice_num(getNotice_num());
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
+
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new noticeVO();
@@ -37,7 +50,7 @@ public class noticemodifyAction extends ActionSupport{
 
         pc.setSubject(getSubject());
         pc.setContent(getContent());
-        
+
         sql.update("notice.update", pc);
 
         rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
@@ -84,6 +97,5 @@ public class noticemodifyAction extends ActionSupport{
     public void setContent(String content) {
         this.content = content;
     }
-    
-    
+
 }

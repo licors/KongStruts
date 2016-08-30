@@ -42,8 +42,8 @@ public class qnalistAction extends ActionSupport {
 
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.UserCheck", sessionid);
+        int sessionid = (Integer) session.get("member_num");
+        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
 
         return SUCCESS;
     }

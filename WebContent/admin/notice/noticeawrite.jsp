@@ -14,7 +14,7 @@
         <title>QnA 추가</title>
         <script type="text/javascript">
             function check() {
-                var frm = document.scwrite;
+                var frm = document.notice;
 
                 if (frm.subject.value == "") {
                     alert("제목을 입력해주세요.");
@@ -28,10 +28,10 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="noticewrite" action="noticewrite.action" method="post" onsubmit="return check()">
+            <form name="notice" action="noticewrite.action" method="post" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="noticemodify" action="noticemodify.action" method="post" onsubmit="return check()">
+                <form name="notice" action="noticemodify.action" method="post" onsubmit="return check()">
                 </s:else>
                 <table align="center" width="600">
                     <tr>
