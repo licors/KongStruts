@@ -42,7 +42,7 @@ public class OrderPagingAction {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
-			pagingHtml.append("<a href=orderL.action?currentPage=" + (startPage - 1) + ">");
+			pagingHtml.append("<a href=orderList.action?currentPage=" + (startPage - 1) + ">");
 			pagingHtml.append("<img src=" + "images/basket/prew.png" + ">");
 			pagingHtml.append("</a>");
 		}
@@ -57,7 +57,7 @@ public class OrderPagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				pagingHtml.append("&nbsp;<a href='orderL.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href='orderList.action?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -70,7 +70,7 @@ public class OrderPagingAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='orderL.action?currentPage=" + (endPage + 1));
+			pagingHtml.append("<a href='orderList.action?currentPage=" + (endPage + 1));
 			pagingHtml.append("'>");
 			pagingHtml.append("<img src=" + "images/basket/next.png" + ">");
 			pagingHtml.append("</a>");

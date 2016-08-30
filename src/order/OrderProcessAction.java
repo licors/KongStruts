@@ -68,7 +68,7 @@ public class OrderProcessAction extends ActionSupport {
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 		reader.close();
 	}
-	
+/*	
 	//주문 처리 폼
 	public String form() throws Exception {
 		 
@@ -93,13 +93,13 @@ public class OrderProcessAction extends ActionSupport {
 		show_resultClass = (showVO) sqlMapper.queryForObject(
 				"show.selectOne", show_paramClass);
 
-		/*order_goods_amount = getGoods_amount();
+		order_goods_amount = getGoods_amount();
 		order_goods_size = getGoods_size();
-		order_goods_color = getGoods_color();*/
+		order_goods_color = getGoods_color();
 
 		showboard_num = show_paramClass.getShowboard_num();
-		/*qr코드는 여기에서 생성! barcode = 
-		order_sum_money = (getGoods_price() * order_goods_amount);*/
+		qr코드는 여기에서 생성! barcode = 
+		order_sum_money = (getGoods_price() * order_goods_amount);
 
 		return SUCCESS;
 	}
@@ -134,7 +134,7 @@ public class OrderProcessAction extends ActionSupport {
 
 				// order_snum_money =0;
 				paramBas = basketList.get(i);
-				/*order_sum_money += (paramBas.getBasket_goods_price() * paramBas.getBasket_goods_amount());*/
+				order_sum_money += (paramBas.getBasket_goods_price() * paramBas.getBasket_goods_amount());
 				
 				showList = sqlMapper.queryForList("show.select", paramBas.getSubject());
 				for (int j = 0; j < showList.size(); j++) {
@@ -143,7 +143,7 @@ public class OrderProcessAction extends ActionSupport {
 			}
 			return SUCCESS;
 		}
-	}
+	}*/
 	
 	public String execute() throws Exception {
 		memparamClass = new MemberVO();
@@ -161,6 +161,13 @@ public class OrderProcessAction extends ActionSupport {
 		order_paramClass = new OrderVO();
 		order_resultClass = new OrderVO();
 		
+/*		System.out.println(getName());
+		System.out.println(getSex());
+		System.out.println(getCompany());
+		System.out.println(getAddress());
+		System.out.println(getEmail());
+		System.out.println(getTel());*/
+		
 		order_paramClass.setName(getName());
 		order_paramClass.setSex(getSex());
 		order_paramClass.setCompany(getCompany());
@@ -170,23 +177,24 @@ public class OrderProcessAction extends ActionSupport {
 		order_paramClass.setTel(getTel());
 		
 		order_paramClass.setMember_num(sessionid);
-		order_paramClass.setShowboard_num(getShowboard_num());
+		order_paramClass.setShowboard_num(show_resultClass.getShowboard_num());
 
 		order_paramClass.setStatus("티켓 신청");
 		
 		String str1 = Integer.toString(getMember_num());
-		String str2 = Integer.toString(resultBas.getShowboard_num());
-
-		String codeStr = str1 + str2;
+		String str2 = Integer.toString(show_resultClass.getShowboard_num());
+		Long str3 = Calendar.getInstance().getTimeInMillis();
+		String codeStr = str1 + str2 + str3;
 		try {
 			Barcode barcode = BarcodeFactory.createCode128B(codeStr);
-			File file = new File("C:\\java\\YJ\\kong\\WebContent\\order\\barcode_images\\"+codeStr);
+			File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
 			BarcodeImageHandler.savePNG(barcode, file);			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		order_paramClass.setBarcode(codeStr);
+		order_paramClass.setOrder_date(today.getTime());
 		
 		sqlMapper.insert("order.insert_order", order_paramClass);
 		
@@ -215,7 +223,7 @@ public class OrderProcessAction extends ActionSupport {
 		
 		System.out.println(memresultClass.getMember_num());
 		
-		basketList = sqlMapper.queryForList("basket.basketList", sessionid);
+		basketList = sqlMapper.queryForList("basket.basket_list", sessionid);
 		
 		/*for(int i = 0; i < basketList.size(); i++) {
 			order_paramClass.setbarcode(barcode);
@@ -232,6 +240,7 @@ public class OrderProcessAction extends ActionSupport {
 			
 			order_paramClass.setMember_num(memresultClass.getMember_num());
 			order_paramClass.setName(getName());
+			System.out.print(order_paramClass.getName());
 			order_paramClass.setSex(getSex());
 			order_paramClass.setCompany(getCompany());
 			order_paramClass.setAddress(getAddress());
@@ -244,12 +253,13 @@ public class OrderProcessAction extends ActionSupport {
 			/*각 전시회마다 다른 바코드 생성*/
 			String str1 = Integer.toString(memresultClass.getMember_num());
 			String str2 = Integer.toString(resultBas.getShowboard_num()); 
+			Long str3 = Calendar.getInstance().getTimeInMillis();
 
-			String codeStr = str1 + str2;
+			String codeStr = str1 + str2 + str3;
 			
 			try {
 				Barcode barcode = BarcodeFactory.createCode128B(codeStr);
-				File file = new File("C:\\kong\\WebContent\\barcodeImg"+codeStr);
+				File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
 				BarcodeImageHandler.savePNG(barcode, file);			
 			} catch(Exception e) {
 				e.printStackTrace();
@@ -259,7 +269,7 @@ public class OrderProcessAction extends ActionSupport {
 			
 			sqlMapper.insert("order.insert_order", order_paramClass);
 
-			show_resultClass = (showVO) sqlMapper.queryForObject("show.select", resultBas.getSubject());
+			show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", resultBas.getShowboard_num());
 			
 			//orderList = sqlMapper.queryForList("show.select", resultBas.getSubject()); 이번에 주문한 바코드 뽑기위해서
 		}

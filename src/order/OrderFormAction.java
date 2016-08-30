@@ -74,13 +74,12 @@ public class OrderFormAction extends ActionSupport {
 		Map<String, Object> session = context.getSession();
 		int sessionid = (Integer) session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-
+		
 		// 상품번호로 상품정보 꺼내오기
 		show_paramClass.setShowboard_num(getShowboard_num());
-		show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", show_paramClass.getShowboard_num());
-
 		showboard_num = show_paramClass.getShowboard_num();
-
+		show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", showboard_num);		
+		System.out.print(showboard_num); 
 		return SUCCESS;
 	}
 
@@ -106,15 +105,19 @@ public class OrderFormAction extends ActionSupport {
 		// goodsList =
 		// sqlMapper.queryForList("goodsselect",getBasket_goods_name());
 		// System.out.println(goodsList);
-		for (int i = 0; i < basketList.size(); i++) {
-			paramBas = basketList.get(i);
-
-			showList = sqlMapper.queryForList("show.selectOne", paramBas.getShowboard_num());
-			for (int j = 0; j < showList.size(); j++) {
-				show_resultClass = showList.get(j);
+		if(basketList.size()==0) {
+			return INPUT;
+		} else {
+			for (int i = 0; i < basketList.size(); i++) {
+				paramBas = basketList.get(i);
+	
+				showList = sqlMapper.queryForList("show.selectOne", paramBas.getShowboard_num());	//showList 뽑아오기....ㅠㅠ
+				for (int j = 0; j < showList.size(); j++) {
+					show_resultClass = showList.get(j);
+				}
 			}
+			return SUCCESS;
 		}
-		return SUCCESS;
 	}
 
 	public static Reader getReader() {
