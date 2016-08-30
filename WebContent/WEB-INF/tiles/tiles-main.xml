@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
 		"-//Apache software Foundation//DTD Tiles Configuration 2.1//EN"
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
@@ -6,9 +6,9 @@
 <tiles-definitions>
 
     <definition name="main" template="/template/layout.jsp">
-        <put-attribute name="title" value="ÄË°í·ç" />
+        <put-attribute name="title" value="ì¼„ê³ ë£¨" />
         <put-attribute name="top" value="/template/top.jsp" />
-        <put-attribute name="body" value="/main.jsp" />
+        <put-attribute name="body" value="main/main.jsp" />
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
     
@@ -17,10 +17,10 @@
     </definition>
     
      <!-- showcase -->
-	 <!-- Àü½Ã»óÇ° ¸®½ºÆ® -->
-	<definition name="showcase_list" extends="main">
+	 <!-- ì „ì‹œìƒí’ˆ ë¦¬ìŠ¤íŠ¸ -->
+<!-- 	<definition name="showcase_list" extends="main">
 		<put-attribute name="body" value="/main/showcaseList.jsp" />
-	</definition>
+	</definition> -->
 
 </tiles-definitions>
 
