@@ -1,1 +1,1 @@
-<%response.sendRedirect("actionname.action");%>
+<%response.sendRedirect("showcase/sclist.action");%>
