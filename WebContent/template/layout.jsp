@@ -8,46 +8,25 @@
 <html>
 
 <head>
-    <!-- <link rel="stylesheet" type="text/css" href="css/index.css" /> -->
-
-	<title><tiles:getAsString name="title"/></title>
-
-	<%-- <script type="text/javascript" src="js/index.js"></script> --%>
-
+<title><tiles:getAsString name="title" /></title>
+<%--  <style type="text/css">
+    #wrapper {width:1250px; margin:auto; height:100%; overflow:hidden;}
+    #header {width:1250px; margin-bottom:5px;}
+    #left {width:250px; float:left;height:950px;}
+    #body {width:1000px;float:left;margin-bottom:30px;}
+    #footer {width:1250px; clear:both;}
+  </style> --%>
 </head>
 
-
 <body>
-	
-<!-- 	<div id="wrap">
-		<div id="header"> -->
-		<div>
-		<div>
-    	    <tiles:insertAttribute name="top" />
- 		</div>
-	</div>
+<div id="wrapper">
 
-	<br /><br />
-<!-- 	<div id="wrap">
- 		<div id="content_wrap">
-		<div id="main_content"> -->
-		<div>
-		<div>
-		<div>
-			<tiles:insertAttribute name="body" />
-		</div>
-		</div>
-	</div>
+<div id="header" style="width:1250px;"><tiles:insertAttribute name="top"/></div>
 
-	<br /><br />
-	
-<!-- 	<div id="wrap">
-		<div id="footer"> -->
-		<div>
-		<div>
-			<tiles:insertAttribute name="bottom" />
-		</div>
-	</div>
-	
+<div id="body" style="width:1250px;"><tiles:insertAttribute name="body"/></div>
+
+<div id="footer" style="width:1250px;"><tiles:insertAttribute name="bottom"/></div>
+</div>
+
 </body>
 </html>
