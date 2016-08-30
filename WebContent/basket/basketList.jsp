@@ -78,17 +78,24 @@
 							<td colspan="7" align="center"><font size="2">장바구니에
 									담긴 상품이 없습니다.</font></td>
 						</tr>
+						<tr height="40">
+							<td align="right" colspan="6">
+								<input type="button" name="list" value="메인으로"
+								onClick="location.href='/kong/show/main.action'">
+							</td>
+						</tr>
 					</s:if>
-					<tr height="40">
-						<td align="right" colspan="6">
-						<s:else>
-							<input type="button" name="orderB" value="주문하기"
+					<s:else>
+						<tr height="40">
+							<td align="right" colspan="6">
+								<input type="button" name="orderB" value="주문하기"
 								onClick="location.href='/kong/order/orderFormB.action'" >
-						</s:else>
-							<input type="button" name="list" value="메인으로"
-								onClick="location.href='/kong/show/main.action'">	<!-- 수정: 메인으로 가는 액션 알고 고치기 -->
-						</td>
-					</tr>
+								<input type="button" name="list" value="메인으로"
+								onClick="location.href='/kong/show/main.action'">
+							</td>						
+						</tr>
+					</s:else>
+				
 			</table>
 		</form>
 </body>

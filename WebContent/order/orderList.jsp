@@ -73,7 +73,7 @@
 			
 			<s:if test="orderList.size() == 0">
 				<tr>
-					<td colspan="6" align="center"><font size="2">
+					<td colspan="7" align="center"><font size="2">
 					구매하신 상품이 없습니다.</font></td>
 				</tr>
 			</s:if>
