@@ -25,7 +25,7 @@
 			return false;
 		}
  
-		document.orderForm.action = "/kong/order/orderPro.action"
+		document.orderForm.action = "/kong/order/orderPro.action";
 		document.orderForm.submit();
 	}
 	function checkIt2() {
@@ -53,7 +53,7 @@
 
 <!-- 장바구니에서 넘어왔을때 -->
 		<s:if test="%{basketList.size() != 0 }">
-		<form name="orderForm" method="post" onsubmit="return checkIt();">
+		<form name="orderForm" method="post" onsubmit="return checkIt2();">
 
 		<s:hidden name="member_num" value="%{memresultClass.getMember_num()}" />
 		<s:hidden name="showboard_num" value="%{resultBas.showboard_num}" />
@@ -110,15 +110,17 @@
 											</tr>
 											<tr>
 												<td width="80" align="left">&nbsp;&nbsp;전시명 : </td>
-												<td align="center"><b><s:property value="subject" />원</b></td>
+												<td align="center"><b><s:property value="subject" /></b></td>
 											</tr>
 											<tr>
 												<td width="80" align="left">&nbsp;&nbsp;전시장소 : </td>
-												<td align="center"><b><s:property value="subject" />원</b></td>
+												<td align="center"><b><s:property value="address2" /></b></td>
 											</tr>
 											</center>
 										</tbody>
 									</table>
+								</td>
+								<td>
 								</td>
 								<td>
 									<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -190,23 +192,6 @@
 														value="${memresultClass.company}"/>	
 											</td>
 										</tr>
-										<%-- <tr>
-											<td width="110">&nbsp;우편번호 :</td>
-											<td>
-												<table width="210" border="0" cellspacing="0"
-													cellpadding="0">
-													<tbody>
-														<tr>
-															<td width="34">
-															<input class="order" type="text" name="order_zipcode" size="7" maxlength="7"
-															value="${memresultClass.zipcode}" readonly></input>
-															</td>	
-															<td width="100"></td>
-														</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr> --%>
 										<tr>
 											<td width="110">&nbsp;주<font color="#F7F7F7">_</font>소 :
 											</td>
@@ -292,7 +277,7 @@
 		<s:hidden name="member_num" value="%{memresultClass.getMember_num()}"/>
 		<s:hidden name="showboard_num" value="%{show_resultClass.showboard_num}"/>	<!-- 클래스명 수정하기 -->
 		<s:hidden name="subject" value="%{show_resultClass.subject}"/>
-		<s:hidden name="pay" value="%{show_resultClass.address2}"/>
+		<s:hidden name="address" value="%{show_resultClass.address2}"/>
 		
 		<table width="700" border="0" cellspacing="0" cellpadding="2" align="center">
 			<tbody>
@@ -334,22 +319,22 @@
 								<tr>
 									<td width="80" align="left">전시번호 :</td>
 									<td align="center"><b><s:property
-												value="%{getshowboard_num()}" /></b><br></td>
+												value="%{show_resultClass.showboard_num}" /></b><br></td>
 								</tr>
 								<tr>
 									<td width="80" align="left">전시명 :</td>
 									<td align="center"><b><s:property
-												value="goods_resultClass.subject" /></b></td>
+												value="show_resultClass.subject" /></b></td>
 								</tr>
 								<tr>
 									<td width="80" align="left">전시장소 :</td>
 									<td align="center"><b> <s:property
-												value="goods_resultClass.address2" /></b></td>	<!-- 수정: 건물명 뽑기 goods_resultClass.address2.split(',')[0]-->
+												value="show_resultClass.address2" /></b></td>	<!-- 수정: 건물명 뽑기 goods_resultClass.address2.split(',')[0]-->
 								</tr>
 								<tr>
 									<td width="80" align="left">전시날짜 :</td>
 									<td align="center"><b> <s:property
-												value="goods_resultClass.date" />
+												value="show_resultClass.date" />
 									</b></td>
 								</tr>								
 							</tbody>

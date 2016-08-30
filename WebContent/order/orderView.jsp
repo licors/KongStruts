@@ -90,7 +90,7 @@
 								</table>
 							</td>
 							<td>
-								<b><s:property value="order_resultClass.state" /></b>
+								<b><s:property value="order_resultClass.status" /></b>
 							</td>
 						</tr>
 					</tbody>
@@ -229,7 +229,7 @@
 		</tr>
 		<table width="700">
 		<tr>
-				<td align="right">
+				<td align="right" colspan="5">
 					<s:if test="order_resultClass.status == '티켓 만료'">
 						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()">
 					</s:if>
@@ -241,7 +241,7 @@
 					</s:else> 
 					
 					<!-- 리스트로 -->
-					<input type="button" name="list" value="목록으로" onClick="location.href='/kong/order/orderList.action?currentPage=<s:property value="currentPage"/>'">
+					<input type="button" name="list" value="목록으로" onClick="location.href='/kong/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'">
 				</td>
 			</tr>
 		</table>
