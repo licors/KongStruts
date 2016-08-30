@@ -56,8 +56,8 @@
 		</tr>
 		<tr>
 			<td colspan="3" align="right"> 
-				<input name="basket" type="button" value="관심티켓" onClick="javascript:location.href='/kong/basket/addBasket.action?currentPage=<s:property value="%{resultClass.showboard_num}" />'">
-				<input name="order" type="button" value="신청하기" onClick="javascript:location.href='/kong/order/orderForm.action?currentPage=<s:property value="%{resultClass.showboard_num}" />'">
+				<input name="basket" type="button" value="관심티켓" onClick="javascript:location.href='/kong/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+				<input name="order" type="button" value="신청하기" onClick="javascript:location.href='/kong/order/orderForm.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
 			</td>
 			
 		</tr>

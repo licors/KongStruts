@@ -3,7 +3,7 @@ package main;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import admin.pagingAction;
+/*import admin.pagingAction;*/
 import admin.showcase.showVO;
 import member.MemberVO;
 
@@ -33,14 +33,14 @@ public class mainAction extends ActionSupport {
     private String searchKeyword;
     private String showboard_category;
 
-    private int currentPage = 1;
+/*    private int currentPage = 1;
     private int totalCount;
     private int blockCount = 6;
     private int blockPage = 3;
     private String pagingHtml;
     private String adpagingHtml;
     private pagingAction page;
-    private int num = 0;
+    private int num = 0;*/
 
     public mainAction() throws Exception {
 
@@ -157,8 +157,9 @@ public class mainAction extends ActionSupport {
     public void setShowboard_category(String showboard_category) {
         this.showboard_category = showboard_category;
     }
+}
 
-    public int getCurrentPage() {
+/*    public int getCurrentPage() {
         return currentPage;
     }
 
@@ -223,3 +224,4 @@ public class mainAction extends ActionSupport {
     }
 
 }
+*/

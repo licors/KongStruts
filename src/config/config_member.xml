@@ -5,7 +5,7 @@
 
 <struts>
 	<!-- 회원관련 -->
-	<package name="member" extends="struts-default">
+	<package name="member" extends="struts-default, tiles-default">
 		<!-- 회원가입 폼 -->
 		<action name="memberJoinForm" class="member.MemberJoinAction" method="form">
 			<result>/member/memberJoin.jsp</result>
@@ -23,7 +23,10 @@
 		
 		<!-- 로그인 처리-->
 		<action name="memberLogin" class="member.MemberLoginAction">
-			 <result>/member/loginResult.jsp</result> <!-- 메인페이지로 이동? -->
+			 <!-- <result>/member/loginResult.jsp</result> --> <!-- 메인페이지로 이동? -->
+			 <result type="redirect-action">
+				<param name="actionName">showcase/sclist</param>
+			</result>
 		</action>
 		
 		<!--  로그아웃 처리  -->
