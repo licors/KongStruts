@@ -16,46 +16,47 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class listAction extends ActionSupport {
+public class showcaselistAction extends ActionSupport {
 	private MemberVO memresultClass;
 	private MemberVO memparamClass;
-	public static Reader reader; // ÆÄÀÏ ½ºÆ®¸²À» À§ÇÑ reader
-	public static SqlMapClient sqlMapper; // SqlMapClient API¸¦ »ç¿ëÇÏ±â À§ÇÑ
-											// sqlMapper°´Ã¼
+	public static Reader reader; // íŒŒì¼ ìŠ¤íŠ¸ë¦¼ì„ ìœ„í•œ reader
+	public static SqlMapClient sqlMapper; // SqlMapClient APIë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•œ
+											// sqlMapperê°ì²´
 
 	private List<showVO> list = new ArrayList<showVO>();
 
 	private showVO showboard_paramClass = new showVO();
 	private showVO showboard_resultClass = new showVO();
 
-	private String searchKeyword; // ÀÔ·ÂµÈ °Ë»ö Å°¿öµå
+	private String searchKeyword; // ì…ë ¥ëœ ê²€ìƒ‰ í‚¤ì›Œë“œ
 	private String showboard_category;
 
-	private int currentPage = 1; // ÇöÀç ÆäÀÌÁö
-	private int totalCount; // ÃÑ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockCount = 20; // ÇÑ ÆäÀÌÁöÀÇ °Ô½Ã¹°ÀÇ ¼ö
-	private int blockPage = 3; // ÇÑ È­¸é¿¡ º¸¿©ÁÙ ÆäÀÌÁö ¼ö
-	private String pagingHtml; // ÆäÀÌÂ¡À» ±¸ÇöÇÑ HTML
-	private String adpagingHtml;
-	private showcasepagingAction page; // ÆäÀÌÂ¡ Å¬·¡½º
+	private int currentPage = 1; // í˜„ì¬ í˜ì´ì§€
+	private int totalCount; // ì´ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockCount = 20; // í•œ í˜ì´ì§€ì˜ ê²Œì‹œë¬¼ì˜ ìˆ˜
+	private int blockPage = 3; // í•œ í™”ë©´ì— ë³´ì—¬ì¤„ í˜ì´ì§€ ìˆ˜
+	/*private String pagingHtml; // í˜ì´ì§•ì„ êµ¬í˜„í•œ HTML
+*/	private String pagingHtml;
 	private pagingAction adpage;
 	private int num = 0;
 
-	// »ı¼ºÀÚ
-	public listAction() throws IOException {
+	// ìƒì„±ì
+	public showcaselistAction() throws IOException {
 		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// sqlMapConfig.xml ÆÄÀÏÀÇ ¼³Á¤³»¿ëÀ» °¡Á®¿È
+		// sqlMapConfig.xml íŒŒì¼ì˜ ì„¤ì •ë‚´ìš©ì„ ê°€ì ¸ì˜´
 		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
 
 		reader.close();
 	}
 
+	
+	//ì¼ë°˜íšŒì› ìƒí’ˆëª©ë¡ ë¦¬ìŠ¤íŠ¸ì²˜ë¦¬
 	public String execute() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
-		String sessionid = (String) session.get("email");
+		int sessionid = (Integer)session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
-		// °Ë»ö°ªÀÌ ÀÖÀ¸¸é search()¸Ş¼­µå¸¦ È£Ãâ.
+		// ê²€ìƒ‰ê°’ì´ ìˆìœ¼ë©´ search()ë©”ì„œë“œë¥¼ í˜¸ì¶œ.
 		if (getShowboard_category() != null) {
 			return category();
 		}
@@ -64,33 +65,35 @@ public class listAction extends ActionSupport {
 			return search();
 		}
 
-		// ¸ğÆ° ±ÛÀ» °¡Á®¿Í list¿¡ ³Ö´Â´Ù.
-		list = sqlMapper.queryForList("goodsselectAll");
+		// ëª¨íŠ¼ ê¸€ì„ ê°€ì ¸ì™€ listì— ë„£ëŠ”ë‹¤.
+		list = sqlMapper.queryForList("selectall");
 
-		totalCount = list.size();// ÀüÃ¼ ±Û °¹¼ö¸¦ ±¸ÇÑ´Ù.
-		// pagingAction°´Ã¼ »ı¼º.
-		page = new showcasepagingAction(currentPage, totalCount, blockCount, blockPage,
+		totalCount = list.size();// ì „ì²´ ê¸€ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤.
+		// pagingActionê°ì²´ ìƒì„±.
+/*		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,
 				showboard_category, "");
-		pagingHtml = page.getPagingHtml().toString(); // ÆäÀÌÁö HTML»ı¼º.
-
-		// ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤.
+		pagingHtml = page.getPagingHtml().toString(); // í˜ì´ì§€ HTMLìƒì„±.
+*/
+		// í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •.
 		int lastCount = totalCount;
 
-		// ÇöÁ¦ ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Û¹øÈ£º¸´Ù ÀÛÀ¸¸é
-		// lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤.
-		if (page.getEndCount() < totalCount)
-			lastCount = page.getEndCount() + 1;
+		// í˜„ì œ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ê°€ ì „ì²´ì˜ ë§ˆì§€ë§‰ ê¸€ë²ˆí˜¸ë³´ë‹¤ ì‘ìœ¼ë©´
+		// lastCountë¥¼ +1 ë²ˆí˜¸ë¡œ ì„¤ì •.
+/*		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;*/
 
-		// ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
-		list = list.subList(page.getStartCount(), lastCount);
+		// 1ë¶€í„° ë§ˆì§€ë§‰ê°¯ìˆ˜ê¹Œì§€ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
+		list = list.subList(1, lastCount);
 
 		return SUCCESS;
 	}
 
+	
+	//ìš´ì˜ì ìƒí’ˆëª©ë¡ ë¦¬ìŠ¤íŠ¸ì²˜ë¦¬
 	public String execute2() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
-		String sessionid = (String) session.get("id");
+		int sessionid = (Integer)session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
 
 		if (getShowboard_category() != null) {
@@ -104,24 +107,24 @@ public class listAction extends ActionSupport {
 		showboard_paramClass = new showVO();
 
 		//showboard_category = "";
-		// ¸ğÆ° ±ÛÀ» °¡Á®¿Í list¿¡ ³Ö´Â´Ù.
-		list = sqlMapper.queryForList("goodsselectAll", showboard_paramClass);
+		// ëª¨íŠ¼ ê¸€ì„ ê°€ì ¸ì™€ listì— ë„£ëŠ”ë‹¤.
+		list = sqlMapper.queryForList("selectall", showboard_paramClass);
 
-		totalCount = list.size();// ÀüÃ¼ ±Û °¹¼ö¸¦ ±¸ÇÑ´Ù.
-		// pagingAction°´Ã¼ »ı¼º.
+		totalCount = list.size();// ì „ì²´ ê¸€ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤.
+		// pagingActionê°ì²´ ìƒì„±.
 		adpage = new pagingAction(currentPage, totalCount, blockCount,
 				blockPage, showboard_category, "");
-		adpagingHtml = adpage.getAdpagingHtml().toString(); // ÆäÀÌÁö HTML»ı¼º.
+		pagingHtml = adpage.getpagingHtml().toString(); // í˜ì´ì§€ HTMLìƒì„±.
 
-		// ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •.
 		int lastCount = totalCount;
 
-		// ÇöÁ¦ ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Û¹øÈ£º¸´Ù ÀÛÀ¸¸é
-		// lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤.
+		// í˜„ì œ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ê°€ ì „ì²´ì˜ ë§ˆì§€ë§‰ ê¸€ë²ˆí˜¸ë³´ë‹¤ ì‘ìœ¼ë©´
+		// lastCountë¥¼ +1 ë²ˆí˜¸ë¡œ ì„¤ì •.
 		if (adpage.getEndCount() < totalCount)
 			lastCount = adpage.getEndCount() + 1;
 
-		// ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
+		// ì „ì²´ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ë§Œí¼ì˜ ë¦¬ìŠ¤íŠ¸ë§Œ ê°€ì ¸ì˜¨ë‹¤.
 		list = list.subList(adpage.getStartCount(), lastCount);
 		return SUCCESS;
 	}
@@ -129,28 +132,34 @@ public class listAction extends ActionSupport {
 	public String category() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
-		String sessionid = (String) session.get("id");
+		int sessionid = (Integer)session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
 		
 		showboard_paramClass = new showVO();
 		showboard_paramClass.setShowboard_category(getShowboard_category());
 		list = sqlMapper.queryForList("goodsselectCategory", showboard_paramClass);
 
-		totalCount = list.size(); // ÀüÃ¼ ±Û °¹¼ö¸¦ ±¸ÇÑ´Ù.
+		totalCount = list.size(); // ì „ì²´ ê¸€ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤.
+		
+/*        showboard_paramClass.setShowboard_category("ì „ì‹œ");
+        list1 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
+        showboard_paramClass.setShowboard_category("ë¯¸ìˆ ");
+        list2 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
+        showboard_paramClass.setShowboard_category("ì´ë²¤íŠ¸");
+        list3 = sqlMapper.queryForList("show.select_9", showboard_paramClass);*/
 
-		// pagingAction °´Ã¼ »ı¼º
-		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,
-				showboard_category, "");
-		pagingHtml = page.getPagingHtml().toString(); // ÆäÀÌÁöHTML »ı¼º.
+		// pagingAction ê°ì²´ ìƒì„±
+		page = new pagingAction(action_name, currentPage, totalCount, blockCount, blockPage, "");
+		pagingHtml = page.getPagingHtml().toString(); // í˜ì´ì§€HTML ìƒì„±.
 
-		// ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •.
 		int lastCount = totalCount;
 
-		// ÇöÀç ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Û ¹øÈ£º¸´Ù ÀÛÀ¸¸é lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ê°€ ì „ì²´ì˜ ë§ˆì§€ë§‰ ê¸€ ë²ˆí˜¸ë³´ë‹¤ ì‘ìœ¼ë©´ lastCountë¥¼ +1 ë²ˆí˜¸ë¡œ ì„¤ì •.
 		if (page.getEndCount() < totalCount)
 			lastCount = page.getEndCount() + 1;
 
-		// ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
+		// ì „ì²´ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ë§Œí¼ì˜ ë¦¬ìŠ¤íŠ¸ë§Œ ê°€ì ¸ì˜¨ë‹¤.
 		list = list.subList(page.getStartCount(), lastCount);
 
 		return SUCCESS;
@@ -164,14 +173,14 @@ public class listAction extends ActionSupport {
 		
 		// searchKeyword = new
 		// String(searchKeyword.getBytes("iso-8859-1"),"euc-kr");
-		System.out.print(searchKeyword); // Å°¿öµå¸¦ Ãâ·Â
+		System.out.print(searchKeyword); // í‚¤ì›Œë“œë¥¼ ì¶œë ¥
 
-		list = sqlMapper.queryForList("goodsselectSearch", "%" + getSearchKeyword() + "%"); // search Äõ¸® ¼öÇà
+		list = sqlMapper.queryForList("goodsselectSearch", "%" + getSearchKeyword() + "%"); // search ì¿¼ë¦¬ ìˆ˜í–‰
 
 		totalCount = list.size();
-		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,
+/*		page = new pagingAction(currentPage, totalCount, blockCount, blockPage,
 				showboard_category, getSearchKeyword());
-		pagingHtml = page.getPagingHtml().toString();
+		pagingHtml = page.getPagingHtml().toString();*/
 
 		int lastCount = totalCount;
 
@@ -189,24 +198,23 @@ public class listAction extends ActionSupport {
 		memresultClass = (MemberVO) sqlMapper.queryForObject("UserCheck", sessionid);
 		
 		showboard_paramClass = new showVO();
-		showboard_paramClass.setShowboard_category(getShowboard_category());
+		showboard_paramClass.setshowboard_category(getShowboard_category());
 		list = sqlMapper.queryForList("goodsselectCategory", showboard_paramClass);
 
-		totalCount = list.size(); // ÀüÃ¼ ±Û °¹¼ö¸¦ ±¸ÇÑ´Ù.
+		totalCount = list.size(); // ì „ì²´ ê¸€ ê°¯ìˆ˜ë¥¼ êµ¬í•œë‹¤.
 
-		// pagingAction °´Ã¼ »ı¼º
-		adpage = new adminpagingAction(currentPage, totalCount, blockCount, blockPage,
-				showboard_category, "");
-		adpagingHtml = adpage.getAdpagingHtml().toString(); // ÆäÀÌÁöHTML »ı¼º.
+		// pagingAction ê°ì²´ ìƒì„±
+		adpage = new pagingAction(action_name, currentPage, totalCount, blockCount, blockPage, "");
+		pagingHtml = adpage.getpagingHtml().toString(); // í˜ì´ì§€HTML ìƒì„±.
 
-		// ÇöÀç ÆäÀÌÁö¿¡¼­ º¸¿©ÁÙ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£ ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì—ì„œ ë³´ì—¬ì¤„ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ ì„¤ì •.
 		int lastCount = totalCount;
 
-		// ÇöÀç ÆäÀÌÁöÀÇ ¸¶Áö¸· ±ÛÀÇ ¹øÈ£°¡ ÀüÃ¼ÀÇ ¸¶Áö¸· ±Û ¹øÈ£º¸´Ù ÀÛÀ¸¸é lastCount¸¦ +1 ¹øÈ£·Î ¼³Á¤.
+		// í˜„ì¬ í˜ì´ì§€ì˜ ë§ˆì§€ë§‰ ê¸€ì˜ ë²ˆí˜¸ê°€ ì „ì²´ì˜ ë§ˆì§€ë§‰ ê¸€ ë²ˆí˜¸ë³´ë‹¤ ì‘ìœ¼ë©´ lastCountë¥¼ +1 ë²ˆí˜¸ë¡œ ì„¤ì •.
 		if (adpage.getEndCount() < totalCount)
 			lastCount = adpage.getEndCount() + 1;
 
-		// ÀüÃ¼ ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¸¸Å­ÀÇ ¸®½ºÆ®¸¸ °¡Á®¿Â´Ù.
+		// ì „ì²´ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ë§Œí¼ì˜ ë¦¬ìŠ¤íŠ¸ë§Œ ê°€ì ¸ì˜¨ë‹¤.
 		list = list.subList(adpage.getStartCount(), lastCount);
 
 		return SUCCESS;
@@ -219,14 +227,14 @@ public class listAction extends ActionSupport {
 		
 		// searchKeyword = new
 		// String(searchKeyword.getBytes("iso-8859-1"),"euc-kr");
-		System.out.print(searchKeyword); // Å°¿öµå¸¦ Ãâ·Â
+		System.out.print(searchKeyword); // í‚¤ì›Œë“œë¥¼ ì¶œë ¥
 
-		list = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%"); // search Äõ¸® ¼öÇà
+		list = sqlMapper.queryForList("goodsselectSearch", "%" + getSearchKeyword() + "%"); // search ì¿¼ë¦¬ ìˆ˜í–‰
 
 		totalCount = list.size();
-		adpage = new adminpagingAction(currentPage, totalCount, blockCount, blockPage,
+		adpage = new pagingAction(currentPage, totalCount, blockCount, blockPage,
 				showboard_category, getSearchKeyword());
-		adpagingHtml = adpage.getAdpagingHtml().toString();
+		pagingHtml = adpage.getpagingHtml().toString();
 
 		int lastCount = totalCount;
 
@@ -238,145 +246,161 @@ public class listAction extends ActionSupport {
 		return SUCCESS;
 	}
 
+
 	public MemberVO getMemresultClass() {
 		return memresultClass;
 	}
+
 
 	public void setMemresultClass(MemberVO memresultClass) {
 		this.memresultClass = memresultClass;
 	}
 
+
 	public MemberVO getMemparamClass() {
 		return memparamClass;
 	}
+
 
 	public void setMemparamClass(MemberVO memparamClass) {
 		this.memparamClass = memparamClass;
 	}
 
+
 	public static Reader getReader() {
 		return reader;
 	}
 
+
 	public static void setReader(Reader reader) {
-		listAction.reader = reader;
+		showcaselistAction.reader = reader;
 	}
+
 
 	public static SqlMapClient getSqlMapper() {
 		return sqlMapper;
 	}
 
+
 	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		listAction.sqlMapper = sqlMapper;
+		showcaselistAction.sqlMapper = sqlMapper;
 	}
+
 
 	public List<showVO> getList() {
 		return list;
 	}
 
+
 	public void setList(List<showVO> list) {
 		this.list = list;
 	}
+
 
 	public showVO getShowboard_paramClass() {
 		return showboard_paramClass;
 	}
 
+
 	public void setShowboard_paramClass(showVO showboard_paramClass) {
 		this.showboard_paramClass = showboard_paramClass;
 	}
+
 
 	public showVO getShowboard_resultClass() {
 		return showboard_resultClass;
 	}
 
+
 	public void setShowboard_resultClass(showVO showboard_resultClass) {
 		this.showboard_resultClass = showboard_resultClass;
 	}
+
 
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
 
+
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
+
 
 	public String getShowboard_category() {
 		return showboard_category;
 	}
 
+
 	public void setShowboard_category(String showboard_category) {
 		this.showboard_category = showboard_category;
 	}
+
 
 	public int getCurrentPage() {
 		return currentPage;
 	}
 
+
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
+
 
 	public int getTotalCount() {
 		return totalCount;
 	}
 
+
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 	}
+
 
 	public int getBlockCount() {
 		return blockCount;
 	}
 
+
 	public void setBlockCount(int blockCount) {
 		this.blockCount = blockCount;
 	}
+
 
 	public int getBlockPage() {
 		return blockPage;
 	}
 
+
 	public void setBlockPage(int blockPage) {
 		this.blockPage = blockPage;
 	}
+
 
 	public String getPagingHtml() {
 		return pagingHtml;
 	}
 
+
 	public void setPagingHtml(String pagingHtml) {
 		this.pagingHtml = pagingHtml;
 	}
 
-	public String getAdpagingHtml() {
-		return adpagingHtml;
-	}
-
-	public void setAdpagingHtml(String adpagingHtml) {
-		this.adpagingHtml = adpagingHtml;
-	}
-
-	public showcasepagingAction getPage() {
-		return page;
-	}
-
-	public void setPage(showcasepagingAction page) {
-		this.page = page;
-	}
 
 	public pagingAction getAdpage() {
 		return adpage;
 	}
 
+
 	public void setAdpage(pagingAction adpage) {
 		this.adpage = adpage;
 	}
 
+
 	public int getNum() {
 		return num;
 	}
+
 
 	public void setNum(int num) {
 		this.num = num;
