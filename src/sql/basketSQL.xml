@@ -34,7 +34,7 @@
 	<select id="basket_list" resultMap="basketRes" parameterClass="int">
 		<include refid="select-all"/>
 		and bs.member_num=#member_num#
-		ORDER BY basket_num DESC
+		ORDER BY bs.basket_num DESC
 	</select>
 
 	<!-- 장바구니 추가 -->
