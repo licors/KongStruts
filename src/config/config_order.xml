@@ -25,7 +25,8 @@
 		
 		<!-- 신청처리(장바구니) /바코드 생성 -->
 		<action name="orderProB" class="order.OrderProcessAction" method="execute2">
-			<result>/order/orderSuccess.jsp</result>
+			<result type="tiles">/order/orderSuccess.jsp</result>
+			<!-- <result>/order/orderSuccess.jsp</result> -->
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		<!-- 리스트  -->
@@ -37,7 +38,8 @@
 		
 		<!-- 주문 상세보기 -->
 		<action name="orderView" class="order.OrderViewAction">
-			<result>/order/orderView.jsp</result>
+			<!-- <result>/order/orderView.jsp</result> -->
+			<result type="tiles">orderView</result>
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 
