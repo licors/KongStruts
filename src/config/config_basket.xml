@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	<package name="basket" namespace="/basket" extends="struts-default">
+	<package name="basket" namespace="/basket" extends="struts-default, tiles-default">
 		<!-- basket list -->
 		<action name="basketList" class="basket.BasketAction">
 			<result>/basket/basketList.jsp</result>

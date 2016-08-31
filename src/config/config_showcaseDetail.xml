@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
- 	<package name="showcaseDetail" namespace="/showcaseDetail" extends="struts-default">
+ 	<package name="showcaseDetail" namespace="/showcaseDetail" extends="struts-default, tiles-default">
 		<action name="readAction" class="showcase.ShowcaseReadAction">
 			<result>/showcase/showcaseView.jsp</result>
 		</action>
