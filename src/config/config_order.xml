@@ -13,12 +13,13 @@
 		
 		<!-- 장바구니에서 신청폼 -->
 		<action name="orderFormB" class="order.OrderFormAction" method="form_B">
-			<result>/order/orderForm.jsp</result>
+			<result type="tiles">orderF</result>
+			<!-- <result>/order/orderForm.jsp</result> -->
 		</action>
 		
 		<!-- 신청처리(상세보기,메인) / 바코드 생성-->
 		<action name="orderPro" class="order.OrderProcessAction">
-			<result>/order/orderSuccess.jsp</result>
+			<result type="tiles">/order/orderSuccess.jsp</result>
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		

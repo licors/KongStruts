@@ -5,8 +5,20 @@
 
 <tiles-definitions>
 
-    <definition name="타일즈이름" extends="main">
-        <put-attribute name="body" value="jsp경로" />
+    <definition name="orderList" extends="main">
+        <put-attribute name="body" value="/order/orderList.jsp" />
+    </definition>
+    <definition name="orderF" extends="main">
+        <put-attribute name="body" value="/order/orderForm.jsp" />
+    </definition>
+    <definition name="orderSuccess" extends="main">
+        <put-attribute name="body" value="/order/orderSuccess.jsp" />
+    </definition>
+    <definition name="orderView" extends="main">
+        <put-attribute name="body" value="/order/orderView.jsp" />
+    </definition>
+    <definition name="orderView" extends="main">
+        <put-attribute name="body" value="/order/orderView.jsp" />
     </definition>
 
 </tiles-definitions>
