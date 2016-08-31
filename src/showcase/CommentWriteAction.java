@@ -63,6 +63,8 @@ public class CommentWriteAction extends ActionSupport{
 //		return SUCCESS;
 //		
 //	}
+	
+	
 
 	public String execute() throws Exception {
 		memberDataClass = new MemberVO();
@@ -107,6 +109,18 @@ public class CommentWriteAction extends ActionSupport{
 			sqlMapper.insert("showcaseDetailComment.insertBoardReply", paramClass);
 
 		return SUCCESS;
+	}
+
+	@Override
+	public void validate() {
+		// TODO Auto-generated method stub
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		//session 에 정보 없으면 로그인 창 갔다오는 기능 추가 예정
+
+		if(session == null) {
+			addFieldError("name", "Enter Your Name!!");
+		}
 	}
 
 	public CommentBoardVO getParamClass() {

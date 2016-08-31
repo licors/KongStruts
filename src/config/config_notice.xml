@@ -37,5 +37,15 @@
         <action name="noticemodify" class="admin.notice.noticemodifyAction">
             <result>/admin/notice/noticemodifySuccess.jsp</result>
         </action>
+        
+        <!-- 삭제폼 -->
+        <action name="noticedelete_form" class="admin.notice.noticedeleteAction" method="form">
+            <result>/admin/notice/noticedeleteform.jsp</result>
+        </action>
+        
+        <!-- 삭제 -->
+        <action name="noticedelete" class="admin.notice.noticedeleteAction">
+            <result>/admin/notice/noticedeleteSuccess.jsp</result>
+        </action>
     </package>
 </struts>

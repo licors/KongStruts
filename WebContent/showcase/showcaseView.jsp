@@ -121,7 +121,7 @@
 
                         <div id="fragment-12">
                             <!-- 코멘트 입력 폼 -->
-                            <form name="commentForm" action="/kong/showcase/commentWriteAction.action" method="post" onsubmit="return validation();">
+                            <form name="commentForm" action="/showcase/commentWriteAction.action" method="post" onsubmit="return validation();">
                                 <s:hidden name="showboard_num" value="%{showboard_num}" />
 
                                 <table width="600" border="0" cellspacing="0" cellpadding="0">

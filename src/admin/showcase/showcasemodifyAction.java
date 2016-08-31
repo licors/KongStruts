@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import member.MemberVO;
-import static org.apache.commons.collections.CollectionUtils.index;
 import org.apache.commons.io.FileUtils;
 
 /**
@@ -40,7 +38,7 @@ public class showcasemodifyAction extends ActionSupport {
     private int index; // 경로
 
     public showcasemodifyAction() throws IOException {
-        reader = Resources.getResourceAsReader(path.path);
+        reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
     }
@@ -51,6 +49,7 @@ public class showcasemodifyAction extends ActionSupport {
 
         pc.setShowboard_num(getShowboard_num());
         rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
+
         return SUCCESS;
     }
 
@@ -66,15 +65,24 @@ public class showcasemodifyAction extends ActionSupport {
         pc.setTag(getTag());
         pc.setContent(getContent());
         pc.setMap(getMap());
-        pc.setStatus(getStatus());
+        pc.setTel(getTel());
+        pc.setShowboard_category(getShowboard_category());
+        pc.setShowboard_num(getShowboard_num());
 
         sql.update("show.update", pc);
+        rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
 
         for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
             File destFile = new File(uploadpath + getUploadName().get(i));
             FileUtils.copyFile((getUpload()).get(i), destFile);
         }
         if (upload.size() > 0) { //파일을 업로드했다면
+            String[] file = rc.getFile_savname().split(",");
+            for (String file_ : file) {
+                File destFile = new File(uploadpath + file_);
+                destFile.delete();
+            }
+
             file_savname = getUploadName().get(0) + ",";
             for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
                 file_savname += getUploadName().get(i) + ",";
@@ -87,8 +95,8 @@ public class showcasemodifyAction extends ActionSupport {
             if (getFile_savname() != null) {
                 sql.update("show.updatefile", pc);
             }
-            rc = (showVO) sql.queryForObject("show.selectOne", pc);
         }
+
         return SUCCESS;
     }
 

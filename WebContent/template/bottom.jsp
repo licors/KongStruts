@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<p align="center"><img src="/konggaru/template/image/footer.png"></p>
+<p align="center"><img src="/konggaru/template/image/footer/footer.png"></p>
 </body>
 </html>

@@ -47,7 +47,7 @@ public class noticemodifyAction extends ActionSupport {
     public String execute() throws Exception {
         pc = new noticeVO();
         rc = new noticeVO();
-        System.out.println("v:" + toString());
+
         pc.setNotice_num(getNotice_num());
         pc.setSubject(getSubject());
         pc.setContent(getContent());
@@ -58,11 +58,6 @@ public class noticemodifyAction extends ActionSupport {
         rc = (noticeVO) sql.queryForObject("notice.selectOne", pc);
 
         return SUCCESS;
-    }
-
-    @Override
-    public String toString() {
-        return "noticemodifyAction{" + "notice_num=" + notice_num + ", subject=" + subject + ", content=" + content + '}';
     }
 
     public noticeVO getPc() {

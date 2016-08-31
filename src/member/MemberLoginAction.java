@@ -34,7 +34,8 @@ public class MemberLoginAction extends ActionSupport {
 	public String logout() throws Exception {
 		ActionContext context = ActionContext.getContext();
 		Map<String, Object> session = context.getSession();
-		session.clear();
+		session.remove("id");
+		session.remove("member_num");
 		return SUCCESS;
 	}
 

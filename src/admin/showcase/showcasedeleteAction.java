@@ -13,9 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
-import org.apache.commons.io.FileUtils;
 
 /**
  *
@@ -32,25 +29,38 @@ public class showcasedeleteAction extends ActionSupport {
     private String file_savname;
 
     public showcasedeleteAction() throws IOException {
-        reader = Resources.getResourceAsReader(path.path);
+        reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
+    }
+
+    public String form() throws Exception {
+        pc = new showVO();
+        rc = new showVO();
+
+        rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
+
+        return SUCCESS;
     }
 
     @Override
     public String execute() throws Exception {
         pc = new showVO();
         rc = new showVO();
+
         rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
 
-        String[] file = rc.getFile_savname().split(",");
-        for (String file_ : file) {
-            File destFile = new File(uploadpath + file_);
-            destFile.delete();
+        if (rc.getFile_savname() != null) {
+            String[] file = rc.getFile_savname().split(",");
+            for (String file_ : file) {
+                File destFile = new File(uploadpath + file_);
+                destFile.delete();
+            }
         }
 
         pc.setShowboard_num(getShowboard_num());
         sql.update("show.delete", pc);
+
         return SUCCESS;
     }
 
