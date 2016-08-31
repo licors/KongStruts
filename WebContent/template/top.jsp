@@ -28,7 +28,26 @@ function logout(){
 
 .TopSearch { float:left; margin:16px auto 0;  }
 select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
-.searchGbr { height:31px; padding:4px 0 3px 3px; border-top:solid #ff3d33 2px; border-left:solid #ff3d33 2px; border-bottom:solid #ff3d33 2px; border-right:0px; width:80px; }
+
+/* <탑메뉴칸> */
+nav#top_menu { clear:both; margin:40px 0 0 40px; }
+nav#top_menu ul {
+	list-style:none;
+	color: #333;
+}
+nav#top_menu ul li {
+	float:left;	
+	margin:0;
+}
+nav#top_menu a {
+	display:block;
+	padding:10px 40px;
+	color:#fff;
+	line-height:20px;
+	text-align:center;
+	font-size:18px;
+	text-decoration:none;
+}
 </style>
 </head>
 
@@ -49,52 +68,12 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 				<option value="art">미술</option>
 				<option value="event">이벤트</option>
 			</select>
-			<input type="text" name="searchFind" id="searchFind" class="input_rtse" />
+			<input type="text" name="searchFind" id="searchFind" class="" />
 			<input type="image" src="/konggaru/template/image/header/s_button.jpg" />
 			</form>
 		</fieldset>
 	</div>
 	
-<!--  		<div class="header_wrap">
-				<a href="main.action">
-	    			<h1 class="logo"></h1>
-	        	</a>
-       		 <div class="searchKeyword">
-        			<form name="findshowcase" action="showcaselist.action" method="post" >
-            			<input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
-                		<input class="serchButton" type="submit" value=""/> 
-           			</form>
-       		 </div> -->
-       		 
-
-       		 
-       		 
-       		 
-<%--              <div class="memberArea">
-             	<ul>
-             	    <s:if test="memresultClass.getId() == 'admin'">
-                	<li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
-                	<li><a href="adminmemberL.action"><input type="button" class="memberlist" value=""/></a></li>
-                	<li><a href="adminorderL.action"><input type="button" class="adminorder" value=""/></a></li>
-                	<li><a href="admingoodsL.action"><input type="button" class="admingoods" value=""/></a></li>
-                	</s:if>
-      				<s:else>
-      				<s:if test="memresultClass.getId() != null">
-                	<li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
-                	<li><a href="memberMF.action"><input type="button" class="mypage" value=""/></a></li>
-                	<li><a href="basketL.action"><input type="button" class="basket" value="" /></a></li>
-                    <li><a href="orderL.action"><input type="button" class="order" value=""/></a></li>
-                	</s:if>
-                	<s:else>
-      				<li><a href="memberLOF.action"><input type="button" class="mem_in" value=""  /></a></li>
-                    <li><a href="joinRule.action"><input type="button" class="mem_join" value="" /></a></li>
-                    <li><input type="button" class="basket" value="" onclick="return basketlogin()"/></li>
-                    <li><input type="button" class="order" value="" onclick="return buylogin()"></li>
-                    </s:else>
-                    </s:else>
-                </ul>
-			</div>
-		</div> --%>
 		             <div class="memberArea">
              	<ul>
              	    <!-- #####관리자일 때##### -->
@@ -141,7 +120,15 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 			</div>
 		</div>
 
-		
+<!-- 메뉴칸 -->
+		<nav id="top_menu">
+	<ul>
+		<li><a href="">M챠트</a></li>
+		<li><a href="">최신음악</a></li>
+		<li><a href="../music/musiclist.do">장르별음악</a></li>
+		<li><a href="">추천음악</a></li>
+	</ul>
+</nav>
 		
 		
 		
