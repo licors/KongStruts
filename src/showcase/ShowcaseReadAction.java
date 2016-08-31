@@ -9,6 +9,9 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
 import admin.showcase.showVO;
+import com.opensymphony.xwork2.ActionContext;
+import java.util.Map;
+import member.MemberVO;
 
 /*	CREATE TABLE showboard(
 SHOWBOARD_NUM NUMBER PRIMARY KEY,
@@ -36,6 +39,7 @@ public class ShowcaseReadAction extends ActionSupport {
 
     private showVO paramClass;
     private showVO resultClass;
+    private MemberVO memresultClass;
 
     private int showboard_num;
     private int pay;                //무료는 0원
@@ -68,6 +72,14 @@ public class ShowcaseReadAction extends ActionSupport {
 
         // 해당 번호의 글을 가져온다.
         resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass.getShowboard_num());
+        
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        if (!session.isEmpty()) {
+            int sessionid = (Integer) session.get("member_num");
+            memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
+        }
+        
 
         return SUCCESS;
     }
@@ -182,6 +194,14 @@ public class ShowcaseReadAction extends ActionSupport {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

@@ -12,14 +12,14 @@
 		<tr>
 			<td align="center">이메일</td>
 			<td valign="middle" align="left">
-			<input type="text" name="email" size="20" maxlength="15"></td>
+			<input type="text" name="email" size="30" maxlength="50"></td>
 
 
 		</tr>
 		<tr>
 			<td align="center">비밀번호</td>
 			<td valign="middle" align="left">
-			<input type="password" name="password" size="20" maxlength="12"></td>
+			<input type="password" name="password" size="20" maxlength="20"></td>
 
 		</tr>
 		<tr>
@@ -28,7 +28,7 @@
 				<input type="button" value="회원가입" 	onClick="javascript:location.href='/kong/member/memberJoinForm.action'">
 				<!-- 추후 경로 수정해야함 -->
 				<input type="button" value="메인으로" class="inputb"
-				onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+				onClick="javascript:location.href='/kong/showcase/sclist.action'" />
 			</td>
 		</tr>
 	</table>
