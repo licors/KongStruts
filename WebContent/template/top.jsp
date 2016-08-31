@@ -89,9 +89,9 @@
                             <li><input type="button" value="회원정보 수정" onClick="javascript:location.href = 'memberLoginForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
 
                                 <!-- <li><a href="basketL.action"><input type="button" value="장바구니" /></a></li> -->
-                            <li><input type="button" value="장바구니" onClick="javascript:location.href = 'basketList.action'"><!-- 장바구니리스트로 경로 수정필요(수호 0829) -->
+                            <li><input type="button" value="장바구니" onClick="javascript:location.href = '/kong/basket/basketList.action'"><!-- 장바구니리스트로 경로 수정필요(수호 0829) -->
                                 <!-- <li><a href="orderList.action"><input type="button" value="주문목록"/></a></li> -->
-                            <li><input type="button" value="주문목록" onClick="javascript:location.href = 'orderList.action'">
+                            <li><input type="button" value="주문목록" onClick="javascript:location.href = '/kong/order/orderList.action'">
                             </s:if>
                             <!-- #####비회원일 때##### -->
                             <s:else>
