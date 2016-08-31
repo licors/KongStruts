@@ -57,7 +57,7 @@ nav#top_menu a {
 </div>
 <div style="text-align:right;margin:0 0 10px 0;width:60%;float:right;">
 	<a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
-		<h1 id="logo"><a href="/konggaru"><img src="/konggaru/template/image/header/logo.jpg" /></a></h1>
+		<h1 id="logo"><a href="/konggaru"><img src="/kong/template/image/header/logo.jpg" /></a></h1>
 		<div class="TopSearch">
 		<fieldset>
 			<legend>검색</legend>
@@ -69,7 +69,7 @@ nav#top_menu a {
 				<option value="event">이벤트</option>
 			</select>
 			<input type="text" name="searchFind" id="searchFind" class="" />
-			<input type="image" src="/konggaru/template/image/header/s_button.jpg" />
+			<input type="image" src="/kong/template/image/header/s_button.jpg" />
 			</form>
 		</fieldset>
 	</div>
