@@ -27,25 +27,45 @@
         <action name="scread" class="showcase.ShowcaseReadAction">
             <!-- <result type="tiles">showcaseView</result> -->
             <result type="chain">
-            	<param name="actionName">commentListAction</param>
+                <param name="actionName">commentListAction</param>
             </result>
         </action>
         
         <action name="commentListAction" class="showcase.CommentListAction">
-			<!-- <result>/showcase/listComment.jsp</result> -->
-			<interceptor-ref name="chain"></interceptor-ref>
-			<result type="tiles">showcaseView</result>
-		</action>
+            <!-- <result>/showcase/listComment.jsp</result> -->
+            <interceptor-ref name="chain"></interceptor-ref>
+            <result type="tiles">showcaseView</result>
+        </action>
 		
-<!-- 		<action name="commentWriteForm" class="showcase.CommentWriteAction" method="form">
-			<result>/showcase/writeComment.jsp</result>
-		</action> -->
+        <!-- 		<action name="commentWriteForm" class="showcase.CommentWriteAction" method="form">
+                <result>/showcase/writeComment.jsp</result>
+        </action> -->
 		
-		<action name="commentWriteAction" class="showcase.CommentWriteAction">
-			<result type="redirect-action">
-				<param name="actionName">commentListAction</param>
-			</result>
-		</action>
+        <action name="commentWriteAction" class="showcase.CommentWriteAction">
+            <result type="redirect-action">
+                <param name="actionName">commentListAction</param>
+            </result>
+        </action>
+        
+        <!-- 수정폼 -->
+        <action name="scmodify_form" class="admin.showcase.showcasemodifyAction" method="form">
+            <result>/admin/showcase/scwrite.jsp</result>
+        </action>
+        
+        <!-- 수정 -->
+        <action name="scmodify" class="admin.showcase.showcasemodifyAction">
+            <result>/admin/showcase/scmodifySuccess.jsp</result>
+        </action>
+        
+        <!-- 삭제폼 -->
+        <action name="scdelete_form" class="admin.showcase.showcasedeleteAction" method="form">
+            <result>/admin/showcase/scdeleteform.jsp</result>
+        </action>
+        
+        <!-- 삭제 -->
+        <action name="scdelete" class="admin.showcase.showcasedeleteAction">
+            <result>/admin/showcase/scdeleteSuccess.jsp</result>
+        </action>
     </package>
     
 </struts>
