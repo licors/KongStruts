@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset "euc-kr";
 /* CSS Document */
 
 a:hover{
@@ -28,7 +28,7 @@ body{width:100%; height:auto; }
 	width:100%;	
 } 
 /*
-header ï¿½Îºï¿½ï¿½ï¿½
+header ºÎºÐÀÓ
 */
 #header {
 	width:100%; height:113px; border-bottom:1px solid #bbbbbb;
