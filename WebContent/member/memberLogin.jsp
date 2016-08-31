@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="loginform" action="loginUser.action" method="post" onsubmit="return checkIt()">
+	<form name="loginform" action="/kong/member/memberLogin.action" method="post" onsubmit="return checkIt()">
 	<table>
 		<tr>
 			<td align="center">이메일</td>
@@ -28,7 +28,7 @@
 				<input type="button" value="회원가입" 	onClick="javascript:location.href='/kong/member/memberJoinForm.action'">
 				<!-- 추후 경로 수정해야함 -->
 				<input type="button" value="메인으로" class="inputb"
-				onClick="javascript:location.href='listAction.action?currentPage=<s:property value="currentPage" />'">
+				onClick="javascript:location.href='/showcase/sclist.action'" />'">
 			</td>
 		</tr>
 	</table>
