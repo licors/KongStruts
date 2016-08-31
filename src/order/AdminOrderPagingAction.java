@@ -60,7 +60,7 @@ public class AdminOrderPagingAction {
 						.append("<a href=adminorderL.action?currentPage="
 								+ (startPage - 1) + ">");
 			}
-			pagingHtml.append("<img src=" + "images/goods/prew.png" + ">");
+			pagingHtml.append("[이전]");
 			pagingHtml.append("</a>");
 
 		}
@@ -100,7 +100,7 @@ public class AdminOrderPagingAction {
 				pagingHtml.append("&searchKeyword=" + isSearch);
 			}
 			pagingHtml.append("'>");
-			pagingHtml.append("<img src=" + "images/goods/next.png" + ">");
+			pagingHtml.append("[다음]");
 			pagingHtml.append("</a>");
 		}
 	}

@@ -44,7 +44,7 @@ public class BasketpagingAction {
 		if (currentPage > blockPage) {
 				pagingHtml.append("<a href=basketL.action?currentPage="
 						+ (startPage - 1) + ">");
-				pagingHtml.append("<img src="+"images/basket/prew.png"+">");
+				pagingHtml.append("[이전]");
 				pagingHtml.append("</a>");
 		}
 
@@ -77,7 +77,7 @@ public class BasketpagingAction {
 			pagingHtml.append("<a href='basketL.action?currentPage="
 					+ (endPage + 1));
 			pagingHtml.append("'>");
-			pagingHtml.append("<img src="+"images/basket/next.png"+">");
+			pagingHtml.append("[다음]");
 			pagingHtml.append("</a>");
 		}
 	}
