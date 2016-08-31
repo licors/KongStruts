@@ -32,6 +32,8 @@
             </s:if>
             <s:else>
                 <form name="notice" action="noticemodify.action" method="post" onsubmit="return check()">
+                    <s:hidden name="notice_num" value="%{rc.notice_num}"/>
+                    <s:hidden name="currentPage" value="%{currentPage}"/>
                 </s:else>
                 <table align="center" width="600">
                     <tr>

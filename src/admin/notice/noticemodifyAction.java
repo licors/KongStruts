@@ -23,7 +23,7 @@ public class noticemodifyAction extends ActionSupport {
     public static SqlMapClient sql;
     private noticeVO pc, rc;
 
-    private int notice_num;
+    private int notice_num, currentPage = 1;
     private String subject, content;
 
     public noticemodifyAction() throws IOException {
@@ -38,7 +38,7 @@ public class noticemodifyAction extends ActionSupport {
         rc = new noticeVO();
 
         pc.setNotice_num(getNotice_num());
-        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", pc);
 
         return SUCCESS;
     }
@@ -47,15 +47,22 @@ public class noticemodifyAction extends ActionSupport {
     public String execute() throws Exception {
         pc = new noticeVO();
         rc = new noticeVO();
-
+        System.out.println("v:" + toString());
+        pc.setNotice_num(getNotice_num());
         pc.setSubject(getSubject());
         pc.setContent(getContent());
 
         sql.update("notice.update", pc);
 
-        rc = (noticeVO) sql.queryForObject("notice.selectOne", getNotice_num());
+        currentPage = getCurrentPage();
+        rc = (noticeVO) sql.queryForObject("notice.selectOne", pc);
 
         return SUCCESS;
+    }
+
+    @Override
+    public String toString() {
+        return "noticemodifyAction{" + "notice_num=" + notice_num + ", subject=" + subject + ", content=" + content + '}';
     }
 
     public noticeVO getPc() {
@@ -96,6 +103,14 @@ public class noticemodifyAction extends ActionSupport {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
 }

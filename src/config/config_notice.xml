@@ -28,9 +28,14 @@
             <result type="tiles">notice_view</result>
         </action>
         
+        <!-- 수정폼 -->
+        <action name="noticemodify_form" class="admin.notice.noticemodifyAction" method="form">
+            <result>/admin/notice/noticeawrite.jsp</result>
+        </action>
+        
         <!-- 수정 -->
-        <action name="noticemodify_form" class="admin.notice.noticemodifyAction">
-            <result>/admin/notice/noticemodify.jsp</result>
+        <action name="noticemodify" class="admin.notice.noticemodifyAction">
+            <result>/admin/notice/noticemodifySuccess.jsp</result>
         </action>
     </package>
 </struts>
