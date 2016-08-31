@@ -32,9 +32,9 @@
         <include refid="select-all"/>
         ORDER BY ref DESC, re_step ASC
     </select>
-    <select id="selectmemberall" resultMap="Res"><!-- 유저용 -->
+    <select id="selectmemberall" resultMap="Res" parameterClass="support"><!-- 유저용 -->
         <include refid="select-all"/>
-        WHERE MEMBER_NUM=#MEMBER_NUM#
+        WHERE member_num=#member_num#
         ORDER BY ref DESC, re_step ASC
     </select>
     <!--    <select id="select" resultMap="supportRes">

@@ -12,7 +12,7 @@
 
         <!-- 쓰기폼 -->
         <action name="scwrite_form" class="admin.showcase.showcasewriteAction" method="form">
-            <result>/admin/showcase/scawrite.jsp</result>	
+            <result>/admin/showcase/scwrite.jsp</result>	
         </action>
         
         <!-- 쓰기 -->
