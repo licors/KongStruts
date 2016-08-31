@@ -14,7 +14,7 @@
         <title>전시글 쓰기</title>
         <script type="text/javascript">
             function check() {
-                var frm = document.scwrite;
+                var frm = document.sc;
 
                 if (frm.subject.value == "") {
                     alert("전시명을 입력해주세요.");
@@ -43,15 +43,11 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="scwrite" action="showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
-                <s:hidden name="currentPage" value="%{currentPage}"/>
-                <s:hidden name="upload" value="%{rc.file_savname}"/>
+            <form name="sc" action="scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="scmodify" action="showcase/scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+                <form name="sc" action="scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
                     <s:hidden name="showboard_num" value="%{rc.showboard_num}"/>
-                    <s:hidden name="currentPage" value="%{currentPage}"/>
-                    <s:hidden name="upload" value="%{rc.file_savname}"/>
                 </s:else>
                 <table align="center" width="600">
                     <tr>
@@ -75,12 +71,20 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>카테고리</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <select name="showboard_category" size="1" >
-                                <option value="">카테고리</option>
-                                <option value="showcase">전시</option>
-                                <option value="art">미술</option>
-                                <option value="event">이벤트</option>
-                            </select>                        
+                            <s:if test="rc == null">
+                                <select name="showboard_category" size="1" >
+                                    <option value="">카테고리</option>
+                                    <option value="showcase">전시</option>
+                                    <option value="art">미술</option>
+                                    <option value="event">이벤트</option>
+                                </select>   
+                            </s:if>
+                            <s:else>
+                                <select name="showboard_category" size="1" >
+                                    <option value="<s:property value="rc.showboard_category"/>"><s:property value="rc.showboard_category"/></option>
+                                </select>   
+                            </s:else>
+
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 전시 장소 -->
@@ -178,7 +182,7 @@
                         <td align="right" colspan="2">
                             <input name="submit" type="submit" value="작성" class="write">
                             <input name="list" type="button" value="돌아가기" class="list" 
-                                   onClick="javascript:location.href = '메인 링크'">
+                                   onClick="javascript:location.href = ''">
                         </td>
                     </tr>
                 </table>

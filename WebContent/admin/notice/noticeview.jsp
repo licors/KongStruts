@@ -26,7 +26,7 @@
                         <input name="support" type="button" value="수정"
                                onClick="javascript:location.href = '/notice/noticemodify_form.action?notice_num=<s:property value="rc.notice_num"/>'">
                         <input name="support" type="button" value="삭제"
-                               onClick="javascript:location.href = '/notice/noticedelete.action'">
+                               onClick="javascript:location.href = '/notice/noticedelete_form.action?notice_num=<s:property value="rc.notice_num"/>&currentPage=<s:property value="currentPage"/>'">
                     </s:if>
                 </td>
             </tr>
