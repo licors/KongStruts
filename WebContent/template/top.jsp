@@ -4,46 +4,69 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>	
-<html>
+
 <script>
 function basketlogin(){
-	alert("·Î±×ÀÎÀ» ÇÏ¼Å¾ß º¼ ¼ö ÀÖ½À´Ï´Ù");
+	alert("ë¡œê·¸ì¸ì„ í•˜ì…”ì•¼ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤");
 	window.location.href='memberLoginForm.action';
 }
 function buylogin(){
-	alert("·Î±×ÀÎÀ» ÇÏ¼Å¾ß º¼ ¼ö ÀÖ½À´Ï´Ù");
+	alert("ë¡œê·¸ì¸ì„ í•˜ì…”ì•¼ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤");
 	window.location.href='memberLoginForm.action';
 }
 function logout(){
-	if (confirm("·Î±×¾Æ¿ô ÇÏ½Ã°Ú½À´Ï±î?")) {
-	alert("ÀÌ¿ëÇØÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù");
+	if (confirm("ë¡œê·¸ì•„ì›ƒ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?")) {
+	alert("ì´ìš©í•´ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤");
 	window.location.href = 'memberLogout.action';
 	} else {
-	alert("Ãë¼ÒµÇ¾ú½À´Ï´Ù");
+	alert("ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤");
 	}
 }
 </script>
-<body>
-<!-- 		<div class="header_wrap">
+<head>
+<style>
+
+.TopSearch { float:left; margin:16px auto 0;  }
+select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
+.searchGbr { height:31px; padding:4px 0 3px 3px; border-top:solid #ff3d33 2px; border-left:solid #ff3d33 2px; border-bottom:solid #ff3d33 2px; border-right:0px; width:80px; }
+</style>
+</head>
+
+<!-- <div style="text-align:left;margin:0 0 10px 0;width:40%;float:left;">
+	<b>ìº”ê³ ë£¨</b><br/>
+	<img width ="200px" height="45px" src="/konggaru/template/image/header/logo.jpg" style="cursor: pointer;">
+</div>
+<div style="text-align:right;margin:0 0 10px 0;width:60%;float:right;">
+	<a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
+		<h1 id="logo"><a href="/konggaru"><img src="/konggaru/template/image/header/logo.jpg" /></a></h1>
+		<div class="TopSearch">
+		<fieldset>
+			<legend>ê²€ìƒ‰</legend>
+			<form name="findshowcase" id="mainSearch" action="#">
+			<select name="searchKind" id="searchKind" class="">
+				<option value="all" selected=selected>í†µí•©</option>
+				<option value="showcase">ì „ì‹œ</option>
+				<option value="art">ë¯¸ìˆ </option>
+				<option value="event">ì´ë²¤íŠ¸</option>
+			</select>
+			<input type="text" name="searchFind" id="searchFind" class="input_rtse" />
+			<input type="image" src="/konggaru/template/image/header/s_button.jpg" />
+			</form>
+		</fieldset>
+	</div>
+	
+<!--  		<div class="header_wrap">
 				<a href="main.action">
 	    			<h1 class="logo"></h1>
 	        	</a>
        		 <div class="searchKeyword">
-        			<form name="findgoods" action="gboardL.action" method="post" >
+        			<form name="findshowcase" action="showcaselist.action" method="post" >
             			<input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
                 		<input class="serchButton" type="submit" value=""/> 
-           			 </form>
+           			</form>
        		 </div> -->
        		 
-       		 		<div class="header_wrap">
-				<a href="main.action">
-	        	</a>
-       		 <div class="searchKeyword">
-        			<form name="findshowcase" action="showcaselist.action" method="post" >
-            			<input type="text" name="searchKeyword" size="10" value=""/>
-                		<input type="submit" value="°Ë»ö"/> 
-           			 </form>
-       		 </div>
+
        		 
        		 
        		 
@@ -74,51 +97,50 @@ function logout(){
 		</div> --%>
 		             <div class="memberArea">
              	<ul>
-             	    <!-- #####°ü¸®ÀÚÀÏ ¶§##### -->
+             	    <!-- #####ê´€ë¦¬ìì¼ ë•Œ##### -->
              	    <s:if test="memresultClass.getEmail() == 'admin@localhot'">
-                	<li><input type="button" value="·Î±×¾Æ¿ô" onclick="return logout()"/></li>
-                	<!-- <li><a href="adminmemberL.action"><input type="button" value="È¸¿ø¸ñ·Ï"/></a></li> -->
-                	<li><input type="button" value="È¸¿ø¸ñ·Ï" onClick="javascript:location.href='memberLoginForm.action'"> <!-- °ü¸®ÀÚ È¸¿ø¸ñ·Ï¸®½ºÆ® °æ·Î¼öÁ¤ÇÊ¿ä(¼öÈ£ 0829) -->
-                	<!-- <li><a href="adminorderL.action"><input type="button" value="ÁÖ¹®¸ñ·Ï"/></a></li> -->
-                	<li><input type="button" value="ÁÖ¹®¸ñ·Ï" onClick="javascript:location.href='orderList.action'"> <!-- °ü¸®ÀÚ ÁÖ¹®¸ñ·Ï¸®½ºÆ® °æ·Î¼öÁ¤ÇÊ¿ä(¼öÈ£ 0829) -->
-                	<!-- <li><a href="admingoodsL.action"><input type="button" value="Çà»ç¸ñ·Ï"/></a></li> -->
-                    <li><input type="button" value="Çà»ç¸ñ·Ï" onClick="javascript:location.href='scwrit_form.action'"> <!-- °ü¸®ÀÚ »óÇ°¸®½ºÆ® °æ·Î¼öÁ¤ÇÊ¿ä(¼öÈ£ 0829) -->
+                	<li><input type="button" value="ë¡œê·¸ì•„ì›ƒ" onclick="return logout()"/></li>
+                	<!-- <li><a href="adminmemberL.action"><input type="button" value="íšŒì›ëª©ë¡"/></a></li> -->
+                	<li><input type="button" value="íšŒì›ëª©ë¡" onClick="javascript:location.href='memberLoginForm.action'"> <!-- ê´€ë¦¬ì íšŒì›ëª©ë¡ë¦¬ìŠ¤íŠ¸ ê²½ë¡œìˆ˜ì •í•„ìš”(ìˆ˜í˜¸ 0829) -->
+                	<!-- <li><a href="adminorderL.action"><input type="button" value="ì£¼ë¬¸ëª©ë¡"/></a></li> -->
+                	<li><input type="button" value="ì£¼ë¬¸ëª©ë¡" onClick="javascript:location.href='orderList.action'"> <!-- ê´€ë¦¬ì ì£¼ë¬¸ëª©ë¡ë¦¬ìŠ¤íŠ¸ ê²½ë¡œìˆ˜ì •í•„ìš”(ìˆ˜í˜¸ 0829) -->
+                	<!-- <li><a href="admingoodsL.action"><input type="button" value="í–‰ì‚¬ëª©ë¡"/></a></li> -->
+                    <li><input type="button" value="í–‰ì‚¬ëª©ë¡" onClick="javascript:location.href='scwrit_form.action'"> <!-- ê´€ë¦¬ì ìƒí’ˆë¦¬ìŠ¤íŠ¸ ê²½ë¡œìˆ˜ì •í•„ìš”(ìˆ˜í˜¸ 0829) -->
                 	</s:if>
                 	
                 	
                 	
                 	
-                	<!-- #####È¸¿øÀÏ ¶§##### -->
+                	<!-- #####íšŒì›ì¼ ë•Œ##### -->
       				<s:else>
       				<s:if test="memresultClass.getEmail() != null">
-                	<li><input type="button"  value="·Î±×¾Æ¿ô" onclick="return logout()"/></li>
-                	<!-- <li><a href="memberMF.action"><input type="button" value="È¸¿øÁ¤º¸¼öÁ¤"/></a></li>  -->
-                	<li><input type="button" value="È¸¿øÁ¤º¸ ¼öÁ¤" onClick="javascript:location.href='memberLoginForm.action'"><!-- È¸¿øÁ¤º¸¼öÁ¤ÆûÀ¸·Î °æ·Î ¼öÁ¤ÇÊ¿ä(¼öÈ£ 0829) -->
+                	<li><input type="button"  value="ë¡œê·¸ì•„ì›ƒ" onclick="return logout()"/></li>
+                	<!-- <li><a href="memberMF.action"><input type="button" value="íšŒì›ì •ë³´ìˆ˜ì •"/></a></li>  -->
+                	<li><input type="button" value="íšŒì›ì •ë³´ ìˆ˜ì •" onClick="javascript:location.href='memberLoginForm.action'"><!-- íšŒì›ì •ë³´ìˆ˜ì •í¼ìœ¼ë¡œ ê²½ë¡œ ìˆ˜ì •í•„ìš”(ìˆ˜í˜¸ 0829) -->
 
-                	<!-- <li><a href="basketL.action"><input type="button" value="Àå¹Ù±¸´Ï" /></a></li> -->
-                	<li><input type="button" value="Àå¹Ù±¸´Ï" onClick="javascript:location.href='basketList.action'"><!-- Àå¹Ù±¸´Ï¸®½ºÆ®·Î °æ·Î ¼öÁ¤ÇÊ¿ä(¼öÈ£ 0829) -->
-                    <!-- <li><a href="orderList.action"><input type="button" value="ÁÖ¹®¸ñ·Ï"/></a></li> -->
-                    <li><input type="button" value="ÁÖ¹®¸ñ·Ï" onClick="javascript:location.href='orderList.action'">
+                	<!-- <li><a href="basketL.action"><input type="button" value="ì¥ë°”êµ¬ë‹ˆ" /></a></li> -->
+                	<li><input type="button" value="ì¥ë°”êµ¬ë‹ˆ" onClick="javascript:location.href='basketList.action'"><!-- ì¥ë°”êµ¬ë‹ˆë¦¬ìŠ¤íŠ¸ë¡œ ê²½ë¡œ ìˆ˜ì •í•„ìš”(ìˆ˜í˜¸ 0829) -->
+                    <!-- <li><a href="orderList.action"><input type="button" value="ì£¼ë¬¸ëª©ë¡"/></a></li> -->
+                    <li><input type="button" value="ì£¼ë¬¸ëª©ë¡" onClick="javascript:location.href='orderList.action'">
                 	</s:if>
                 	
                 	
                 	
                 	
-                	<!-- #####ºñÈ¸¿øÀÏ ¶§##### -->
+                	<!-- #####ë¹„íšŒì›ì¼ ë•Œ##### -->
                 	<s:else>
-      				<!-- <li><a href="memberLoginForm.action"><input type="button" value="·Î±×ÀÎ"  /></a></li> -->
-      				<li><input type="button" value="·Î±×ÀÎ" onClick="javascript:location.href='memberLoginForm.action'">
-                    <!--  <li><a href="memberJoinForm.action"><input type="button" value="È¸¿ø°¡ÀÔ" /></a></li> -->
-                    <li><input type="button" value="È¸¿ø°¡ÀÔ" onClick="javascript:location.href='memberJoinForm.action'">
-                    <li><input type="button" value="Àå¹Ù±¸´Ï" onclick="return basketlogin()"/></li>
-                    <li><input type="button" value="ÁÖ¹®¸ñ·Ï" onclick="return buylogin()"></li>
+      				<!-- <li><a href="memberLoginForm.action"><input type="button" value="ë¡œê·¸ì¸"  /></a></li> -->
+      				<li><input type="button" value="ë¡œê·¸ì¸" onClick="javascript:location.href='memberLoginForm.action'">
+                    <!--  <li><a href="memberJoinForm.action"><input type="button" value="íšŒì›ê°€ì…" /></a></li> -->
+                    <li><input type="button" value="íšŒì›ê°€ì…" onClick="javascript:location.href='memberJoinForm.action'">
+                    <li><input type="button" class="basket" value="" onclick="return basketlogin()"/></li>
+                    <li><input type="button" class="order" value="" onclick="return buylogin()"></li>
                     </s:else>
                     </s:else>
                 </ul>
 			</div>
 		</div>
-		</body>
-		</html>
+
 		
 		
 		
@@ -138,77 +160,77 @@ function logout(){
 </script>
 <style type="text/css">
 	body, div, ul, li{padding:0}
-	body{font-size:12px; font-family:"¸¼Àº °íµñ", arial} /*BODY¾È¿¡ µé¾î°¡´Â ÀüÃ¼ ÆùÆ® ¼Ó¼º Á¦¾î*/
+	body{font-size:12px; font-family:"ë§‘ì€ ê³ ë”•", arial} /*BODYì•ˆì— ë“¤ì–´ê°€ëŠ” ì „ì²´ í°íŠ¸ ì†ì„± ì œì–´*/
 	ul{list-style:none}
 	a{color:#000; text-decoration:none}
 	.gnb{
-		height:85px; /*ÀüÃ¼ »çÀÌÁî ¹× À­ºÎºĞ ¿©¹é Á¦¾î*/
+		height:85px; /*ì „ì²´ ì‚¬ì´ì¦ˆ ë° ìœ—ë¶€ë¶„ ì—¬ë°± ì œì–´*/
 	}
 	
-    /* ¸ŞÀÎ¸Ş´º ¿µ¿ª */
+    /* ë©”ì¸ë©”ë‰´ ì˜ì—­ */
     .gnb>ul{
-     width:924px; height:70px; background:#ccc; /*¸Ş´º ¿µ¿ª Á¦¾î*/
-     padding:0px 0 0 0px; /*·Î°íºÎºĞ ¿©¹é*/
+     width:924px; height:70px; background:#ccc; /*ë©”ë‰´ ì˜ì—­ ì œì–´*/
+     padding:0px 0 0 0px; /*ë¡œê³ ë¶€ë¶„ ì—¬ë°±*/
      }
 
    .gnb>ul>li{
-     float:left; width:130px; height:70px; margin-right:2px;  /*ÁÖ¸Ş´º ¿µ¿ª Á¦¾î */
+     float:left; width:130px; height:70px; margin-right:2px;  /*ì£¼ë©”ë‰´ ì˜ì—­ ì œì–´ */
      position:relative;z-index:2;
    }
    .gnb>ul>li.st a{color:red}
 
    .gnb>ul>li>a{
-     display:block; width:100%; height:100%;   /*ÁÖ¸Ş´º ºÎºĞ Á¦¾î*/
-     font:bold 17px/70px "¸¼Àº °íµñ", arial; /* about, rooms...~ºÎºĞ*/
+     display:block; width:100%; height:100%;   /*ì£¼ë©”ë‰´ ë¶€ë¶„ ì œì–´*/
+     font:bold 17px/70px "ë§‘ì€ ê³ ë”•", arial; /* about, rooms...~ë¶€ë¶„*/
      text-align:center; color:#ccc; background:white; 
    }
 
-   .gnb ul li a:hover{color:#000; background:#white}   /*ÁÖ¸Ş´ººÎºĞ¿¡ ¸¶¿ì½º ¿À¹ö½Ã ÀÌº¥Æ® Á¦¾î*/
+   .gnb ul li a:hover{color:#000; background:#white}   /*ì£¼ë©”ë‰´ë¶€ë¶„ì— ë§ˆìš°ìŠ¤ ì˜¤ë²„ì‹œ ì´ë²¤íŠ¸ ì œì–´*/
 
 
-    /* ¼­ºê¸Ş´º ¿µ¿ª*/
+    /* ì„œë¸Œë©”ë‰´ ì˜ì—­*/
     .gnb ul ul{display:none}
 
    .gnb>ul>li:hover ul{
-      display:block; width:100px; height:30px;   /*¼­ºê ¸Ş´º ¿µ¿ª Á¦¾î*/
-      position:absolute; left:0; top:70px; /*¼­ºê´Ü¸ÂÃß±â*/
+      display:block; width:100px; height:30px;   /*ì„œë¸Œ ë©”ë‰´ ì˜ì—­ ì œì–´*/
+      position:absolute; left:0; top:70px; /*ì„œë¸Œë‹¨ë§ì¶”ê¸°*/
       
    }
 
-   .gnb li li{width:120px; height:30px; background-color:white; text-align:center; border-top:2px solid #ccc; }   /*¼­ºê¸Ş´º ºÎºĞÁ¦¾î*/
+   .gnb li li{width:120px; height:30px; background-color:white; text-align:center; border-top:2px solid #ccc; }   /*ì„œë¸Œë©”ë‰´ ë¶€ë¶„ì œì–´*/
 
     .gnb li li a{
      display:block; width:100%; height:100%;
-     font:bold 12px/25px "¸¼Àº °íµñ", arial;      /*¼­ºê¸Ş´º ÆùÆ®Á¦¾î*/
+     font:bold 12px/25px "ë§‘ì€ ê³ ë”•", arial;      /*ì„œë¸Œë©”ë‰´ í°íŠ¸ì œì–´*/
    }
 
     .gnb li li a:hover{
-     color:#6EE3F7; background:none;         /*¼­ºê¸Ş´º¿¡ ¸¶¿ì½º ¿À¹ö½Ã ÀÌº¥Æ® Á¦¾î*/
+     color:#6EE3F7; background:none;         /*ì„œë¸Œë©”ë‰´ì— ë§ˆìš°ìŠ¤ ì˜¤ë²„ì‹œ ì´ë²¤íŠ¸ ì œì–´*/
    }
   
 </style>
 <body>
 <div style="text-align:left;margin:0 0 10px 0;width:40%;float:left;">
-	<b>Áñ°ÜÃ£±â</b><br/>
+	<b>ì¦ê²¨ì°¾ê¸°</b><br/>
 	<img width ="200px" height="45px" src="/project/template/image/logo.png" style="cursor: pointer;">
 </div>
 <div style="text-align:right;margin:0 0 10px 0;width:60%;float:right;">
 	<a href="javascript:go(0)" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp;
 	
-	<!-- ºñÈ¸¿ø -->
+	<!-- ë¹„íšŒì› -->
 	<c:if test="${session.id == null}">
-	<a href="javascript:go(1)" class="top-link">È¸¿ø°¡ÀÔ</a> &nbsp;|&nbsp;
-	<a href="javascript:go(2)" class="top-link">·Î±×ÀÎ</a> &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="javascript:go(1)" class="top-link">íšŒì›ê°€ì…</a> &nbsp;|&nbsp;
+	<a href="javascript:go(2)" class="top-link">ë¡œê·¸ì¸</a> &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	</c:if>
 	
-	<!-- È¸¿ø -->
+	<!-- íšŒì› -->
 	<c:if test="${session.id != null}">
-	<b><s:property value="#session.name" /> ´Ô </b>&nbsp;|&nbsp;
-	<a href="javascript:go(3)" class="top-link">·Î±×¾Æ¿ô</a> &nbsp;|&nbsp;
+	<b><s:property value="#session.name" /> ë‹˜ </b>&nbsp;|&nbsp;
+	<a href="javascript:go(3)" class="top-link">ë¡œê·¸ì•„ì›ƒ</a> &nbsp;|&nbsp;
 	</c:if>
 	<c:if test="${session.id!='admin' && session.id != null}">
 	<a href="javascript:go(4)" class="top-link">MyPage</a> &nbsp;|&nbsp;
-	<a href="javascript:go(5)" class="top-link">¿¹¾à È®ÀÎ/Ãë¼Ò</a> &nbsp;|&nbsp;
+	<a href="javascript:go(5)" class="top-link">ì˜ˆì•½ í™•ì¸/ì·¨ì†Œ</a> &nbsp;|&nbsp;
 	</c:if>
 </div>
 <div style="text-align:center;margin:auto;width:80%;float:center;">
