@@ -70,9 +70,6 @@
 						</td>
 					</tr>
 				</s:iterator>
-					<tr>
-						<td colspan="7" align="center"><s:property value="pagingHtml" escape="false"/></td>
-					</tr>
 					<s:if test="basketList.size() == 0">
 						<tr>
 							<td colspan="7" align="center"><font size="2">장바구니에
@@ -95,7 +92,9 @@
 							</td>						
 						</tr>
 					</s:else>
-				
+					<tr>
+						<td colspan="7" align="center"><s:property value="pagingHtml" escape="false"/></td>
+					</tr>
 			</table>
 		</form>
 </body>

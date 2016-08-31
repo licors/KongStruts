@@ -51,7 +51,7 @@
 	</delete>
 
 	<!-- 장바구니 전체 삭제 -->
-	<delete id="basketDelete_all" parameterClass="basket">
+	<delete id="basketDelete_all" parameterClass="int">
 		DELETE FROM BASKET
 		WHERE MEMBER_NUM=#member_num#
 	</delete>

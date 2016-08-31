@@ -206,15 +206,15 @@
 						<tr valign="top">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
 								valign="middle"><font size="2"><b>전시 입장 바코드</b></font></td>
-							<td bgcolor="#F7F7F7">
+							<td bgcolor="#F7F7F7" align="center" valign="middle">
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
 									<tbody>
-										<tr bgcolor="#F7F7F7">
-											<td align="center">
-											<img src="barcodeImg/<s:property value="order_resultClass.barcode"/>"
-									width="90" />
-											</td>
+										<tr>
+										<td bgcolor="#F7F7F7">
+											<img src="../barcodeImg/<s:property value="order_resultClass.barcode"/>.png"
+									width="70%" />
+										</td>
 										</tr>
 									</tbody>
 								</table>
@@ -227,9 +227,11 @@
 		<tr>
 			<td align="center" height="20">&nbsp;</td>
 		</tr>
-		<table width="700">
+		<table border="0" width="700" cellpadding="7" cellspacing="2"
+					bordercolordark="white" bordercolorlight="#626262" align="center"
+					bgcolor="#FFFFFF">
 		<tr>
-				<td align="right" colspan="5">
+				<td align="center" colspan="5">
 					<s:if test="order_resultClass.status == '티켓 만료'">
 						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()">
 					</s:if>

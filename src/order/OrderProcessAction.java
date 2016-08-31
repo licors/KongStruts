@@ -277,7 +277,7 @@ public class OrderProcessAction extends ActionSupport {
 		}
 		
 		orderList = sqlMapper.queryForList("order.order_date_list", getOrder_date());
-
+		sqlMapper.update("basket.basketDelete_all", sessionid);
 		return SUCCESS;
 	}
 	
