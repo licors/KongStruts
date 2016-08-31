@@ -7,19 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="loginform" action="/kong/member/memberLogin.action" method="post" onsubmit="return checkIt()">
+	<form name="loginform" action="loginUser.action" method="post" onsubmit="return checkIt()">
 	<table>
 		<tr>
 			<td align="center">이메일</td>
 			<td valign="middle" align="left">
-			<input type="text" name="email" size="20" maxlength="15"></td>
+			<input type="text" name="email" size="30" maxlength="50"></td>
 
 
 		</tr>
 		<tr>
 			<td align="center">비밀번호</td>
 			<td valign="middle" align="left">
-			<input type="password" name="password" size="20" maxlength="12"></td>
+			<input type="password" name="password" size="20" maxlength="20"></td>
 
 		</tr>
 		<tr>
