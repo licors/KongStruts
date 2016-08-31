@@ -54,7 +54,11 @@ public class OrderListAction extends ActionSupport {
 		Map<String, Object> session = context.getSession();
 		int sessionid = (Integer) session.get("member_num"); // 세션 id명을 memId로
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-
+/*		
+		if(memresultClass == null) {
+			return LOGIN;
+		}
+*/
 		orderList = sqlMapper.queryForList("order.orderList", sessionid);
 
 		totalCount = orderList.size();
@@ -71,11 +75,6 @@ public class OrderListAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-	
-	/*public String deleteOrder() throws Exception {
-		//주문리스트에서 주문취소하기
-		return SUCCESS;
-	}*/
 
 	public String getSearchKeyword() {
 		return searchKeyword;

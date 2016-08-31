@@ -74,7 +74,11 @@ public class OrderFormAction extends ActionSupport {
 		Map<String, Object> session = context.getSession();
 		int sessionid = (Integer) session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-		
+/*		
+		if(memresultClass == null) {
+			return LOGIN;
+		}
+		*/
 		// 상품번호로 상품정보 꺼내오기
 		show_paramClass.setShowboard_num(getShowboard_num());
 		showboard_num = show_paramClass.getShowboard_num();
@@ -99,7 +103,11 @@ public class OrderFormAction extends ActionSupport {
 		Map<String, Object> session = context.getSession();
 		int sessionid = (Integer) session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-
+		
+/*		if(memresultClass == null) {
+			return LOGIN;
+		}
+*/
 		// 해당 아이디의 장바구니 목록 가져오기
 		basketList = sqlMapper.queryForList("basket.basket_list", sessionid);
 		// goodsList =

@@ -153,6 +153,11 @@ public class OrderProcessAction extends ActionSupport {
 		int sessionid = (Integer) session.get("member_num");
 		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
 				sessionid);
+/*		
+		if(memresultClass == null) {
+			return LOGIN;
+		}
+*/
 
 		show_resultClass = new showVO();
 		show_resultClass = (showVO) sqlMapper.queryForObject(
