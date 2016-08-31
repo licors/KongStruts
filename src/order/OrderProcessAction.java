@@ -188,6 +188,7 @@ public class OrderProcessAction extends ActionSupport {
 		try {
 			Barcode barcode = BarcodeFactory.createCode128B(codeStr);
 			File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
+			//File file = new File("C:\\java\\YJ\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
 			BarcodeImageHandler.savePNG(barcode, file);			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -260,6 +261,7 @@ public class OrderProcessAction extends ActionSupport {
 			try {
 				Barcode barcode = BarcodeFactory.createCode128B(codeStr);
 				File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
+				//File file = new File("C:\\java\\YJ\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
 				BarcodeImageHandler.savePNG(barcode, file);			
 			} catch(Exception e) {
 				e.printStackTrace();

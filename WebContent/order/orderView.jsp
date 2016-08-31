@@ -212,7 +212,7 @@
 									<tbody>
 										<tr bgcolor="#F7F7F7">
 											<td align="center">
-											<img src="C:\\java\\YJ\\kong\\WebContent\\order\\barcode_images\\<s:property value="order_resultClass.barcode"/>"
+											<img src="barcodeImg/<s:property value="order_resultClass.barcode"/>"
 									width="90" />
 											</td>
 										</tr>

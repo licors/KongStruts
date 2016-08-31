@@ -24,7 +24,7 @@
 							</tr>
 							<tr height=30>	<!-- //바코드 이미지 -->
 								<td>
-							    <b><img src="<s:property value="order_paramClass.barcode"/>"></b>
+							    <b><img src="barcodeImg/<s:property value="order_paramClass.barcode"/>" width="90"></b>
 							    </td>
 							</tr>
 						</s:if>
