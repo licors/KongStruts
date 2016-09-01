@@ -18,7 +18,7 @@
         <!-- 쓰기 -->
         <action name="scwrite" class="admin.showcase.showcasewriteAction">
             <result type="redirect-action">
-                <param name="actionName">test</param>
+                <param name="actionName">sclist</param>
             </result>	
             <!--<result type="tiles"></result>-->
         </action>
