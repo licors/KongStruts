@@ -37,7 +37,7 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 
 <div style="text-align:left; margin:0px 0;width:40%;float:left;">
 	<!-- <a href="/kong"><b>캔고루</b><br/> -->
-	<h1 id="logo"><a href="/kong"><img width ="200px" height="50px" src="/kong/template/image/header/logo.jpg" style="cursor: pointer;">
+	<h1 id="logo"><img width ="200px" height="50px" src="/kong/template/image/header/logo.jpg" style="cursor: pointer;">
 </div>
 <div style="text-align:right; margin:0 0 10px 0;width:60%;float:right;">
 	<!-- <a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
@@ -80,7 +80,7 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
       				<s:if test="memresultClass.getEmail() != null">
                 	<li><input type="button"  value="로그아웃" onclick="return logout()"/></li>
                 	<!-- <li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li>  -->
-                	<li><input type="button" value="회원정보 수정" onClick="javascript:location.href='memberLoginForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
+                	<li><input type="button" value="회원정보 수정" onClick="javascript:location.href='memberModifyForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
 
                 	<!-- <li><a href="basketL.action"><input type="button" value="장바구니" /></a></li> -->
                 	<li><input type="button" value="장바구니" onClick="javascript:location.href='basketList.action'"><!-- 장바구니리스트로 경로 수정필요(수호 0829) -->

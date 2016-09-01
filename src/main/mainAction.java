@@ -57,8 +57,8 @@ public class mainAction extends ActionSupport {
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
         if (!session.isEmpty()) {
-            int sessionid = (Integer) session.get("member_num");
-            memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
+            int sessionid = (Integer)session.get("member_num");
+            memresultClass = (MemberVO)sqlMapper.queryForObject("member.userCheck", sessionid);
         }
         showboard_paramClass.setShowboard_category("전시");
         list1 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
@@ -66,7 +66,9 @@ public class mainAction extends ActionSupport {
         list2 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
         showboard_paramClass.setShowboard_category("이벤트");
         list3 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list3);
         return SUCCESS;
     }
 

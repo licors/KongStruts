@@ -19,16 +19,15 @@
 		<tr>
 			<td align="center">비밀번호</td>
 			<td valign="middle" align="left">
-			<input type="password" name="password" size="20" maxlength="20"></td>
+			<input type="password" name="password" size="31" maxlength="20"></td>
 
 		</tr>
 		<tr>
 			<td align="right" colspan="2">
 				<input name="submit" type="submit" value="로그인" class="inputb"> 
 				<input type="button" value="회원가입" 	onClick="javascript:location.href='/kong/member/memberJoinForm.action'">
-				<!-- 추후 경로 수정해야함 -->
-				<input type="button" value="메인으로" class="inputb"
-				onClick="javascript:location.href='/showcase/sclist.action'" />
+				<input type="button" value="비밀번호 찾기" 	onClick="javascript:location.href='/kong/member/memberpfindF.action'">
+				
 			</td>
 		</tr>
 	</table>

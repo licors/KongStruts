@@ -33,69 +33,30 @@
 		INSERT INTO MEMBER(member_num, email, password, name, address, company) VALUES
 		(MEMBER_NUM_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#)
 	</insert>
-
-	<!-- 관리자 회원관리 Search -->
-	<!-- <select id="memberSearchId" resultMap="memberRes"
-		parameterClass="string">
-		SELECT * FROM MEMBER WHERE ID like #searchKeyword#
-		ORDER BY num DESC
-	</select>
-	<select id="memberSearchPhone" resultMap="memberRes"
-		parameterClass="string">
-		SELECT * FROM MEMBER WHERE PHONE like #searchKeyword#
-		ORDER BY num DESC
-	</select>
-	관리자 회원관리 List
-	<select id="memberList" resultMap="memberRes" parameterClass="int">
-		SELECT * FROM MEMBER ORDER BY num DESC
-	</select>
-	우편번호 검색
-	<select id="zipCheck" resultMap="zipcodeRes" parameterClass="string">
-		SELECT * FROM ZIPCODE WHERE area3 LIKE #area3#
-	</select>
-	아이디 중복 체크
-	<select id="IdCheck" resultMap="memberRes" parameterClass="string">
-		SELECT * FROM MEMBER WHERE ID=#id#
-	</select>
-	아이디 비밀번호 찾기
-	<select id="FindId" resultMap="memberRes">
-		SELECT * FROM MEMBER WHERE NAME=#name# AND PHONE=#phone#
-	</select>
-
-	<select id="FindPassword" resultMap="memberRes">
-		SELECT * FROM MEMBER WHERE ID=#id# AND PHONE=#phone#
-	</select>
-
 	
-    회원탈퇴
-    <delete id="deleteMember" parameterClass="member">
-            DELETE FROM MEMBER WHERE ID=#id#
-    </delete>
-    회원정보 변경
+	 <!-- 회원정보 변경 -->
     <update id="memberUpdate" parameterClass="member">
             UPDATE MEMBER SET
-            EMAIL=#email#,
-            ZIPCODE=#zipcode#,
-            ADDR1=#addr1#,
-            ADDR2=#addr2#
-            WHERE ID=#id#
+            ADDRESS=#address#,
+            COMPANY=#company#
+            WHERE EMAIL=#email#
     </update>
-    관리자 회원정보 변경
-    <update id="memberUpdate1" parameterClass="member">
-            UPDATE MEMBER SET
-            NAME=#name#,
-            EMAIL=#email#,
-            PHONE=#phone#,
-            ZIPCODE=#zipcode#,
-            ADDR1=#addr1#,
-            ADDR2=#addr2#
-            WHERE ID=#id#
-    </update>
-    비밀번호 변경
+    
+    <!-- 비밀번호 변경 -->
     <update id="passwordUpdate" parameterClass="member">
-            UPDATE MEMBER SET PASSWORD=#password# WHERE ID=#id#
-    </update> -->
-    <!-- member -->
+            UPDATE MEMBER SET PASSWORD=#password# WHERE EMAIL=#email#
+    </update> 
+    
+   <!--  회원탈퇴 -->
+	 <delete id="deleteMember" parameterClass="member">
+		DELETE FROM MEMBER WHERE EMAIL=#email#
+	</delete> 
+	
+	<!-- 비밀번호 찾기 -->
+
+	<select id="FindPassword" resultMap="memberRes">
+		SELECT * FROM MEMBER WHERE EMAIL=#email# AND NAME=#name#
+	</select>
 
 
 </sqlMap>

@@ -40,7 +40,7 @@ public class CommentPagingAction {
 		
 		pagingHtml = new StringBuffer();
 		if(currentPage > blockPage) {
-			pagingHtml.append("<a href=listAction.action?currentPage="+(startPage-1)+">");
+			pagingHtml.append("<a href=/showcase/commentListAction.action?currentPage="+(startPage-1)+">");
 			pagingHtml.append("이전");
 			pagingHtml.append("</a>");
 		}
@@ -56,7 +56,7 @@ public class CommentPagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				pagingHtml.append("&nbsp;<a href='listAction.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href='/showcase/commentListAction.action?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -68,7 +68,7 @@ public class CommentPagingAction {
 		pagingHtml.append("&nbsp;&nbsp;|&nbsp;&nbsp;");
 		
 		if(totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='listAction.action?currentPage="+(endPage+1)+"'>");
+			pagingHtml.append("<a href='/showcase/commentListAction.action?currentPage="+(endPage+1)+"'>");
 			pagingHtml.append("다음");
 			pagingHtml.append("</a>");
 		}
