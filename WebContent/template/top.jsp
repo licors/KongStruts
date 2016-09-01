@@ -37,7 +37,7 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 
 <div style="text-align:left; margin:0px 0;width:40%;float:left;">
 	<!-- <a href="/kong"><b>캔고루</b><br/> -->
-	<h1 id="logo"><a href="/kong"><img width ="200px" height="px" src="/kong/template/image/header/logo.jpg" style="cursor: pointer;">
+	<h1 id="logo"><a href="/kong"><img width ="200px" height="50px" src="/kong/template/image/header/logo.jpg" style="cursor: pointer;">
 </div>
 <div style="text-align:right; margin:0 0 10px 0;width:60%;float:right;">
 	<!-- <a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
