@@ -31,7 +31,10 @@
 		
 		<!--  로그아웃 처리  -->
 		<action name="memberLogout" class="member.MemberLoginAction" method="logout">
-			<result>/member/memberLogin.jsp</result>
+			<!-- <result>/member/memberLogin.jsp</result> -->
+			 <result type="redirect-action">
+				<param name="actionName">showcase/sclist</param>
+			</result>
 		</action>
 		
 		<!-- 회원 정보 수정 폼 -->
