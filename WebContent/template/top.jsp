@@ -16,7 +16,7 @@ function buylogin(){
 }
 function logout(){
 	if (confirm("로그아웃 하시겠습니까?")) {
-	alert("이용해주셔서 감사합니다safsafsaf");
+	alert("이용해주셔서 감사합니다");
 	window.location.href = 'memberLogout.action';
 	} else {
 	alert("취소되었습니다");
