@@ -62,6 +62,7 @@
         WHERE
         subject=#subject#
     </select>
+       
     <!-- 유진 : 08.28.02:38 / parameterClass="int"추가 -->
     <!-- 글_num으로 글 하나 가져오는 sql -->
     <select id="selectOne" resultMap="showRes" parameterClass="int">
@@ -74,6 +75,7 @@
         WHERE rownum <![CDATA[<=]]> 1
         ORDER BY showboard_num DESC
     </select>
+    
     <!-- 행사 검색(수호) 08.25.04:00  -->
     <select id="selectSearch" parameterClass="string" resultMap="showRes">
         <include refid="select-all"/>
@@ -85,13 +87,13 @@
         SELECT max(showboard_num)
         as showboard_num FROM showboard
     </select>-->
-    
+
     <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="show">
-        INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tel, tag, content, 
-        file_orgname, file_savname, readcount, ordercount, map)
-        VALUES(showboard_num_seq.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
-        #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#)
+        INSERT INTO showboard(showboard_num, subject, address1, address2, "DATE", pay, tel, tag, content, 
+        file_orgname, file_savname, readcount, ordercount, map, showboard_category)
+        VALUES(showboard_num_seq.NEXTVAL, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
+        #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#, #showboard_category#)
     </insert>
 
     <!-- update 쿼리문 정의 -->
@@ -100,6 +102,7 @@
         subject=#subject#,
         address1=#address1#,
         address2=#address2#,
+        "DATE"=#date#,
         pay=#pay#,
         tel=#tel#,
         tag=#tag#,
@@ -117,7 +120,7 @@
     <!-- 사진변경용 -->
     <update id="updatefile" parameterClass="show">
         UPDATE SHOWBOARD SET
-        file_orgname=#file_orgname#,
+        <!--file_orgname=#file_orgname#,-->
         file_savname=#file_savname#
         <include refid="where-no"/>
     </update>
