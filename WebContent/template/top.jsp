@@ -28,26 +28,7 @@ function logout(){
 
 .TopSearch { float:left; margin:16px auto 0;  }
 select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
-
-/* <탑메뉴칸> */
-nav#top_menu { clear:both; margin:40px 0 0 40px; }
-nav#top_menu ul {
-	list-style:none;
-	color: #333;
-}
-nav#top_menu ul li {
-	float:left;	
-	margin:0;
-}
-nav#top_menu a {
-	display:block;
-	padding:10px 40px;
-	color:#fff;
-	line-height:20px;
-	text-align:center;
-	font-size:18px;
-	text-decoration:none;
-}
+ 
 </style>
 </head>
 
@@ -57,7 +38,7 @@ nav#top_menu a {
 </div>
 <div style="text-align:right;margin:0 0 10px 0;width:60%;float:right;">
 	<a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
-		<h1 id="logo"><a href="/konggaru"><img src="/kong/template/image/header/logo.jpg" /></a></h1>
+		<h1 id="logo"><a href="/kong"><img src="/kong/template/image/header/logo.jpg" /></a></h1>
 		<div class="TopSearch">
 		<fieldset>
 			<legend>검색</legend>
@@ -112,8 +93,8 @@ nav#top_menu a {
       				<li><input type="button" value="로그인" onClick="javascript:location.href='memberLoginForm.action'">
                     <!--  <li><a href="memberJoinForm.action"><input type="button" value="회원가입" /></a></li> -->
                     <li><input type="button" value="회원가입" onClick="javascript:location.href='memberJoinForm.action'">
-                    <li><input type="button" class="basket" value="" onclick="return basketlogin()"/></li>
-                    <li><input type="button" class="order" value="" onclick="return buylogin()"></li>
+                    <li><input type="button" class="basket" value="장바구니" onclick="return basketlogin()"/></li>
+                    <li><input type="button" class="order" value="주문목록" onclick="return buylogin()"></li>
                     </s:else>
                     </s:else>
                 </ul>
@@ -123,10 +104,9 @@ nav#top_menu a {
 <!-- 메뉴칸 -->
 		<nav id="top_menu">
 	<ul>
-		<li><a href="">M챠트</a></li>
-		<li><a href="">최신음악</a></li>
-		<li><a href="../music/musiclist.do">장르별음악</a></li>
-		<li><a href="">추천음악</a></li>
+		<li><a href="">전시</a></li>
+		<li><a href="">미술</a></li>
+		<li><a href="../music/musiclist.do">이벤트</a></li>
 	</ul>
 </nav>
 		
