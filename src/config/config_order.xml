@@ -5,6 +5,10 @@
     
 <struts>
 	<package name="order" namespace="/order" extends="struts-default, tiles-default" >
+<!-- 		<global-results>
+			<result name="LOGIN">/member/memberLogin.jsp</result>
+		</global-results> -->
+		
 		<!-- 상세보기,메인에서 신청폼 (get방식으로 showboard_num 받음)-->
 		<action name="orderForm" class="order.OrderFormAction" method="form">
 			<result type="tiles">orderF</result>
@@ -19,13 +23,13 @@
 		
 		<!-- 신청처리(상세보기,메인) / 바코드 생성-->
 		<action name="orderPro" class="order.OrderProcessAction">
-			<result type="tiles">/order/orderSuccess.jsp</result>
+			<result type="tiles">orderSuccess</result>
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		
 		<!-- 신청처리(장바구니) /바코드 생성 -->
 		<action name="orderProB" class="order.OrderProcessAction" method="execute2">
-			<result type="tiles">/order/orderSuccess.jsp</result>
+			<result type="tiles">orderSuccess</result>
 			<!-- <result>/order/orderSuccess.jsp</result> -->
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
