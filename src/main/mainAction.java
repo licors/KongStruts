@@ -66,7 +66,9 @@ public class mainAction extends ActionSupport {
         list2 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
         showboard_paramClass.setShowboard_category("이벤트");
         list3 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println(list3);
         return SUCCESS;
     }
 
