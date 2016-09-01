@@ -33,6 +33,47 @@
 		<action name="memberLogout" class="member.MemberLoginAction" method="logout">
 			<result>/member/memberLogin.jsp</result>
 		</action>
+		
+		<!-- 회원 정보 수정 폼 -->
+		<action name="memberModifyForm" class="member.MemberModifyAction" method="form">
+			<result>/member/modifyForm.jsp</result>
+		</action>
+		
+		<!-- 회원 정보 수정 처리-->
+		<action name="memberM" class="member.MemberModifyAction" >
+			<result>/member/member_M.jsp</result>
+		</action>
+		
+		<!-- 회원 정보 수정 비밀번호 체크 폼 -->
+		<action name="memberPMF" class="member.MemberModifyAction" method="modifyPasswordform">
+			<result>/member/pmodifyForm.jsp</result>
+		</action> 
+		
+		<!--  회원 정보 수정 비밀번호 체크 처리 -->
+		<action name="memberPMF2" class="member.MemberModifyAction" method="modifyPassword">
+			<result>/member/member_PMF.jsp</result>
+			<result name="error">/member/member_PMF_Error.jsp</result>
+		</action>
+		
+		<!--  회원탈퇴 폼 -->
+		 <action name="deleteForm" class="member.MemberModifyAction" method="delform">
+			<result>/member/deleteForm.jsp</result>	
+		</action> 
+		
+		<!--  회원탈퇴 처리 -->
+		<action name="deleteAction" class="member.MemberModifyAction" method="delete">
+			<result>/member/memberout.jsp</result>
+		</action>
+		
+		<!--  비밀번호 찾기 폼 -->
+		<action name="memberpfindF" class="member.MemberFindAction" method="findpwform">
+			<result>/member/passwordfindForm.jsp</result>
+		</action>
+		
+		<!--  비밀번호 찾기 처리 -->
+		<action name="memberpfind" class="member.MemberFindAction" method="findpassword">
+			<result>/member/member_pfind.jsp</result>
+		</action>
 	</package>
 
 </struts>
