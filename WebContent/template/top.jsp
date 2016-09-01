@@ -16,7 +16,7 @@ function buylogin(){
 }
 function logout(){
 	if (confirm("로그아웃 하시겠습니까?")) {
-	alert("이용해주셔서 감사합니다");
+	alert("이용해주셔서 감사합니다safsafsaf");
 	window.location.href = 'memberLogout.action';
 	} else {
 	alert("취소되었습니다");
@@ -80,7 +80,7 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
       				<s:if test="memresultClass.getEmail() != null">
                 	<li><input type="button"  value="로그아웃" onclick="return logout()"/></li>
                 	<!-- <li><a href="memberMF.action"><input type="button" value="회원정보수정"/></a></li>  -->
-                	<li><input type="button" value="회원정보 수정" onClick="javascript:location.href='memberLoginForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
+                	<li><input type="button" value="회원정보 수정" onClick="javascript:location.href='memberModifyForm.action'"><!-- 회원정보수정폼으로 경로 수정필요(수호 0829) -->
 
                 	<!-- <li><a href="basketL.action"><input type="button" value="장바구니" /></a></li> -->
                 	<li><input type="button" value="장바구니" onClick="javascript:location.href='basketList.action'"><!-- 장바구니리스트로 경로 수정필요(수호 0829) -->
