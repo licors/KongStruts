@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 
@@ -32,8 +33,8 @@ public class showcasemodifyAction extends ActionSupport {
     private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, status, showboard_category;
 
     private List<File> upload = new ArrayList<File>(); // 파일 객체
-    private List<String> uploadType = new ArrayList<String>(); // 컨텐츠 타입
-    private List<String> uploadName = new ArrayList<String>(); // 파일 이름
+    private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
+    private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
     private String uploadpath = path.path;
     private int index; // 경로
 
@@ -61,31 +62,28 @@ public class showcasemodifyAction extends ActionSupport {
         pc.setSubject(getSubject());
         pc.setAddress1(getAddress1());
         pc.setAddress2(getAddress2());
+        pc.setDate(getDate());
         pc.setPay(getPay());
+        pc.setTel(getTel());
         pc.setTag(getTag());
         pc.setContent(getContent());
-        pc.setMap(getMap());
-        pc.setTel(getTel());
         pc.setShowboard_category(getShowboard_category());
+        pc.setMap(getMap());
         pc.setShowboard_num(getShowboard_num());
 
         sql.update("show.update", pc);
         rc = (showVO) sql.queryForObject("show.selectOne", getShowboard_num());
 
         for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
-            File destFile = new File(uploadpath + getUploadName().get(i));
+            File destFile = new File(uploadpath + getUploadFileName().get(i));
             FileUtils.copyFile((getUpload()).get(i), destFile);
         }
         if (upload.size() > 0) { //파일을 업로드했다면
-            String[] file = rc.getFile_savname().split(",");
-            for (String file_ : file) {
-                File destFile = new File(uploadpath + file_);
-                destFile.delete();
-            }
-
-            file_savname = getUploadName().get(0) + ",";
+            System.out.println("up:" + Arrays.deepToString(upload.toArray()));
+            file_savname = getUploadFileName().get(0) + ",";
             for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
-                file_savname += getUploadName().get(i) + ",";
+                System.out.println("up2:" + uploadpath + getUploadFileName().get(i));
+                file_savname += getUploadFileName().get(i) + ",";
             }
             index = file_savname.lastIndexOf(',');
             file_savname = file_savname.substring(0, index);
@@ -244,20 +242,20 @@ public class showcasemodifyAction extends ActionSupport {
         this.upload = upload;
     }
 
-    public List<String> getUploadType() {
-        return uploadType;
+    public List<String> getUploadContentType() {
+        return uploadContentType;
     }
 
-    public void setUploadType(List<String> uploadType) {
-        this.uploadType = uploadType;
+    public void setUploadContentType(List<String> uploadContentType) {
+        this.uploadContentType = uploadContentType;
     }
 
-    public List<String> getUploadName() {
-        return uploadName;
+    public List<String> getUploadFileName() {
+        return uploadFileName;
     }
 
-    public void setUploadName(List<String> uploadName) {
-        this.uploadName = uploadName;
+    public void setUploadFileName(List<String> uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 
     public String getUploadpath() {

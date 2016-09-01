@@ -23,7 +23,7 @@ public class supportmodifyAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int support_num;
     private String type, email, content;
@@ -107,12 +107,12 @@ public class supportmodifyAction extends ActionSupport {
         this.content = content;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

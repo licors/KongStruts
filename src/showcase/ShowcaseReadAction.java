@@ -1,5 +1,6 @@
 package showcase;
 
+import admin.path;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -53,6 +54,8 @@ public class ShowcaseReadAction extends ActionSupport {
     private String map;
     private String date;     //ex    2016.07.18(월) ~ 2016.09.04(일) / 49일간  (들어가있는거 그대로 출력)
     private String status;   //   일정 항목 옆에 '개최중'
+    
+    private String img = path.path; // 이미지 상대경로
 
     public ShowcaseReadAction() throws IOException {
         // TODO Auto-generated constructor stub
@@ -202,6 +205,14 @@ public class ShowcaseReadAction extends ActionSupport {
 
     public void setMemresultClass(MemberVO memresultClass) {
         this.memresultClass = memresultClass;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
 }

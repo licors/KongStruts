@@ -24,14 +24,14 @@
             </tr>
             <tr>
                 <td align="right" colspan="5">
-                    <s:if test="mc.admin > 0"><!-- 어드민 qna 작성 -->
+                    <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
                         <input name="support" type="button" value="공지글 작성"
                                onClick="javascript:location.href = '/notice/noticewrite_form.action'">
                     </s:if>
                 </td>
             </tr>
             <tr align="center" bgcolor="#FFFFFF">
-                <td width="50"><strong>번호</strong></td>
+                <td width="50"><strong>번호ㅋ</strong></td>
                 <td width="420"><strong>제목</strong></td>
                 <td width="80"><strong>작성일</strong></td>
                 <td width="50"><strong>조회수</strong></td>

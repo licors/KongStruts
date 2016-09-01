@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td align="right" colspan="3">
-                    <s:if test="mc.admin > 0">
+                    <s:if test="memresultClass.admin > 0">
                         <!-- http://localhost:8080/notice/noticeread.action?notice_num=2&currentPage=1 -->
                         <input name="support" type="button" value="수정"
                                onClick="javascript:location.href = '/notice/noticemodify_form.action?notice_num=<s:property value="rc.notice_num"/>'">

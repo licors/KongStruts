@@ -5,8 +5,8 @@
 
 <tiles-definitions>
 
-    <definition name="타일즈이름" extends="main">
-        <put-attribute name="body" value="jsp경로" />
+    <definition name="memberadmin_list" extends="main">
+        <put-attribute name="body" value="/admin/member/memberadminlist.jsp" />
     </definition>
 
 </tiles-definitions>

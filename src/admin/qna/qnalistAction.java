@@ -27,7 +27,7 @@ public class qnalistAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
 
-    private MemberVO mc;
+    private MemberVO memresultClass;
     private List<qnaVO> list = new ArrayList<qnaVO>();
 
     public qnalistAction() throws IOException {
@@ -43,7 +43,7 @@ public class qnalistAction extends ActionSupport {
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
         int sessionid = (Integer) session.get("member_num");
-        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
+        memresultClass = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
 
         return SUCCESS;
     }
@@ -56,12 +56,12 @@ public class qnalistAction extends ActionSupport {
         this.list = list;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

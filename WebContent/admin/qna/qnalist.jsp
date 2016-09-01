@@ -23,7 +23,7 @@
                 <td align="right" colspan="2">
                     <input name="support" type="button" value="1:1 문의" class="list" 
                            onClick="javascript:location.href = '1:1문의 링크'">
-                    <s:if test="mc.admin > 0"><!-- 어드민 qna 작성 -->
+                    <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
                         <input type="button" name="qna" value="QnA 추가">
                     </s:if>
                 </td>

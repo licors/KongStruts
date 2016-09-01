@@ -66,7 +66,7 @@
                         <td width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>이메일</td>
                         <td width="420" bgcolor="#FFFFFF">
                             <s:if test="rc == null">
-                                <input class="input" type="text" name="email" value="<s:property value="mc.email"/>" size="20" maxlength="50"/>
+                                <input class="input" type="text" name="email" value="<s:property value="memresultClass.email"/>" size="20" maxlength="50"/>
                             </s:if>
                             <s:else>
                                 <input class="input" type="text" name="email" value="<s:property value="rc.email"/>" size="20" maxlength="50"/>

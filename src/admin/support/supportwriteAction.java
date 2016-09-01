@@ -27,7 +27,7 @@ public class supportwriteAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int support_num, member_num, ref, re_step, re_level;
     private Date reg_date;
@@ -44,7 +44,7 @@ public class supportwriteAction extends ActionSupport {
         ActionContext context = ActionContext.getContext();
         Map<String, Object> session = context.getSession();
         String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.UserCheck", sessionid);
+        memresultClass = (MemberVO) sql.queryForObject("member.UserCheck", sessionid);
         
         return SUCCESS;
     }
@@ -163,12 +163,12 @@ public class supportwriteAction extends ActionSupport {
         this.today = today;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

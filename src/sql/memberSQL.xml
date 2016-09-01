@@ -3,60 +3,68 @@
 '-//ibatis.apache.org//DTD SQL MAP 2.0//EN'
 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="member">
-	<!-- member -->
-	<typeAlias alias="member" type="member.MemberVO" />
-	<resultMap id="memberRes" class="member">
+    <!-- member -->
+    <typeAlias alias="member" type="member.MemberVO" />
+    <resultMap id="memberRes" class="member">
 
-		<result property="member_num" column="member_num" />
-		<result property="email" column="email" />
-		<result property="password" column="password" />
-		<result property="name" column="name" />
-		<result property="address" column="address" />
-		<result property="company" column="company" />
-		<result property="admin" column="admin" />
+        <result property="member_num" column="member_num" />
+        <result property="email" column="email" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="address" column="address" />
+        <result property="company" column="company" />
+        <result property="admin" column="admin" />
 	
-	</resultMap>
+    </resultMap>
 
 
-	<!-- 유저 정보 값 얻어오기 -->
-	<select id="userCheck" resultMap="memberRes" parameterClass="int">
-		SELECT * FROM MEMBER WHERE MEMBER_NUM=#member_num#
-	</select>
+    <!-- 유저 정보 값 얻어오기 -->
+    <select id="userCheck" resultMap="memberRes" parameterClass="int">
+        SELECT * FROM MEMBER WHERE MEMBER_NUM=#member_num#
+    </select>
 	
-	<!-- 로그인 -->
-	<select id="userLogin" resultMap="memberRes" parameterClass="String">
-		SELECT * FROM MEMBER WHERE EMAIL=#email#
-	</select>
+    <!-- 로그인 -->
+    <select id="userLogin" resultMap="memberRes" parameterClass="String">
+        SELECT * FROM MEMBER WHERE EMAIL=#email#
+    </select>
 
-	<!-- 회원가입 -->
-	<insert id="joinMember" parameterClass="member">
-		INSERT INTO MEMBER(member_num, email, password, name, address, company) VALUES
-		(MEMBER_NUM_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#)
-	</insert>
+    <!-- 회원가입 -->
+    <insert id="joinMember" parameterClass="member">
+        INSERT INTO MEMBER(member_num, email, password, name, address, company) VALUES
+        (MEMBER_NUM_SEQ.NEXTVAL,#email#,#password#,#name#,#address#,#company#)
+    </insert>
 	
-	 <!-- 회원정보 변경 -->
+    <!-- 회원정보 변경 -->
     <update id="memberUpdate" parameterClass="member">
-            UPDATE MEMBER SET
-            ADDRESS=#address#,
-            COMPANY=#company#
-            WHERE EMAIL=#email#
+        UPDATE MEMBER SET
+        ADDRESS=#address#,
+        COMPANY=#company#
+        WHERE EMAIL=#email#
     </update>
     
     <!-- 비밀번호 변경 -->
     <update id="passwordUpdate" parameterClass="member">
-            UPDATE MEMBER SET PASSWORD=#password# WHERE EMAIL=#email#
+        UPDATE MEMBER SET PASSWORD=#password# WHERE EMAIL=#email#
     </update> 
     
-   <!--  회원탈퇴 -->
-	 <delete id="deleteMember" parameterClass="member">
-		DELETE FROM MEMBER WHERE EMAIL=#email#
-	</delete> 
+    <!--  회원탈퇴 -->
+    <delete id="deleteMember" parameterClass="member">
+        DELETE FROM MEMBER WHERE EMAIL=#email#
+    </delete> 
 	
-	<!-- 비밀번호 찾기 -->
+    <!-- 비밀번호 찾기 -->
 
-	<select id="FindPassword" resultMap="memberRes">
-		SELECT * FROM MEMBER WHERE EMAIL=#email# AND NAME=#name#
-	</select>
+    <select id="FindPassword" resultMap="memberRes">
+        SELECT * FROM MEMBER WHERE EMAIL=#email# AND NAME=#name#
+    </select>
 
+    <sql id="select-all">
+        SELECT * FROM MEMBER
+    </sql>
+    <!-- 맴버 전체 -->
+    <select id="selectall" resultMap="memberRes">
+        <include refid="select-all"/>
+        ORDER BY member_num
+    </select>
 
 </sqlMap>

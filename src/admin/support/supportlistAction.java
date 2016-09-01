@@ -28,7 +28,7 @@ public class supportlistAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int member_num;
 
@@ -52,9 +52,9 @@ public class supportlistAction extends ActionSupport {
         Map<String, Object> session = context.getSession();
         if (!session.isEmpty()) {
             int sessionid = (Integer) session.get("member_num");
-            mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
+            memresultClass = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
         }
-        if (mc != null && mc.getAdmin() > 0) { //운영자 구분 1이면 운영자임
+        if (memresultClass != null && memresultClass.getAdmin() > 0) { //운영자 구분 1이면 운영자임
             list = sql.queryForList("support.selectall"); //관리자용
         } else {
             pc.setMember_num(getMember_num());
@@ -151,6 +151,14 @@ public class supportlistAction extends ActionSupport {
 
     public void setPage(pagingAction page) {
         this.page = page;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }
