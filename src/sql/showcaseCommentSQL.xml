@@ -28,10 +28,11 @@
 	
 	<!-- select 쿼리문 정의 -->	
 	<!-- 조인 사용 시 맵객체 사용하는 것 추천함 -->
-	<select id="selectAll" resultClass="comment">
+	<select id="selectAll" resultClass="comment" parameterClass="int">
 		SELECT cm.COMMENT_NUM, cm.SHOWBOARD_NUM, cm.MEMBER_NUM, cm.CONTENT, cm.REG_DATE, cm.RE_STEP, cm.RE_LEVEL, cm."REF", mb."NAME"
 		FROM SHOWCASECOMMENT cm join MEMBER mb
 		on cm.MEMBER_NUM = mb.MEMBER_NUM
+		where cm.SHOWBOARD_NUM = #showboard_num#
 		ORDER BY ref DESC, re_step ASC
 	</select> 
 	

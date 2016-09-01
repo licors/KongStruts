@@ -17,8 +17,8 @@ public class CommentWriteAction extends ActionSupport{
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
-	private CommentBoardVO paramClass;
-	private CommentBoardVO resultClass;
+	private CommentBoardVO CommentParamClass;
+	private CommentBoardVO CommentResultClass;
 	private MemberVO memberDataClass;
 	
 	private int currentPage;
@@ -68,24 +68,24 @@ public class CommentWriteAction extends ActionSupport{
 
 	public String execute() throws Exception {
 		memberDataClass = new MemberVO();
-		paramClass = new CommentBoardVO();
-		resultClass = new CommentBoardVO();
+		CommentParamClass = new CommentBoardVO();
+		CommentResultClass = new CommentBoardVO();
 		
 		
 		if(ref == 0)
 		{
-			paramClass.setRe_step(0);
-			paramClass.setRe_level(0);
+			CommentParamClass.setRe_step(0);
+			CommentParamClass.setRe_level(0);
 		}
 		else
 		{
-			paramClass.setRef(getRef());
-			paramClass.setRe_step(getRe_step());
-			sqlMapper.update("showcaseDetailComment.updateReplyStep", paramClass);
+			CommentParamClass.setRef(getRef());
+			CommentParamClass.setRe_step(getRe_step());
+			sqlMapper.update("showcaseDetailComment.updateReplyStep", CommentParamClass);
 			
-			paramClass.setRe_step(getRe_step() + 1);
-			paramClass.setRe_level(getRe_level() + 1);
-			paramClass.setRef(getRef());
+			CommentParamClass.setRe_step(getRe_step() + 1);
+			CommentParamClass.setRe_level(getRe_level() + 1);
+			CommentParamClass.setRef(getRef());
 		}
 		
 		ActionContext context = ActionContext.getContext();
@@ -96,17 +96,17 @@ public class CommentWriteAction extends ActionSupport{
 		memberDataClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionNum);
 		
 		
-		paramClass.setComment_num(getComment_num());
-		paramClass.setMember_num(memberDataClass.getMember_num());
-		paramClass.setShowboard_num(getShowboard_num());
-		paramClass.setContent(getContent());
-		paramClass.setReg_date(today.getTime());
+		CommentParamClass.setComment_num(getComment_num());
+		CommentParamClass.setMember_num(memberDataClass.getMember_num());
+		CommentParamClass.setShowboard_num(getShowboard_num());
+		CommentParamClass.setContent(getContent());
+		CommentParamClass.setReg_date(today.getTime());
 		
 		
 		if(ref == 0)
-			sqlMapper.insert("showcaseDetailComment.insertBoard", paramClass);
+			sqlMapper.insert("showcaseDetailComment.insertBoard", CommentParamClass);
 		else
-			sqlMapper.insert("showcaseDetailComment.insertBoardReply", paramClass);
+			sqlMapper.insert("showcaseDetailComment.insertBoardReply", CommentParamClass);
 
 		return SUCCESS;
 	}
@@ -121,14 +121,6 @@ public class CommentWriteAction extends ActionSupport{
 		if(session == null) {
 			addFieldError("name", "Enter Your Name!!");
 		}
-	}
-
-	public CommentBoardVO getParamClass() {
-		return paramClass;
-	}
-
-	public CommentBoardVO getResultClass() {
-		return resultClass;
 	}
 
 	public int getCurrentPage() {
@@ -163,13 +155,6 @@ public class CommentWriteAction extends ActionSupport{
 		return re_level;
 	}
 
-	public void setParamClass(CommentBoardVO paramClass) {
-		this.paramClass = paramClass;
-	}
-
-	public void setResultClass(CommentBoardVO resultClass) {
-		this.resultClass = resultClass;
-	}
 
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
@@ -225,6 +210,22 @@ public class CommentWriteAction extends ActionSupport{
 
 	public void setShowboard_num(int showboard_num) {
 		this.showboard_num = showboard_num;
+	}
+
+	public CommentBoardVO getCommentParamClass() {
+		return CommentParamClass;
+	}
+
+	public CommentBoardVO getCommentResultClass() {
+		return CommentResultClass;
+	}
+
+	public void setCommentParamClass(CommentBoardVO commentParamClass) {
+		CommentParamClass = commentParamClass;
+	}
+
+	public void setCommentResultClass(CommentBoardVO commentResultClass) {
+		CommentResultClass = commentResultClass;
 	}
 	
 	

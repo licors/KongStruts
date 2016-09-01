@@ -25,24 +25,23 @@
         
         <!-- 읽기 -->
         <action name="scread" class="showcase.ShowcaseReadAction">
-            <!-- <result type="tiles">showcaseView</result> -->
-            <result type="chain">
+            <result type="tiles">showcaseView</result>
+           <!--  <result type="chain">
                 <param name="actionName">commentListAction</param>
-            </result>
+            </result> -->
         </action>
         
         <action name="commentListAction" class="showcase.CommentListAction">
-            <!-- <result>/showcase/listComment.jsp</result> -->
-            <interceptor-ref name="chain"></interceptor-ref>
-            <result type="tiles">showcaseView</result>
+            <result>/showcase/comment.jsp</result>
+            <!-- <result type="tiles">showcaseView</result> -->
         </action>
 		
         <!-- 		<action name="commentWriteForm" class="showcase.CommentWriteAction" method="form">
                 <result>/showcase/writeComment.jsp</result>
         </action> -->
 		
-        <action name="commentWriteAction" class="showcase.CommentWriteAction">
-            <result type="redirect-action">
+        <action name="commentWriteAction" class="showcase.CommentListAction" method="commentWrite">
+            <result type="chain">
                 <param name="actionName">commentListAction</param>
             </result>
         </action>
