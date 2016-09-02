@@ -5,43 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>	
 
-<%-- <head>
-<style type="text/css">
-        body, div, ul, li{padding:0}
-        ul{list-style:none}
-        a{color:#000; text-decoration:none}
-
-.TopSearch { float:left; margin:20px auto 0;  }
-select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
- 
-</style>
-</head>
-
-<div style="text-align:left; margin:0px 0;width:40%;float:left;">
-        <!-- <a href="/kong"><b>캔고루</b><br/> -->
-        <h1 id="logo"><img width ="200px" height="50px" src="/kong/template/image/header/cangorulogo.jpg" style="cursor: pointer;">
-</div>
-<div style="text-align:right; margin:0 0 10px 0;width:60%;float:right;">
-        <!-- <a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
-    <!-- <h1 id="logo"><a href="/kong"><img src="/kong/template/image/header/logo.jpg" /></a></h1> -->
-                <div class="TopSearch">
-                <fieldset>
-                        <legend></legend>
-                        <form name="findshowcase" id="mainSearch" action="">
-                        <select name="searchKind" id="searchKind" class="">
-                                <option value="all" selected=selected>통합</option>
-                                <option value="showcase">전시</option>
-                                <option value="art">미술</option>
-                                <option value="event">이벤트</option>
-                        </select>
-                        <input type="text" name="searchFind" id="searchFind" class="" />
-                        <input type="image" src="/kong/template/image/header/s_button.jpg" />
-                        </form>
-                </fieldset>
-        </div> --%>
-
-
-
 <div class="header_wrap">
     <a href="sclist.action">
         <h1 class="logo"></h1>
@@ -52,6 +15,8 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
             <input class="serchButton" type="submit" value=""/> 
         </form>
     </div> 
+    
+    
     <div class="memberArea">
         <ul>
             <!-- #####관리자일 때##### -->
@@ -81,11 +46,22 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
     </div>
 </div>
 
-<!-- 전시행사 카테고리 선택칸 -->
-<nav id="top_menu">
-    <ul>
-        <li><a href="">전시</a></li>
-        <li><a href="">미술</a></li>
-        <li><a href="../music/musiclist.do">이벤트</a></li>
-    </ul>
-</nav>
+
+<!-- <div class="navi_wrap">
+<ul>
+
+    <li><a href="gboardL.action"><img src="/template/image/navi/all.jpg" alt="전체상품" /></a></li>
+	<li><a href="gboardL.action?goods_category=outer"><img src="/template/image/navi/outer.jpg" alt="겉옷" /></a></li>
+	<li><a href="gboardL.action?goods_category=top&tee"><img src="/template/image/navi/top.jpg" alt="티" /></a></li>
+	<li><a href="gboardL.action?goods_category=blouse"><img src="/template/image/navi/dress.jpg" alt="원피스" /></a></li>
+	<li><a href="gboardL.action?goods_category=pants"><img src="/template/image/navi/pants.jpg" alt="바지" /></a></li>
+	<li><a href="gboardL.action?goods_category=skirts"><img src="/template/image/navi/skirts.jpg" alt="치마" /></a></li>
+	<li><a href="gboardL.action?goods_category=shoes"><img src="/template/image/navi/shoes.jpg" alt="신발" /></a></li>
+	
+	<li class="community"><a href="qlist.action"><img
+			src="/template/image/navi/qna.jpg" alt="질문과 답" /></a></li>
+	<li class="community"><a href="noticeboardL.action"><img
+			src="/template/image/navi/notice.jpg" alt="공지사항" /></a></li>
+			
+</ul>
+</div> -->
