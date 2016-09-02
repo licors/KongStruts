@@ -35,7 +35,7 @@ header 부분임
 }
 #header .header_wrap{width:1000px;margin:auto;overflow:hidden;}
 #header .logo{
-	width:245px; height:113px; background-image:url(/kong/template/image/header/logo.jpg); background-repeat:no-repeat; float:left;
+	width:245px; height:113px; background-image:url(/kong/template/image/header/cangorulogo.jpg); background-repeat:no-repeat; float:left;
 }
 
 #header .searchKeyword{

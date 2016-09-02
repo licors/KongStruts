@@ -1,5 +1,23 @@
 // JavaScript Document
 
+function logout() {
+	if (confirm("로그아웃 하시겠습니까?")) {
+		alert("이용해주셔서 감사합니다");
+		window.location.href = 'memberLogout.action';
+	} else {
+		alert("취소되었습니다");
+	}
+}
+
+function basketlogin(){
+	alert("로그인을 하셔야 볼 수 있습니다");
+	window.location.href='memberLoginForm.action';
+}
+
+function buylogin(){
+	alert("로그인을 하셔야 볼 수 있습니다");
+	window.location.href='memberLoginForm.action';
+}
 /*function passwdcheck() {
 		if (!document.passwdcheckform.password.value) {
 			alert("비밀번호를 입력하세요");
@@ -70,9 +88,9 @@
 					"post",
 					"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=250");
 }*/
-function begin() {
+/*function begin() {
 	document.memberLoginForm.id.focus();
-}
+}*/
 /*function idCheck() {
 	if (!document.idcheckform.id.value) {
 		alert("아이디를 입력하세요");
@@ -80,24 +98,15 @@ function begin() {
 	}
 }*/
 
-
-function logout() {
-	if (confirm("로그아웃 하시겠습니까?")) {
-		alert("이용해주셔서 감사합니다");
-		window.location.href = 'memberLogout.action';
-	} else {
-		alert("취소되었습니다");
-	}
-}
-function zipCheck() {
+/*function zipCheck() {
 	var url = "zipcodeF.action";
 	window
 			.open(
 					url,
 					"post",
 					"toolbar=no,width=500,height=300,directoris=no,status=yes,scrollbars=yes,menubar=no");
-}
-function openConfirmId(joinform) {
+}*/
+/*function openConfirmId(joinform) {
 	if (joinform.id.value == "") {
 		alert("아이디를 입력하세요");
 		return;
@@ -107,16 +116,16 @@ function openConfirmId(joinform) {
 			url,
 			"confirm",
 			"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
-}
-function openmodifyPassword() {
+}*/
+/*function openmodifyPassword() {
 	var url = "memberPMF.action";
 	window
 			.open(
 					url,
 					"post",
 					"toolbar=no,width=400,height=250,directoris=no,status=yes,scrollbars=no,menubar=no");
-}
-function joinCheck() {
+}*/
+/*function joinCheck() {
 	if (!document.joinform.id.value) {
 		alert("아이디를 입력하세요.");
 		return false;
@@ -149,17 +158,17 @@ function joinCheck() {
 		alert("주소를 입력하세요");
 		return false;
 	}
-}
-function back() {
+}*/
+/*function back() {
 	history.go(-1);
-}
-function checknum() {
+}*/
+/*function checknum() {
 	if (event.keyCode < 48 || event.keyCode > 57) {
 		alert("숫자만 입력하세요");
 		event.returnValue = false;
 	}
-}
-function checkIt() {
+}*/
+/*function checkIt() {
 	if (!document.loginform.id.value) {
 		alert("아이디를 입력하세요");
 		document.loginform.id.focus();
@@ -171,33 +180,33 @@ function checkIt() {
 		return false;
 	}
 
-}
-function dongCheck() {
+}*/
+/*function dongCheck() {
 	if (document.zipform.area3.value == "") {
 		alert("동 이름을 입력하세요");
 		document.zipform.area3.focus();
 		return;
 	}
 	document.zipform.submit();
-}
+}*/
 
-function sendAddress(zipcode, area1, area2, area3, area4) {
+/*function sendAddress(zipcode, area1, area2, area3, area4) {
 	var address = area1 + " " + area2 + " " + area3 + " " + area4;
 	opener.document.joinform.zipcode.value = zipcode;
 	opener.document.joinform.addr1.value = address;
 	self.close();
-}
+}*/
 
 
-function ordersendAddress(zipcode, area1, area2, area3, area4) {
+/*function ordersendAddress(zipcode, area1, area2, area3, area4) {
 	var address = area1 + " " + area2 + " " + area3 + " " + area4;
 	opener.document.orderForm.order_receive_zipcode.value = zipcode;
 	opener.document.orderForm.order_receive_addr1.value = address;
 	self.close();
-}
-function basketsendAddress(zipcode, area1, area2, area3, area4) {
+}*/
+/*function basketsendAddress(zipcode, area1, area2, area3, area4) {
 	var address = area1 + " " + area2 + " " + area3 + " " + area4;
 	opener.document.orderForm.order_receive_zipcode.value = zipcode;
 	opener.document.orderForm.order_receive_address.value = address;
 	self.close();
-} 
+} */
