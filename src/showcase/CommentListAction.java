@@ -118,6 +118,49 @@ public class CommentListAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	
+	public String commentDelete() throws Exception{
+		memberDataClass = new MemberVO();
+		CommentParamClass = new CommentBoardVO();
+//		resultClass = new CommentBoardVO();
+		
+		CommentParamClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+
+		ActionContext context = ActionContext.getContext();
+		Map<String, Object> session = context.getSession();
+		//session 에 정보 없으면 로그인 창 갔다오는 기능 추가 예정
+		
+		int sessionNum = (Integer) session.get("member_num");
+		memberDataClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionNum);
+		
+//		paramClass.setMember_num(memberDataClass.getMember_num());
+		System.out.println("commentDelete : memberData : " + memberDataClass.getMember_num());
+		System.out.println("commentDelete : commentparamData : " + CommentParamClass.getMember_num());
+		if(CommentParamClass.getMember_num() != memberDataClass.getMember_num()) {
+			return ERROR;
+		}
+		sqlMapper.update("showcaseDetailComment.deleteBoard",CommentParamClass);
+		return SUCCESS;
+	}
+	
+	public String commentModify() throws Exception {
+		CommentParamClass = new CommentBoardVO();
+		CommentResultClass = new CommentBoardVO();
+		
+		CommentParamClass.setComment_num(comment_num);
+		
+		//session에서  member_num 가져오는거로 구현	
+		
+		//paramClass.setName(getName());
+		CommentParamClass.setComment_num(getComment_num());
+		CommentParamClass.setContent(getContent());
+		
+		sqlMapper.update("showcaseDetailComment.updateBoard",CommentParamClass);
+		
+		CommentResultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+		return SUCCESS;
+	}
+	
 	public int getCurrentPage() {
 		return currentPage;
 	}

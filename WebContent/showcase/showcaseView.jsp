@@ -15,12 +15,12 @@
         <title>전시 상세보기</title>
         <script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
         <script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
-        <script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
+        <%-- <script src="../js/jquery.tabs.pack.js" type="text/javascript"></script> --%>
         <%-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> --%>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRSeEVl3pSPGUVWwW4DSwZNDu0Q3AuSpc"></script> 
         <%-- <script src="../js/google_map.js" type="text/javascript"></script> --%>
-        <link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen">
-
+        <!-- <link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen"> -->
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
         <script type="text/javascript">
             $(function () {
                 $('#detail-tab').tabs({fxSlide: true, fxFade: true, fxSpeed: 'normal'});
@@ -47,7 +47,7 @@
     </head>
 
     <body>
-        <table width="400" border="1">
+        <table width="400">
             <tr>
                 <th colspan="3"><b><s:property value="resultClass.subject" /></b></th>
             </tr>

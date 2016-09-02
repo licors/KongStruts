@@ -25,7 +25,8 @@
         
         <!-- 읽기 -->
         <action name="scread" class="showcase.ShowcaseReadAction">
-            <result type="tiles">showcaseView</result>
+            <!-- <result type="tiles">showcaseView</result> -->
+            <result>/showcase/showcaseView.jsp</result>
            <!--  <result type="chain">
                 <param name="actionName">commentListAction</param>
             </result> -->
@@ -41,6 +42,18 @@
         </action> -->
 		
         <action name="commentWriteAction" class="showcase.CommentListAction" method="commentWrite">
+            <result type="chain">
+                <param name="actionName">commentListAction</param>
+            </result>
+        </action>
+        
+        <action name="commentdeleteAction" class="showcase.CommentListAction" method="commentDelete">
+            <result type="chain">
+                <param name="actionName">commentListAction</param>
+            </result>
+        </action>
+        
+        <action name="commentModifyAction" class="showcase.CommentListAction" method="commentModify">
             <result type="chain">
                 <param name="actionName">commentListAction</param>
             </result>

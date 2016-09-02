@@ -11,39 +11,8 @@
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-
-<title>전시 상세보기</title>
-<script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
-<script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
-<script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
-<%-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> --%>
-<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRSeEVl3pSPGUVWwW4DSwZNDu0Q3AuSpc"></script>
-<%-- <script src="../js/google_map.js" type="text/javascript"></script> --%>
-<link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css"
-	media="print, projection, screen">
-
-<script type="text/javascript">
-	$(function() {
-		$('#detail-tab').tabs({
-			fxSlide : true,
-			fxFade : true,
-			fxSpeed : 'normal'
-		});
-	});
-
-	var map;
-	function initialize() {
-		var mapOptions = {
-			zoom : 16,
-			center : new google.maps.LatLng(35.87110100714382,
-					128.60169690333006)
-		};
-		map = new google.maps.Map(document.getElementById('map-canvas'),
-				mapOptions);
-	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+<link rel="stylesheet" type="text/css" href="/css/index.css" />
+<title>전시 댓글</title>
 </head>
 
 <body>
@@ -94,8 +63,8 @@
 
 		<s:iterator value="list" status="stat">
 			<s:url id="viewURL" action="viewAction">
-				<s:param name="no">
-					<s:property value="no" />
+				<s:param name="comment_num">
+					<s:property value="comment_num" />
 				</s:param>
 				<s:param name="currentPage">
 					<s:property value="currentPage" />
@@ -103,12 +72,15 @@
 			</s:url>
 
 			<tr>
-				<td align="left"><s:if test="re_level != 0">
+				<td align="left">
+					<s:if test="re_level != 0">
 						<c:forEach var="i" begin="${re_level}" end="0">&nbsp;</c:forEach>→
-                                            </s:if> <s:property value="content" />
+                    </s:if> 
+                    <s:property value="content" />
 				</td>
 				<td><s:property value="name" /></td>
 				<td><s:property value="reg_date" /></td>
+				<td><a href='javascript:location.href="/showcase/commentdeleteAction.action"'>x</a></td>
 			</tr>
 
 			<tr bgcolor="#777777">
@@ -126,20 +98,11 @@
 		<tr align="center">
 			<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 		</tr>
-		<tr align="right">
-			<td><input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'"></td>
+		<tr>
+			<td align="right"><input name="back" type="button" value="뒤로" onClick="history.go(-1); return false;"></td>
 		</tr>
 	</table>
 
-
-
-	<%-- <tr align="right">
-                <td colspan="5">
-                        <input type="button" value="글쓰기" class="inputb" onclick="javascript:location.href='writeForm.action?currentPage=<s:property value="currentPage" />';" />
-                </td>
-        </tr> --%>
-
-	</table>
 
 </body>
 </html>
