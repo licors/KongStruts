@@ -12,24 +12,36 @@
         <script type="text/javascript" src="/js/index.js"></script>
         <link rel="shortcut icon" href="/cangoto_ico_16x16.ico" type="image/x-icon" /><!-- 파비콘 추가 -->
     </head>
-    <body>
-        <div id="wrap">
-            <div id="header">
-                <tiles:insertAttribute name="top" />
-            </div>
-        </div>
-        <div id="wrap">
-            <div id="content_wrap">
-                <div id="main_content">
-                    <tiles:insertAttribute name="body" />
-                </div>
-            </div>
-        </div>
-        <br /><br />
-        <div id="wrap">
-            <div id="footer">
-                <tiles:insertAttribute name="bottom" />
-            </div>
-        </div>
-    </body>
+<body>
+	
+	<div id="wrap">
+		<div id="header">
+    	    <tiles:insertAttribute name="top" />
+ 		</div>
+	</div>
+
+	<div id="wrap">
+		<div id="navi">
+			<tiles:insertAttribute name="left" />
+		</div>
+	</div>
+
+	<br /><br />
+	<div id="wrap">
+		<div id="content_wrap">
+		<div id="main_content">
+			<tiles:insertAttribute name="body" />
+		</div>
+		</div>
+	</div>
+
+	<br /><br />
+	
+	<div id="wrap">
+		<div id="footer">
+			<tiles:insertAttribute name="bottom" />
+		</div>
+	</div>
+	
+</body>
 </html>
