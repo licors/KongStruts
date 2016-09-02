@@ -23,7 +23,8 @@ function logout(){
 	}
 }
 </script>
-<head>
+
+<%-- <head>
 <style type="text/css">
 	body, div, ul, li{padding:0}
 	ul{list-style:none}
@@ -37,7 +38,7 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 
 <div style="text-align:left; margin:0px 0;width:40%;float:left;">
 	<!-- <a href="/kong"><b>캔고루</b><br/> -->
-	<h1 id="logo"><img width ="200px" height="50px" src="/kong/template/image/header/logo.jpg" style="cursor: pointer;">
+	<h1 id="logo"><img width ="200px" height="50px" src="/kong/template/image/header/cangorulogo.jpg" style="cursor: pointer;">
 </div>
 <div style="text-align:right; margin:0 0 10px 0;width:60%;float:right;">
 	<!-- <a href="sclist.action" class="top-link"><b>HOME</b></a> &nbsp;|&nbsp; -->
@@ -56,9 +57,21 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
 			<input type="image" src="/kong/template/image/header/s_button.jpg" />
 			</form>
 		</fieldset>
-	</div>
+	</div> --%>
 	
-		             <div class="memberArea">
+	
+	
+			<div class="header_wrap">
+				<a href="main.action">
+	    			<h1 class="logo"></h1>
+	        	</a>
+       		 <div class="searchKeyword">
+        			<form name="findgoods" action="gboardL.action" method="post" >
+            			<input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
+                		<input class="serchButton" type="submit" value=""/> 
+           			 </form>
+       		 </div> 
+		     <div class="memberArea">
 		             
              	<ul>
              	    <!-- #####관리자일 때##### -->
@@ -72,9 +85,6 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
                     <li><input type="button" value="행사목록" onClick="javascript:location.href='scwrit_form.action'"> <!-- 관리자 상품리스트 경로수정필요(수호 0829) -->
                 	</s:if>
                 	
-                	
-                	
-                	
                 	<!-- #####회원일 때##### -->
       				<s:else>
       				<s:if test="memresultClass.getEmail() != null">
@@ -87,9 +97,6 @@ select { height:24px; padding:1px 0 2px 1px; border:solid #cccccc 1px; }
                     <!-- <li><a href="orderList.action"><input type="button" value="주문목록"/></a></li> -->
                     <li><input type="button" value="주문목록" onClick="javascript:location.href='orderList.action'">
                 	</s:if>
-                	
-                	
-                	
                 	
                 	<!-- #####비회원일 때##### -->
                 	<s:else>
