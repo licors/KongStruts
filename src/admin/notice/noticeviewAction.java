@@ -9,11 +9,9 @@ import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Map;
 import member.MemberVO;
 
 /**
@@ -41,10 +39,7 @@ public class noticeviewAction extends ActionSupport {
         pc = new noticeVO();
         rc = new noticeVO();
 
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        int sessionid = (Integer) session.get("member_num");
-        memresultClass = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         pc.setNotice_num(getNotice_num());
         sql.update("notice.readcount", pc);

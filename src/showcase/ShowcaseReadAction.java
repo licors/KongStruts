@@ -10,8 +10,6 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
 import admin.showcase.showVO;
-import com.opensymphony.xwork2.ActionContext;
-import java.util.Map;
 import member.MemberVO;
 
 /*	CREATE TABLE showboard(
@@ -54,7 +52,7 @@ public class ShowcaseReadAction extends ActionSupport {
     private String map;
     private String date;     //ex    2016.07.18(월) ~ 2016.09.04(일) / 49일간  (들어가있는거 그대로 출력)
     private String status;   //   일정 항목 옆에 '개최중'
-    
+
     private String img = path.path; // jsp 이미지 표기용 상대경로
 
     public ShowcaseReadAction() throws IOException {
@@ -75,14 +73,8 @@ public class ShowcaseReadAction extends ActionSupport {
 
         // 해당 번호의 글을 가져온다.
         resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass.getShowboard_num());
-        
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        if (!session.isEmpty()) {
-            int sessionid = (Integer) session.get("member_num");
-            memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-        }
-        
+
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         return SUCCESS;
     }
