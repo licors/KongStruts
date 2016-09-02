@@ -55,7 +55,7 @@ public class ShowcaseReadAction extends ActionSupport {
     private String date;     //ex    2016.07.18(월) ~ 2016.09.04(일) / 49일간  (들어가있는거 그대로 출력)
     private String status;   //   일정 항목 옆에 '개최중'
     
-    private String img = path.path; // 이미지 상대경로
+    private String img = path.path; // jsp 이미지 표기용 상대경로
 
     public ShowcaseReadAction() throws IOException {
         // TODO Auto-generated constructor stub

@@ -11,9 +11,13 @@ package admin;
  */
 public class path {
 
-//    public static String path = "/showcaseImg/";
-    public static String path = path.class.getResource("").getPath() + "../../../../../WebContent/showcaseImg/";
+    public static String path = "/showcaseImg/"; //jsp용
+    
+//    public static String savepath = path.class.getResource("").getPath() + "../../../../../WebContent/showcaseImg/"; //업로드용, 넷빈
     ///F:/java/konggaru/build/web/WEB-INF/classes/admin/
+    
+    public static String savepath = path.class.getResource("").getPath() + "../../../WebContent/showcaseImg/"; //업로드용, 이클립스
+    ///F:/java/konggaru/build/classes/admin/
     public static String sql = "sqlMapConfig.xml";
     public static String support_listaction = "";
     public static String notice_listaction = "";

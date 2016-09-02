@@ -45,7 +45,7 @@
                 <th colspan="3"><b><s:property value="resultClass.subject" /></b></th>
             </tr>
             <tr>
-                <td rowspan="6"><img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[0]"/>" width="50" height="50" border="0"></td>
+                <td rowspan="6"><img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[0]"/>" width="50" height="50" border="0"></td>
                 <td>주소</td>
                 <td><s:property value="resultClass.address1" />&nbsp;<s:property value="resultClass.address2" /></td>
             </tr>
@@ -70,19 +70,19 @@
                 <td> 페이스북</td>
             </tr>
             <tr>
-            	<td>
-					<s:property value="commentResultClass.content" />
-					${content}
-					
-					<!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
-	
-					<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0"/>
-					<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0"/>
-					<img src="showcase/upload/<s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0"/>
-				</td>
+                <td>
+                    <s:property value="commentResultClass.content" />
+                    ${content}
+
+                    <!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
+
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0"/>
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0"/>
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0"/>
+                </td>
             </tr>
             <tr>
-            	<td><div id="map-canvas" style="height:300px; width:500px"></div></td>
+                <td><div id="map-canvas" style="height:300px; width:500px"></div></td>
             </tr>
             <tr>
                 <td colspan="3" align="right"> 
@@ -92,10 +92,10 @@
                     </s:if>
                     <input name="basket" type="button" value="관심티켓" onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
                     <input name="order" type="button" value="신청하기" onClick="javascript:location.href = '/order/orderForm.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-                	<input name="comment" type="button" value="댓글달기" onClick="javascript:location.href = '/showcase/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-                	<input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'">
+                    <input name="comment" type="button" value="댓글달기" onClick="javascript:location.href = '/showcase/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+                    <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'">
                 </td>
             </tr>
-    </table>
-</body>
+        </table>
+    </body>
 </html>

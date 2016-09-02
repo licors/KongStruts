@@ -6,7 +6,6 @@
 package admin.showcase;
 
 import admin.path;
-import static admin.support.supportlistAction.sql;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -16,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import member.MemberVO;
@@ -40,7 +38,7 @@ public class showcasewriteAction extends ActionSupport {
     private List<File> upload = new ArrayList<File>(); // 파일 객체
     private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
     private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
-    private String uploadpath = path.path;
+    private String uploadpath = path.savepath; //저장용 경로
     private int index; // 경로
 
     public showcasewriteAction() throws IOException {
