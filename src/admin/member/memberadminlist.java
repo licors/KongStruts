@@ -52,7 +52,7 @@ public class memberadminlist extends ActionSupport {
         list = sql.queryForList("member.selectall");
 
         totalCount = list.size();
-        page = new pagingAction(path.notice_listaction, currentPage, totalCount, blockCount, blockPage);
+        page = new pagingAction(path.member_listaction, currentPage, totalCount, blockCount, blockPage);
         pagingHtml = page.getPagingHtml().toString();
         int lastCount = totalCount;
 
@@ -126,5 +126,5 @@ public class memberadminlist extends ActionSupport {
     public void setPage(pagingAction page) {
         this.page = page;
     }
-    
+
 }

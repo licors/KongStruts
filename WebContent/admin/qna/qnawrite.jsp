@@ -14,7 +14,7 @@
         <title>QnA 추가</title>
         <script type="text/javascript">
             function check() {
-                var frm = document.qnawrite;
+                var frm = document.qna;
 
                 if (frm.type.value == "") {
                     alert("문의분류를 선택해주세요.");
@@ -28,10 +28,11 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="qnawrite" action="qnawrite.action" method="post" onsubmit="return check()">
+            <form name="qna" action="qnawrite.action" method="post" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="qnamodify" action="qnamodify.action" method="post" onsubmit="return check()">
+                <form name="qna" action="qnamodify.action" method="post" onsubmit="return check()">
+                    <s:hidden name="qna_num" value="%{rc.qna_num}"/>
                 </s:else>
                 <table align="center" width="600">
                     <tr>

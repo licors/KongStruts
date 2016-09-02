@@ -5,8 +5,11 @@
 
 <tiles-definitions>
 
-    <definition name="qnalist" extends="main">
+    <definition name="qna_list" extends="main">
         <put-attribute name="body" value="/admin/qna/qnalist.jsp" />
+    </definition>
+    <definition name="qna_form" extends="main">
+        <put-attribute name="body" value="/admin/qna/qnawrite.jsp" />
     </definition>
 
 </tiles-definitions>

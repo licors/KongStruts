@@ -17,34 +17,39 @@
     <body>
         <table align="center" width="600">
             <tr>
-                <td align="left" colspan="2">자주 물어보시는 질문입니다.</td>
+                <td align="left" colspan="3">자주 물어보시는 질문입니다.</td>
             </tr>
             <tr>
-                <td align="right" colspan="2">
-                    <input name="support" type="button" value="1:1 문의" class="list" 
-                           onClick="javascript:location.href = '1:1문의 링크'">
-                    <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
-                        <input type="button" name="qna" value="QnA 추가">
+                <td align="right" colspan="3">
+                    <input name="support" type="button" value="1:1 문의"
+                           onClick="javascript:location.href = '/support/supportlist.action'">
+                    <s:if test="memresultClass.admin > 0">
+                        <input name="support" type="button" value="QnA 추가"
+                               onClick="javascript:location.href = '/qna/qnawriteform.action'">
                     </s:if>
                 </td>
             </tr>
             <tr bgcolor="#777777">
-                <td height="1" colspan="2"></td>
+                <td height="1" colspan="4"></td>
             </tr>
             <s:iterator value="list" status="stat">
                 <tr>
-                    <td width="50" bgcolor="#FFFFFF">Q.</td>
-                    <td width="550" bgcolor="#FFFFFF"><s:property value="subject"/>
-                    </td>
+                    <td colspan="1" width="50" align="left" bgcolor="#FFFFFF">Q.</td>
+                    <td colspan="2" width="430" align="left" bgcolor="#FFFFFF"><s:property value="subject"/></td>
+                    <s:if test="memresultClass.admin > 0">
+                        <td colspan="3" width="120" align="center">
+                            <input name="support" type="button" value="수정" onClick="javascript:location.href = '/qna/qnamodifyform.action?qna_num=<s:property value="qna_num"/>'">
+                            <input name="support" type="button" value="삭제" onClick="javascript:location.href = '/qna/qnadeleteform.action?qna_num=<s:property value="qna_num"/>'">
+                        </td>
+                    </s:if>
                 </tr>
                 <tr>
-                    <td width="50" bgcolor="#FFFFFF">A.</td>
-                    <td width="550" bgcolor="#FFFFFF"><s:property value="content"/>
-                    </td>
+                    <td colspan="1" width="50" bgcolor="#FFFFFF">A.</td>
+                    <td colspan="2" width="550" bgcolor="#FFFFFF"><s:property value="content"/></td>
+                    <td colspan="3"></td>
                 </tr>
-
                 <tr bgcolor="#777777">
-                    <td height="1" colspan="2"></td>
+                    <td height="1" colspan="4"></td>
                 </tr>
             </s:iterator>
         </table>

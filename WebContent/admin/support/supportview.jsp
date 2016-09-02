@@ -17,24 +17,40 @@
     <body>
         <table align="center" width="600">
             <tr>
-                <td align="left" colspan="4">
+                <td align="left" colspan="2">
                     문의답변
                 </td>
             </tr>
             <tr bgcolor="#777777">
-                <td height="1" colspan="4"></td>
+                <td height="1" colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="4" align="center" width="100">종류&nbsp;_<s:property value="rc.type"/></td>
+                <td align="center" width="30" bgcolor="#F4F4F4">종류</td>
+                <td align="center" width="100"><s:property value="rc.type"/></td>
+            </tr>
+            <tr bgcolor="#777777">
+                <td height="1" colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="4" align="center" width="100">이메일&nbsp;_<s:property value="rc.email"/></td>
+                <td align="center" width="30" bgcolor="#F4F4F4">E-Mail</td>
+                <td align="center" width="100"><s:property value="rc.email"/></td>
+            </tr>
+            <tr bgcolor="#777777">
+                <td height="1" colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="4" align="center" width="100">등록일&nbsp;_<s:property value="rc.reg_date"/></td>
+                <td align="center" width="30" bgcolor="#F4F4F4">등록일</td>
+                <td align="center" width="100"><s:property value="rc.reg_date"/></td>
+            </tr>
+            <tr bgcolor="#777777">
+                <td height="1" colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="4" align="center" width="100">내용&nbsp;_<s:property value="rc.content"/></td>
+                <td align="center" width="30" bgcolor="#F4F4F4">내용</td>
+                <td align="center" width="100"><s:property value="rc.content"/></td>
+            </tr>
+            <tr bgcolor="#777777">
+                <td height="1" colspan="2"></td>
             </tr>
         </table>
     </body>

@@ -31,7 +31,7 @@
                 </td>
             </tr>
             <tr align="center" bgcolor="#FFFFFF">
-                <td width="50"><strong>번호ㅋ</strong></td>
+                <td width="50"><strong>번호</strong></td>
                 <td width="420"><strong>제목</strong></td>
                 <td width="80"><strong>작성일</strong></td>
                 <td width="50"><strong>조회수</strong></td>

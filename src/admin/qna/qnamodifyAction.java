@@ -32,6 +32,15 @@ public class qnamodifyAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        pc = new qnaVO();
+        rc = new qnaVO();
+
+        pc.setQna_num(getQna_num());
+        rc = (qnaVO) sql.queryForObject("qna.selectOne", pc);
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new qnaVO();
@@ -40,12 +49,18 @@ public class qnamodifyAction extends ActionSupport {
         pc.setQna_num(getQna_num());
         pc.setSubject(getSubject());
         pc.setContent(getContent());
+        System.out.println("c:" + toString());
 
         sql.update("qna.update", pc);
-        
-        rc = (qnaVO) sql.queryForObject("qna.selectOne", getQna_num());
+
+        rc = (qnaVO) sql.queryForObject("qna.selectOne", pc);
 
         return SUCCESS;
+    }
+
+    @Override
+    public String toString() {
+        return "qnamodifyAction{" + "qna_num=" + qna_num + ", subject=" + subject + ", content=" + content + '}';
     }
 
     public qnaVO getPc() {

@@ -31,6 +31,16 @@ public class qnadeleteAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        pc = new qnaVO();
+        rc = new qnaVO();
+
+        pc.setQna_num(getQna_num());
+        rc = (qnaVO) sql.queryForObject("qna.selectOne", pc);
+
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new qnaVO();
