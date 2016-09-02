@@ -25,12 +25,19 @@
             $(function () {
                 $('#detail-tab').tabs({fxSlide: true, fxFade: true, fxSpeed: 'normal'});
             });
-
+			var map_x;
+			var map_y;
             var map;
+            
+            function setLocation(x,y) {
+            	map_x = x;
+            	map_y = y;
+            }
             function initialize() {
                 var mapOptions = {
                     zoom: 16,
-                    center: new google.maps.LatLng(35.87110100714382, 128.60169690333006)
+                    /* center: new google.maps.LatLng(35.87110100714382, 128.60169690333006) */
+                    center: new google.maps.LatLng(x, y)
                 };
                 map = new google.maps.Map(document.getElementById('map-canvas'),
                         mapOptions);
@@ -40,12 +47,14 @@
     </head>
 
     <body>
-        <table>
+        <table width="400" border="1">
             <tr>
                 <th colspan="3"><b><s:property value="resultClass.subject" /></b></th>
             </tr>
             <tr>
-                <td rowspan="6"><img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[0]"/>" width="50" height="50" border="0"></td>
+                <td rowspan="6" align="center">
+                	<img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[0]"/>" width="120" height="150" border="1">
+                </td>
                 <td>주소</td>
                 <td><s:property value="resultClass.address1" />&nbsp;<s:property value="resultClass.address2" /></td>
             </tr>
@@ -70,19 +79,20 @@
                 <td> 페이스북</td>
             </tr>
             <tr>
-                <td>
-                    <s:property value="commentResultClass.content" />
+                <td colspan="3" align="center">
+                    <s:property value="resultClass.content" />
                     ${content}
+                    <br>
 
                     <!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
 
-                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[1]"/>" width="50" height="50" border="0"/>
-                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[2]"/>" width="50" height="50" border="0"/>
-                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[3]"/>" width="50" height="50" border="0"/>
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[1]"/>" width="200" height="150" border="0"/><br>
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[2]"/>" width="200" height="150" border="0"/><br>
+                    <img src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[3]"/>" width="200" height="150" border="0"/>
                 </td>
             </tr>
             <tr>
-                <td><div id="map-canvas" style="height:300px; width:500px"></div></td>
+                <td colspan="3"><div id="map-canvas" style="height:300px; width:400px"></div></td>
             </tr>
             <tr>
                 <td colspan="3" align="right"> 
