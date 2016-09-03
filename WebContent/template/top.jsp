@@ -23,7 +23,7 @@
             <s:if test="memresultClass.getEmail() == 'admin@localhost'">
                 <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
                 <li><a href="memberList.action"><input type="button" class="memberlist" value=""/></a></li>
-                <li><a href="orderList.action"><input type="button" class="adminorder" value=""/></a></li>
+                <li><a href="/order/adminOrderList.action"><input type="button" class="adminorder" value=""/></a></li> <!-- 유진:어드민 오더리스트 경로 수정 0903 -->
                 <li><a href="scwrite_form.action"><input type="button" class="admingoods" value=""/></a></li>
                     </s:if>
             <!-- #####회원일 때##### -->
@@ -31,8 +31,8 @@
                 <s:if test="memresultClass.getEmail() != null">
                     <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
                     <li><a href="memberModifyForm.action"><input type="button" class="mypage" value=""/></a></li>
-                    <li><a href="basketList.action"><input type="button" class="basket" value="" /></a></li>
-                    <li><a href="orderList.action"><input type="button" class="order" value=""/></a></li>  <!-- 일반회원용 주문현황으로 변경필요 09.02 -->
+                    <li><a href="/basket/basketList.action"><input type="button" class="basket" value="" /></a></li> <!-- 유진:basket,order 경로수정-->
+                    <li><a href="/order/orderList.action"><input type="button" class="order" value=""/></a></li>  <!-- 일반회원용 주문현황으로 변경필요 09.02 -->
                         </s:if>
                 <!-- #####비회원일 때##### -->
                 <s:else>
