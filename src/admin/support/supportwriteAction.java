@@ -50,7 +50,7 @@ public class supportwriteAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
-        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass); //문의하는 맴버의 정보를 얻기위해 추가
         
         pc.setMember_num(getMember_num());
         pc.setType(getType());

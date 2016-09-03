@@ -13,6 +13,10 @@
     <definition name="support_view" extends="main">
         <put-attribute name="body" value="/admin/support/supportview.jsp" />
     </definition>
+    <!-- 폼 -->
+    <definition name="support_form" extends="main">
+        <put-attribute name="body" value="/admin/support/supportwrite.jsp" />
+    </definition>
 
 </tiles-definitions>
 

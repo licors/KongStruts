@@ -5,6 +5,7 @@
  */
 package admin.member;
 
+import admin.MemberLoginCheck;
 import admin.path;
 import java.io.Reader;
 import com.ibatis.common.resources.Resources;
@@ -16,9 +17,9 @@ import member.MemberVO;
 public class memberadminmodifyAction extends ActionSupport {
 
     public static Reader reader;
-    public static SqlMapClient sqlMapper;
+    public static SqlMapClient sql;
 
-    private MemberVO memresultClass;
+    private MemberVO memresultClass, mc;
     private MemberVO pc;
 
     private int member_num;
@@ -35,14 +36,16 @@ public class memberadminmodifyAction extends ActionSupport {
 
     public memberadminmodifyAction() throws Exception {
         reader = Resources.getResourceAsReader(path.sql);
-        sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+        sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
     }
 
     public String form() throws Exception {
         memresultClass = new MemberVO();
+        mc = new MemberVO();
 
-        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", getMember_num());
+        memresultClass = MemberLoginCheck.getMember(sql, memresultClass);
+        mc = (MemberVO) sql.queryForObject("member.userCheck", getMember_num());
 
         currentPage = getCurrentPage();
 
@@ -58,14 +61,9 @@ public class memberadminmodifyAction extends ActionSupport {
         pc.setAddress(getAddress());
         pc.setCompany(getCompany());
 
-        sqlMapper.update("member.memberadminUpdate", pc);
-        System.out.println("dd:" + toString());
-        return SUCCESS;
-    }
+        sql.update("member.memberadminUpdate", pc);
 
-    @Override
-    public String toString() {
-        return "memberadminmodifyAction{" + "member_num=" + member_num + ", email=" + email + "[여긴 아무것도 없잔아?], oldpassword=" + oldpassword + ", password=" + password + ", password2=" + password2 + ", name=" + name + ", address=" + address + ", company=" + company + ", admin=" + admin + ", currentPage=" + currentPage + '}';
+        return SUCCESS;
     }
 
     public MemberVO getMemresultClass() {
@@ -74,6 +72,22 @@ public class memberadminmodifyAction extends ActionSupport {
 
     public void setMemresultClass(MemberVO memresultClass) {
         this.memresultClass = memresultClass;
+    }
+
+    public MemberVO getMc() {
+        return mc;
+    }
+
+    public void setMc(MemberVO mc) {
+        this.mc = mc;
+    }
+
+    public MemberVO getPc() {
+        return pc;
+    }
+
+    public void setPc(MemberVO pc) {
+        this.pc = pc;
     }
 
     public int getMember_num() {

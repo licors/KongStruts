@@ -12,7 +12,7 @@
         
         <!-- 쓰기폼 -->
         <action name="supportwrite_form" class="admin.support.supportwriteAction" method="form">
-            <result>/admin/support/supportwrite.jsp</result>
+            <result type="tiles">support_form</result>
         </action>
         
         <!-- 읽기 -->
