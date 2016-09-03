@@ -59,7 +59,7 @@ public class OrderListAction extends ActionSupport {
 			return LOGIN;
 		}
          */
-        orderList = sqlMapper.queryForList("order.orderList", getMember_num());
+        orderList = sqlMapper.queryForList("order.orderList", memresultClass.getMember_num());
 
         totalCount = orderList.size();
 

@@ -150,12 +150,13 @@ public class OrderProcessAction extends ActionSupport {
         memresultClass = new MemberVO();
 
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        
         /*		
 		if(memresultClass == null) {
 			return LOGIN;
 		}
          */
-
+        System.out.println(memresultClass.getMember_num());
         show_resultClass = new showVO();
         show_resultClass = (showVO) sqlMapper.queryForObject(
                 "show.selectOne", getShowboard_num());
@@ -221,7 +222,7 @@ public class OrderProcessAction extends ActionSupport {
 
         System.out.println(memresultClass.getMember_num());
 
-        basketList = sqlMapper.queryForList("basket.basket_list", getMember_num());
+        basketList = sqlMapper.queryForList("basket.basket_list", memresultClass.getMember_num());
 
         /*for(int i = 0; i < basketList.size(); i++) {
 			order_paramClass.setbarcode(barcode);
@@ -272,7 +273,7 @@ public class OrderProcessAction extends ActionSupport {
         }
 
         orderList = sqlMapper.queryForList("order.order_date_list", getOrder_date());
-        sqlMapper.update("basket.basketDelete_all", getMember_num());
+        sqlMapper.update("basket.basketDelete_all", memresultClass.getMember_num());
         return SUCCESS;
     }
 
@@ -400,11 +401,32 @@ public class OrderProcessAction extends ActionSupport {
         //status값변경해야됨 (order.update_order, OrderVO)
         //orderList에서 order_num,currentPage 넘겨줌
         //currentPage=getCurrentPage();
+    	memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        
         order_paramClass = new OrderVO();
+        order_resultClass = new OrderVO();
         show_paramClass = new showVO();
         order_paramClass.setOrder_num(order_num);
         order_paramClass.setStatus("티켓 취소");
+        order_resultClass = (OrderVO) sqlMapper.queryForObject("order.orderDetail",
+        		order_num);
+/*        
+        String str = order_resultClass.getBarcode();
+        
+        File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+ 
+        					str + ".png");
+        if(file.delete()) {
+        	System.out.println("바코드 이미지 파일 지우기 성공" + str);
+        } else {
+        	System.out.println("바코드 이미지 파일 지우기 실패" + str);
+        }
+        
+        order_paramClass.setBarcode("");
+        */
         sqlMapper.update("order.update_order", order_paramClass);
+        
         System.out.println("티켓 취소됨");
 
         //바코드 파일 지워야됨	

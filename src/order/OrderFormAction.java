@@ -98,7 +98,7 @@ public class OrderFormAction extends ActionSupport {
 //            return LOGIN;
 //        }
         // 해당 아이디의 장바구니 목록 가져오기
-        basketList = sqlMapper.queryForList("basket.basket_list", getMember_num());
+        basketList = sqlMapper.queryForList("basket.basket_list", memresultClass.getMember_num());
         // goodsList =
         // sqlMapper.queryForList("goodsselect",getBasket_goods_name());
         // System.out.println(goodsList);
