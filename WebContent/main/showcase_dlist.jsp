@@ -15,7 +15,8 @@
     </head>
     <body>
         <strong><s:property value="showboard_category"/></strong>
-        <table align="center" width="600">
+        <table>
+        
             <!-- 카테고리별 처리 -->
             <s:if test="showboard_category.equals(\"전시\")">
                 <s:iterator value="list" status="stat">
@@ -30,6 +31,7 @@
                                 <img src="<s:property value="img"/><s:property value="file_savname.split(',')[0]"/>"
                                      border="1" width="300" height="300" onerror="javascript:this.src='/template/image/main/noimg.png'"></s:a>
                             </th>
+                            
                             <th>전시명&nbsp;:&nbsp;<s:property value="subject"/></th>
                     </tr>
                     <tr>
