@@ -37,25 +37,24 @@
             <!-- <result type="tiles">showcaseView</result> -->
         </action>
 		
-        <!-- 		<action name="commentWriteForm" class="showcase.CommentWriteAction" method="form">
-                <result>/showcase/writeComment.jsp</result>
-        </action> -->
-		
-        <action name="commentWriteAction" class="showcase.CommentListAction" method="commentWrite">
-            <result type="chain">
-                <param name="actionName">commentListAction</param>
+        <action name="commentWriteAction" class="showcase.CommentWriteAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
             </result>
         </action>
         
-        <action name="commentdeleteAction" class="showcase.CommentListAction" method="commentDelete">
-            <result type="chain">
-                <param name="actionName">commentListAction</param>
-            </result>
+        <action name="commentdeleteAction" class="showcase.CommentDeleteAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${paramClass.showboard_num}]]>
+               <!--  <param name="actionName">commentListAction</param>
+                <param name="showboard_num">${paramClass.showboard_num}</param> -->
+                <!-- <![CDATA[/commentListAction?showboard_num=${showboard_num}]]> -->
+            </result>	
         </action>
         
-        <action name="commentModifyAction" class="showcase.CommentListAction" method="commentModify">
-            <result type="chain">
-                <param name="actionName">commentListAction</param>
+        <action name="commentModifyAction" class="showcase.CommentModifyAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
             </result>
         </action>
         

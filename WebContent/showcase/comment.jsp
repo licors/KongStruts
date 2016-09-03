@@ -22,6 +22,7 @@
 		method="post" onsubmit="return validation();">
 		<s:hidden name="showboard_num" value="%{showboard_num}" />
 		<s:hidden name="member_num" value="%{member_num}" />
+		<s:hidden name="ref" value="0"></s:hidden>
 
 		<table width="600" border="0" cellspacing="0" cellpadding="0">
 			<tr>
@@ -80,7 +81,7 @@
 				</td>
 				<td><s:property value="name" /></td>
 				<td><s:property value="reg_date" /></td>
-				<td><a href='javascript:location.href="/showcase/commentdeleteAction.action"'>x</a></td>
+				<td><a href='javascript:location.href="/showcase/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>x</a></td>
 			</tr>
 
 			<tr bgcolor="#777777">
@@ -99,7 +100,7 @@
 			<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 		</tr>
 		<tr>
-			<td align="right"><input name="back" type="button" value="뒤로" onClick="history.go(-1); return false;"></td>
+			<td align="right"><input name="back" type="button" value="뒤로" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
 		</tr>
 	</table>
 

@@ -27,12 +27,6 @@ public class CommentListAction extends ActionSupport {
     private CommentPagingAction page;
 
     private int member_num;
-    private int showcase_num;
-
-    private CommentBoardVO CommentParamClass;
-    private CommentBoardVO CommentResultClass;
-    private MemberVO memberDataClass;
-
     private int comment_num;
     private int showboard_num;
     private String subject;
@@ -54,7 +48,7 @@ public class CommentListAction extends ActionSupport {
         list = sqlMapper.queryForList("showcaseDetailComment.selectAll", getShowboard_num());
 
         totalCount = list.size();
-        page = new CommentPagingAction(currentPage, totalCount, blockCount, blockPage);
+        page = new CommentPagingAction(currentPage, totalCount, blockCount, blockPage, getShowboard_num());
         pagingHtml = page.getPagingHtml().toString();
 
         int lastCount = totalCount;
@@ -71,119 +65,16 @@ public class CommentListAction extends ActionSupport {
         return list;
     }
 
-    public String commentWrite() throws Exception {
-        memberDataClass = new MemberVO();
-        CommentParamClass = new CommentBoardVO();
-        CommentResultClass = new CommentBoardVO();
-
-        if (ref == 0) {
-            CommentParamClass.setRe_step(0);
-            CommentParamClass.setRe_level(0);
-        } else {
-            CommentParamClass.setRef(getRef());
-            CommentParamClass.setRe_step(getRe_step());
-            sqlMapper.update("showcaseDetailComment.updateReplyStep", CommentParamClass);
-
-            CommentParamClass.setRe_step(getRe_step() + 1);
-            CommentParamClass.setRe_level(getRe_level() + 1);
-            CommentParamClass.setRef(getRef());
-        }
-
-        memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
-
-        CommentParamClass.setComment_num(getComment_num());
-        CommentParamClass.setMember_num(memberDataClass.getMember_num());
-        CommentParamClass.setShowboard_num(getShowboard_num());
-        CommentParamClass.setContent(getContent());
-        CommentParamClass.setReg_date(today.getTime());
-
-        if (ref == 0) {
-            sqlMapper.insert("showcaseDetailComment.insertBoard", CommentParamClass);
-        } else {
-            sqlMapper.insert("showcaseDetailComment.insertBoardReply", CommentParamClass);
-        }
-
-        return SUCCESS;
-    }
-
-    public String commentDelete() throws Exception {
-        memberDataClass = new MemberVO();
-        CommentParamClass = new CommentBoardVO();
-//		resultClass = new CommentBoardVO();
-
-        CommentParamClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
-
-        memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
-
-//		paramClass.setMember_num(memberDataClass.getMember_num());
-        System.out.println("commentDelete : memberData : " + memberDataClass.getMember_num());
-        System.out.println("commentDelete : commentparamData : " + CommentParamClass.getMember_num());
-        if (CommentParamClass.getMember_num() != memberDataClass.getMember_num()) {
-            return ERROR;
-        }
-        sqlMapper.update("showcaseDetailComment.deleteBoard", CommentParamClass);
-        return SUCCESS;
-    }
-
-    public String commentModify() throws Exception {
-        CommentParamClass = new CommentBoardVO();
-        CommentResultClass = new CommentBoardVO();
-
-        CommentParamClass.setComment_num(comment_num);
-
-        //session에서  member_num 가져오는거로 구현	
-        //paramClass.setName(getName());
-        CommentParamClass.setComment_num(getComment_num());
-        CommentParamClass.setContent(getContent());
-
-        sqlMapper.update("showcaseDetailComment.updateBoard", CommentParamClass);
-
-        CommentResultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
-        return SUCCESS;
-    }
-
     public int getCurrentPage() {
         return currentPage;
-    }
-
-    public int getTotalCount() {
-        return totalCount;
-    }
-
-    public int getBlockCount() {
-        return blockCount;
-    }
-
-    public int getBlockPage() {
-        return blockPage;
     }
 
     public String getPagingHtml() {
         return pagingHtml;
     }
 
-    public CommentPagingAction getPage() {
-        return page;
-    }
-
     public int getMember_num() {
         return member_num;
-    }
-
-    public int getShowcase_num() {
-        return showcase_num;
-    }
-
-    public CommentBoardVO getCommentParamClass() {
-        return CommentParamClass;
-    }
-
-    public CommentBoardVO getCommentResultClass() {
-        return CommentResultClass;
-    }
-
-    public MemberVO getMemberDataClass() {
-        return memberDataClass;
     }
 
     public int getComment_num() {
@@ -226,44 +117,12 @@ public class CommentListAction extends ActionSupport {
         this.currentPage = currentPage;
     }
 
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
-    public void setBlockCount(int blockCount) {
-        this.blockCount = blockCount;
-    }
-
-    public void setBlockPage(int blockPage) {
-        this.blockPage = blockPage;
-    }
-
     public void setPagingHtml(String pagingHtml) {
         this.pagingHtml = pagingHtml;
     }
 
-    public void setPage(CommentPagingAction page) {
-        this.page = page;
-    }
-
     public void setMember_num(int member_num) {
         this.member_num = member_num;
-    }
-
-    public void setShowcase_num(int showcase_num) {
-        this.showcase_num = showcase_num;
-    }
-
-    public void setCommentParamClass(CommentBoardVO commentParamClass) {
-        CommentParamClass = commentParamClass;
-    }
-
-    public void setCommentResultClass(CommentBoardVO commentResultClass) {
-        CommentResultClass = commentResultClass;
-    }
-
-    public void setMemberDataClass(MemberVO memberDataClass) {
-        this.memberDataClass = memberDataClass;
     }
 
     public void setComment_num(int comment_num) {

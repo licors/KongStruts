@@ -20,6 +20,7 @@ public class CommentDeleteAction extends ActionSupport {
     private MemberVO memberDataClass;
     private int currentPage;
     private int comment_num;
+    private int showboard_num;
 
     public CommentDeleteAction() throws IOException {
         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -36,11 +37,14 @@ public class CommentDeleteAction extends ActionSupport {
 
         memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
 
+        System.out.println("getCommentNum : " + getComment_num());
+        System.out.println("commentDelete : memberData : " + memberDataClass.getMember_num());
+        System.out.println("commentDelete : paramData : " + paramClass.getMember_num());
 //		paramClass.setMember_num(memberDataClass.getMember_num());
         if (paramClass.getMember_num() != memberDataClass.getMember_num()) {
             return ERROR;
         }
-        sqlMapper.update("showcaseDetailComment.deleteBoard", paramClass);
+        sqlMapper.update("showcaseDetailComment.deleteBoard", paramClass.getComment_num());
         return SUCCESS;
     }
 
@@ -75,5 +79,13 @@ public class CommentDeleteAction extends ActionSupport {
     public void setComment_num(int comment_num) {
         this.comment_num = comment_num;
     }
+
+	public int getShowboard_num() {
+		return showboard_num;
+	}
+
+	public void setShowboard_num(int showboard_num) {
+		this.showboard_num = showboard_num;
+	}
 
 }
