@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
 		"-//Apache software Foundation//DTD Tiles Configuration 2.1//EN"
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-    <!-- ¸®½ºÆ® -->
+    <!-- ë¦¬ìŠ¤íŠ¸ -->
     <definition name="notice_list" extends="main">
         <put-attribute name="body" value="/admin/notice/noticelist.jsp" />
     </definition>
-    <!-- »ó¼¼º¸±â -->
+    <!-- ìƒì„¸ë³´ê¸° -->
     <definition name="notice_view" extends="main">
         <put-attribute name="body" value="/admin/notice/noticeview.jsp" />
     </definition>
-    <!-- Æû -->
+    <!-- í¼ -->
     <definition name="notice_form" extends="main">
         <put-attribute name="body" value="/admin/notice/noticeawrite.jsp" />
     </definition>

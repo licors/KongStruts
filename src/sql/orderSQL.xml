@@ -4,92 +4,87 @@
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 
-<sqlMap namespace="order">	<!-- namespace를 지정하면 아이디가 각파일마다 겹쳐도 오류가 안남
-								java에서 예를들어 select-all 갖다쓸때 order.select-all 이라고 갖다씀--> 
-	<typeAlias alias="orderBean" type="order.OrderVO" />
+<sqlMap namespace="order">
+    <typeAlias alias="orderBean" type="order.OrderVO" />
 
-	<resultMap id="orderRes" class="orderBean"> <!-- //위에 자바빈 클래스 별칭 해줬음 -->
-		<result property="order_num" column="order_num" />		<!-- //column: 우리가가진 테이블 컬럼명, property: order자바빈의 변수 -->
-		<result property="member_num" column="member_num" />
-		<result property="showboard_num" column="showboard_num" />
-		<result property="name" column="name" />
-		<result property="sex" column="sex" />
-		<result property="company" column="company" />
-		<result property="address" column="address" />
-		<result property="email" column="email" />
-		<result property="barcode" column="barcode" />
-		<result property="order_date" column="order_date" />
-		<result property="tel" column="tel" />
-		<result property="status" column="status" />
-		<result property="subject" column="subject" />
-		<result property="file_orgname" column="file_orgname" />
-		<result property="file_savname" column="file_savname" />
-		<result property="date" column="date" />
-		<result property="address2" column="address2" />
-		<result property="readcount" column="readcount" />
-		<result property="ordercount" column="ordercount" />
-	</resultMap>
+    <resultMap id="orderRes" class="orderBean">
+        <result property="order_num" column="order_num" />
+        <result property="member_num" column="member_num" />
+        <result property="showboard_num" column="showboard_num" />
+        <result property="name" column="name" />
+        <result property="sex" column="sex" />
+        <result property="company" column="company" />
+        <result property="address" column="address" />
+        <result property="email" column="email" />
+        <result property="barcode" column="barcode" />
+        <result property="order_date" column="order_date" />
+        <result property="tel" column="tel" />
+        <result property="status" column="status" />
+        <result property="subject" column="subject" />
+        <result property="file_orgname" column="file_orgname" />
+        <result property="file_savname" column="file_savname" />
+        <result property="date" column="date" />
+        <result property="address2" column="address2" />
+        <result property="readcount" column="readcount" />
+        <result property="ordercount" column="ordercount" />
+    </resultMap>
 
 
-	<!-- list 보이기 -->
-	<sql id="select-all">
-		select od.ORDER_NUM, od.MEMBER_NUM, od.SHOWBOARD_NUM, od.NAME, od.SEX, od.COMPANY,
-		od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS,
-		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
-		sb.READCOUNT, sb.ORDERCOUNT
-		from "ORDER" od join SHOWBOARD sb
-		on od.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
-	</sql>
+    <!-- list 보이기 -->
+    <sql id="select-all">
+        select od.ORDER_NUM, od.MEMBER_NUM, od.SHOWBOARD_NUM, od.NAME, od.SEX, od.COMPANY,
+        od.ADDRESS, od.EMAIL, od.barcode, od.ORDER_DATE, od.TEL, od.STATUS,
+        sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
+        sb.READCOUNT, sb.ORDERCOUNT
+        from "ORDER" od join SHOWBOARD sb
+        on od.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
+    </sql>
 
-	<!-- select -->
-	<select id="order_selectAll" resultMap="orderRes">
-		<include refid="select-all"/>
-	</select>
+    <!-- select -->
+    <select id="order_selectOne" resultMap="orderRes">
+        <include refid="select-all" />
+        and od.MEMBER_NUM=#member_num#
+        and sb.SUBJECT=#subject#
+    </select>
 	
-	<select id="order_selectOne" resultMap="orderRes">
-		<include refid="select-all" />
-		and od.MEMBER_NUM=#member_num#
-		and sb.SUBJECT=#subject#
-	</select>
+    <select id="orderDetail" resultMap="orderRes" parameterClass="int">		<!-- //parameterClass: 받아오는값,재료,메개변수, resultMap: 맨위에 선언한 resultMap 갖다쓰는것 -->
+        <include refid="select-all" />										<!-- //resultClass: 꺼내온데이터를 별칭 자바빈클래스로 넣어라, 컬럼이 하나면 값에 따라 int나 string 이 될수고있다(리턴함) -->
+        and od.ORDER_NUM=#order_num#
+    </select>
 	
-	<select id="orderDetail" resultMap="orderRes" parameterClass="int">		<!-- //parameterClass: 받아오는값,재료,메개변수, resultMap: 맨위에 선언한 resultMap 갖다쓰는것 -->
-		<include refid="select-all" />										<!-- //resultClass: 꺼내온데이터를 별칭 자바빈클래스로 넣어라, 컬럼이 하나면 값에 따라 int나 string 이 될수고있다(리턴함) -->
-		and od.ORDER_NUM=#order_num#
-	</select>
+    <select id="orderList" resultMap="orderRes" parameterClass="int">
+        <include refid="select-all" />
+        and od.MEMBER_NUM=#member_num#
+        order by od.ORDER_NUM DESC
+    </select>
 	
-	<select id="orderList" resultMap="orderRes" parameterClass="int">
-		<include refid="select-all" />
-		and od.MEMBER_NUM=#member_num#
-		order by od.ORDER_NUM DESC
-	</select>
+    <select id="order_date_list" resultMap="orderRes" parameterClass="date">
+        <include refid="select-all" />
+        and od.ORDER_DATE=#order_date#
+        order by od.ORDER_NUM DESC
+    </select>
 	
-	<select id="order_date_list" resultMap="orderRes" parameterClass="date">
-		<include refid="select-all" />
-		and od.ORDER_DATE=#order_date#
-		order by od.ORDER_NUM DESC
-	</select>
+    <!-- insert -->
+    <insert id="insert_order" parameterClass="orderBean">
+        INSERT INTO
+        "ORDER"(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
+        ADDRESS, EMAIL, BARCODE, ORDER_DATE, TEL, STATUS)
+        VALUES (ORDER_NUM_SEQ.NEXTVAL,
+        #member_num#, #showboard_num#, #name#, #sex#, #company#,
+        #address#, #email#, #barcode#, #order_date#, #tel#, #status#)
+    </insert>
 	
-	<!-- insert -->
-	<insert id="insert_order" parameterClass="orderBean">
-		INSERT INTO
-		"ORDER"(ORDER_NUM, MEMBER_NUM, SHOWBOARD_NUM, NAME, SEX, COMPANY,
-		ADDRESS, EMAIL, BARCODE, ORDER_DATE, TEL, STATUS)
-		VALUES (ORDER_NUM_SEQ.NEXTVAL,
-		#member_num#, #showboard_num#, #name#, #sex#, #company#,
-		#address#, #email#, #barcode#, #order_date#, #tel#, #status#)
-	</insert>
+    <!-- update (주문취소: order삭제가 아닌 status 값 수정) -->
+    <update id="update_order" parameterClass="orderBean">	<!-- orderProcess.java / orderCancel() -->
+        UPDATE "ORDER" SET
+        STATUS=#status#
+        WHERE ORDER_NUM=#order_num#
+    </update>
 	
-	<!-- update (주문취소: order삭제가 아닌 status 값 수정) -->
-	<update id="update_order" parameterClass="orderBean">	<!-- orderProcess.java / orderCancel() -->
-		UPDATE "ORDER" SET
-		STATUS=#status#
-		WHERE ORDER_NUM=#order_num#
-	</update>
-	
-	<!-- delete -->
-<!-- 	<delete id="adminOrderDelete" parameterClass="order">
-		DELETE FROM GOODS_ORDER WHERE SHOW_NUM=#show_num#
-	</delete> -->
+    <!-- delete -->
+    <!-- 	<delete id="adminOrderDelete" parameterClass="order">
+            DELETE FROM GOODS_ORDER WHERE SHOW_NUM=#show_num#
+    </delete> -->
 	
 	
 </sqlMap>

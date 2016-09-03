@@ -66,5 +66,14 @@
         <include refid="select-all"/>
         ORDER BY member_num
     </select>
+    <!-- 관리자용 회원정보 변경 -->
+    <update id="memberadminUpdate" parameterClass="member">
+        UPDATE MEMBER SET
+        EMAIL=#email#,
+        NAME=#name#,
+        ADDRESS=#address#,
+        COMPANY=#company#
+        WHERE MEMBER_NUM=#member_num#
+    </update>
 
 </sqlMap>

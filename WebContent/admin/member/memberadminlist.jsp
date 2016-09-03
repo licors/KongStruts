@@ -7,11 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page import="admin.member.memberadminlist" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+            function memberView(url) {
+                window.open(url, "post", "toolbar=no, width=550, height=370 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
+            }
+        </script>
     </head>
     <body>
         <table align="center" width="600">
@@ -29,9 +33,9 @@
                 <td height="1" colspan="5"></td>
             </tr>
             <s:iterator value="list" status="stat">
-                <s:url id="viewURL" action="noticeread">
-                    <s:param name="notice_num">
-                        <s:property value="notice_num"/>
+                <s:url id="viewURL" action="member/memberadminModifyForm">
+                    <s:param name="member_num">
+                        <s:property value="member_num"/>
                     </s:param>
                     <s:param name="currentPage">
                         <s:property value="currentPage"/>
@@ -39,7 +43,7 @@
                 </s:url>
                 <tr>
                     <td><s:property value="member_num"/></td>
-                    <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="email"/></s:a></td>
+                    <td align="left">&nbsp;<s:a href="javascript:memberView('%{viewURL}')"><s:property value="email"/></s:a></td>
                     <td align="center"><s:property value="name"/></td>
                     <td align="center"><s:property value="address"/></td>
                     <td align="center"><s:property value="company"/></td>

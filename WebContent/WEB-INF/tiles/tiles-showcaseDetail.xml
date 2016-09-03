@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
 		"-//Apache software Foundation//DTD Tiles Configuration 2.1//EN"
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
@@ -6,7 +6,7 @@
 <tiles-definitions>
 
    <!--  <definition name="showboardDetail" template="/template/layout2.jsp">
-        <put-attribute name="title" value="켄고루" />
+        <put-attribute name="title" value="耳꾧퀬猷�" />
         <put-attribute name="top" value="/template/top.jsp" />
         <put-attribute name="body1" value="/showcase/showcaseView.jsp" />
         <put-attribute name="body2" value="/showcase/writeComment.jsp" />

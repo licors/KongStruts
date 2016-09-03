@@ -29,6 +29,8 @@ public class MemberModifyAction extends ActionSupport {
     private String company;
     private int admin;
 
+    private int currentPage = 1;
+
     public MemberModifyAction() throws Exception {
         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
         sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -39,11 +41,22 @@ public class MemberModifyAction extends ActionSupport {
         memparamClass = new MemberVO();
         memresultClass = new MemberVO();
         resultDetail = new MemberVO();
-        
+
         memresultClass = MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         resultDetail = (MemberVO) sqlMapper.queryForObject("member.userLogin", getEmail());
         // System.out.println(resultClass.getId());
+        return SUCCESS;
+    }
+
+    public String admin_form() throws Exception {
+        memresultClass = new MemberVO();
+
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", getMember_num());
+
+        currentPage = getCurrentPage(); //어드민 맴버 리스트로 돌아가기위해 임시저장
+
+        System.out.println("m:" + getMember_num() + "/" + getCurrentPage());
         return SUCCESS;
     }
 
@@ -240,6 +253,14 @@ public class MemberModifyAction extends ActionSupport {
 
     public void setOldpassword(String oldpassword) {
         this.oldpassword = oldpassword;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
 }

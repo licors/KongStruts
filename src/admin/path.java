@@ -21,5 +21,5 @@ public class path {
     public static String sql = "sqlMapConfig.xml";
     public static String support_listaction = "/support/supportlist";
     public static String notice_listaction = "/notice/noticelist";
-    public static String member_listaction = "/member/memberList";
+    public static String member_listaction = "/member/memberlist";
 }

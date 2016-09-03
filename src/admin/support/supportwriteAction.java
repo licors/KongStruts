@@ -6,6 +6,7 @@
 package admin.support;
 
 import admin.path;
+import admin.support.email.support_email;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -49,6 +50,8 @@ public class supportwriteAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+        
         pc.setMember_num(getMember_num());
         pc.setType(getType());
         pc.setEmail(getEmail());
@@ -58,7 +61,8 @@ public class supportwriteAction extends ActionSupport {
         pc.setRe_step(getRe_step());
         pc.setRe_level(getRe_level());
         sql.insert("support.insert", pc);
-
+        //보내는사람,받는사람,보내는사람이름,제목,내용
+        support_email.getInstance().send(memresultClass.getEmail(), support_email.getServer(), support_email.toName(memresultClass.getEmail(), memresultClass.getName()), getType(), getContent());
         return SUCCESS;
     }
 
