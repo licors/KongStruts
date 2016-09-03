@@ -40,8 +40,13 @@
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		
-		<!-- 회원전체 오더리스트(관리자용) + 검색+ 취소 -->
+		<!-- (관리자용)회원전체 오더리스트-->
 		<action name="adminOrderList" class="order.OrderListAction" method="adminOrderList">
+			<result type="tiles">adminOrderList</result>
+		</action>
+		
+		<!-- (관리자용)오더리스트에서 검색 -->
+		<action name="adminOrderSearch" class="order.OrderListAction" method="search">
 			<result type="tiles">adminOrderList</result>
 		</action>
 		
