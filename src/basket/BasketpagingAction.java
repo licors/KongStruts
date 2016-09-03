@@ -42,7 +42,7 @@ public class BasketpagingAction {
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
 		if (currentPage > blockPage) {
-				pagingHtml.append("<a href=basketL.action?currentPage="
+				pagingHtml.append("<a href=/basket/basketList.action?currentPage="
 						+ (startPage - 1) + ">");
 				pagingHtml.append("[이전]");
 				pagingHtml.append("</a>");
@@ -60,7 +60,7 @@ public class BasketpagingAction {
 				pagingHtml.append(i);
 				pagingHtml.append("</font></b>");
 			} else {
-				pagingHtml.append("&nbsp;<a href='basketL.action?currentPage=");
+				pagingHtml.append("&nbsp;<a href='/basket/basketList.action?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
@@ -74,7 +74,7 @@ public class BasketpagingAction {
 
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
-			pagingHtml.append("<a href='basketL.action?currentPage="
+			pagingHtml.append("<a href='/basket/basketList.action?currentPage="
 					+ (endPage + 1));
 			pagingHtml.append("'>");
 			pagingHtml.append("[다음]");

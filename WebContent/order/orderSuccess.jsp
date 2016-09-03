@@ -34,7 +34,7 @@
 							</td>
 							&nbsp;&nbsp;&nbsp;
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-								<input type="button" value="메인으로" onclick="location:href='/main/main.action'">
+								<input type="button" value="메인으로" onclick="javascript:location.href='/showcase/sclist.action'">
 							</td>
 							
 							<!-- 수정 : 메인으로가기

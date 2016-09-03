@@ -53,7 +53,7 @@
 
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
-							<a href="/kong/order/readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
+							<a href="/order/readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
 							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
 									width="90" />	<!-- 수정수정 -->
 							</a>
@@ -203,21 +203,25 @@
 					bordercolordark="white" bordercolorlight="#626262" align="center"
 					bgcolor="#E1E1E1">
 					<tbody>
-						<tr valign="top">
+						<tr valign="middle">
 							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
 								valign="middle"><font size="2"><b>전시 입장 바코드</b></font></td>
 							<td bgcolor="#F7F7F7" align="center" valign="middle">
+								<%-- <s:if test='<s:property value="order_resultClass.status" /> == "티켓 신청"'> --%>
+								<s:if test='%{order_resultClass.status  =="티켓 신청"}'>
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
 									<tbody>
 										<tr>
-										<td bgcolor="#F7F7F7">
+										<td bgcolor="#F7F7F7" align="center">
 											<img src="../barcodeImg/<s:property value="order_resultClass.barcode"/>.png"
 									width="70%" />
 										</td>
 										</tr>
 									</tbody>
 								</table>
+								</s:if>
+								<br>티켓을 취소 하시면 바코드는 즉시 폐기 됩니다. 
 							</td>
 						</tr>
 					</tbody>
@@ -232,10 +236,10 @@
 					bgcolor="#FFFFFF">
 		<tr>
 				<td align="center" colspan="5">
-					<s:if test="order_resultClass.status == '티켓 만료'">
+					<s:if test='%{order_resultClass.status == "티켓 만료"}'>
 						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()">
 					</s:if>
-					<s:elseif test="order_resultClass.status =='티켓 취소'">
+					<s:elseif test='%{order_resultClass.status =="티켓 취소"}'>
 						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError2()">
 					</s:elseif>
 					<s:else>
@@ -243,7 +247,12 @@
 					</s:else> 
 					
 					<!-- 리스트로 -->
+					<s:if test='%{memresultClass.member_num == 1}'>
+					<input type="button" name="list" value="목록으로" onClick="location.href='/order/adminOrderList.action?currentPage=<s:property value="%{currentPage}"/>'">
+					</s:if>
+					<s:else>
 					<input type="button" name="list" value="목록으로" onClick="location.href='/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'">
+					</s:else>
 				</td>
 			</tr>
 		</table>

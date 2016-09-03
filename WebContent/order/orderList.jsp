@@ -98,6 +98,7 @@ function doImgPop(img){
 							</tbody>
 						</table>
 					</td>
+					<s:if test='%{status == "티켓 신청" }'>
 					<td width="80" height="30" align="center">
 						<img src="../barcodeImg/${barcode}.png" style="cursor: pointer;" 
 							onclick="doImgPop('../barcodeImg/${barcode}.png')" width="100"/>
@@ -110,14 +111,17 @@ function doImgPop(img){
 						</tr>
 						<tr>
 							<td>							
-							<s:if test='%{status == "티켓 신청" }'>
 								<input type="button" name="status" value="취소하기" onclick="return deletecheck(${order_num})">
-							</s:if>
 							</td>
 						</tr>
 						</tbody>
 						</table>
 					</td>
+					</s:if>
+					<s:else>
+					<td width="80" height="30" align="center">-</td>
+					<td align="center" width="100">${status }</td>
+					</s:else>
 				</tr>
 					
 			</s:iterator>
@@ -125,7 +129,7 @@ function doImgPop(img){
 			<s:if test="orderList.size() == 0">
 				<tr>
 					<td colspan="6" align="center"><font size="2">
-					구매하신 상품이 없습니다.</font></td>
+					신청하신 전시회가 없습니다.</font></td>
 				</tr>
 			</s:if>
 			
