@@ -21,7 +21,7 @@ import member.MemberVO;
  *
  * @author user2
  */
-public class memberadminlist extends ActionSupport {
+public class memberadminlistAction extends ActionSupport {
 
     public static Reader reader;
     public static SqlMapClient sql;
@@ -32,7 +32,7 @@ public class memberadminlist extends ActionSupport {
     private String pagingHtml;
     private pagingAction page;
 
-    public memberadminlist() throws IOException {
+    public memberadminlistAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();

@@ -21,6 +21,13 @@
     <body>
         <table align="center" width="600">
             <tr>
+                <td colspan="5" align="center"><!-- 들어오는 입구 -->
+                    <input type="button" value="전시" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=전시'">
+                    <input type="button" value="미술" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=미술'">
+                    <input type="button" value="이벤트" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=이벤트'">
+                </td>
+            </tr>
+            <tr>
                 <td align="right" colspan="5">
                     <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
                         <input name="support" type="button" value="전시글 작성"

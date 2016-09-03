@@ -31,7 +31,7 @@ public class support_email extends HttpServlet {
     private String contentType = "text/html";
     private String endcoding = "UTF-8";
 
-    private final String username = "server@nyang.kr";
+    private static String username = "server@nyang.kr";
     private final String password = "ilove2silvi";
 
     private static final String smtp = "smtp.worksmobile.com";
@@ -42,6 +42,17 @@ public class support_email extends HttpServlet {
 
     public static final support_email getInstance() {
         return instance;
+    }
+
+    public static final String getServer() {
+        return username;
+    }
+
+    public static final String toName(String email, String name) { //이름이 비어있으면 이메일의 앞부분을 사용
+        if (name.isEmpty() || name == null) {
+            return email.substring(0, email.indexOf("@"));
+        }
+        return name;
     }
 
     static {

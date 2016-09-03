@@ -6,13 +6,17 @@
 <struts>
     <package name="showcase" namespace="/showcase" extends="struts-default, tiles-default">
         <action name="sclist" class="main.mainAction">
-            <!--<result>/admin/qna/qnalist.jsp</result>-->
             <result type="tiles">test</result>
+        </action>
+        
+        <!-- 메인 디테일 리스트 -->
+        <action name="scdlist" class="main.showcase_detail_listAction">
+            <result type="tiles">test_d</result>
         </action>
 
         <!-- 쓰기폼 -->
         <action name="scwrite_form" class="admin.showcase.showcasewriteAction" method="form">
-            <result>/admin/showcase/scwrite.jsp</result>	
+            <result type="tiles">sc_form</result>
         </action>
         
         <!-- 쓰기 -->
@@ -20,14 +24,12 @@
             <result type="redirect-action">
                 <param name="actionName">sclist</param>
             </result>	
-            <!--<result type="tiles"></result>-->
         </action>
         
         <!-- 읽기 -->
         <action name="scread" class="showcase.ShowcaseReadAction">
-            <!-- <result type="tiles">showcaseView</result> -->
             <result>/showcase/showcaseView.jsp</result>
-           <!--  <result type="chain">
+            <!--  <result type="chain">
                 <param name="actionName">commentListAction</param>
             </result> -->
         </action>
@@ -46,7 +48,7 @@
         <action name="commentdeleteAction" class="showcase.CommentDeleteAction">
             <result type="redirect-action">
             	<![CDATA[/commentListAction?showboard_num=${paramClass.showboard_num}]]>
-               <!--  <param name="actionName">commentListAction</param>
+                <!--  <param name="actionName">commentListAction</param>
                 <param name="showboard_num">${paramClass.showboard_num}</param> -->
                 <!-- <![CDATA[/commentListAction?showboard_num=${showboard_num}]]> -->
             </result>	
@@ -60,7 +62,7 @@
         
         <!-- 수정폼 -->
         <action name="scmodify_form" class="admin.showcase.showcasemodifyAction" method="form">
-            <result>/admin/showcase/scwrite.jsp</result>
+            <result type="tiles">sc_form</result>
         </action>
         
         <!-- 수정 -->

@@ -32,7 +32,6 @@ public class noticemodifyAction extends ActionSupport {
         reader.close();
     }
 
-    /* 수정을 위해 원레 글의 내용을 전송! */
     public String form() throws Exception {
         pc = new noticeVO();
         rc = new noticeVO();

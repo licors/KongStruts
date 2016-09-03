@@ -78,10 +78,22 @@
             <result>/member/member_pfind.jsp</result>
         </action>
         
-        <!--  리스트  -->
-        <action name="memberList" class="admin.member.memberadminlist">
+        <!-- 관리자용 리스트  -->
+        <action name="memberlist" class="admin.member.memberadminlistAction">
             <result type="tiles">memberadmin_list</result>
         </action>
+        
+        <!-- 관리자용 회원 정보 수정 폼 -->
+        <action name="memberadminModifyForm" class="admin.member.memberadminmodifyAction" method="form">
+            <result>/admin/member/membermodifyForm.jsp</result>
+        </action>
+        
+        <!-- 관리자용 회원 정보 수정 처리-->
+        <action name="memberadminModify" class="admin.member.memberadminmodifyAction" >
+            <result type="redirect-action">
+                <param name="actionName">memberlist</param>
+            </result>	
+        </action>
     </package>
-
+    
 </struts>
