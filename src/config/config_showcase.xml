@@ -8,6 +8,11 @@
         <action name="sclist" class="main.mainAction">
             <result type="tiles">test</result>
         </action>
+        
+        <!-- 메인 디테일 리스트 -->
+        <action name="scdlist" class="main.showcase_detail_listAction">
+            <result type="tiles">test_d</result>
+        </action>
 
         <!-- 쓰기폼 -->
         <action name="scwrite_form" class="admin.showcase.showcasewriteAction" method="form">
