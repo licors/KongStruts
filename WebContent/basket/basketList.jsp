@@ -61,7 +61,7 @@
 						<td width="80"align="center">${address2}</td>
 						<td width="80" align="center">
 							<input type="button" name="deleteB" value="삭제" 
-							onClick="location.href='/kong/basket/deleteBasket.action?basket_num=<s:property value="basket_num"/>'">
+							onClick="location.href='/basket/deleteBasket.action?basket_num=<s:property value="basket_num"/>'">
 						</td>
 					</tr> 
 					<tr>  
@@ -78,7 +78,7 @@
 						<tr height="40">
 							<td align="right" colspan="6">
 								<input type="button" name="list" value="메인으로"
-								onClick="location.href='/kong/show/main.action'">
+								onClick="location.href='/showcase/sclist.action'">
 							</td>
 						</tr>
 					</s:if>
@@ -86,9 +86,9 @@
 						<tr height="40">
 							<td align="right" colspan="6">
 								<input type="button" name="orderB" value="주문하기"
-								onClick="location.href='/kong/order/orderFormB.action'" >
+								onClick="location.href='/order/orderFormB.action'" >
 								<input type="button" name="list" value="메인으로"
-								onClick="location.href='/kong/show/main.action'">
+								onClick="location.href='/showcase/sclist.action'">
 							</td>						
 						</tr>
 					</s:else>

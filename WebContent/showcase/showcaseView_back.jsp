@@ -75,8 +75,8 @@
                         <input name="support" type="button" value="수정" onClick="javascript:location.href = 'scmodify_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
                         <input name="support" type="button" value="삭제" onClick="javascript:location.href = 'scdelete_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
                     </s:if>
-                    <input name="basket" type="button" value="관심티켓" onClick="javascript:location.href = '/kong/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-                    <input name="order" type="button" value="신청하기" onClick="javascript:location.href = '/kong/order/orderForm.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+                    <input name="basket" type="button" value="관심티켓" onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+                    <input name="order" type="button" value="신청하기" onClick="javascript:location.href = '/order/orderForm.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
                 </td>
 
             </tr>

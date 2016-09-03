@@ -23,7 +23,7 @@
 </script>
 </head>
 <body>
-	<form name="detailForm" method="post" action="/kong/order/orderCancel.action"
+	<form name="detailForm" method="post" action="/order/orderCancel.action"
 		onsubmit="return deletecheck()">
 		<table width="700" border="0" cellspacing="0" cellpadding="2"
 			align="center">
@@ -243,7 +243,7 @@
 					</s:else> 
 					
 					<!-- 리스트로 -->
-					<input type="button" name="list" value="목록으로" onClick="location.href='/kong/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'">
+					<input type="button" name="list" value="목록으로" onClick="location.href='/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'">
 				</td>
 			</tr>
 		</table>

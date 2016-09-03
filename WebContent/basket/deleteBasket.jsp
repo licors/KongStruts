@@ -8,8 +8,8 @@
 <script>
 	function Delete(){
 		alert("해당상품 삭제되었습니다.");
-		window.location.href='/kong/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
-		//window.location.href='/kong/basket/basketList.action'
+		window.location.href='/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
+		//window.location.href='/basket/basketList.action'
 	}
 </script>
 </head>

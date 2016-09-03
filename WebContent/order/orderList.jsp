@@ -36,7 +36,7 @@ function doImgPop(img){
 	}
  	function deletecheck(num) {
  		if (confirm("주문을 취소하시겠습니까?")) {
- 			location.href("/kong/order/orderCancel.action?order_num="+num);
+ 			location.href("/order/orderCancel.action?order_num="+num);
 		} else {
 			alert("취소되었습니다");
 			return false;
@@ -84,7 +84,7 @@ function doImgPop(img){
 							<tr height="23">
 								<td width="30" align="right"><b>전시명:</b> </td>
 								<td width="110" align="center"><a
-						href="/kong/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
+						href="/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
 							${subject } </a></td>
 							</tr>
 							<tr height="23">
