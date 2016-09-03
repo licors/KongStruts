@@ -42,6 +42,10 @@
 	</sql>
 
 	<!-- select -->
+	<select id="order_selectAll" resultMap="orderRes">
+		<include refid="select-all"/>
+	</select>
+	
 	<select id="order_selectOne" resultMap="orderRes">
 		<include refid="select-all" />
 		and od.MEMBER_NUM=#member_num#

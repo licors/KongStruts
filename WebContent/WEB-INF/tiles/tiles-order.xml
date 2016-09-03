@@ -8,7 +8,10 @@
     <definition name="orderList" extends="main">
         <put-attribute name="body" value="/order/orderList.jsp" />
     </definition>
-    <definition name="orderF" extends="main">
+    <definition name="adminOrderList" extends="main">
+        <put-attribute name="body" value="/admin/order/orderList.jsp" />
+    </definition>
+    <definition name="orderForm" extends="main">
         <put-attribute name="body" value="/order/orderForm.jsp" />
     </definition>
     <definition name="orderSuccess" extends="main">
@@ -20,6 +23,6 @@
     <definition name="orderView" extends="main">
         <put-attribute name="body" value="/order/orderView.jsp" />
     </definition>
-
+  
 </tiles-definitions>
 

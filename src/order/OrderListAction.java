@@ -72,6 +72,34 @@ public class OrderListAction extends ActionSupport {
 
         return SUCCESS;
     }
+    
+    public String adminOrderList() throws Exception {
+    	memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        orderparamClass = new OrderVO();
+        orderresultClass = new OrderVO();
+
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        /*		
+		if(memresultClass == null) {
+			return LOGIN;
+		}
+         */
+        orderList = sqlMapper.queryForList("order.order_selectAll");
+
+        totalCount = orderList.size();
+
+        page = new OrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
+        pagingHtml = page.getPagingHtml().toString();
+        int lastCount = totalCount;
+
+        if (page.getEndCount() < totalCount) {
+            lastCount = page.getEndCount() + 1;
+        }
+
+        orderList = orderList.subList(page.getStartCount(), lastCount);
+    	return SUCCESS;
+    }
 
     public String getSearchKeyword() {
         return searchKeyword;
