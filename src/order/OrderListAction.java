@@ -3,7 +3,10 @@ package order;
 import order.AdminOrderPagingAction;
 import java.io.IOException;
 import java.io.Reader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.ibatis.common.resources.Resources;
@@ -39,7 +42,11 @@ public class OrderListAction extends ActionSupport {
     //검색관련
     private String searchKeyword;
     private int searchNum;
-    //private int num2 = 0;
+    
+    //날짜검색관련
+    private SimpleDateFormat sdf;
+    private String datepicker1; //start date
+    private String datepicker2; //end date
 
     public OrderListAction() throws IOException {
         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -106,24 +113,42 @@ public class OrderListAction extends ActionSupport {
     }
     
     public String search() throws Exception {
+    	memparamClass = new MemberVO();
     	memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+    	orderresultClass = new OrderVO();
 
 		searchKeyword = new String(searchKeyword.getBytes("8859_1"), "utf-8");
 		System.out.print(searchKeyword);
-
-		if (searchNum == 0) {	//회원
-			orderList = sqlMapper.queryForList("order.search_id", "%" + getSearchKeyword() + "%");
+		
+		if(datepicker1 == null && datepicker2 == null) {
+			if (searchNum == 0) {	//회원
+				orderList = sqlMapper.queryForList("order.search_id", "%" + getSearchKeyword() + "%");
+			}
+			if (searchNum == 1) {	//전시
+				orderList = sqlMapper.queryForList("order.search_subject", "%" + getSearchKeyword() + "%");
+			}
+			if (searchNum == 2) {	//신청상태
+				orderList = sqlMapper.queryForList("order.search_status", "%" + getSearchKeyword() + "%");
+			}
+			/*if (searchNum == 2) {	//날짜
+			orderList = sqlMapper.queryForList("order.search_date", "%" + getSearchKeyword() + "%");
+		}*/
+		} else {
+			try {
+				sdf = new SimpleDateFormat("yyyyMMdd");
+	
+				System.out.println(datepicker1);
+				System.out.println(datepicker2);
+	
+				orderresultClass.setDatepicker1(datepicker1);
+				orderresultClass.setDatepicker2(datepicker2);
+				
+				orderList = sqlMapper.queryForList("order.search_date", orderresultClass);
+			} catch(Exception e) {
+				System.out.println("날짜 받아오기 실패");
+				e.printStackTrace();
+			}
 		}
-		if (searchNum == 1) {	//전시
-			orderList = sqlMapper.queryForList("order.search_subject", "%" + getSearchKeyword() + "%");
-		}
-		if (searchNum == 2) {	//신청상태
-			orderList = sqlMapper.queryForList("order.search_status", "%" + getSearchKeyword() + "%");
-		}
-		/*if (searchNum == 2) {	//날짜
-		orderList = sqlMapper.queryForList("order.search_date", "%" + getSearchKeyword() + "%");
-	}*/
-
 		totalCount = orderList.size(); // 전체 글 갯수를 구한다.
 		// pagingAction 객체생성
 		adpage = new AdminOrderPagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
@@ -291,6 +316,30 @@ public class OrderListAction extends ActionSupport {
 
 	public void setSearchNum(int searchNum) {
 		this.searchNum = searchNum;
+	}
+
+	public SimpleDateFormat getSdf() {
+		return sdf;
+	}
+
+	public void setSdf(SimpleDateFormat sdf) {
+		this.sdf = sdf;
+	}
+
+	public String getDatepicker1() {
+		return datepicker1;
+	}
+
+	public void setDatepicker1(String datepicker1) {
+		this.datepicker1 = datepicker1;
+	}
+
+	public String getDatepicker2() {
+		return datepicker2;
+	}
+
+	public void setDatepicker2(String datepicker2) {
+		this.datepicker2 = datepicker2;
 	}
 
 }

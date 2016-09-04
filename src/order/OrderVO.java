@@ -25,6 +25,10 @@ public class OrderVO {
 	private int readcount;
 	private int ordercount;
 	
+	//날짜계산에 필요한 변수
+	private String datepicker1;
+	private String datepicker2;
+	
 	public int getOrder_num() {
 		return order_num;
 	}
@@ -138,6 +142,18 @@ public class OrderVO {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getDatepicker1() {
+		return datepicker1;
+	}
+	public void setDatepicker1(String datepicker1) {
+		this.datepicker1 = datepicker1;
+	}
+	public String getDatepicker2() {
+		return datepicker2;
+	}
+	public void setDatepicker2(String datepicker2) {
+		this.datepicker2 = datepicker2;
 	}
 	
 }

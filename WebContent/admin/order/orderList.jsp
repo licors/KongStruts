@@ -5,60 +5,14 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html >
+<html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>관리자용 티켓 신청 리스트</title>
-
-<style type="text/css">
-.tg {
-	border-collapse: collapse;
-	border-spacing: 0;
-	border-color: #ccc;
-}
-
-.tg td {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	padding: 10px 5px;
-	border-style: solid;
-	border-width: 1px;
-	overflow: hidden;
-	word-break: normal;
-	border-color: #ccc;
-	color: #333;
-	background-color: #fff;
-}
-
-.tg th {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	padding: 10px 5px;
-	border-style: solid;
-	border-width: 1px;
-	overflow: hidden;
-	word-break: normal;
-	border-color: #ccc;
-	color: #333;
-	background-color: #f0f0f0;
-}
-
-.tg .tg-2thk {
-	background-color: #c0c0c0;
-	text-align: center
-}
-
-.tg .tg-j4kc {
-	background-color: #efefef;
-	text-align: center
-}
-</style>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script>
@@ -117,6 +71,51 @@ function doImgPop(img){
 	 	return num;
  	}
 </script>
+<style type="text/css">
+.tg {
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-color: #ccc;
+}
+
+.tg td {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #fff;
+}
+
+.tg th {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 5px;
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	word-break: normal;
+	border-color: #ccc;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+.tg .tg-2thk {
+	background-color: #c0c0c0;
+	text-align: center
+}
+
+.tg .tg-j4kc {
+	background-color: #efefef;
+	text-align: center
+}
+</style>
+
 </head>
 <body>
 	<tr height="20"></tr>
@@ -194,14 +193,17 @@ function doImgPop(img){
 				</select>
 				<input class="searchk" type="text" name="searchKeyword" size="15"
 					maxlength="20" /> 				
+				<p>조회기간:
+    <input type="text" id="datepicker1" name="datepicker1"> ~
+    <input type="text" id="datepicker2" name="datepicker2">
+</p>
 				<input name="search" type="submit" value="검색" />
 				</td>
+				
 			</tr>
+			
 		</table>
 	</form>
-	<p>
-		조회기간: <input type="text" name="datepicker1"> ~ <input
-					type="text" name="datepicker2">
-	</p>
+	
 </body>
 </html>
