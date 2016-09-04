@@ -22,9 +22,7 @@ public class showcaselistAction extends ActionSupport {
     public static Reader reader; // 파일 스트림을 위한 reader
     public static SqlMapClient sqlMapper; // SqlMapClient API를 사용하기 위한 sqlMapper객체
 
-    private List<showVO> list1 = new ArrayList<showVO>();
-    private List<showVO> list2 = new ArrayList<showVO>();
-    private List<showVO> list3 = new ArrayList<showVO>();
+	private List<showVO> list = new ArrayList<showVO>();
 
     private showVO showboard_paramClass = new showVO();
     private showVO showboard_resultClass = new showVO();
@@ -43,7 +41,7 @@ public class showcaselistAction extends ActionSupport {
     //일반회원  메인화면 상품목록
     public String execute() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-        // 검색값이 있으면 category()메서드를 호출.
+/*        // 검색값이 있으면 category()메서드를 호출.
         if (getShowboard_category() != null) {
             return category();
             // 검색값이 있으면 search()메서드를 호출
@@ -51,13 +49,16 @@ public class showcaselistAction extends ActionSupport {
         if (getSearchKeyword() != null) {
             return search();
         }
-        showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category("전시");
-        list1 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("미술");
-        list2 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("이벤트");
-        list3 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
+        
+		list = sqlMapper.queryForList("selectall");
+
+        System.out.println(111);
+        return SUCCESS;*/
+        
+        showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8")); //파라메타에서 카테고리 디코딩해서 게시글 추출
+        list = sqlMapper.queryForList("show.select_9", showboard_paramClass);
+        
+        showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
 
         return SUCCESS;
     }
@@ -72,28 +73,23 @@ public class showcaselistAction extends ActionSupport {
         if (getSearchKeyword() != null) {
             return search();
         }
+        
         showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category("전시");
-        list1 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("미술");
-        list2 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("이벤트");
-        list3 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
+        
+		list = sqlMapper.queryForList("selectall", showboard_paramClass);
+
+        System.out.println(222);
 
         return SUCCESS;
     }
-
     //일반회원 메인 카테고리 클릭
     public String category() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category("전시");
-        list1 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("미술");
-        list2 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("이벤트");
-        list3 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
+        showboard_paramClass.setShowboard_category(getShowboard_category());
+        
+		list = sqlMapper.queryForList("select_category", showboard_paramClass);
 
         return SUCCESS;
     }
@@ -101,15 +97,11 @@ public class showcaselistAction extends ActionSupport {
     //일반회원 메인 상품검색
     public String search() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        
         System.out.print(searchKeyword); // 키워드를 출력
-        showboard_paramClass = new showVO();
-
-        showboard_paramClass.setShowboard_category("전시");
-        list1 = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%");
-        showboard_paramClass.setShowboard_category("미술");
-        list2 = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%");
-        showboard_paramClass.setShowboard_category("이벤트");
-        list3 = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%");
+        
+		list = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
+		
         return SUCCESS;
     }
 
@@ -118,12 +110,8 @@ public class showcaselistAction extends ActionSupport {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category("전시");
-        list1 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("미술");
-        list2 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
-        showboard_paramClass.setShowboard_category("이벤트");
-        list3 = sqlMapper.queryForList("show.select_category", showboard_paramClass);
+        showboard_paramClass.setShowboard_category(getShowboard_category());
+		list = sqlMapper.queryForList("select_category", showboard_paramClass);
 
         return SUCCESS;
     }
@@ -132,99 +120,83 @@ public class showcaselistAction extends ActionSupport {
     public String adsearch() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-        System.out.print(searchKeyword); // 키워드를 출력
-        showboard_paramClass = new showVO();
+		System.out.print(searchKeyword); // 키워드를 출력
 
-        list1 = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
+		list = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
 
         return SUCCESS;
     }
 
-    public MemberVO getMemresultClass() {
-        return memresultClass;
-    }
+	public MemberVO getMemresultClass() {
+		return memresultClass;
+	}
 
-    public void setMemresultClass(MemberVO memresultClass) {
-        this.memresultClass = memresultClass;
-    }
+	public void setMemresultClass(MemberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
 
-    public MemberVO getMemparamClass() {
-        return memparamClass;
-    }
+	public MemberVO getMemparamClass() {
+		return memparamClass;
+	}
 
-    public void setMemparamClass(MemberVO memparamClass) {
-        this.memparamClass = memparamClass;
-    }
+	public void setMemparamClass(MemberVO memparamClass) {
+		this.memparamClass = memparamClass;
+	}
 
-    public static Reader getReader() {
-        return reader;
-    }
+	public static Reader getReader() {
+		return reader;
+	}
 
-    public static void setReader(Reader reader) {
-        showcaselistAction.reader = reader;
-    }
+	public static void setReader(Reader reader) {
+		showcaselistAction.reader = reader;
+	}
 
-    public static SqlMapClient getSqlMapper() {
-        return sqlMapper;
-    }
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
 
-    public static void setSqlMapper(SqlMapClient sqlMapper) {
-        showcaselistAction.sqlMapper = sqlMapper;
-    }
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		showcaselistAction.sqlMapper = sqlMapper;
+	}
 
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
+	public List<showVO> getList() {
+		return list;
+	}
 
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
+	public void setList(List<showVO> list) {
+		this.list = list;
+	}
 
-    public String getShowboard_category() {
-        return showboard_category;
-    }
+	public showVO getShowboard_paramClass() {
+		return showboard_paramClass;
+	}
 
-    public void setShowboard_category(String showboard_category) {
-        this.showboard_category = showboard_category;
-    }
+	public void setShowboard_paramClass(showVO showboard_paramClass) {
+		this.showboard_paramClass = showboard_paramClass;
+	}
 
-    public showVO getShowboard_paramClass() {
-        return showboard_paramClass;
-    }
+	public showVO getShowboard_resultClass() {
+		return showboard_resultClass;
+	}
 
-    public void setShowboard_paramClass(showVO showboard_paramClass) {
-        this.showboard_paramClass = showboard_paramClass;
-    }
+	public void setShowboard_resultClass(showVO showboard_resultClass) {
+		this.showboard_resultClass = showboard_resultClass;
+	}
 
-    public showVO getShowboard_resultClass() {
-        return showboard_resultClass;
-    }
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
 
-    public void setShowboard_resultClass(showVO showboard_resultClass) {
-        this.showboard_resultClass = showboard_resultClass;
-    }
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 
-    public List<showVO> getList1() {
-        return list1;
-    }
+	public String getShowboard_category() {
+		return showboard_category;
+	}
 
-    public void setList1(List<showVO> list1) {
-        this.list1 = list1;
-    }
+	public void setShowboard_category(String showboard_category) {
+		this.showboard_category = showboard_category;
+	}
 
-    public List<showVO> getList2() {
-        return list2;
-    }
-
-    public void setList2(List<showVO> list2) {
-        this.list2 = list2;
-    }
-
-    public List<showVO> getList3() {
-        return list3;
-    }
-
-    public void setList3(List<showVO> list3) {
-        this.list3 = list3;
-    }
 }

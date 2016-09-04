@@ -49,13 +49,15 @@
         ORDER BY showboard_num DESC
     </select>
     <!-- 카테고리를 기준으로 열린 글만 뽑아오는 sql문 -->
+    
     <!-- 수호씨 쇼케이스디테일리스트? 용으로 사용하세요 -->
-    <select id="select_category" resultMap="showRes" parameterClass="show">
+    <select id="select_category" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = #showboard_category#
         AND status = 0
         ORDER BY showboard_num DESC
     </select>
+    
     <!-- 제목 눌러서 들고오는 것 같은대... 무결성이... -->
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>

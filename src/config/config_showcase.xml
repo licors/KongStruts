@@ -6,11 +6,12 @@
 <struts>
     <package name="showcase" namespace="/showcase" extends="struts-default, tiles-default">
         <action name="sclist" class="main.mainAction">
-            <result type="tiles">test</result>
+            <!-- <result type="tiles">test</result> -->
+            <result type="tiles">main</result>
         </action>
         
         <!-- 메인 디테일 리스트 -->
-        <action name="scdlist" class="main.showcase_detail_listAction">
+        <action name="scdlist" class="main.showcaselistAction">
             <result type="tiles">test_d</result>
         </action>
 

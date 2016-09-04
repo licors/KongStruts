@@ -59,7 +59,7 @@ function goodsmodify(showboard_num){
 		</tr>
 	</table> --%>
 	
-			<table width="700" align="left">
+ 			<table width="700" align="left">
 		<tr height="30">
 			<td align="center" style="">
 			<s:if test="showboard_category==null">
@@ -75,7 +75,7 @@ function goodsmodify(showboard_num){
 				<s:if test="showboard_category.equals(\"이벤트\")">
 				<img src="images/goods/dress.jpg"></img>
 				</s:if>
-			<%--<s:property value="goods_category"/> --%>
+			<s:property value="goods_category"/>
 			</s:else>
 			</td>
 		</tr>
@@ -99,7 +99,7 @@ function goodsmodify(showboard_num){
 <%-- <a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&goods_num=<s:property value="goods_num"/>&currentPage=<s:property value="currentPage"/>'>
 			<img src="./goods/upload/<s:property value="goods_savimage.split(',')[0]"/>" width="200px" height="250px"/></a> --%>
 <a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
-			<img src="<s:property value="img"/><s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
+			<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
 				
 				<br><br>
 				<s:property value="subject"/>
