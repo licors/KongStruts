@@ -4,30 +4,40 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-	 <!-- <package name="showcaseCommentBoard" namespace="/comment" extends="struts-default, tiles-default">
-		<action name="listAction" class="showcase.CommentListAction">
-			<result>/showcase/listComment.jsp</result>
-			<interceptor-ref name="chain"></interceptor-ref>
-			<result type="tiles">showcaseView</result>
-		</action>
+	<package name="showcaseComment" namespace="/comment" extends="struts-default, tiles-default">
+	  <action name="commentListAction" class="showcase.CommentListAction">
+            <result>/showcase/comment.jsp</result>
+            <!-- <result type="tiles">showcaseView</result> -->
+        </action>
 		
-		<action name="writeForm" class="showcase.CommentWriteAction" method="form">
-			<result>/showcase/writeComment.jsp</result>
-		</action>
-		
-		<action name="writeAction" class="showcase.CommentWriteAction">
-			<result type="redirect-action">
-				<param name="actionName">listAction</param>
-			</result>
-		</action>
-		
-	 	<action name="deleteAction" class="showcase.CommentDeleteAction">
-			<result type="redirect-action">
-				<param name="actionName">listAction</param>
-			</result>
-			<result type="ERROR">
-				세션에 있는 유저정보와	해당코맨트 작성자가 불일치하는 경우		
-			</result>
-		</action>
-	</package> -->
+        <action name="commentWriteAction" class="showcase.CommentWriteAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
+            </result>
+            <result name="login">
+            	/member/memberLogin.jsp
+            </result>
+        </action>
+        
+        <action name="commentdeleteAction" class="showcase.CommentDeleteAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${paramClass.showboard_num}]]>
+                <!--  <param name="actionName">commentListAction</param>
+                <param name="showboard_num">${paramClass.showboard_num}</param> -->
+                <!-- <![CDATA[/commentListAction?showboard_num=${showboard_num}]]> -->
+            </result>	
+            <result name="login">
+            	/member/memberLogin.jsp
+            </result>
+        </action>
+        
+        <action name="commentModifyAction" class="showcase.CommentModifyAction">
+            <result type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
+            </result>
+            <result name="login">
+            	/member/memberLogin.jsp
+            </result>
+        </action>
+	</package>
 </struts>

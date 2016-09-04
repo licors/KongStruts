@@ -18,7 +18,7 @@
 <body>
 
 	<!-- 코멘트 입력 폼 -->
-	<form name="commentForm" action="/showcase/commentWriteAction.action"
+	<form name="commentForm" action="/comment/commentWriteAction.action"
 		method="post" onsubmit="return validation();">
 		<s:hidden name="showboard_num" value="%{showboard_num}" />
 		<s:hidden name="member_num" value="%{member_num}" />
@@ -81,7 +81,7 @@
 				</td>
 				<td><s:property value="name" /></td>
 				<td><s:property value="reg_date" /></td>
-				<td><a href='javascript:location.href="/showcase/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>x</a></td>
+				<td><a href='javascript:location.href="/comment/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>x</a></td>
 			</tr>
 
 			<tr bgcolor="#777777">

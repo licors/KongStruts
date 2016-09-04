@@ -102,8 +102,8 @@
                     </s:if>
                     <input name="basket" type="button" value="관심티켓" onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
                     <input name="order" type="button" value="신청하기" onClick="javascript:location.href = '/order/orderForm.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-                    <input name="comment" type="button" value="댓글달기" onClick="javascript:location.href = '/showcase/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-                    <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'">
+                    <input name="comment" type="button" value="댓글달기" onClick="javascript:location.href = '/comment/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+                    <!-- <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'"> -->
                 </td>
             </tr>
         </table>

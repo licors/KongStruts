@@ -8,12 +8,15 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+import member.MemberVO;
+
 public class CommentModifyAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private CommentBoardVO paramClass;
 	private CommentBoardVO resultClass;
+	private MemberVO memberDataClass;
 	
 	private int currentPage;
 	
@@ -33,11 +36,11 @@ public class CommentModifyAction extends ActionSupport {
 		paramClass = new CommentBoardVO();
 		resultClass = new CommentBoardVO();
 		
-		paramClass.setComment_num(comment_num);
-		
-		//session에서  member_num 가져오는거로 구현	
-		
-		//paramClass.setName(getName());
+		memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
+        if(memberDataClass == null) {
+        	return LOGIN;
+        }
+        
 		paramClass.setComment_num(getComment_num());
 		paramClass.setContent(getContent());
 		

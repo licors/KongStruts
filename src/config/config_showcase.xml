@@ -34,33 +34,7 @@
                 <param name="actionName">commentListAction</param>
             </result> -->
         </action>
-        
-        <action name="commentListAction" class="showcase.CommentListAction">
-            <result>/showcase/comment.jsp</result>
-            <!-- <result type="tiles">showcaseView</result> -->
-        </action>
-		
-        <action name="commentWriteAction" class="showcase.CommentWriteAction">
-            <result type="redirect-action">
-            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
-            </result>
-        </action>
-        
-        <action name="commentdeleteAction" class="showcase.CommentDeleteAction">
-            <result type="redirect-action">
-            	<![CDATA[/commentListAction?showboard_num=${paramClass.showboard_num}]]>
-                <!--  <param name="actionName">commentListAction</param>
-                <param name="showboard_num">${paramClass.showboard_num}</param> -->
-                <!-- <![CDATA[/commentListAction?showboard_num=${showboard_num}]]> -->
-            </result>	
-        </action>
-        
-        <action name="commentModifyAction" class="showcase.CommentModifyAction">
-            <result type="redirect-action">
-            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
-            </result>
-        </action>
-        
+
         <!-- 수정폼 -->
         <action name="scmodify_form" class="admin.showcase.showcasemodifyAction" method="form">
             <result type="tiles">sc_form</result>

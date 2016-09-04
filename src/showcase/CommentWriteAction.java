@@ -66,6 +66,11 @@ public class CommentWriteAction extends ActionSupport {
         CommentParamClass = new CommentBoardVO();
         CommentResultClass = new CommentBoardVO();
 
+        memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
+        if(memberDataClass == null) {
+        	return LOGIN;
+        }
+        
         if (ref == 0) {
             CommentParamClass.setRe_step(0);
             CommentParamClass.setRe_level(0);
@@ -78,8 +83,6 @@ public class CommentWriteAction extends ActionSupport {
             CommentParamClass.setRe_level(getRe_level() + 1);
             CommentParamClass.setRef(getRef());
         }
-
-        memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
 
         CommentParamClass.setComment_num(getComment_num());
         CommentParamClass.setMember_num(memberDataClass.getMember_num());
