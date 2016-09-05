@@ -22,9 +22,9 @@
             <!-- #####관리자일 때##### -->
             <s:if test="memresultClass.getEmail() == 'admin@localhost'">
                 <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
-                <li><a href="memberList.action"><input type="button" class="memberlist" value=""/></a></li>
+                <li><a href="/member/memberList.action"><input type="button" class="memberlist" value=""/></a></li>
                 <li><a href="/order/adminOrderList.action"><input type="button" class="adminorder" value=""/></a></li> <!-- 유진:어드민 오더리스트 경로 수정 0903 -->
-                <li><a href="scwrite_form.action"><input type="button" class="admingoods" value=""/></a></li>
+                <li><a href="/showcase/scwrite_form.action"><input type="button" class="admingoods" value=""/></a></li>
                     </s:if>
             <!-- #####회원일 때##### -->
             <s:else>

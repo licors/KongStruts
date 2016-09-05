@@ -3,7 +3,7 @@
 function logout() {
 	if (confirm("로그아웃 하시겠습니까?")) {
 		alert("이용해주셔서 감사합니다");
-		window.location.href = 'memberLogout.action';
+		window.location.href = '/member/memberLogout.action';
 	} else {
 		alert("취소되었습니다");
 	}
@@ -11,12 +11,12 @@ function logout() {
 
 function basketlogin(){
 	alert("로그인을 하셔야 볼 수 있습니다");
-	window.location.href='memberLoginForm.action';
+	window.location.href='/member/memberLoginForm.action';
 }
 
 function buylogin(){
 	alert("로그인을 하셔야 볼 수 있습니다");
-	window.location.href='memberLoginForm.action';
+	window.location.href='/member/memberLoginForm.action';
 }
 /*function passwdcheck() {
 		if (!document.passwdcheckform.password.value) {
