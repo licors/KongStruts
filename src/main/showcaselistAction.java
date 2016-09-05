@@ -40,12 +40,13 @@ public class showcaselistAction extends ActionSupport {
 
     //일반회원  메인화면 상품목록
     public String execute() throws Exception {
+        memparamClass = new MemberVO();
         memresultClass = new MemberVO();
         showboard_resultClass = new showVO();
         showboard_paramClass = new showVO();
         
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-/*        // 검색값이 있으면 category()메서드를 호출.
+        // 검색값이 있으면 category()메서드를 호출.
         if (getShowboard_category() != null) {
             return category();
             // 검색값이 있으면 search()메서드를 호출
@@ -54,12 +55,14 @@ public class showcaselistAction extends ActionSupport {
             return search();
         }
         
-		list = sqlMapper.queryForList("selectall");
+/*		list = sqlMapper.queryForList("selectall");
 
         System.out.println(111);
         return SUCCESS;*/
         
-        if (getSearchKeyword() != null) {
+        
+        
+/*        if (getSearchKeyword() != null) {
             return search();
         }
         
@@ -67,6 +70,8 @@ public class showcaselistAction extends ActionSupport {
         list = sqlMapper.queryForList("show.select_9", showboard_paramClass);
         
         showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
+*/        
+		list = sqlMapper.queryForList("selectall");
         
         return SUCCESS;
     }	
@@ -90,14 +95,19 @@ public class showcaselistAction extends ActionSupport {
 
         return SUCCESS;
     }
-    //일반회원 메인 카테고리 클릭
+    //일반회원 메인 카테고리 클릭시
     public String category() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category(getShowboard_category());
         
-		list = sqlMapper.queryForList("select_category", showboard_paramClass);
+/*        showboard_paramClass.setShowboard_category(getShowboard_category());
+		list = sqlMapper.queryForList("select_category", showboard_paramClass);*/
+        
+        showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8")); //파라메타에서 카테고리 디코딩해서 게시글 추출
+        list = sqlMapper.queryForList("show.select_category", showboard_paramClass);
+        
+        showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
         return SUCCESS;
     }
 
@@ -126,9 +136,14 @@ public class showcaselistAction extends ActionSupport {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         showboard_paramClass = new showVO();
-        showboard_paramClass.setShowboard_category(getShowboard_category());
-		list = sqlMapper.queryForList("select_category", showboard_paramClass);
-
+        
+/*        showboard_paramClass.setShowboard_category(getShowboard_category());
+		list = sqlMapper.queryForList("select_category", showboard_paramClass);*/
+        
+        showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8")); //파라메타에서 카테고리 디코딩해서 게시글 추출
+        list = sqlMapper.queryForList("show.select_category", showboard_paramClass);
+        
+        showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
         return SUCCESS;
     }
 

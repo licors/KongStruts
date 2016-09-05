@@ -28,6 +28,7 @@ function showcaseView(url) {
                         <input name="support" type="button" value="전시글 작성"
                                onClick="javascript:location.href = '/showcase/scwrite_form.action'">
                     </s:if>
+
 <!-- 리스트1(전시) 출력 -->
 <br/><br/>
 <table width="700" align="left" border="0">

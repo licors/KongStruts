@@ -3,11 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.HashMap"%>
-<%-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<link rel="stylesheet" href="css/goodsList.css" />
-<link rel="stylesheet" href="css/index.css" />
-<script language="javascript" type="text/javascript" src="js/index.js">
-</script> --%>
 
 <script type="text/javascript">
 	/* function goodsdelete(showboard_num,currentPage){
@@ -30,40 +25,10 @@
 	}
 </script>
 
-<%-- 		<table width="700" align="left">
-		<tr height="30">
-			<td align="center" style="">
-			<s:if test="showboard_category==null">
-				<img src="images/goods/all.jpg"></img>
-			</s:if>
-			<s:else>
-				<s:if test="showboard_category=='outer'">
-				<img src="images/goods/outer.jpg"></img>
-				</s:if>
-				<s:if test="showboard_category=='top'">
-				<img src="images/goods/top.jpg"></img>
-				</s:if>
-				<s:if test="showboard_category=='blouse'">
-				<img src="images/goods/dress.jpg"></img>
-				</s:if>
-				<s:if test="showboard_category=='pants'">
-				<img src="images/goods/pants.jpg"></img>
-				</s:if>
-				<s:if test="showboard_category=='skirts'">
-				<img src="images/goods/skirts.jpg"></img>
-				</s:if>
-				<s:if test="showboard_category=='shoes'">
-				<img src="images/goods/shoes.jpg"></img>
-				</s:if>
-			<s:property value="goods_category"/>
-			</s:else>
-			</td>
-		</tr>
-	</table> --%>
-
 <table width="700" align="left">
 	<tr height="30">
-		<td align="center" style=""><s:if test="showboard_category==null">
+		<td align="center" style="">
+		<s:if test="showboard_category==null">
 				<img src="images/goods/all.jpg"></img>
 			</s:if> <s:else>
 				<s:if test="showboard_category.equals(\"전시\")">
@@ -82,11 +47,11 @@
 
 <table width="700" align="center">
 	<s:iterator value="list" status="stat">
-		<s:url id="viewURL" action="scread">
+ 		<s:url id="viewURL" action="scread">
 			<s:param name="showboard_num">
 				<s:property value="showboard_num" />
 			</s:param>
-			<%--    <s:param name="currentPage">
+<%-- 			   <s:param name="currentPage">
    <s:property value="currentPage"/>
    </s:param> --%>
 		</s:url>
