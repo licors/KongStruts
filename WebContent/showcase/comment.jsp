@@ -71,6 +71,11 @@
 				<td align="right" colspan="2"><input name="submit"
 					type="submit" value="댓글입력" class="inputb"></td>
 			</tr>
+			<tr>
+				<s:if test="login_member_num == -1">
+					<td colspan="2"><a href="/member/memberLogin.jsp">로그인</a> 하셔야 이용하실 수 있습니다.</td>
+				</s:if>
+			</tr>
 		</table>
 	</form>
 
@@ -108,11 +113,15 @@
 					<td width="80" align="center"><s:property value="reg_date"/></td>
 					<%-- <td width="50" align="center"><a href='javascript:location.href="/comment/commentModifyAction.action?comment_num=<s:property value='%{comment_num}'/>"'>수정</a></td> --%>
 					<td width="50" align="center">
+						<s:if test="login_member_num == member_num">
 						<%-- <a href="javascript:commentModifyView('${viewURL}')">수정</a> --%>
-						<a href="javascript:location.href='${viewURL}'">수정</a>
+							<a href="javascript:location.href='${viewURL}'">수정</a>
+						</s:if>
 					</td>
 					<td width="50" align="center">
-						<a href='javascript:location.href="/comment/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>삭제</a>
+						<s:if test="login_member_num == member_num">
+							<a href='javascript:location.href="/comment/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>삭제</a>
+						</s:if>
 					</td>
 				</tr>
 	

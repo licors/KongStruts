@@ -29,6 +29,7 @@ public class CommentListAction extends ActionSupport {
     private int member_num;
     private int comment_num;
     private int showboard_num;
+    private int login_member_num;
     private String subject;
     private String name;
     private String content;
@@ -47,6 +48,15 @@ public class CommentListAction extends ActionSupport {
     public String execute() throws Exception {
         list = sqlMapper.queryForList("showcaseDetailComment.selectAll", getShowboard_num());
 
+        MemberVO memberDataClass = null;
+        memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
+        if(memberDataClass == null) {
+        	login_member_num = -1;
+        } else {
+        	login_member_num = memberDataClass.getMember_num();
+        }
+        
+        
         totalCount = list.size();
         page = new CommentPagingAction(currentPage, totalCount, blockCount, blockPage, getShowboard_num());
         pagingHtml = page.getPagingHtml().toString();
@@ -156,5 +166,13 @@ public class CommentListAction extends ActionSupport {
     public void setRe_level(int re_level) {
         this.re_level = re_level;
     }
+
+	public int getLogin_member_num() {
+		return login_member_num;
+	}
+
+	public void setLogin_member_num(int login_member_num) {
+		this.login_member_num = login_member_num;
+	}
 
 }

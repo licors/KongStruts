@@ -38,7 +38,7 @@ public class ShowcaseReadAction extends ActionSupport {
 
     private showVO paramClass;
     private showVO resultClass;
-    private MemberVO memresultClass;
+//    private MemberVO memresultClass;
 
     private int showboard_num;
     private int pay;                //무료는 0원
@@ -74,7 +74,7 @@ public class ShowcaseReadAction extends ActionSupport {
         // 해당 번호의 글을 가져온다.
         resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass.getShowboard_num());
 
-        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+//        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         return SUCCESS;
     }
@@ -191,13 +191,13 @@ public class ShowcaseReadAction extends ActionSupport {
         this.status = status;
     }
 
-    public MemberVO getMemresultClass() {
-        return memresultClass;
-    }
-
-    public void setMemresultClass(MemberVO memresultClass) {
-        this.memresultClass = memresultClass;
-    }
+//    public MemberVO getMemresultClass() {
+//        return memresultClass;
+//    }
+//
+//    public void setMemresultClass(MemberVO memresultClass) {
+//        this.memresultClass = memresultClass;
+//    }
 
     public String getImg() {
         return img;
