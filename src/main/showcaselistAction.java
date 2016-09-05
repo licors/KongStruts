@@ -38,7 +38,7 @@ public class showcaselistAction extends ActionSupport {
         reader.close();
     }
 
-    //일반회원  메인화면 상품목록
+    //비회원, 일반회원  상품메뉴(All) 클릭시
     public String execute() throws Exception {
         memparamClass = new MemberVO();
         memresultClass = new MemberVO();
@@ -54,29 +54,12 @@ public class showcaselistAction extends ActionSupport {
         if (getSearchKeyword() != null) {
             return search();
         }
-        
-/*		list = sqlMapper.queryForList("selectall");
-
-        System.out.println(111);
-        return SUCCESS;*/
-        
-        
-        
-/*        if (getSearchKeyword() != null) {
-            return search();
-        }
-        
-        showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8")); //파라메타에서 카테고리 디코딩해서 게시글 추출
-        list = sqlMapper.queryForList("show.select_9", showboard_paramClass);
-        
-        showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
-*/        
-		list = sqlMapper.queryForList("selectall");
-        
+		list = sqlMapper.queryForList("show.selectall");
+        System.out.println(list);
         return SUCCESS;
     }	
 
-    //운영자 메인화면 상품목록
+    //관리자  상품메뉴(All) 클릭시
     public String execute2() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
         // 검색값이 있으면 search()메서드를 호출.
@@ -86,16 +69,13 @@ public class showcaselistAction extends ActionSupport {
         if (getSearchKeyword() != null) {
             return search();
         }
-        
         showboard_paramClass = new showVO();
-        
-		list = sqlMapper.queryForList("selectall", showboard_paramClass);
-
-        System.out.println(222);
+		list = sqlMapper.queryForList("show.selectall", showboard_paramClass);
+        System.out.println(list);
 
         return SUCCESS;
     }
-    //일반회원 메인 카테고리 클릭시
+    //비회원, 일반회원  상품메뉴(전시,미술,이벤트) 클릭시
     public String category() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
@@ -122,16 +102,16 @@ public class showcaselistAction extends ActionSupport {
         showboard_paramClass.setSubject("%" + getSearchKeyword() + "%");
         showboard_paramClass.setShowboard_category(showboard_category);
         
-        System.out.println("showVO:"+showboard_paramClass.getSubject()); // 키워드를 출력
+/*        System.out.println("showVO:"+showboard_paramClass.getSubject()); // 키워드를 출력
         System.out.println("showVO:"+showboard_paramClass.getShowboard_category()); //카테고리
-        
+*/        
 		list = sqlMapper.queryForList("show.selectSearch", showboard_paramClass ); // search 쿼리 수행
 		
-		showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
-        return SUCCESS;
+/*		showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
+*/        return SUCCESS;
     }
 
-    //관리자  메인 카테고리 클릭
+    //관리자  상품메뉴(전시,미술,이벤트) 클릭시
     public String adcategory() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
