@@ -8,7 +8,8 @@
 </head>
 <body>
 <div align="center">
-	<a href="/showcase/sclist.action"><img src="/template/image/header/logo.png" /></a>
+<!-- <img src="/template/image/header/logo.png" /></a> -->
+	<a href="/showcase/sclist.action"><img src="/template/image/header/logo.png" /></a> <!-- 수호 0906 05:00 로고클릭시 메인화면으로 가게끔 연동  -->
 
 </div>
 </body>

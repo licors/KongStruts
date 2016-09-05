@@ -25,7 +25,7 @@
         <action name="memberLogin" class="member.MemberLoginAction">
             <!-- <result>/member/loginResult.jsp</result> --> <!-- 메인페이지로 이동? -->
 <!--             <result>/main/main.jsp</result> -->
-			<result type="tiles">main</result>
+			<result type="tiles">main</result>   <!-- 0906 05:00 수호 수정.. 일단 로그인시 메인화면 뜨긴뜨는데 body부분이 엑박뜸 왜그런지 잘 이해가안감-->
         </action>
 		
         <!--  로그아웃 처리  -->
@@ -33,7 +33,7 @@
             <!-- <result>/member/memberLogin.jsp</result> -->
             <!-- <result>/main/main.jsp</result> -->
            <!-- </result> -->	
-			<result type="tiles">main1</result>
+			<result type="tiles">main1</result>  <!-- 0906 05:00 수호 수정.. 일단 로그아웃시 메인화면 뜨긴뜨는데 body부분이 엑박뜸 왜그런지 잘 이해가안감 // 아줌마꺼는 main1로 main하고 똑같은 타일즈 하나 더만들었길래 따라해봤는데 그래도 엑박뜨네-->
         </action>
 		
         <!-- 회원 정보 수정 폼 -->
