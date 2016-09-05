@@ -6,19 +6,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title></title>
 <script type="text/javascript">
+
 function joinCheck() {
-	if (!document.joinform.email.value) {
-		alert("이메일주소를 입력해주세요.");
+	 if(!document.getElementById("agreement").checked){
+	    	alert("약관에 동의 하셔야합니다.")
+	    	
+	    	return false;
+	    }
+	    if(!document.getElementById("agreement2").checked){
+	    	alert("약관에 동의 하셔야합니다.")
+	    	
+	    	return false;
+	    }
+	    if (!document.joinform.email.value) {
+			alert("이메일주소를 입력해주세요.");
+			
 		return false;
-	}
-	if (!document.joinform.password.value) {
-		alert("비밀번호를 입력해주세요.");
+		}
+	    if (!document.joinform.password.value) {
+			alert("비밀번호를 입력해주세요.");
+			
 		return false;
-	}
-	if (!document.joinform.name.value) {
-		alert("이름을 입력해주세요.");
+		}
+	    if (!document.joinform.name.value) {
+			alert("이름을 입력해주세요.");
+			
 		return false;
-	}
+		}
+		 
 }
 </script>
 </head>
@@ -26,8 +41,9 @@ function joinCheck() {
         
        
     <h3 class="subTitle" align="center">회원가입</h3>
-
-		<input type="checkbox" id="agreement" /><label for="agreement" style="cursor:pointer;">서비스 이용약관에 동의 합니다.</label><a href="./agree.jsp" target="_blank">(자세히보기 )</a>
+    
+	<div align="center">
+		<input type="checkbox" id="agreement" /><label for="agreement" style="cursor:pointer;">서비스 이용약관에 동의 합니다.</label><a href="./agree.jsp" target="_blank">(자세히보기 )</a><br>
 		<input type="checkbox" id="agreement2" /><label for="agreement2" style="cursor:pointer;">개인정보취급방침에 동의 합니다.</label><a href="./agree1.jsp" target="_blank">(자세히보기 )</a> 
 		
 	<p>
@@ -49,7 +65,7 @@ function joinCheck() {
 			</tr>
 		</table>
 	</form>
-
+</div>
 
 
 </body>
