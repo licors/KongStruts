@@ -30,15 +30,7 @@ public class mainAction extends ActionSupport {
 
     private String searchKeyword;
     private String showboard_category;
-
-    /*    private int currentPage = 1;
-    private int totalCount;
-    private int blockCount = 6;
-    private int blockPage = 3;
-    private String pagingHtml;
-    private String adpagingHtml;
-    private pagingAction page;
-    private int num = 0;*/
+    
     public mainAction() throws Exception {
 
         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
