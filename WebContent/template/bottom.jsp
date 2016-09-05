@@ -82,7 +82,7 @@
 						</div>
 						<div style="display: inline-block;">
 							<p style="margin: 0px; padding: 0px;">
-								(주)캔고루 | 최인욱 | tel : 02-111-1111, 02-2222-2222 | email : <a
+								(주)캔고루 | 안효명 김도훈 김수호 배유진 김영길 | tel : 02-111-1111, 02-2222-2222 | email : <a
 									href="mailto:mkt@cango.to" style="cursor: pointer;">mkt@cango.to</a>
 								| 119-86-78989 [ <a
 									href="http://ftc.go.kr/info/bizinfo/communicationView.jsp?apv_perm_no=2014317014230200184&amp;searchKey=04&amp;searchVal=1198678989"
