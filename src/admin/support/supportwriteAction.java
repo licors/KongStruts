@@ -50,8 +50,8 @@ public class supportwriteAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
-        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass); //문의하는 맴버의 정보를 얻기위해 추가
-        
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+        System.out.println("to:" + toString());
         pc.setMember_num(getMember_num());
         pc.setType(getType());
         pc.setEmail(getEmail());
@@ -62,8 +62,13 @@ public class supportwriteAction extends ActionSupport {
         pc.setRe_level(getRe_level());
         sql.insert("support.insert", pc);
         //보내는사람,받는사람,보내는사람이름,제목,내용
-        support_email.getInstance().send(memresultClass.getEmail(), support_email.getServer(), support_email.toName(memresultClass.getEmail(), memresultClass.getName()), getType(), getContent());
+        support_email.getInstance().send(memresultClass.getEmail(), support_email.getServer(), support_email.toName(getEmail(), memresultClass.getName()), getType(), getEmail() + "<br>" + getContent());
         return SUCCESS;
+    }
+
+    @Override
+    public String toString() {
+        return "supportwriteAction{" + "support_num=" + support_num + ", member_num=" + member_num + ", ref=" + ref + ", re_step=" + re_step + ", re_level=" + re_level + ", reg_date=" + reg_date + ", type=" + type + ", email=" + email + ", content=" + content + '}';
     }
 
     public supportVO getPc() {

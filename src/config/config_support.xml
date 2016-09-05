@@ -15,6 +15,13 @@
             <result type="tiles">support_form</result>
         </action>
         
+        <!-- 쓰기 -->
+        <action name="supportwrite" class="admin.support.supportwriteAction">
+            <result type="redirect-action">
+                <param name="actionName">supportlist</param>
+            </result>	
+        </action>
+        
         <!-- 읽기 -->
         <action name="supportread" class="admin.support.supportviewAction">
             <result type="tiles">support_view</result>

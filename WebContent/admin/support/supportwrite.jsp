@@ -28,13 +28,11 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="supportwrite" action="supportwrite.action" method="post" onsubmit="return check()">
-                <s:hidden name="currentPage" value="%{currentPage}"/>
+            <form name="supportwrite" action="/support/supportwrite.action" method="post" onsubmit="return check()">
+                <s:hidden name="member_num" value="%{memresultClass.member_num}"/>
             </s:if>
             <s:else>
-                <form name="supportmodify" action="supportmodify.action" method="post" onsubmit="return check()">
-                    <s:hidden name="showboard_num" value="%{rc.support_num}"/>
-                    <s:hidden name="currentPage" value="%{currentPage}"/>
+                <form name="supportmodify" action="/support/supportmodify.action" method="post" onsubmit="return check()">
                 </s:else>
                 <table align="center" width="600">
                     <tr>
@@ -50,12 +48,12 @@
                         <td width="420" bgcolor="#FFFFFF">
                             <select name="type" size="1" >
                                 <option value="">무엇이 궁금하세요</option>
-                                <option value="3">전시/행사/공연 제보</option>
-                                <option value="4">제휴문의</option>
-                                <option value="1">앱 사용/오류 문의</option>
-                                <option value="2">결제 및 환불 문의</option>
-                                <option value="5">기타문의</option>
-                                <option value="6">전시회(부스)참가문의</option>
+                                <option value="전시/행사/공연 제보">전시/행사/공연 제보</option>
+                                <option value="제휴문의">제휴문의</option>
+                                <option value="앱 사용/오류 문의">앱 사용/오류 문의</option>
+                                <option value="결제 및 환불 문의">결제 및 환불 문의</option>
+                                <option value="기타문의">기타문의</option>
+                                <option value="전시회(부스)참가문의">전시회(부스)참가문의</option>
                             </select>                          
                         </td>
                     </tr>
