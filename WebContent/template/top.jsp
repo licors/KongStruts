@@ -30,14 +30,14 @@
             <s:else>
                 <s:if test="memresultClass.getEmail() != null">
                     <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
-                    <li><a href="memberModifyForm.action"><input type="button" class="mypage" value=""/></a></li>
+                    <li><a href="/member/memberModifyForm.action"><input type="button" class="mypage" value=""/></a></li>
                     <li><a href="/basket/basketList.action"><input type="button" class="basket" value="" /></a></li> <!-- 유진:basket,order 경로수정-->
                     <li><a href="/order/orderList.action"><input type="button" class="order" value=""/></a></li>  <!-- 일반회원용 주문현황으로 변경필요 09.02 -->
                         </s:if>
                 <!-- #####비회원일 때##### -->
                 <s:else>
-                    <li><a href="memberLoginForm.action"><input type="button" class="mem_in" value=""  /></a></li>
-                    <li><a href="memberJoinForm.action"><input type="button" class="mem_join" value="" /></a></li>
+                    <li><a href="/member/memberLoginForm.action"><input type="button" class="mem_in" value=""  /></a></li>
+                    <li><a href="/member/memberJoinForm.action"><input type="button" class="mem_join" value="" /></a></li>
                     <li><input type="button" class="basket" value="" onclick="return basketlogin()"/></li>
                     <li><input type="button" class="order" value="" onclick="return buylogin()"></li>
                     </s:else>
