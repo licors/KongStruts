@@ -75,7 +75,7 @@ function goodsmodify(showboard_num){
 				<s:if test="showboard_category.equals(\"이벤트\")">
 				<img src="images/goods/dress.jpg"></img>
 				</s:if>
-			<s:property value="goods_category"/>
+			<s:property value="showboard_category"/>
 			</s:else>
 			</td>
 		</tr>

@@ -40,6 +40,10 @@ public class showcaselistAction extends ActionSupport {
 
     //일반회원  메인화면 상품목록
     public String execute() throws Exception {
+        memresultClass = new MemberVO();
+        showboard_resultClass = new showVO();
+        showboard_paramClass = new showVO();
+        
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 /*        // 검색값이 있으면 category()메서드를 호출.
         if (getShowboard_category() != null) {
@@ -55,13 +59,17 @@ public class showcaselistAction extends ActionSupport {
         System.out.println(111);
         return SUCCESS;*/
         
+        if (getSearchKeyword() != null) {
+            return search();
+        }
+        
         showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8")); //파라메타에서 카테고리 디코딩해서 게시글 추출
         list = sqlMapper.queryForList("show.select_9", showboard_paramClass);
         
         showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
-
+        
         return SUCCESS;
-    }
+    }	
 
     //운영자 메인화면 상품목록
     public String execute2() throws Exception {
@@ -90,7 +98,6 @@ public class showcaselistAction extends ActionSupport {
         showboard_paramClass.setShowboard_category(getShowboard_category());
         
 		list = sqlMapper.queryForList("select_category", showboard_paramClass);
-
         return SUCCESS;
     }
 
@@ -98,10 +105,19 @@ public class showcaselistAction extends ActionSupport {
     public String search() throws Exception {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
         
-        System.out.print(searchKeyword); // 키워드를 출력
+        System.out.println(searchKeyword); // 키워드를 출력
+        System.out.println(showboard_category); //카테고리
         
-		list = sqlMapper.queryForList("selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
+        showboard_paramClass = new showVO();
+        showboard_paramClass.setSubject("%" + getSearchKeyword() + "%");
+        showboard_paramClass.setShowboard_category(showboard_category);
+        
+        System.out.println("showVO:"+showboard_paramClass.getSubject()); // 키워드를 출력
+        System.out.println("showVO:"+showboard_paramClass.getShowboard_category()); //카테고리
+        
+		list = sqlMapper.queryForList("show.selectSearch", showboard_paramClass ); // search 쿼리 수행
 		
+		showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
         return SUCCESS;
     }
 

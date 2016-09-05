@@ -10,7 +10,7 @@
         <h1 class="logo"></h1>
     </a>
     <div class="searchKeyword">
-        <form name="findgoods" action="gboardL.action" method="post" >
+        <form name="findgoods" action="scdlist.action" method="post" >
             <input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
             <input class="serchButton" type="submit" value=""/> 
         </form>
