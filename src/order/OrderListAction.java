@@ -18,140 +18,127 @@ import member.MemberVO;
 
 public class OrderListAction extends ActionSupport {
 
-    public static Reader reader;
-    public static SqlMapClient sqlMapper;
+	public static Reader reader;
+	public static SqlMapClient sqlMapper;
 
-    private MemberVO memparamClass;
-    private MemberVO memresultClass;
-    private OrderVO orderparamClass;
-    private OrderVO orderresultClass;
+	private MemberVO memparamClass;
+	private MemberVO memresultClass;
+	private OrderVO orderparamClass;
+	private OrderVO orderresultClass;
 
-    private List<OrderVO> orderList = new ArrayList<OrderVO>();
+	private List<OrderVO> orderList = new ArrayList<OrderVO>();
 
-    private int currentPage = 1; // 현재 페이지
-    private int totalCount;// 총 게시물의 수
-    private int blockCount = 10; // 한 페이지의 게시물 수
-    private int blockPage = 3; // 한 화면에 보여줄 페이지 수
-    private String pagingHtml; // 페이징을 구현한 HTML
-    private OrderPagingAction page; // 페이징 클래스
-    private AdminOrderPagingAction adpage;
-    private String adpagingHtml;
-    private int num = 0;
-    private int member_num;
+	private int currentPage = 1; // 현재 페이지
+	private int totalCount;// 총 게시물의 수
+	private int blockCount = 10; // 한 페이지의 게시물 수
+	private int blockPage = 3; // 한 화면에 보여줄 페이지 수
+	private String pagingHtml; // 페이징을 구현한 HTML
+	private OrderPagingAction page; // 페이징 클래스
+	private AdminOrderPagingAction adpage;
+	private String adpagingHtml;
+	private int num = 0;
+	private int member_num;
 
-    //검색관련
-    private String searchKeyword;
-    private int searchNum;
-    
-    //날짜검색관련
-    private SimpleDateFormat sdf;
-    private String datepicker1; //start date
-    private String datepicker2; //end date
+	// 검색관련
+	private String searchKeyword;
+	private int searchNum;
 
-    public OrderListAction() throws IOException {
-        reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-        sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-        reader.close();
-    }
+	// 날짜검색관련
+	//private SimpleDateFormat sdf;
+	private String datepicker1; // start date
+	private String datepicker2; // end date
 
-    public String execute() throws Exception {
-        memparamClass = new MemberVO();
-        memresultClass = new MemberVO();
-        orderparamClass = new OrderVO();
-        orderresultClass = new OrderVO();
+	public OrderListAction() throws IOException {
+		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+		reader.close();
+	}
 
-        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-        /*		
-		if(memresultClass == null) {
-			return LOGIN;
+	public String execute() throws Exception {
+		memparamClass = new MemberVO();
+		memresultClass = new MemberVO();
+		orderparamClass = new OrderVO();
+		orderresultClass = new OrderVO();
+
+		memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+		/*
+		 * if(memresultClass == null) { return LOGIN; }
+		 */
+		orderList = sqlMapper.queryForList("order.orderList", memresultClass.getMember_num());
+
+		totalCount = orderList.size();
+
+		page = new OrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
+		pagingHtml = page.getPagingHtml().toString();
+		int lastCount = totalCount;
+
+		if (page.getEndCount() < totalCount) {
+			lastCount = page.getEndCount() + 1;
 		}
-         */
-        orderList = sqlMapper.queryForList("order.orderList", memresultClass.getMember_num());
 
-        totalCount = orderList.size();
+		orderList = orderList.subList(page.getStartCount(), lastCount);
 
-        page = new OrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
-        pagingHtml = page.getPagingHtml().toString();
-        int lastCount = totalCount;
+		return SUCCESS;
+	}
 
-        if (page.getEndCount() < totalCount) {
-            lastCount = page.getEndCount() + 1;
-        }
+	// 관리자용 회원 오더리스트(페이징, 검색)
+	public String adminOrderList() throws Exception {
+		memparamClass = new MemberVO();
+		memresultClass = new MemberVO();
+		orderparamClass = new OrderVO();
+		orderresultClass = new OrderVO();
 
-        orderList = orderList.subList(page.getStartCount(), lastCount);
+		memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+		/*
+		 * if(memresultClass == null) { return LOGIN; }
+		 */
+		orderList = sqlMapper.queryForList("order.order_selectAll");
 
-        return SUCCESS;
-    }
-    
-    //관리자용 회원 오더리스트(페이징, 검색)
-    public String adminOrderList() throws Exception {
-    	memparamClass = new MemberVO();
-        memresultClass = new MemberVO();
-        orderparamClass = new OrderVO();
-        orderresultClass = new OrderVO();
+		totalCount = orderList.size();
 
-        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-        /*		
-		if(memresultClass == null) {
-			return LOGIN;
+		adpage = new AdminOrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
+		pagingHtml = adpage.getPagingHtml().toString();
+		int lastCount = totalCount;
+
+		if (adpage.getEndCount() < totalCount) {
+			lastCount = adpage.getEndCount() + 1;
 		}
-         */
-        orderList = sqlMapper.queryForList("order.order_selectAll");
 
-        totalCount = orderList.size();
+		orderList = orderList.subList(adpage.getStartCount(), lastCount);
+		return SUCCESS;
+	}
 
-        adpage = new AdminOrderPagingAction(currentPage, totalCount, blockCount, blockPage, num, "");
-        pagingHtml = adpage.getPagingHtml().toString();
-        int lastCount = totalCount;
+	public String search() throws Exception {
+		memparamClass = new MemberVO();
+		memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+		orderresultClass = new OrderVO();
 
-        if (adpage.getEndCount() < totalCount) {
-            lastCount = adpage.getEndCount() + 1;
-        }
-
-        orderList = orderList.subList(adpage.getStartCount(), lastCount);
-    	return SUCCESS;
-    }
-    
-    public String search() throws Exception {
-    	memparamClass = new MemberVO();
-    	memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-    	orderresultClass = new OrderVO();
-
-		searchKeyword = new String(searchKeyword.getBytes("8859_1"), "utf-8");
-		System.out.print(searchKeyword);
+		//기간검색, 빈 날짜값 설정
+ 		if(datepicker1.isEmpty() || datepicker2.isEmpty() || datepicker1.equals("") || datepicker2.equals("")) {
+ 			orderresultClass.setDatepicker1("16-09-01");
+  			orderresultClass.setDatepicker2("16-12-31");
+  		} else {
+  			orderresultClass.setDatepicker1(datepicker1);
+  			orderresultClass.setDatepicker2(datepicker2);
+  		}
 		
-		if(datepicker1 == null && datepicker2 == null) {
-			if (searchNum == 0) {	//회원
-				orderList = sqlMapper.queryForList("order.search_id", "%" + getSearchKeyword() + "%");
-			}
-			if (searchNum == 1) {	//전시
-				orderList = sqlMapper.queryForList("order.search_subject", "%" + getSearchKeyword() + "%");
-			}
-			if (searchNum == 2) {	//신청상태
-				orderList = sqlMapper.queryForList("order.search_status", "%" + getSearchKeyword() + "%");
-			}
-			/*if (searchNum == 2) {	//날짜
-			orderList = sqlMapper.queryForList("order.search_date", "%" + getSearchKeyword() + "%");
-		}*/
-		} else {
-			try {
-				sdf = new SimpleDateFormat("yyyyMMdd");
-	
-				System.out.println(datepicker1);
-				System.out.println(datepicker2);
-	
-				orderresultClass.setDatepicker1(datepicker1);
-				orderresultClass.setDatepicker2(datepicker2);
-				
-				orderList = sqlMapper.queryForList("order.search_date", orderresultClass);
-			} catch(Exception e) {
-				System.out.println("날짜 받아오기 실패");
-				e.printStackTrace();
-			}
+		if (searchKeyword == null){ //기간검색
+			orderList = sqlMapper.queryForList("order.search_date", orderresultClass);
+		}else if (searchNum == 0) { // 회원 + 기간검색
+			orderresultClass.setEmail("%" + getSearchKeyword() + "%");
+			orderList = sqlMapper.queryForList("order.search_id", orderresultClass);			
+		}else if (searchNum == 1) { // 전시 + 기간검색
+			orderresultClass.setSubject("%" + getSearchKeyword() + "%");
+			orderList = sqlMapper.queryForList("order.search_subject", orderresultClass);			
+		}else if (searchNum == 2) { // 신청상태 + 기간검색
+			orderresultClass.setStatus("%" + getSearchKeyword() + "%");
+			orderList = sqlMapper.queryForList("order.search_status", orderresultClass);			
 		}
+		
 		totalCount = orderList.size(); // 전체 글 갯수를 구한다.
 		// pagingAction 객체생성
-		adpage = new AdminOrderPagingAction(currentPage, totalCount, blockCount, blockPage, searchNum, getSearchKeyword());
+		adpage = new AdminOrderPagingAction(currentPage, totalCount, blockCount, blockPage, searchNum,
+				getSearchKeyword());
 		pagingHtml = adpage.getPagingHtml().toString(); // 페이지HTML 생성.
 
 		// 현재 페이지에서 보여줄 마지막 글의 번호 설정.
@@ -166,133 +153,133 @@ public class OrderListAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
 
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
 
-    public static Reader getReader() {
-        return reader;
-    }
+	public static Reader getReader() {
+		return reader;
+	}
 
-    public static void setReader(Reader reader) {
-        OrderListAction.reader = reader;
-    }
+	public static void setReader(Reader reader) {
+		OrderListAction.reader = reader;
+	}
 
-    public static SqlMapClient getSqlMapper() {
-        return sqlMapper;
-    }
+	public static SqlMapClient getSqlMapper() {
+		return sqlMapper;
+	}
 
-    public static void setSqlMapper(SqlMapClient sqlMapper) {
-        OrderListAction.sqlMapper = sqlMapper;
-    }
+	public static void setSqlMapper(SqlMapClient sqlMapper) {
+		OrderListAction.sqlMapper = sqlMapper;
+	}
 
-    public MemberVO getMemparamClass() {
-        return memparamClass;
-    }
+	public MemberVO getMemparamClass() {
+		return memparamClass;
+	}
 
-    public void setMemparamClass(MemberVO memparamClass) {
-        this.memparamClass = memparamClass;
-    }
+	public void setMemparamClass(MemberVO memparamClass) {
+		this.memparamClass = memparamClass;
+	}
 
-    public MemberVO getMemresultClass() {
-        return memresultClass;
-    }
+	public MemberVO getMemresultClass() {
+		return memresultClass;
+	}
 
-    public void setMemresultClass(MemberVO memresultClass) {
-        this.memresultClass = memresultClass;
-    }
+	public void setMemresultClass(MemberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
 
-    public OrderVO getOrderparamClass() {
-        return orderparamClass;
-    }
+	public OrderVO getOrderparamClass() {
+		return orderparamClass;
+	}
 
-    public void setOrderparamClass(OrderVO orderparamClass) {
-        this.orderparamClass = orderparamClass;
-    }
+	public void setOrderparamClass(OrderVO orderparamClass) {
+		this.orderparamClass = orderparamClass;
+	}
 
-    public OrderVO getOrderresultClass() {
-        return orderresultClass;
-    }
+	public OrderVO getOrderresultClass() {
+		return orderresultClass;
+	}
 
-    public void setOrderresultClass(OrderVO orderresultClass) {
-        this.orderresultClass = orderresultClass;
-    }
+	public void setOrderresultClass(OrderVO orderresultClass) {
+		this.orderresultClass = orderresultClass;
+	}
 
-    public List<OrderVO> getOrderList() {
-        return orderList;
-    }
+	public List<OrderVO> getOrderList() {
+		return orderList;
+	}
 
-    public void setOrderList(List<OrderVO> orderList) {
-        this.orderList = orderList;
-    }
+	public void setOrderList(List<OrderVO> orderList) {
+		this.orderList = orderList;
+	}
 
-    public int getCurrentPage() {
-        return currentPage;
-    }
+	public int getCurrentPage() {
+		return currentPage;
+	}
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
 
-    public int getTotalCount() {
-        return totalCount;
-    }
+	public int getTotalCount() {
+		return totalCount;
+	}
 
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
 
-    public int getBlockCount() {
-        return blockCount;
-    }
+	public int getBlockCount() {
+		return blockCount;
+	}
 
-    public void setBlockCount(int blockCount) {
-        this.blockCount = blockCount;
-    }
+	public void setBlockCount(int blockCount) {
+		this.blockCount = blockCount;
+	}
 
-    public int getBlockPage() {
-        return blockPage;
-    }
+	public int getBlockPage() {
+		return blockPage;
+	}
 
-    public void setBlockPage(int blockPage) {
-        this.blockPage = blockPage;
-    }
+	public void setBlockPage(int blockPage) {
+		this.blockPage = blockPage;
+	}
 
-    public String getPagingHtml() {
-        return pagingHtml;
-    }
+	public String getPagingHtml() {
+		return pagingHtml;
+	}
 
-    public void setPagingHtml(String pagingHtml) {
-        this.pagingHtml = pagingHtml;
-    }
+	public void setPagingHtml(String pagingHtml) {
+		this.pagingHtml = pagingHtml;
+	}
 
-    public OrderPagingAction getPage() {
-        return page;
-    }
+	public OrderPagingAction getPage() {
+		return page;
+	}
 
-    public void setPage(OrderPagingAction page) {
-        this.page = page;
-    }
+	public void setPage(OrderPagingAction page) {
+		this.page = page;
+	}
 
-    public int getNum() {
-        return num;
-    }
+	public int getNum() {
+		return num;
+	}
 
-    public void setNum(int num) {
-        this.num = num;
-    }
+	public void setNum(int num) {
+		this.num = num;
+	}
 
-    public int getMember_num() {
-        return member_num;
-    }
+	public int getMember_num() {
+		return member_num;
+	}
 
-    public void setMember_num(int member_num) {
-        this.member_num = member_num;
-    }
+	public void setMember_num(int member_num) {
+		this.member_num = member_num;
+	}
 
 	public AdminOrderPagingAction getAdpage() {
 		return adpage;
@@ -318,14 +305,6 @@ public class OrderListAction extends ActionSupport {
 		this.searchNum = searchNum;
 	}
 
-	public SimpleDateFormat getSdf() {
-		return sdf;
-	}
-
-	public void setSdf(SimpleDateFormat sdf) {
-		this.sdf = sdf;
-	}
-
 	public String getDatepicker1() {
 		return datepicker1;
 	}
@@ -340,6 +319,13 @@ public class OrderListAction extends ActionSupport {
 
 	public void setDatepicker2(String datepicker2) {
 		this.datepicker2 = datepicker2;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderListAction [orderList=" + orderList + ", member_num=" + member_num + ", searchKeyword="
+				+ searchKeyword + ", searchNum=" + searchNum + ", datepicker1=" + datepicker1 + ", datepicker2="
+				+ datepicker2 + "]";
 	}
 
 }

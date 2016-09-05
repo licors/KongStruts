@@ -185,8 +185,8 @@ function doImgPop(img){
 						escape="false" /></td>
 			</tr>
 			<tr align="center">
-				<td colspan="9"><select name="searchNum"
-					onchange="change(this.value)">
+				<td colspan="9">
+				<select name="searchNum">
 						<option value="0">주문자ID(E-mail)</option>
 						<option value="1">전시회명</option>
 						<option value="2">신청상태</option>
@@ -197,7 +197,7 @@ function doImgPop(img){
     <input type="text" id="datepicker1" name="datepicker1"> ~
     <input type="text" id="datepicker2" name="datepicker2">
 </p>
-				<input name="search" type="submit" value="검색" />
+				<input class="click" name="search" type="submit" value="검색" />
 				</td>
 				
 			</tr>
