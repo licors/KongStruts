@@ -6,7 +6,7 @@
 function Success(){
 	alert("이용해주셔서 감사합니다");
 	window.close;
-	window.location.href="showcase/sclist.action";
+	window.location.href="/showcase/sclist.action";
 }
 </script>
 

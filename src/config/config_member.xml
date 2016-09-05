@@ -24,13 +24,16 @@
         <!-- 로그인 처리-->
         <action name="memberLogin" class="member.MemberLoginAction">
             <!-- <result>/member/loginResult.jsp</result> --> <!-- 메인페이지로 이동? -->
-            <result>/main/mainT.jsp</result>
+<!--             <result>/main/main.jsp</result> -->
+			<result type="tiles">main</result>
         </action>
 		
         <!--  로그아웃 처리  -->
         <action name="memberLogout" class="member.MemberLoginAction" method="logout">
             <!-- <result>/member/memberLogin.jsp</result> -->
-            <result>/main/mainT.jsp</result>
+            <!-- <result>/main/main.jsp</result> -->
+           <!-- </result> -->	
+			<result type="tiles">main1</result>
         </action>
 		
         <!-- 회원 정보 수정 폼 -->

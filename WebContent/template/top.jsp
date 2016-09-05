@@ -6,11 +6,11 @@
 <%@ page import = "java.util.HashMap" %>	
 
 <div class="header_wrap">
-    <a href="sclist.action">
+    <a href="/showcase/sclist.action">
         <h1 class="logo"></h1>
     </a>
     <div class="searchKeyword">
-        <form name="findgoods" action="scdlist.action" method="post" >
+        <form name="findgoods" action="/show/scdlist.action" method="post" >
             <input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
             <input class="serchButton" type="submit" value=""/> 
         </form>
@@ -22,7 +22,7 @@
             <!-- #####관리자일 때##### -->
             <s:if test="memresultClass.getEmail() == 'admin@localhost'">
                 <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li>
-                <li><a href="/member/memberList.action"><input type="button" class="memberlist" value=""/></a></li>
+                <li><a href="/member/memberlist.action"><input type="button" class="memberlist" value=""/></a></li>
                 <li><a href="/order/adminOrderList.action"><input type="button" class="adminorder" value=""/></a></li> <!-- 유진:어드민 오더리스트 경로 수정 0903 -->
                 <li><a href="/showcase/scwrite_form.action"><input type="button" class="admingoods" value=""/></a></li>
                     </s:if>

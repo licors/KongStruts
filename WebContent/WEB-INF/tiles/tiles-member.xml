@@ -8,7 +8,7 @@
     
     
     <definition name="test" extends="main">
-        <put-attribute name="body" value="/main/mainT.jsp" />
+        <put-attribute name="body" value="/main/main.jsp" />
     </definition>
     
      <!-- showcase -->
