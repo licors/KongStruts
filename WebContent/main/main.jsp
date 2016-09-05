@@ -133,8 +133,10 @@ function showcaseView(url) {
 		<s:iterator value="list1" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
-			<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'></a>
+				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img>
+			
 				<br><br>
 				<s:property value="subject"/>
 				<br><s:property value="date"/>
@@ -162,8 +164,9 @@ function showcaseView(url) {
 		<s:iterator value="list2" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="300" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
-			<img src="../showcaseImg/<s:property value="img"/><s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'></a>
+				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img>
 				<br><br>
 				<s:property value="subject"/>
 				<br><s:property value="date"/>
@@ -191,8 +194,9 @@ function showcaseView(url) {
 		<s:iterator value="list3" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
-			<img src="../showcaseImg/<s:property value="img"/><s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'></a>
+				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img>
 				<br><br>
 				<s:property value="subject"/>
 				<br><s:property value="date"/>
