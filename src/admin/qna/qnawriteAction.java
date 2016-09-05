@@ -12,6 +12,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import java.io.IOException;
 import java.io.Reader;
+import member.MemberVO;
 
 /**
  *
@@ -22,6 +23,7 @@ public class qnawriteAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private qnaVO pc, rc;
+    private MemberVO memresultClass;
 
     private int qna_num;
     private String subject, content;
@@ -32,6 +34,12 @@ public class qnawriteAction extends ActionSupport {
         reader.close();
     }
 
+    public String form() throws Exception {
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+
+        return SUCCESS;
+    }
+
     @Override
     public String execute() throws Exception {
         pc = new qnaVO();
@@ -39,7 +47,7 @@ public class qnawriteAction extends ActionSupport {
 
         pc.setSubject(getSubject());
         pc.setContent(getContent());
-        
+
         sql.insert("qna.insert", pc);
 
         return SUCCESS;
@@ -83,6 +91,14 @@ public class qnawriteAction extends ActionSupport {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

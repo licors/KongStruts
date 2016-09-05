@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="euc-kr" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
 		"-//Apache software Foundation//DTD Tiles Configuration 2.1//EN"
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-
-    <definition name="타일즈이름" extends="main">
-        <put-attribute name="body" value="jsp경로" />
+    <!-- 由ъ뒪�듃 -->
+    <definition name="memberadmin_list" extends="main">
+        <put-attribute name="body" value="/admin/member/memberadminlist.jsp" />
     </definition>
 
 </tiles-definitions>

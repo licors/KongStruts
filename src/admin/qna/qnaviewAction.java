@@ -12,6 +12,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import java.io.IOException;
 import java.io.Reader;
+import member.MemberVO;
 
 /**
  *
@@ -22,6 +23,7 @@ public class qnaviewAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private qnaVO pc, rc;
+    private MemberVO memresultClass;
 
     private int qna_num;
 
@@ -37,8 +39,17 @@ public class qnaviewAction extends ActionSupport {
         rc = new qnaVO();
 
         rc = (qnaVO) sql.queryForObject("qna.selectOne", getQna_num());
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         return SUCCESS;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
     public qnaVO getPc() {

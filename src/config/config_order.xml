@@ -11,13 +11,13 @@
 		
 		<!-- 상세보기,메인에서 신청폼 (get방식으로 showboard_num 받음)-->
 		<action name="orderForm" class="order.OrderFormAction" method="form">
-			<result type="tiles">orderF</result>
+			<result type="tiles">orderForm</result>
 			<!-- <result>/order/orderForm.jsp</result> -->
 		</action>
 		
 		<!-- 장바구니에서 신청폼 -->
 		<action name="orderFormB" class="order.OrderFormAction" method="form_B">
-			<result type="tiles">orderF</result>
+			<result type="tiles">orderForm</result>
 			<!-- <result>/order/orderForm.jsp</result> -->
 		</action>
 		
@@ -40,6 +40,16 @@
 			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		
+		<!-- (관리자용)회원전체 오더리스트-->
+		<action name="adminOrderList" class="order.OrderListAction" method="adminOrderList">
+			<result type="tiles">adminOrderList</result>
+		</action>
+		
+		<!-- (관리자용)오더리스트에서 검색 -->
+		<action name="adminOrderSearch" class="order.OrderListAction" method="search">
+			<result type="tiles">adminOrderList</result>
+		</action>
+		
 		<!-- 주문 상세보기 -->
 		<action name="orderView" class="order.OrderViewAction">
 			<!-- <result>/order/orderView.jsp</result> -->
@@ -51,6 +61,13 @@
 		<action name="orderCancel" class="order.OrderProcessAction" method="orderCancel">
 			<result type="chain">
 				<param name="actionName">orderList</param>
+			</result>
+		</action>
+		
+		<!-- 관리자용 취소 -->
+		<action name="adminOrderCancel" class="order.OrderProcessAction" method="orderCancel">
+			<result type="chain">
+				<param name="actionName">adminOrderList</param>
 			</result>
 		</action>
 	</package>

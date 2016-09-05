@@ -9,7 +9,7 @@
 
 function Add(){
 	alert("장바구니에 상품을 담았습니다.");
-	window.location.href='/kong/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
+	window.location.href='/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
 }
 </script>
 </head>

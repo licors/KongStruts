@@ -43,10 +43,10 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="sc" action="scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+            <form name="sc" action="/showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="sc" action="scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+                <form name="sc" action="/showcase/scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
                     <s:hidden name="showboard_num" value="%{rc.showboard_num}"/>
                 </s:else>
                 <table align="center" width="600">
@@ -61,7 +61,7 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>전시명</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="subject" value="<s:property value="rc.subject"/>" size="20" maxlength="50"/>
+                            <input class="input" type="text" name="subject" value="<s:property value="rc.subject"/>" size="30" maxlength="50"/>
                         </td>
                     </tr>
 
@@ -74,9 +74,9 @@
                             <s:if test="rc == null">
                                 <select name="showboard_category" size="1" >
                                     <option value="">카테고리</option>
-                                    <option value="showcase">전시</option>
-                                    <option value="art">미술</option>
-                                    <option value="event">이벤트</option>
+                                <option value="전시">전시</option>
+                                <option value="미술">미술</option>
+                                <option value="이벤트">이벤트</option>
                                 </select>   
                             </s:if>
                             <s:else>
@@ -93,8 +93,17 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>장소</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="address1" value="<s:property value="rc.address1"/>" size="20" maxlength="50"/><br>
-                            <input class="input" type="text" name="address2" value="<s:property value="rc.address2"/>" size="20" maxlength="50"/>
+                            <input class="input" type="text" name="address1" value="<s:property value="rc.address1"/>" size="10" maxlength="10"/>&nbsp;(시/도)<br>
+                            <input class="input" type="text" name="address2" value="<s:property value="rc.address2"/>" size="30" maxlength="100"/>&nbsp;(나머지)
+                        </td>
+                    </tr>
+                    <tr bgcolor="#777777"><!-- 전시기간 -->
+                        <td height="1" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>일정</td>
+                        <td width="500" bgcolor="#FFFFFF">
+                            <input class="input" type="text" name="date" value="<s:property value="rc.date"/>" size="20" maxlength="25"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 입장료 -->
@@ -103,7 +112,7 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>입장료</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="pay" value="<s:property value="rc.pay"/>" size="20" maxlength="50"/>
+                            <input class="input" type="text" name="pay" value="<s:property value="rc.pay"/>" size="10" maxlength="7"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 문의전화 -->
@@ -112,7 +121,7 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>문의전화</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="tel" value="<s:property value="rc.tel"/>" size="20" maxlength="50"/>
+                            <input class="input" type="text" name="tel" value="<s:property value="rc.tel"/>" size="20" maxlength="15"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- tag -->
@@ -139,7 +148,7 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>지도위치</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="map" value="<s:property value="rc.map"/>" size="20" maxlength="50"/>
+                            <input class="input" type="text" name="map" value="<s:property value="rc.map"/>" size="40" maxlength="40"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 사진1 -->

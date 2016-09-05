@@ -3,206 +3,202 @@ package basket;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 import member.MemberVO;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AddBasketAction extends ActionSupport {
-	public static Reader reader; // 파일 스트림을 위한 reader
-	public static SqlMapClient sqlMapper;// SqlMapClient API를 사용하기 위함
 
-	private MemberVO memresultClass;
-	private MemberVO memparamClass;
-	private BasketVO paramBas;
-	private BasketVO resultBas;
+    public static Reader reader; // 파일 스트림을 위한 reader
+    public static SqlMapClient sqlMapper;// SqlMapClient API를 사용하기 위함
 
-	private String subject;
-	private String file_orgname;
-	private String file_savname;
-	private String date;
-	private String address2;
-	private int readcount;
-	private int ordercount;
-	
-	private int showboard_num;
-	private int basket_num;
-	private String member_num;
-	private Date basket_date;
-	Calendar today = Calendar.getInstance();
+    private MemberVO memresultClass;
+    private MemberVO memparamClass;
+    private BasketVO paramBas;
+    private BasketVO resultBas;
 
-	public AddBasketAction() throws Exception {
-		// sqlMapConfig.xml 파일의 설정 내용을 가져온다
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		// sqlMapConfig.xml 의 내용을 적용한 sqlMapper 객체 생성
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-		reader.close();
-	}
+    private String subject;
+    private String file_orgname;
+    private String file_savname;
+    private String date;
+    private String address2;
+    private int readcount;
+    private int ordercount;
 
-	public String execute() throws Exception {
-		paramBas = new BasketVO();
-		resultBas = new BasketVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionid = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
-				sessionid);
-		
-		paramBas.setMember_num(sessionid);
-		paramBas.setShowboard_num(getShowboard_num());
-		paramBas.setBasket_date(today.getTime());
+    private int showboard_num;
+    private int basket_num;
+    private int member_num;
+    private Date basket_date;
+    Calendar today = Calendar.getInstance();
 
-		sqlMapper.insert("basket.basketInsert", paramBas);
-		return SUCCESS;
-	}
+    public AddBasketAction() throws Exception {
+        // sqlMapConfig.xml 파일의 설정 내용을 가져온다
+        reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+        // sqlMapConfig.xml 의 내용을 적용한 sqlMapper 객체 생성
+        sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+        reader.close();
+    }
 
-	public static Reader getReader() {
-		return reader;
-	}
+    public String execute() throws Exception {
+        paramBas = new BasketVO();
+        resultBas = new BasketVO();
 
-	public static void setReader(Reader reader) {
-		AddBasketAction.reader = reader;
-	}
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
+        paramBas.setMember_num(memresultClass.getMember_num()); //? 여기는 세션 아이디 어디에 쓰는건가요? getMember_num() 쓰는 것이 아닌가요? 그래서 수정
+        paramBas.setShowboard_num(getShowboard_num());			//그냥 getMember_num()으로만쓰면 값을 못받아와서 무결성에 위배돼서 이렇게 수정했습니다. 
+        paramBas.setBasket_date(today.getTime());				//회원별로 장바구니 구분하려고 세션 아이디가 필요합니다 (유진 0904)
 
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		AddBasketAction.sqlMapper = sqlMapper;
-	}
+        sqlMapper.insert("basket.basketInsert", paramBas);
+        return SUCCESS;
+    }
 
-	public MemberVO getMemresultClass() {
-		return memresultClass;
-	}
+    public static Reader getReader() {
+        return reader;
+    }
 
-	public void setMemresultClass(MemberVO memresultClass) {
-		this.memresultClass = memresultClass;
-	}
+    public static void setReader(Reader reader) {
+        AddBasketAction.reader = reader;
+    }
 
-	public MemberVO getMemparamClass() {
-		return memparamClass;
-	}
+    public static SqlMapClient getSqlMapper() {
+        return sqlMapper;
+    }
 
-	public void setMemparamClass(MemberVO memparamClass) {
-		this.memparamClass = memparamClass;
-	}
+    public static void setSqlMapper(SqlMapClient sqlMapper) {
+        AddBasketAction.sqlMapper = sqlMapper;
+    }
 
-	public BasketVO getParamBas() {
-		return paramBas;
-	}
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
 
-	public void setParamBas(BasketVO paramBas) {
-		this.paramBas = paramBas;
-	}
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
+    }
 
-	public BasketVO getResultBas() {
-		return resultBas;
-	}
+    public MemberVO getMemparamClass() {
+        return memparamClass;
+    }
 
-	public void setResultBas(BasketVO resultBas) {
-		this.resultBas = resultBas;
-	}
+    public void setMemparamClass(MemberVO memparamClass) {
+        this.memparamClass = memparamClass;
+    }
 
-	public String getSubject() {
-		return subject;
-	}
+    public BasketVO getParamBas() {
+        return paramBas;
+    }
 
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
+    public void setParamBas(BasketVO paramBas) {
+        this.paramBas = paramBas;
+    }
 
-	public String getFile_orgname() {
-		return file_orgname;
-	}
+    public BasketVO getResultBas() {
+        return resultBas;
+    }
 
-	public void setFile_orgname(String file_orgname) {
-		this.file_orgname = file_orgname;
-	}
+    public void setResultBas(BasketVO resultBas) {
+        this.resultBas = resultBas;
+    }
 
-	public String getFile_savname() {
-		return file_savname;
-	}
+    public String getSubject() {
+        return subject;
+    }
 
-	public void setFile_savname(String file_savname) {
-		this.file_savname = file_savname;
-	}
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
-	public String getDate() {
-		return date;
-	}
+    public String getFile_orgname() {
+        return file_orgname;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
+    public void setFile_orgname(String file_orgname) {
+        this.file_orgname = file_orgname;
+    }
 
-	public String getAddress2() {
-		return address2;
-	}
+    public String getFile_savname() {
+        return file_savname;
+    }
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
+    public void setFile_savname(String file_savname) {
+        this.file_savname = file_savname;
+    }
 
-	public int getReadcount() {
-		return readcount;
-	}
+    public String getDate() {
+        return date;
+    }
 
-	public void setReadcount(int readcount) {
-		this.readcount = readcount;
-	}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
-	public int getOrdercount() {
-		return ordercount;
-	}
+    public String getAddress2() {
+        return address2;
+    }
 
-	public void setOrdercount(int ordercount) {
-		this.ordercount = ordercount;
-	}
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
 
-	public int getShowboard_num() {
-		return showboard_num;
-	}
+    public int getReadcount() {
+        return readcount;
+    }
 
-	public void setShowboard_num(int showboard_num) {
-		this.showboard_num = showboard_num;
-	}
+    public void setReadcount(int readcount) {
+        this.readcount = readcount;
+    }
 
-	public int getBasket_num() {
-		return basket_num;
-	}
+    public int getOrdercount() {
+        return ordercount;
+    }
 
-	public void setBasket_num(int basket_num) {
-		this.basket_num = basket_num;
-	}
+    public void setOrdercount(int ordercount) {
+        this.ordercount = ordercount;
+    }
 
-	public String getMember_num() {
-		return member_num;
-	}
+    public int getShowboard_num() {
+        return showboard_num;
+    }
 
-	public void setMember_num(String member_num) {
-		this.member_num = member_num;
-	}
+    public void setShowboard_num(int showboard_num) {
+        this.showboard_num = showboard_num;
+    }
 
-	public Date getBasket_date() {
-		return basket_date;
-	}
+    public int getBasket_num() {
+        return basket_num;
+    }
 
-	public void setBasket_date(Date basket_date) {
-		this.basket_date = basket_date;
-	}
+    public void setBasket_num(int basket_num) {
+        this.basket_num = basket_num;
+    }
 
-	public Calendar getToday() {
-		return today;
-	}
+    public int getMember_num() {
+        return member_num;
+    }
 
-	public void setToday(Calendar today) {
-		this.today = today;
-	}
+    public void setMember_num(int member_num) {
+        this.member_num = member_num;
+    }
+
+    public Date getBasket_date() {
+        return basket_date;
+    }
+
+    public void setBasket_date(Date basket_date) {
+        this.basket_date = basket_date;
+    }
+
+    public Calendar getToday() {
+        return today;
+    }
+
+    public void setToday(Calendar today) {
+        this.today = today;
+    }
 
 }

@@ -8,16 +8,20 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 
+import member.MemberVO;
+
 public class CommentModifyAction extends ActionSupport {
 	public static Reader reader;
 	public static SqlMapClient sqlMapper;
 	
 	private CommentBoardVO paramClass;
-	private CommentBoardVO resultClass;
+	private CommentBoardVO commentResultClass;
+	private MemberVO memberDataClass;
 	
 	private int currentPage;
 	
 	private int comment_num;
+	private int showboard_num;
 	private String name;
 	private String content;
 	
@@ -31,28 +35,32 @@ public class CommentModifyAction extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		paramClass = new CommentBoardVO();
-		resultClass = new CommentBoardVO();
-		
-		paramClass.setComment_num(comment_num);
-		
-		//session에서  member_num 가져오는거로 구현	
-		
-		//paramClass.setName(getName());
+		memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
+        if(memberDataClass == null) {
+        	return LOGIN;
+        }
+		commentResultClass = new CommentBoardVO();
+		commentResultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+        
 		paramClass.setComment_num(getComment_num());
 		paramClass.setContent(getContent());
+        if(memberDataClass.getMember_num() == commentResultClass.getMember_num()) {
+        	sqlMapper.update("showcaseDetailComment.updateBoard",paramClass);
+        }
 		
-		sqlMapper.update("showcaseDetailComment.updateBoard",paramClass);
-		
-		resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+		//resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
 		return SUCCESS;
 	}
 
+	public String form() throws Exception {
+		return SUCCESS;
+	}
 	public CommentBoardVO getParamClass() {
 		return paramClass;
 	}
 
-	public CommentBoardVO getResultClass() {
-		return resultClass;
+	public CommentBoardVO getCommentResultClass() {
+		return commentResultClass;
 	}
 
 	public int getCurrentPage() {
@@ -75,8 +83,8 @@ public class CommentModifyAction extends ActionSupport {
 		this.paramClass = paramClass;
 	}
 
-	public void setResultClass(CommentBoardVO resultClass) {
-		this.resultClass = resultClass;
+	public void setCommentResultClass(CommentBoardVO commentResultClass) {
+		this.commentResultClass = commentResultClass;
 	}
 
 	public void setCurrentPage(int currentPage) {
@@ -93,6 +101,14 @@ public class CommentModifyAction extends ActionSupport {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public int getShowboard_num() {
+		return showboard_num;
+	}
+
+	public void setShowboard_num(int showboard_num) {
+		this.showboard_num = showboard_num;
 	}
 
 

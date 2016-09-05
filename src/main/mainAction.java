@@ -1,6 +1,5 @@
 package main;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /*import admin.pagingAction;*/
@@ -10,7 +9,6 @@ import member.MemberVO;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -33,7 +31,7 @@ public class mainAction extends ActionSupport {
     private String searchKeyword;
     private String showboard_category;
 
-/*    private int currentPage = 1;
+    /*    private int currentPage = 1;
     private int totalCount;
     private int blockCount = 6;
     private int blockPage = 3;
@@ -41,7 +39,6 @@ public class mainAction extends ActionSupport {
     private String adpagingHtml;
     private pagingAction page;
     private int num = 0;*/
-
     public mainAction() throws Exception {
 
         reader = Resources.getResourceAsReader("sqlMapConfig.xml");
@@ -54,12 +51,8 @@ public class mainAction extends ActionSupport {
         memparamClass = new MemberVO();
         memresultClass = new MemberVO();
 
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        if (!session.isEmpty()) {
-            int sessionid = (Integer)session.get("member_num");
-            memresultClass = (MemberVO)sqlMapper.queryForObject("member.userCheck", sessionid);
-        }
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+
         showboard_paramClass.setShowboard_category("전시");
         list1 = sqlMapper.queryForList("show.select_9", showboard_paramClass);
         showboard_paramClass.setShowboard_category("미술");
@@ -226,4 +219,4 @@ public class mainAction extends ActionSupport {
     }
 
 }
-*/
+ */

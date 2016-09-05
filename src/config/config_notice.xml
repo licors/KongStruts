@@ -5,14 +5,14 @@
     
 <struts>
     <package name="notice" namespace="/notice" extends="struts-default, tiles-default">
-        <!-- 테스트용 메인리스트 -->
+        <!-- 리스트 -->
         <action name="noticelist" class="admin.notice.noticelistAction">
             <result type="tiles">notice_list</result>
         </action>
 
         <!-- 쓰기폼 -->
         <action name="noticewrite_form" class="admin.notice.noticewriteAction" method="form">
-            <result>/admin/notice/noticeawrite.jsp</result>	
+            <result type="tiles">notice_form</result>
         </action>
         
         <!-- 쓰기 -->
@@ -20,7 +20,6 @@
             <result type="redirect-action">
                 <param name="actionName">noticelist</param>
             </result>	
-            <!--<result type="tiles"></result>-->
         </action>
         
         <!-- 읽기 -->
@@ -30,10 +29,10 @@
         
         <!-- 수정폼 -->
         <action name="noticemodify_form" class="admin.notice.noticemodifyAction" method="form">
-            <result>/admin/notice/noticeawrite.jsp</result>
+            <result type="tiles">notice_form</result>
         </action>
         
-        <!-- 수정 -->
+        <!-- 수정->읽기 -->
         <action name="noticemodify" class="admin.notice.noticemodifyAction">
             <result>/admin/notice/noticemodifySuccess.jsp</result>
         </action>
@@ -43,7 +42,7 @@
             <result>/admin/notice/noticedeleteform.jsp</result>
         </action>
         
-        <!-- 삭제 -->
+        <!-- 삭제->리스트 -->
         <action name="noticedelete" class="admin.notice.noticedeleteAction">
             <result>/admin/notice/noticedeleteSuccess.jsp</result>
         </action>

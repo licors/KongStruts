@@ -36,13 +36,13 @@ function joinCheck() {
 	<form name="joinform" method="post" action="/kong/member/memberJoin.action" onsubmit="return joinCheck()">
 		<table>
 			<tr>
-				<td>email</td> <td><input type="text" name="email" size="20"/> </td>
+				<td>email</td> <td><input type="text" name="email" size="20" maxlength="50"/> </td>
 			</tr>
 			<tr>
-				<td>password</td> <td><input type="password" name="password" size="20"/> </td>
+				<td>password</td> <td><input type="password" name="password" size="20" maxlength="20"/> </td>
 			</tr>
 			<tr> 
-				<td>name</td> <td><input type="text" name="name" size="20"/> </td>
+				<td>name</td> <td><input type="text" name="name" size="20" maxlength="20"/> </td>
 			</tr>
 			<tr>	
 				<td><input type="submit" name="join" value="가입하기" /></td>

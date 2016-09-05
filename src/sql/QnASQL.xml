@@ -31,7 +31,7 @@
         WHERE
         type=#type#
     </select>--><!-- ¹Ì»ç¿ë -->
-    <select id="selectOne" resultMap="Res">
+    <select id="selectOne" resultMap="Res" parameterClass="qna">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>

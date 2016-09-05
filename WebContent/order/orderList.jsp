@@ -36,7 +36,7 @@ function doImgPop(img){
 	}
  	function deletecheck(num) {
  		if (confirm("주문을 취소하시겠습니까?")) {
- 			location.href("/kong/order/orderCancel.action?order_num="+num);
+ 			location.href("/order/orderCancel.action?order_num="+num);
 		} else {
 			alert("취소되었습니다");
 			return false;
@@ -84,7 +84,7 @@ function doImgPop(img){
 							<tr height="23">
 								<td width="30" align="right"><b>전시명:</b> </td>
 								<td width="110" align="center"><a
-						href="/kong/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
+						href="/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
 							${subject } </a></td>
 							</tr>
 							<tr height="23">
@@ -98,6 +98,7 @@ function doImgPop(img){
 							</tbody>
 						</table>
 					</td>
+					<s:if test='%{status == "티켓 신청" }'>
 					<td width="80" height="30" align="center">
 						<img src="../barcodeImg/${barcode}.png" style="cursor: pointer;" 
 							onclick="doImgPop('../barcodeImg/${barcode}.png')" width="100"/>
@@ -110,14 +111,17 @@ function doImgPop(img){
 						</tr>
 						<tr>
 							<td>							
-							<s:if test='%{status == "티켓 신청" }'>
 								<input type="button" name="status" value="취소하기" onclick="return deletecheck(${order_num})">
-							</s:if>
 							</td>
 						</tr>
 						</tbody>
 						</table>
 					</td>
+					</s:if>
+					<s:else>
+					<td width="80" height="30" align="center">-</td>
+					<td align="center" width="100">${status }</td>
+					</s:else>
 				</tr>
 					
 			</s:iterator>
@@ -125,7 +129,7 @@ function doImgPop(img){
 			<s:if test="orderList.size() == 0">
 				<tr>
 					<td colspan="6" align="center"><font size="2">
-					구매하신 상품이 없습니다.</font></td>
+					신청하신 전시회가 없습니다.</font></td>
 				</tr>
 			</s:if>
 			

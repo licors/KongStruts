@@ -9,11 +9,9 @@ import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Map;
 import member.MemberVO;
 
 /**
@@ -25,7 +23,7 @@ public class noticeviewAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private noticeVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int notice_num;
     private int currentPage = 1;
@@ -41,10 +39,7 @@ public class noticeviewAction extends ActionSupport {
         pc = new noticeVO();
         rc = new noticeVO();
 
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        int sessionid = (Integer) session.get("member_num");
-        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         pc.setNotice_num(getNotice_num());
         sql.update("notice.readcount", pc);
@@ -88,12 +83,12 @@ public class noticeviewAction extends ActionSupport {
         this.currentPage = currentPage;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

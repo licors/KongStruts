@@ -6,18 +6,15 @@
 package admin.showcase;
 
 import admin.path;
-import static admin.support.supportlistAction.sql;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import member.MemberVO;
 import org.apache.commons.io.FileUtils;
 
@@ -31,15 +28,15 @@ public class showcasewriteAction extends ActionSupport {
     public static SqlMapClient sql;
 
     private showVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int showboard_num, pay, readCount, orderCount;
     private String subject, address1, address2, tel, tag, content, file_orgname, file_savname, map, date, showboard_category;
 
     private List<File> upload = new ArrayList<File>(); // 파일 객체
-    private List<String> uploadType = new ArrayList<String>(); // 컨텐츠 타입
-    private List<String> uploadName = new ArrayList<String>(); // 파일 이름
-    private String uploadpath = path.path;
+    private List<String> uploadContentType = new ArrayList<String>(); // 컨텐츠 타입
+    private List<String> uploadFileName = new ArrayList<String>(); // 파일 이름
+    private String uploadpath = path.savepath; //저장용 경로
     private int index; // 경로
 
     public showcasewriteAction() throws IOException {
@@ -59,10 +56,7 @@ public class showcasewriteAction extends ActionSupport {
     }
 
     public String form() throws Exception {
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        int sessionid = (Integer) session.get("member_num");
-        mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         return SUCCESS;
     }
@@ -81,18 +75,20 @@ public class showcasewriteAction extends ActionSupport {
         pc.setTag(getTag());
         pc.setContent(getContent());
         pc.setShowboard_category(getShowboard_category());
+        pc.setMap(getMap());
+        pc.setShowboard_num(getShowboard_num());
         sql.insert("show.insert", pc);
         pc = (showVO) sql.queryForObject("show.selectLastNo");
 
         if (getUpload() != null) { //업로드 객체가 널이 아니면
             for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
-                File destFile = new File(uploadpath + getUploadName().get(i));
+                File destFile = new File(uploadpath + getUploadFileName().get(i));
                 FileUtils.copyFile((getUpload()).get(i), destFile);
             }
             if (upload.size() > 0) { //파일을 업로드했다면
-                file_savname = getUploadName().get(0) + ",";
+                file_savname = getUploadFileName().get(0) + ",";
                 for (int i = 1; i < upload.size(); i++) { //올린 갯수만큼 포문돌려서 파일이름에 , 붙이기
-                    file_savname += getUploadName().get(i) + ",";
+                    file_savname += getUploadFileName().get(i) + ",";
                 }
                 index = file_savname.lastIndexOf(',');
                 file_savname = file_savname.substring(0, index);
@@ -252,22 +248,6 @@ public class showcasewriteAction extends ActionSupport {
         this.upload = upload;
     }
 
-    public List<String> getUploadType() {
-        return uploadType;
-    }
-
-    public void setUploadType(List<String> uploadType) {
-        this.uploadType = uploadType;
-    }
-
-    public List<String> getUploadName() {
-        return uploadName;
-    }
-
-    public void setUploadName(List<String> uploadName) {
-        this.uploadName = uploadName;
-    }
-
     public String getUploadpath() {
         return uploadpath;
     }
@@ -284,12 +264,28 @@ public class showcasewriteAction extends ActionSupport {
         this.showboard_category = showboard_category;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
+    }
+
+    public List<String> getUploadContentType() {
+        return uploadContentType;
+    }
+
+    public void setUploadContentType(List<String> uploadContentType) {
+        this.uploadContentType = uploadContentType;
+    }
+
+    public List<String> getUploadFileName() {
+        return uploadFileName;
+    }
+
+    public void setUploadFileName(List<String> uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 
 }

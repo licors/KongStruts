@@ -10,13 +10,11 @@ import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import member.MemberVO;
 
 /**
@@ -28,7 +26,7 @@ public class supportlistAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int member_num;
 
@@ -48,13 +46,9 @@ public class supportlistAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        if (!session.isEmpty()) {
-            int sessionid = (Integer) session.get("member_num");
-            mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
-        }
-        if (mc != null && mc.getAdmin() > 0) { //운영자 구분 1이면 운영자임
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+
+        if (memresultClass != null && memresultClass.getAdmin() > 0) { //운영자 구분 1이면 운영자임
             list = sql.queryForList("support.selectall"); //관리자용
         } else {
             pc.setMember_num(getMember_num());
@@ -151,6 +145,14 @@ public class supportlistAction extends ActionSupport {
 
     public void setPage(pagingAction page) {
         this.page = page;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

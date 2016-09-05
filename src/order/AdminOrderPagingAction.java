@@ -51,13 +51,13 @@ public class AdminOrderPagingAction {
 		if (currentPage > blockPage) {
 			if (isSearch != "") {
 				pagingHtml
-						.append("<a href=adminorderL.action?currentPage="
+						.append("<a href=/order/adminOrderList.action?currentPage="
 								+ (startPage - 1)
 								+ "&searchKeyword="
 								+ isSearch + "&searchNum=" + searchNum + ">");
 			} else {
 				pagingHtml
-						.append("<a href=adminorderL.action?currentPage="
+						.append("<a href=/order/adminOrderList.action?currentPage="
 								+ (startPage - 1) + ">");
 			}
 			pagingHtml.append("[이전]");
@@ -77,7 +77,7 @@ public class AdminOrderPagingAction {
 				pagingHtml.append("</font></b>");
 			} else {
 				pagingHtml
-						.append("&nbsp;<a href='adminorderL.action?currentPage=");
+						.append("&nbsp;<a href='/order/adminOrderList.action?currentPage=");
 				pagingHtml.append(i);
 				if (isSearch != "") {
 					pagingHtml.append("&searchKeyword=" + isSearch);
@@ -94,7 +94,7 @@ public class AdminOrderPagingAction {
 		// 다음 block 페이지
 		if (totalPage - startPage >= blockPage) {
 			pagingHtml
-					.append("<a href='adminorderL.action?currentPage="
+					.append("<a href='/order/adminOrderList.action?currentPage="
 							+ (endPage + 1));
 			if (isSearch != "") {
 				pagingHtml.append("&searchKeyword=" + isSearch);

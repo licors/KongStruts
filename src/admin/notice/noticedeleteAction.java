@@ -32,7 +32,6 @@ public class noticedeleteAction extends ActionSupport {
         reader.close();
     }
     
-    /* 삭제처리를 위해 원레 글의 정보를 전송! */
     public String form() throws Exception {
         pc = new noticeVO();
         rc = new noticeVO();

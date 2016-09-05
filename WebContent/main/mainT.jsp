@@ -12,9 +12,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>메인_테스트</title>
+        <script>
+            function showcaseView(url) {
+                window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
+            }
+        </script>
     </head>
     <body>
         <table align="center" width="600">
+            <tr>
+                <td colspan="5" align="center"><!-- 들어오는 입구 -->
+                    <input type="button" value="전시" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=전시'">
+                    <input type="button" value="미술" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=미술'">
+                    <input type="button" value="이벤트" onClick="javascript:location.href = '/showcase/scdlist.action?showboard_category=이벤트'">
+                </td>
+            </tr>
             <tr>
                 <td align="right" colspan="5">
                     <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
@@ -49,7 +61,7 @@
                 </s:url>
                 <tr bgcolor="#FFFFFF" align="center">
                     <td><s:property value="showboard_num"/></td>
-                    <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="subject"/></s:a></td>
+                    <td align="left">&nbsp;<s:a href="javascript:showcaseView('%{viewURL}')"><s:property value="subject"/></s:a></td>
                     <td align="center"><s:property value="status"/></td>
                     <td align="center"><s:property value="readcount"/></td>
                     <td align="center"><s:property value="ordercount"/></td>

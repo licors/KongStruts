@@ -6,16 +6,15 @@
 package admin.support;
 
 import admin.path;
+import admin.support.email.support_email;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 import member.MemberVO;
 
 /**
@@ -27,7 +26,7 @@ public class supportwriteAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private int support_num, member_num, ref, re_step, re_level;
     private Date reg_date;
@@ -41,11 +40,8 @@ public class supportwriteAction extends ActionSupport {
     }
 
     public String form() throws Exception {
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        String sessionid = (String) session.get("id");
-        mc = (MemberVO) sql.queryForObject("member.UserCheck", sessionid);
-        
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+
         return SUCCESS;
     }
 
@@ -54,6 +50,8 @@ public class supportwriteAction extends ActionSupport {
         pc = new supportVO();
         rc = new supportVO();
 
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass); //문의하는 맴버의 정보를 얻기위해 추가
+        
         pc.setMember_num(getMember_num());
         pc.setType(getType());
         pc.setEmail(getEmail());
@@ -63,7 +61,8 @@ public class supportwriteAction extends ActionSupport {
         pc.setRe_step(getRe_step());
         pc.setRe_level(getRe_level());
         sql.insert("support.insert", pc);
-
+        //보내는사람,받는사람,보내는사람이름,제목,내용
+        support_email.getInstance().send(memresultClass.getEmail(), support_email.getServer(), support_email.toName(memresultClass.getEmail(), memresultClass.getName()), getType(), getContent());
         return SUCCESS;
     }
 
@@ -163,12 +162,12 @@ public class supportwriteAction extends ActionSupport {
         this.today = today;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
 }

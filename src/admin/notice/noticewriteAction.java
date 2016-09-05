@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Date;
 import java.util.Calendar;
+import member.MemberVO;
 
 /**
  *
@@ -24,6 +25,7 @@ public class noticewriteAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private noticeVO pc, rc;
+    private MemberVO memresultClass;
 
     private Date reg_date;
     private String subject, content;
@@ -36,6 +38,7 @@ public class noticewriteAction extends ActionSupport {
     }
 
     public String form() throws Exception {
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
         return SUCCESS;
     }
 
@@ -51,6 +54,14 @@ public class noticewriteAction extends ActionSupport {
         sql.insert("notice.insert", pc);
 
         return SUCCESS;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
     public noticeVO getPc() {

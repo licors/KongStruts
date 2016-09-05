@@ -30,22 +30,22 @@
 						</s:if>
 						<tr>
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-							<a href="/kong/order/orderList.action?currentPage=1"> 구매목록  </a>
+							<a href="/order/orderList.action?currentPage=1"> 구매목록  </a>
 							</td>
 							&nbsp;&nbsp;&nbsp;
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-								<input type="button" value="메인으로" onclick="location:href='/kong/main/main.action'">
+								<input type="button" value="메인으로" onclick="javascript:location.href='/showcase/sclist.action'">
 							</td>
 							
 							<!-- 수정 : 메인으로가기
 							<td bgcolor="white" height="30" align="center" width="150" colspan="2">
-							<a href="/kong/order/main.action?currentPage=1"> 구매목록  </a>
+							<a href="/order/main.action?currentPage=1"> 구매목록  </a>
 							</td>		
 								 -->			
 						</tr>
 						<tr>
 							5초후에 메인으로 이동합니다.
-							<meta http-equiv="Refresh" content="5;url=/kong/main/main.action" >
+							<meta http-equiv="Refresh" content="5;url=/showcase/sclist.action" >
 						</tr>
 					</tbody>
 				</table>

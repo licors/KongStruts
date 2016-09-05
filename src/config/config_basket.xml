@@ -7,17 +7,17 @@
 	<package name="basket" namespace="/basket" extends="struts-default, tiles-default">
 		<!-- basket list -->
 		<action name="basketList" class="basket.BasketAction">
-			<result>/basket/basketList.jsp</result>
+			<result type="tiles">basketList</result>
 		</action>
 		
 		<!--  basket add -->
 		<action name="addBasket" class="basket.AddBasketAction">
-			<result>/basket/addBasket.jsp</result>
+			<result type="tiles">addBasket</result>
 		</action>
 		
 		<!-- basket list에서 개별 삭제-->
 		<action name="deleteBasket" class="basket.BasketAction" method="delete">
-			<result>/basket/deleteBasket.jsp</result>
+			<result type="tiles">deleteBasket</result>
 		</action>
 	</package>
 </struts>

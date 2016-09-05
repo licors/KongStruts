@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="EUC-KR"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC 
 	'-//ibatis.apache.org/DTD Sql Map 2.0//EN'
 	'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
@@ -24,23 +24,23 @@
         <result property="showboard_category" column="showboard_category" />
     </resultMap>
     
-    <!-- select Á¤ÀÇ -->
+    <!-- select ï¿½ï¿½ï¿½ï¿½ -->
     <sql id="select-all">
         SELECT * FROM showboard
     </sql>
     
-    <!-- where Á¤ÀÇ -->
+    <!-- where ï¿½ï¿½ï¿½ï¿½ -->
     <sql id="where-no">
         WHERE showboard_num=#showboard_num#
     </sql>
 
-    <!-- select Äõ¸®¹® Á¤ÀÇ -->
-    <!-- Àü½Ã, ¹Ì¼ú, ÀÌº¥Æ® ÀüºÎ ¾µ ÀÏÀÌ ÀÖÀ»·Á³ª? -->
+    <!-- select ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
+    <!-- ï¿½ï¿½ï¿½ï¿½, ï¿½Ì¼ï¿½, ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? -->
     <select id="selectall" resultMap="showRes">
         <include refid="select-all"/>
         ORDER BY showboard_num
     </select>
-    <!-- Ä«Å×°í¸® 9°³"¸¸" °Ë»ö -->
+    <!-- Ä«ï¿½×°ï¿½ 9ï¿½ï¿½"ï¿½ï¿½" ï¿½Ë»ï¿½ -->
     <select id="select_9" resultMap="showRes" parameterClass="show">
         <include refid="select-all"/>
         WHERE showboard_category = #showboard_category#
@@ -48,58 +48,63 @@
         AND status = 0
         ORDER BY showboard_num DESC
     </select>
-    <!-- Ä«Å×°í¸®¸¦ ±âÁØÀ¸·Î ¿­¸° ±Û¸¸ »Ì¾Æ¿À´Â sql¹® -->
-    <!-- ¼öÈ£¾¾ ¼îÄÉÀÌ½ºµðÅ×ÀÏ¸®½ºÆ®? ¿ëÀ¸·Î »ç¿ëÇÏ¼¼¿ä -->
-    <select id="select_category" resultMap="showRes" parameterClass="show">
+    <!-- Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¸ï¿½ ï¿½Ì¾Æ¿ï¿½ï¿½ï¿½ sqlï¿½ï¿½ -->
+    
+    <!-- ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½Æ®? ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ -->
+    <select id="select_category" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = #showboard_category#
         AND status = 0
         ORDER BY showboard_num DESC
     </select>
-    <!-- Á¦¸ñ ´­·¯¼­ µé°í¿À´Â °Í °°Àº´ë... ¹«°á¼ºÀÌ... -->
+    
+    <!-- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½... ï¿½ï¿½ï¿½á¼ºï¿½ï¿½... -->
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>
         WHERE
         subject=#subject#
     </select>
-    <!-- À¯Áø : 08.28.02:38 / parameterClass="int"Ãß°¡ -->
-    <!-- ±Û_numÀ¸·Î ±Û ÇÏ³ª °¡Á®¿À´Â sql -->
+       
+    <!-- ï¿½ï¿½ï¿½ï¿½ : 08.28.02:38 / parameterClass="int"ï¿½ß°ï¿½ -->
+    <!-- ï¿½ï¿½_numï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ sql -->
     <select id="selectOne" resultMap="showRes" parameterClass="int">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
-    <!-- ÀÌ¹ÌÁö ¾÷·Îµå¸¦ À§ÇØ ¸¶Áö¸· ±Û ¹øÈ£ µû¿À´Â sql¹® -->
+    <!-- ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµå¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ sqlï¿½ï¿½ -->
     <select id="selectLastNo" resultClass="show" parameterClass="int">
         <include refid="select-all"/>
         WHERE rownum <![CDATA[<=]]> 1
         ORDER BY showboard_num DESC
     </select>
-    <!-- Çà»ç °Ë»ö(¼öÈ£) 08.25.04:00  -->
-    <select id="selectSearch" parameterClass="string" resultMap="showRes">
+    
+    <!-- ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½(ï¿½ï¿½È£) 08.25.04:00  -->
+    <select id="selectSearch" parameterClass="show" resultMap="showRes">
         <include refid="select-all"/>
-        WHERE showboard_num like #searchKeyword#
-        ORDER BY showboard_num DESC
+        WHERE subject like #subject#
+        and showboard_category = #showboard_category# ORDER BY subject DESC
     </select>
-    <!-- ¸¶Áö¸· µî·Ï Çà»ç °Ë»ö(¼öÈ£) 08.25.04:50 -->
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½(ï¿½ï¿½È£) 08.25.04:50 -->
     <!--    <select id="selectLastNum" resultClass="show">
         SELECT max(showboard_num)
         as showboard_num FROM showboard
     </select>-->
-    
-    <!-- insert Äõ¸®¹® Á¤ÀÇ -->
+
+    <!-- insert ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
     <insert id="insert" parameterClass="show">
-        INSERT INTO GOODS(showboard_num, subject, address1, address2, date, pay, tel, tag, content, 
-        file_orgname, file_savname, readcount, ordercount, map)
-        VALUES(showboard_num_seq.NEXTVAL, #showboard_num#, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
-        #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#)
+        INSERT INTO showboard(showboard_num, subject, address1, address2, "DATE", pay, tel, tag, content, 
+        file_orgname, file_savname, readcount, ordercount, map, showboard_category)
+        VALUES(showboard_num_seq.NEXTVAL, #subject#, #address1#, #address2#, #date#, #pay#, #tel#, #tag#, #content#, 
+        #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#, #showboard_category#)
     </insert>
 
-    <!-- update Äõ¸®¹® Á¤ÀÇ -->
+    <!-- update ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
     <update id="update" parameterClass="show">
         UPDATE SHOWBOARD SET
         subject=#subject#,
         address1=#address1#,
         address2=#address2#,
+        "DATE"=#date#,
         pay=#pay#,
         tel=#tel#,
         tag=#tag#,
@@ -108,26 +113,26 @@
         showboard_category=#showboard_category#
         <include refid="where-no"/>
     </update>
-    <!-- ±â°£ Áö³­ Àü½Ã±Û ¼û±â±â -->
+    <!-- ï¿½â°£ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ -->
     <update id="updatestatus" parameterClass="show">
         UPDATE SHOWBOARD SET
         status=#status#
         <include refid="where-no"/>
     </update>
-    <!-- »çÁøº¯°æ¿ë -->
+    <!-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
     <update id="updatefile" parameterClass="show">
         UPDATE SHOWBOARD SET
-        file_orgname=#file_orgname#,
+        <!--file_orgname=#file_orgname#,-->
         file_savname=#file_savname#
         <include refid="where-no"/>
     </update>
-    <!-- Á¶È¸¼öÁõ°¡ -->
+    <!-- ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
     <update id="readcountPlus" parameterClass="show">
         UPDATE SHOWBOARD SET readcount = readcount + 1
         <include refid="where-no"/>
     </update>
 
-    <!-- delete Äõ¸®¹® Á¤ÀÇ -->
+    <!-- delete ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -->
     <delete id="delete" parameterClass="show">
         DELETE FROM SHOWBOARD
         <include refid="where-no"/>

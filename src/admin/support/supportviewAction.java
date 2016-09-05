@@ -12,6 +12,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
+import member.MemberVO;
 
 /**
  *
@@ -22,6 +23,7 @@ public class supportviewAction extends ActionSupport {
     public static Reader reader;
     public static SqlMapClient sql;
     private supportVO pc, rc;
+    private MemberVO memresultClass;
 
     private int support_num;
 
@@ -35,10 +37,19 @@ public class supportviewAction extends ActionSupport {
     public String execute() throws Exception {
         pc = new supportVO();
         rc = new supportVO();
-        
+
         rc = (supportVO) sql.queryForObject("support.selectOne", getSupport_num());
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         return SUCCESS;
+    }
+
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
+
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
     public supportVO getPc() {

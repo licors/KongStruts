@@ -10,5 +10,15 @@
             <result type="tiles">support_list</result>
         </action>
         
+        <!-- 쓰기폼 -->
+        <action name="supportwrite_form" class="admin.support.supportwriteAction" method="form">
+            <result type="tiles">support_form</result>
+        </action>
+        
+        <!-- 읽기 -->
+        <action name="supportread" class="admin.support.supportviewAction">
+            <result type="tiles">support_view</result>
+        </action>
+        
     </package>
 </struts>

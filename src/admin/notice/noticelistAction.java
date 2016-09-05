@@ -10,13 +10,11 @@ import admin.path;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import member.MemberVO;
 
 /**
@@ -27,7 +25,7 @@ public class noticelistAction extends ActionSupport {
 
     public static Reader reader;
     public static SqlMapClient sql;
-    private MemberVO mc;
+    private MemberVO memresultClass;
 
     private List<noticeVO> list = new ArrayList<noticeVO>();
     private int currentPage = 1, totalCount, blockCount = 10, blockPage = 5;
@@ -42,12 +40,7 @@ public class noticelistAction extends ActionSupport {
 
     @Override
     public String execute() throws Exception {
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        if (!session.isEmpty()) {
-            int sessionid = (Integer) session.get("member_num");
-            mc = (MemberVO) sql.queryForObject("member.userCheck", sessionid);
-        }
+        memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
         list = sql.queryForList("notice.selectall");
 
@@ -63,12 +56,12 @@ public class noticelistAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public MemberVO getMc() {
-        return mc;
+    public MemberVO getMemresultClass() {
+        return memresultClass;
     }
 
-    public void setMc(MemberVO mc) {
-        this.mc = mc;
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
     }
 
     public List<noticeVO> getList() {

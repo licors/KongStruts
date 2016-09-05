@@ -47,12 +47,7 @@
                     <tr>
                         <td width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>제목</td>
                         <td width="420" bgcolor="#FFFFFF">
-                            <s:if test="rc == null">
-                                <input class="input" type="text" name="subject" value="" size="20" maxlength="50"/>
-                            </s:if>
-                            <s:else>
-                                <input class="input" type="text" name="subject" value="<s:property value="rc.subject"/>" size="20" maxlength="50"/>
-                            </s:else>
+                            <input class="input" type="text" name="subject" value="<s:property value="rc.subject"/>" size="30" maxlength="25"/>
                         </td>
                     </tr>
                     <tr bgcolor="#777777"><!-- 내용 -->
@@ -61,12 +56,7 @@
                     <tr>
                         <td rowspan="2" width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</td>
                         <td rowspan="2" width="420" bgcolor="#FFFFFF">
-                            <s:if test="rc == null">
-                                <textarea name="content" cols="57" rows="10"></textarea> 
-                            </s:if>
-                            <s:else>
-                                <textarea name="content" cols="57" rows="10"><s:property value="rc.content"/></textarea> 
-                            </s:else>
+                            <textarea name="content" cols="57" rows="10"><s:property value="rc.content"/></textarea> 
                         </td>
                     </tr>
                     <tr>

@@ -10,47 +10,72 @@
 </script> --%>
 
 <script type="text/javascript">
-function goodsdelete(goods_num,currentPage){
-	document.goodsform.action="./gboardD.action?goods_num="+goods_num+"&currentPage="+currentPage;
+/* function goodsdelete(showboard_num,currentPage){
+	document.goodsform.action="./gboardD.action?showboard_num="+showboard_num+"&currentPage="+currentPage;
 	document.goodsform.submit();
 }
-function goodsmodify(goods_num,currentPage){
-	document.goodsform.action="./gboardMF.action?goods_num="+goods_num+"&currentPage="+currentPage;
+function goodsmodify(showboard_num,currentPage){
+	document.goodsform.action="./gboardMF.action?showboard_num="+showboard_num+"&currentPage="+currentPage;
+	document.goodsform.submit();
+} */
+function goodsdelete(showboard_num){
+	document.goodsform.action="./scdelete_form.action?showboard_num="+showboard_num;
+	document.goodsform.submit();
+}
+function goodsmodify(showboard_num){
+	document.goodsform.action="./scmodify_form.action?showboard_num="+showboard_num;
 	document.goodsform.submit();
 }
 </script>
-	
 
-
-
-
-
-		<table width="700" align="left">
+<%-- 		<table width="700" align="left">
 		<tr height="30">
 			<td align="center" style="">
-			<s:if test="goods_category==null">
+			<s:if test="showboard_category==null">
 				<img src="images/goods/all.jpg"></img>
 			</s:if>
 			<s:else>
-				<s:if test="goods_category=='outer'">
+				<s:if test="showboard_category=='outer'">
 				<img src="images/goods/outer.jpg"></img>
 				</s:if>
-				<s:if test="goods_category=='top'">
+				<s:if test="showboard_category=='top'">
 				<img src="images/goods/top.jpg"></img>
 				</s:if>
-				<s:if test="goods_category=='blouse'">
+				<s:if test="showboard_category=='blouse'">
 				<img src="images/goods/dress.jpg"></img>
 				</s:if>
-				<s:if test="goods_category=='pants'">
+				<s:if test="showboard_category=='pants'">
 				<img src="images/goods/pants.jpg"></img>
 				</s:if>
-				<s:if test="goods_category=='skirts'">
+				<s:if test="showboard_category=='skirts'">
 				<img src="images/goods/skirts.jpg"></img>
 				</s:if>
-				<s:if test="goods_category=='shoes'">
+				<s:if test="showboard_category=='shoes'">
 				<img src="images/goods/shoes.jpg"></img>
 				</s:if>
-			<%--<s:property value="goods_category"/> --%>
+			<s:property value="goods_category"/>
+			</s:else>
+			</td>
+		</tr>
+	</table> --%>
+	
+ 			<table width="700" align="left">
+		<tr height="30">
+			<td align="center" style="">
+			<s:if test="showboard_category==null">
+				<img src="images/goods/all.jpg"></img>
+			</s:if>
+			<s:else>
+				<s:if test="showboard_category.equals(\"전시\")">
+				<img src="images/goods/outer.jpg"></img>
+				</s:if>
+				<s:if test="showboard_category.equals(\"미술\")">
+				<img src="images/goods/top.jpg"></img>
+				</s:if>
+				<s:if test="showboard_category.equals(\"이벤트\")">
+				<img src="images/goods/dress.jpg"></img>
+				</s:if>
+			<s:property value="showboard_category"/>
 			</s:else>
 			</td>
 		</tr>
@@ -58,45 +83,31 @@ function goodsmodify(goods_num,currentPage){
 	
 	<table width="700" align="center">
 		<s:iterator value="list" status="stat">
-   <s:url id="viewURL" action="gboardV">
-   <s:param name="goods_num">
-   <s:property value="goods_num"/>
+   <s:url id="viewURL" action="scread">
+   <s:param name="showboard_num">
+   <s:property value="showboard_num"/>
    </s:param>
-   <s:param name="currentPage">
+<%--    <s:param name="currentPage">
    <s:property value="currentPage"/>
-   </s:param>
+   </s:param> --%>
    </s:url>
    
 <%-- <s:if test="#stat.index % 3 eq 0"></s:if>--%>
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
-<a href ='gboardV.action?goods_category=<s:property value="goods_category"/>&goods_num=<s:property value="goods_num"/>&currentPage=<s:property value="currentPage"/>'>
-			<img src="./goods/upload/<s:property value="goods_savimage.split(',')[0]"/>" width="200px" height="250px"/></a>
+
+<%-- <a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&goods_num=<s:property value="goods_num"/>&currentPage=<s:property value="currentPage"/>'>
+			<img src="./goods/upload/<s:property value="goods_savimage.split(',')[0]"/>" width="200px" height="250px"/></a> --%>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
+			<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" width="200px" height="250px"/></a>
 				
 				<br><br>
-	<!-- 베스트상품처리	 -->
-	  <s:if test='goods_best == 0'>
-	  <img src="images/goods/0.png" border="0">
-	  </s:if>
-	  <s:elseif test='goods_best  == 1'>
-      <img src="images/goods/1.png" border="0">
-      </s:elseif>
-      <s:elseif test='goods_best  == 2'>
-      <img src="images/goods/2.png" border="0">
-      </s:elseif>
-      <s:elseif test='goods_best == 3'>
-      <img src="images/goods/3.png" border="0">
-      </s:elseif>
+				<s:property value="subject"/>
+				<br><s:property value="date"/>
+				<br><s:property value="address2"/>						
 				
-							
 				<br><br>
-				
-				<s:property value="goods_name"/>
-				
-								
-				<br><br>
-				
-				<s:property value="goods_price"/>원
+				<s:if test="pay == 0">무료</s:if><s:else><s:property value="pay"/>원</s:else>
 				<br><br><br>
 	</s:iterator>
 	
@@ -110,7 +121,7 @@ function goodsmodify(goods_num,currentPage){
 	</s:if>
 
 	<tr align="center">
-		<td colspan="5"><s:property value="pagingHtml" escape="false"/></td>
+		<td colspan="5"><%-- <s:property value="pagingHtml" escape="false"/></td> --%>
 	</tr> 
 			</form>
 		</td>

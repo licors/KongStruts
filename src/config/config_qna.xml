@@ -4,6 +4,46 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">      
     
 <struts>
-<!-- 	 	<package name="" namespace="/" extends="struts-default, tiles-default" >
-	 	</package> -->
+    <package name="qna" namespace="/qna" extends="struts-default, tiles-default">
+        <!-- 리스트 -->
+        <action name="qnalist" class="admin.qna.qnalistAction">
+            <result type="tiles">qna_list</result>
+        </action>
+
+        <!-- 쓰기폼 -->
+        <action name="qnawriteform" class="admin.qna.qnawriteAction" method="form">
+            <result type="tiles">qna_form</result>
+        </action>
+        
+        <!-- 쓰기 -->
+        <action name="qnawrite" class="admin.qna.qnawriteAction">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>	
+        </action>
+        
+        <!-- 수정폼 -->
+        <action name="qnamodifyform" class="admin.qna.qnamodifyAction" method="form">
+            <result type="tiles">qna_form</result>
+        </action>
+        
+        <!-- 수정 -->
+        <action name="qnamodify" class="admin.qna.qnamodifyAction">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>
+        </action>
+        
+        <!-- 삭제폼 -->
+        <action name="qnadeleteform" class="admin.qna.qnadeleteAction" method="form">
+            <result>/admin/qna/qnadeleteform.jsp</result>
+        </action>
+        
+        <!-- 삭제->리스트 -->
+        <action name="qnadelete" class="admin.qna.qnadeleteAction">
+            <result type="redirect-action">
+                <param name="actionName">qnalist</param>
+            </result>	
+        </action>
+    </package>
 </struts>

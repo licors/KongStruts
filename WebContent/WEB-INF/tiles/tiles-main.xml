@@ -8,13 +8,23 @@
     <definition name="main" template="/template/layout.jsp">
         <put-attribute name="title" value="켄고루" />
         <put-attribute name="top" value="/template/top.jsp" />
-        <put-attribute name="body" value="main/main.jsp" />
+        <put-attribute name="left" value="/template/left.jsp" />
+        <put-attribute name="body" value="/main/main.jsp" />
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
     
-    <definition name="test" extends="main">
-        <put-attribute name="body" value="/main/mainT.jsp" />
+    <definition name="mainshowcaselist" extends="main">
+        <put-attribute name="body" value="/main/showcaseList" />
     </definition>
+
+<!--     <definition name="test" extends="main">
+        <put-attribute name="body" value="/main/mainT.jsp" />
+    </definition> -->
+    
+    <definition name="test_d" extends="main">
+        <put-attribute name="body" value="/main/showcaseList.jsp" />
+    </definition>
+    
     
      <!-- showcase -->
 	 <!-- 전시상품 리스트 -->

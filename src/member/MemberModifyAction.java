@@ -1,8 +1,7 @@
 package member;
 
+import admin.MemberLoginCheck;
 import java.io.Reader;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
@@ -12,249 +11,256 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class MemberModifyAction extends ActionSupport {
-	public static Reader reader;
-	public static SqlMapClient sqlMapper;
 
-	private MemberVO memresultClass;
-	private MemberVO memparamClass;
-	private MemberVO resultDetail;
-	private MemberVO paramDetail;
-	private int member_num;
-	private String email;
-	private String oldpassword;
-	private String password;
-	private String password2;
-	private String name;
-	private String address;
-	private String company;
-	private int admin;
-	
-	
-	
-	public MemberModifyAction() throws Exception {
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-		reader.close();
-	}
+    public static Reader reader;
+    public static SqlMapClient sqlMapper;
 
-	public String form() throws Exception {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-		resultDetail = new MemberVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionemail = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
-				sessionemail);
-		resultDetail = (MemberVO) sqlMapper
-				.queryForObject("member.userLogin", getEmail());
-		// System.out.println(resultClass.getId());
-		return SUCCESS;
-	}
+    private MemberVO memresultClass;
+    private MemberVO memparamClass;
+    private MemberVO resultDetail;
+    private MemberVO paramDetail;
+    private int member_num;
+    private String email;
+    private String oldpassword;
+    private String password;
+    private String password2;
+    private String name;
+    private String address;
+    private String company;
+    private int admin;
 
-	public String execute() throws Exception {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
+    private int currentPage = 1;
 
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String sessionemail = (String) session.get("id");
+    public MemberModifyAction() throws Exception {
+        reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+        sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+        reader.close();
+    }
 
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
-				sessionemail);
-		//System.out.println("����ƮŬ���� " + memresultClass.getEmail());
-		
-		memparamClass.setEmail(sessionemail);
-		memparamClass.setAddress(getAddress());
-		memparamClass.setCompany(getCompany());
-	
-		sqlMapper.update("member.memberUpdate", memparamClass);
-		//context.getSession().clear();
-		return SUCCESS;
-	}
+    public String form() throws Exception {
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        resultDetail = new MemberVO();
 
-	public String modifyPasswordform() throws Exception {
-		return SUCCESS;
-	}
+        memresultClass = MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-	public String modifyPassword() throws Exception {
-		
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		
-		
-		String sessionemail =  (String) session.get("id");
-	/*	String sessionpassword =  (String) session.get("password");*/
-		
-		
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
-				sessionemail);
-		
-		if(memresultClass.getPassword().equals(getOldpassword())){
-			memparamClass.setEmail(sessionemail);
-			memparamClass.setPassword(getPassword());
-			sqlMapper.update("member.passwordUpdate", memparamClass);
-			
-			return SUCCESS;
-		}
-		return ERROR;
-	}
+        resultDetail = (MemberVO) sqlMapper.queryForObject("member.userLogin", getEmail());
+        // System.out.println(resultClass.getId());
+        return SUCCESS;
+    }
 
-	public String delform() throws Exception {
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String sessionemail = (String) session.get("email");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
-				sessionemail);
-		return SUCCESS;
-	}
+    public String admin_form() throws Exception {
+        memresultClass = new MemberVO();
 
-	public String delete() throws Exception {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String sessionemail = (String) session.get("id");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
-				sessionemail);
-		if (memresultClass.getPassword().equals(password)) {
-			memparamClass.setEmail(sessionemail);
-			sqlMapper.delete("member.deleteMember", memparamClass);
-			context.getSession().clear();
-			return SUCCESS;
-		}
-		return ERROR;
-	}
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", getMember_num());
 
-	public String booted() throws Exception {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-		paramDetail = new MemberVO();
-		resultDetail = new MemberVO();
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		String sessionemail = (String) session.get("email");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
-				sessionemail);
-		System.out.println(getEmail());
-		paramDetail.setEmail(getEmail());
+        currentPage = getCurrentPage(); //어드민 맴버 리스트로 돌아가기위해 임시저장
 
-		sqlMapper.delete("member.deleteMember", paramDetail);
-		return SUCCESS;
-	}
-	
-	public MemberVO getMemresultClass() {
-		return memresultClass;
-	}
+        System.out.println("m:" + getMember_num() + "/" + getCurrentPage());
+        return SUCCESS;
+    }
 
-	public void setMemresultClass(MemberVO memresultClass) {
-		this.memresultClass = memresultClass;
-	}
+    public String execute() throws Exception {
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
 
-	public MemberVO getMemparamClass() {
-		return memparamClass;
-	}
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionemail = (String) session.get("id");
 
-	public void setMemparamClass(MemberVO memparamClass) {
-		this.memparamClass = memparamClass;
-	}
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
+                sessionemail);
+        //System.out.println("리절트클래스 " + memresultClass.getEmail());
 
-	public MemberVO getResultDetail() {
-		return resultDetail;
-	}
+        memparamClass.setEmail(sessionemail);
+        memparamClass.setAddress(getAddress());
+        memparamClass.setCompany(getCompany());
 
-	public void setResultDetail(MemberVO resultDetail) {
-		this.resultDetail = resultDetail;
-	}
+        sqlMapper.update("member.memberUpdate", memparamClass);
+        //context.getSession().clear();
+        return SUCCESS;
+    }
 
-	public MemberVO getParamDetail() {
-		return paramDetail;
-	}
+    public String modifyPasswordform() throws Exception {
+        return SUCCESS;
+    }
 
-	public void setParamDetail(MemberVO paramDetail) {
-		this.paramDetail = paramDetail;
-	}
+    public String modifyPassword() throws Exception {
 
-	
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
 
-	public String getPassword() {
-		return password;
-	}
+        String sessionemail = (String) session.get("id");
+        /*	String sessionpassword =  (String) session.get("password");*/
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
+                sessionemail);
 
-	public String getName() {
-		return name;
-	}
+        if (memresultClass.getPassword().equals(getOldpassword())) {
+            memparamClass.setEmail(sessionemail);
+            memparamClass.setPassword(getPassword());
+            sqlMapper.update("member.passwordUpdate", memparamClass);
 
-	public void setName(String name) {
-		this.name = name;
-	}
+            return SUCCESS;
+        }
+        return ERROR;
+    }
 
+    public String delform() throws Exception {
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionemail = (String) session.get("email");
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
+                sessionemail);
+        return SUCCESS;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String delete() throws Exception {
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionemail = (String) session.get("id");
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
+                sessionemail);
+        if (memresultClass.getPassword().equals(password)) {
+            memparamClass.setEmail(sessionemail);
+            sqlMapper.delete("member.deleteMember", memparamClass);
+            context.getSession().clear();
+            return SUCCESS;
+        }
+        return ERROR;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String booted() throws Exception {
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
+        paramDetail = new MemberVO();
+        resultDetail = new MemberVO();
+        ActionContext context = ActionContext.getContext();
+        Map<String, Object> session = context.getSession();
+        String sessionemail = (String) session.get("email");
+        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userLogin",
+                sessionemail);
+        System.out.println(getEmail());
+        paramDetail.setEmail(getEmail());
 
-	public String getPassword2() {
-		return password2;
-	}
+        sqlMapper.delete("member.deleteMember", paramDetail);
+        return SUCCESS;
+    }
 
-	public void setPassword2(String password2) {
-		this.password2 = password2;
-	}
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public MemberVO getMemparamClass() {
+        return memparamClass;
+    }
 
-	public String getCompany() {
-		return company;
-	}
+    public void setMemparamClass(MemberVO memparamClass) {
+        this.memparamClass = memparamClass;
+    }
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
+    public MemberVO getResultDetail() {
+        return resultDetail;
+    }
 
-	public int getAdmin() {
-		return admin;
-	}
+    public void setResultDetail(MemberVO resultDetail) {
+        this.resultDetail = resultDetail;
+    }
 
-	public void setAdmin(int admin) {
-		this.admin = admin;
-	}
+    public MemberVO getParamDetail() {
+        return paramDetail;
+    }
 
-	public int getMember_num() {
-		return member_num;
-	}
+    public void setParamDetail(MemberVO paramDetail) {
+        this.paramDetail = paramDetail;
+    }
 
-	public void setMember_num(int member_num) {
-		this.member_num = member_num;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getOldpassword() {
-		return oldpassword;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setOldpassword(String oldpassword) {
-		this.oldpassword = oldpassword;
-	}
+    public String getName() {
+        return name;
+    }
 
-	
-	
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	
-	
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
+
+    public int getMember_num() {
+        return member_num;
+    }
+
+    public void setMember_num(int member_num) {
+        this.member_num = member_num;
+    }
+
+    public String getOldpassword() {
+        return oldpassword;
+    }
+
+    public void setOldpassword(String oldpassword) {
+        this.oldpassword = oldpassword;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
 }

@@ -2,17 +2,12 @@ package order;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import admin.showcase.showVO;
@@ -20,24 +15,25 @@ import basket.BasketVO;
 import member.MemberVO;
 
 public class OrderFormAction extends ActionSupport {
-	// 상세보기에서 '신청하기' 버튼 클릭 시 get 방식으로 showboard_num 전송
-	// 위에서 받은 showboard_num 을 이용하여 DB 에서 show.selectOne 쿼리문 동작, showcase 정보
-	// 읽어옴(admin.showcase.showVO class 객체이용)
-	public static Reader reader;
-	public static SqlMapClient sqlMapper;
+    // 상세보기에서 '신청하기' 버튼 클릭 시 get 방식으로 showboard_num 전송
+    // 위에서 받은 showboard_num 을 이용하여 DB 에서 show.selectOne 쿼리문 동작, showcase 정보
+    // 읽어옴(admin.showcase.showVO class 객체이용)
 
-	private MemberVO memparamClass;
-	private MemberVO memresultClass;
-	private showVO show_paramClass;
-	private showVO show_resultClass;
-	private OrderVO order_paramClass;
-	private OrderVO order_resultClass;
-	private BasketVO paramBas;
-	private BasketVO resultBas;
+    public static Reader reader;
+    public static SqlMapClient sqlMapper;
 
-	private int showboard_num; // 전시회 번호
-	private int member_num; // 주문자 번호
-	/*
+    private MemberVO memparamClass;
+    private MemberVO memresultClass;
+    private showVO show_paramClass;
+    private showVO show_resultClass;
+    private OrderVO order_paramClass;
+    private OrderVO order_resultClass;
+    private BasketVO paramBas;
+    private BasketVO resultBas;
+
+    private int showboard_num; // 전시회 번호
+    private int member_num; // 주문자 번호
+    /*
 	 * private int order_num; //주문번호 private String name; //주문자 이름 private
 	 * String sex; //주문자 성별 private String company; //주문자 회사 private String
 	 * address; //주문자 주소 private String email; //주문자 email(id) private String
@@ -47,176 +43,169 @@ public class OrderFormAction extends ActionSupport {
 	 * private String subject; //전시회 명 private String file_orgname; //전시회 이미지
 	 * private String file_savname; //전시회 이미지 private String date; //전시회 일정
 	 * private int readcount; //조회수 private int ordercount; //주문수
-	 */
-	private List<BasketVO> basketList = new ArrayList<BasketVO>();
-	private List<showVO> showList = new ArrayList<showVO>();
+     */
+    private List<BasketVO> basketList = new ArrayList<BasketVO>();
+    private List<showVO> showList = new ArrayList<showVO>();
 
-	public OrderFormAction() throws IOException {
-		reader = Resources.getResourceAsReader("sqlMapConfig.xml");
-		sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
-		reader.close();
-	}
+    public OrderFormAction() throws IOException {
+        reader = Resources.getResourceAsReader("sqlMapConfig.xml");
+        sqlMapper = SqlMapClientBuilder.buildSqlMapClient(reader);
+        reader.close();
+    }
 
-	// 상세보기, 메인에서 주문시 폼 불러오기 (get방식으로 showboard_num 받음)
-	public String form() throws Exception {
+    // 상세보기, 메인에서 주문시 폼 불러오기 (get방식으로 showboard_num 받음)
+    public String form() throws Exception {
 
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
 
-		show_paramClass = new showVO();
-		show_resultClass = new showVO();
+        show_paramClass = new showVO();
+        show_resultClass = new showVO();
 
-		order_paramClass = new OrderVO();
-		order_resultClass = new OrderVO();
+        order_paramClass = new OrderVO();
+        order_resultClass = new OrderVO();
 
-		// member 고유넘버로 회원정보빼오기
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionid = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-/*		
-		if(memresultClass == null) {
-			return LOGIN;
-		}
-		*/
-		// 상품번호로 상품정보 꺼내오기
-		show_paramClass.setShowboard_num(getShowboard_num());
-		showboard_num = show_paramClass.getShowboard_num();
-		show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", showboard_num);		
-		System.out.print(showboard_num); 
-		return SUCCESS;
-	}
+        // member 고유넘버로 회원정보빼오기
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-	// 장바구니에서 주문시 처리폼
-	public String form_B() throws SQLException {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
+//        if (memresultClass == null) {
+//            return LOGIN;
+//        }
 
-		show_paramClass = new showVO();
-		show_resultClass = new showVO();
+        // 상품번호로 상품정보 꺼내오기
+        show_paramClass.setShowboard_num(getShowboard_num());
+        showboard_num = show_paramClass.getShowboard_num();
+        show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", showboard_num);
+        System.out.print(showboard_num);
+        return SUCCESS;
+    }
 
-		paramBas = new BasketVO();
-		resultBas = new BasketVO();
+    // 장바구니에서 주문시 처리폼
+    public String form_B() throws Exception {
+        memparamClass = new MemberVO();
+        memresultClass = new MemberVO();
 
-		// 주문 신청인 정보 가져오기
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionid = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-		
-/*		if(memresultClass == null) {
-			return LOGIN;
-		}
-*/
-		// 해당 아이디의 장바구니 목록 가져오기
-		basketList = sqlMapper.queryForList("basket.basket_list", sessionid);
-		// goodsList =
-		// sqlMapper.queryForList("goodsselect",getBasket_goods_name());
-		// System.out.println(goodsList);
-		if(basketList.size()==0) {
-			return INPUT;
-		} else {
-			for (int i = 0; i < basketList.size(); i++) {
-				paramBas = basketList.get(i);
-	
-				showList = sqlMapper.queryForList("show.selectOne", paramBas.getShowboard_num());	//showList 뽑아오기....ㅠㅠ
-				for (int j = 0; j < showList.size(); j++) {
-					show_resultClass = showList.get(j);
-				}
-			}
-			return SUCCESS;
-		}
-	}
+        show_paramClass = new showVO();
+        show_resultClass = new showVO();
 
-	public static Reader getReader() {
-		return reader;
-	}
+        paramBas = new BasketVO();
+        resultBas = new BasketVO();
 
-	public static void setReader(Reader reader) {
-		OrderFormAction.reader = reader;
-	}
+        // 주문 신청인 정보 가져오기
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-	public static SqlMapClient getSqlMapper() {
-		return sqlMapper;
-	}
+//        if (memresultClass == null) {
+//            return LOGIN;
+//        }
+        // 해당 아이디의 장바구니 목록 가져오기
+        basketList = sqlMapper.queryForList("basket.basket_list", memresultClass.getMember_num());
+        // goodsList =
+        // sqlMapper.queryForList("goodsselect",getBasket_goods_name());
+        // System.out.println(goodsList);
+        if (basketList.size() == 0) {
+            return INPUT;
+        } else {
+            for (int i = 0; i < basketList.size(); i++) {
+                paramBas = basketList.get(i);
 
-	public static void setSqlMapper(SqlMapClient sqlMapper) {
-		OrderFormAction.sqlMapper = sqlMapper;
-	}
+                showList = sqlMapper.queryForList("show.selectOne", paramBas.getShowboard_num());	//showList 뽑아오기....ㅠㅠ
+                for (int j = 0; j < showList.size(); j++) {
+                    show_resultClass = showList.get(j);
+                }
+            }
+            return SUCCESS;
+        }
+    }
 
-	public MemberVO getMemparamClass() {
-		return memparamClass;
-	}
+    public static Reader getReader() {
+        return reader;
+    }
 
-	public void setMemparamClass(MemberVO memparamClass) {
-		this.memparamClass = memparamClass;
-	}
+    public static void setReader(Reader reader) {
+        OrderFormAction.reader = reader;
+    }
 
-	public MemberVO getMemresultClass() {
-		return memresultClass;
-	}
+    public static SqlMapClient getSqlMapper() {
+        return sqlMapper;
+    }
 
-	public void setMemresultClass(MemberVO memresultClass) {
-		this.memresultClass = memresultClass;
-	}
+    public static void setSqlMapper(SqlMapClient sqlMapper) {
+        OrderFormAction.sqlMapper = sqlMapper;
+    }
 
-	public showVO getShow_paramClass() {
-		return show_paramClass;
-	}
+    public MemberVO getMemparamClass() {
+        return memparamClass;
+    }
 
-	public void setShow_paramClass(showVO show_paramClass) {
-		this.show_paramClass = show_paramClass;
-	}
+    public void setMemparamClass(MemberVO memparamClass) {
+        this.memparamClass = memparamClass;
+    }
 
-	public showVO getShow_resultClass() {
-		return show_resultClass;
-	}
+    public MemberVO getMemresultClass() {
+        return memresultClass;
+    }
 
-	public void setShow_resultClass(showVO show_resultClass) {
-		this.show_resultClass = show_resultClass;
-	}
+    public void setMemresultClass(MemberVO memresultClass) {
+        this.memresultClass = memresultClass;
+    }
 
-	public OrderVO getOrder_paramClass() {
-		return order_paramClass;
-	}
+    public showVO getShow_paramClass() {
+        return show_paramClass;
+    }
 
-	public void setOrder_paramClass(OrderVO order_paramClass) {
-		this.order_paramClass = order_paramClass;
-	}
+    public void setShow_paramClass(showVO show_paramClass) {
+        this.show_paramClass = show_paramClass;
+    }
 
-	public OrderVO getOrder_resultClass() {
-		return order_resultClass;
-	}
+    public showVO getShow_resultClass() {
+        return show_resultClass;
+    }
 
-	public void setOrder_resultClass(OrderVO order_resultClass) {
-		this.order_resultClass = order_resultClass;
-	}
+    public void setShow_resultClass(showVO show_resultClass) {
+        this.show_resultClass = show_resultClass;
+    }
 
-	public BasketVO getParamBas() {
-		return paramBas;
-	}
+    public OrderVO getOrder_paramClass() {
+        return order_paramClass;
+    }
 
-	public void setParamBas(BasketVO paramBas) {
-		this.paramBas = paramBas;
-	}
+    public void setOrder_paramClass(OrderVO order_paramClass) {
+        this.order_paramClass = order_paramClass;
+    }
 
-	public BasketVO getResultBas() {
-		return resultBas;
-	}
+    public OrderVO getOrder_resultClass() {
+        return order_resultClass;
+    }
 
-	public void setResultBas(BasketVO resultBas) {
-		this.resultBas = resultBas;
-	}
+    public void setOrder_resultClass(OrderVO order_resultClass) {
+        this.order_resultClass = order_resultClass;
+    }
 
-	public int getShowboard_num() {
-		return showboard_num;
-	}
+    public BasketVO getParamBas() {
+        return paramBas;
+    }
 
-	public void setShowboard_num(int showboard_num) {
-		this.showboard_num = showboard_num;
-	}
+    public void setParamBas(BasketVO paramBas) {
+        this.paramBas = paramBas;
+    }
 
-	/*
+    public BasketVO getResultBas() {
+        return resultBas;
+    }
+
+    public void setResultBas(BasketVO resultBas) {
+        this.resultBas = resultBas;
+    }
+
+    public int getShowboard_num() {
+        return showboard_num;
+    }
+
+    public void setShowboard_num(int showboard_num) {
+        this.showboard_num = showboard_num;
+    }
+
+    /*
 	 * public int getOrder_num() { return order_num; } public void
 	 * setOrder_num(int order_num) { this.order_num = order_num; } public String
 	 * getSubject() { return subject; } public void setSubject(String subject) {
@@ -245,20 +234,29 @@ public class OrderFormAction extends ActionSupport {
 	 * } public void setReadcount(int readcount) { this.readcount = readcount; }
 	 * public int getOrdercount() { return ordercount; } public void
 	 * setOrdercount(int ordercount) { this.ordercount = ordercount; }
-	 */
-	public List<BasketVO> getBasketList() {
-		return basketList;
-	}
+     */
+    public List<BasketVO> getBasketList() {
+        return basketList;
+    }
 
-	public void setBasketList(List<BasketVO> basketList) {
-		this.basketList = basketList;
-	}
+    public void setBasketList(List<BasketVO> basketList) {
+        this.basketList = basketList;
+    }
 
-	public List<showVO> getShowList() {
-		return showList;
-	}
+    public List<showVO> getShowList() {
+        return showList;
+    }
 
-	public void setShowList(List<showVO> showList) {
-		this.showList = showList;
-	}
+    public void setShowList(List<showVO> showList) {
+        this.showList = showList;
+    }
+
+    public int getMember_num() {
+        return member_num;
+    }
+
+    public void setMember_num(int member_num) {
+        this.member_num = member_num;
+    }
+
 }
