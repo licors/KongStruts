@@ -33,7 +33,7 @@ function joinCheck() {
 	<p>
 	</p>
 	
-	<form name="joinform" method="post" action="/kong/member/memberJoin.action" onsubmit="return joinCheck()">
+	<form name="joinform" method="post" action="/member/memberJoin.action" onsubmit="return joinCheck()">
 		<table>
 			<tr>
 				<td>email</td> <td><input type="text" name="email" size="20" maxlength="50"/> </td>

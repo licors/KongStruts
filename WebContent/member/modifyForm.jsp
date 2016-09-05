@@ -15,10 +15,7 @@
             return false;
         }
     }
-    function zipCheck() {
-        var url = "zipcodeF.action";
-        window.open(url, "post", "toolbar=no,width=500,height=300,directoris=no,status=yes,scrollbars=yes,menubar=no");
-    }
+   
     function openConfirmId(joinform) {
         if (joinform.id.value == "") {
             alert("아이디를 입력해주세요");
@@ -55,20 +52,7 @@
                 <td class="name" width="150" align="center">이름</td>
                 <td align="left"><s:property value="memresultClass.name" /></td>
             </tr>	
-            <tr height="35">
-                <td width="150" align="center">주소</td>
-                <td align="left"><input class="zipcode" type="text" name="zipcode" size="7" maxlength="7" value="<s:property value="memresultClass.zipcode"/>" readonly>
-                    <input class="zipcodeimg" type="button" value="우편번호검색" onclick="zipCheck()">
-                </td>
-            </tr>
-            <tr height="35">
-                <td align="center" width="150"></td>
-                <td><input class="addr1" type="text" name="addr1" size="44" maxlength="100" value="<s:property value="memresultClass.addr1" />"></td>
-            </tr>
-            <tr height="35">
-                <td align="center" width="150"></td>
-                <td><input class="addr2" type="text" name="addr2" size="44" maxlength="100" value="<s:property value="memresultClass.addr2" />"></td>
-            </tr>
+           
             <tr height="35">
                 <td width="150" align="center">회사</td>
                 <td align="left"><input type="text" name="company" size="20" maxlength="15"></td>

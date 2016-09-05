@@ -5,7 +5,7 @@
 <script>
 function Success(){
 	alert("회원정보 수정 성공!!");
-	window.location.href='/kong/showcase/sclist.action';
+	window.location.href='/showcase/sclist.action';
 }
 </script>
 

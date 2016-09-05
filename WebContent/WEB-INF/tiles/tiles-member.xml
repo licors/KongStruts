@@ -4,9 +4,49 @@
 		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
-    <!-- 리스트 -->
+
+    
+    
+    <definition name="test" extends="main">
+        <put-attribute name="body" value="/main/mainT.jsp" />
+    </definition>
+    
+     <!-- showcase -->
+	 <!-- 전시상품 리스트 -->
+<!-- 	<definition name="showcase_list" extends="main">
+		<put-attribute name="body" value="/main/showcaseList.jsp" />
+	</definition> -->
+
     <definition name="memberadmin_list" extends="main">
         <put-attribute name="body" value="/admin/member/memberadminlist.jsp" />
+    </definition>
+    
+    <!-- 회원가입 폼 -->
+    <definition name="join" extends="main">
+        <put-attribute name="body" value="/member/memberJoin.jsp" />
+        <put-attribute name="top" value="/template/membertop.jsp" />
+        <put-attribute name="bottom" value="/template/memberbottom.jsp" />
+    </definition>
+    
+    <!-- 로그인 폼 -->
+    <definition name="login" extends="main">
+        <put-attribute name="body" value="/member/memberLogin.jsp" />
+        <put-attribute name="top" value="/template/membertop.jsp" />
+        <put-attribute name="bottom" value="/template/memberbottom.jsp" />
+    </definition>
+    
+    <!-- 회원 정보 수정 폼 -->
+    <definition name="modify" extends="main">
+        <put-attribute name="body" value="/member/modifyForm.jsp" />
+        <put-attribute name="top" value="/template/top.jsp" />
+        <put-attribute name="bottom" value="/template/bottom.jsp" />
+    </definition>
+    
+    <!--  회원탈퇴 폼 -->
+    <definition name="delete" extends="main">
+        <put-attribute name="body" value="/member/deleteForm.jsp" />
+        <put-attribute name="top" value="/template/top.jsp" />
+        <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
 
 </tiles-definitions>

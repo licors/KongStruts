@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="loginform" action="/kong/member/memberLogin.action" method="post" onsubmit="return checkIt()">
+	<form name="loginform" action="/member/memberLogin.action" method="post" onsubmit="return checkIt()">
 	<table>
 		<tr>
 			<td align="center">이메일</td>
@@ -25,8 +25,8 @@
 		<tr>
 			<td align="right" colspan="2">
 				<input name="submit" type="submit" value="로그인" class="inputb"> 
-				<input type="button" value="회원가입" 	onClick="javascript:location.href='/kong/member/memberJoinForm.action'">
-				<input type="button" value="비밀번호 찾기" 	onClick="javascript:location.href='/kong/member/memberpfindF.action'">
+				<input type="button" value="회원가입" 	onClick="javascript:location.href='/member/memberJoinForm.action'">
+				<input type="button" value="비밀번호 찾기" 	onClick="javascript:location.href='/member/memberpfindF.action'">
 				
 			</td>
 		</tr>
