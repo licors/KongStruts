@@ -55,7 +55,7 @@ function showcaseView(url) {
 		</s:url>
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
 				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img></a>
 
@@ -86,7 +86,7 @@ function showcaseView(url) {
 		<s:iterator value="list2" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="300" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
 				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img></a>
 				<br><br>
@@ -116,7 +116,7 @@ function showcaseView(url) {
 		<s:iterator value="list3" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
-<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
+<a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
 				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></img></a>
 				<br><br>

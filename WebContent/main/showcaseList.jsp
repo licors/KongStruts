@@ -62,7 +62,7 @@
 		</s:if>
 		<td width="230" align="center"><%-- <a href ='scread.action?showboard_category=<s:property value="showboard_category"/>&goods_num=<s:property value="goods_num"/>&currentPage=<s:property value="currentPage"/>'>
 			<img src="./goods/upload/<s:property value="goods_savimage.split(',')[0]"/>" width="200px" height="250px"/></a> --%>
-			<a href='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'>
+			<a href='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
 				<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
 		</a> <br>

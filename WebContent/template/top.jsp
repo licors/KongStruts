@@ -5,12 +5,65 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>	
 
+<style type="text/css">
+*{border:0; padding:0; margin:auto;}
+
+#header {
+     width:100%; height:113px; border-bottom:1px solid #bbbbbb;
+}
+#header .header_wrap{width:1000px;margin:auto;overflow:hidden;}
+#header .logo{
+    width:245px; height:113px; background-image:url(/template/image/header/cangorulogo.jpg); background-repeat:no-repeat; float:left;
+}
+
+#header .searchKeyword{
+    margin:70px 0 0 170px; width:250px; height:26px;  float:left;
+}
+#header .searchKeyword .serchText{
+    width:220px; height:22px; float:left; border:1px solid #ebebeb ; color:#504f4f; font-family:Adobe Gothic Std; float:top;
+}
+#header .searchKeyword .serchButton{
+    width:26px; height:26px; float:left; background-image:url(/template/image/header/s_button.jpg); cursor:pointer;
+}
+#header .memberArea{
+    margin:78px 0 0 57px;float:left; width:278px; height:16px;
+}
+
+#header .memberArea .mem_in{
+    float:left; width:62px; height:16px; background-image:url(/template/image/header/login.jpg); background-repeat:no-repeat; cursor:pointer;
+}
+#header .memberArea .mem_out{
+    float:left; width:62px; height:16px; background-image:url(/template/image/header/logout.jpg); background-repeat:no-repeat; cursor:pointer;
+}	
+#header .memberArea .mem_join{
+    float:left; width:72px; height:16px; background-image:url(/template/image/header/mem_join.jpg); background-repeat:no-repeat; cursor:pointer;
+}	
+#header .memberArea .basket{
+    float:left; width:74px; height:16px; background-image:url(/template/image/header/basket.jpg); background-repeat:no-repeat; cursor:pointer;
+}	
+#header .memberArea .mypage{
+    float:left; width:70px; height:16px; background-image:url(/template/image/header/mypage.png); background-repeat:no-repeat; cursor:pointer;
+}
+#header .memberArea .adminorder{
+    float:left; width:70px; height:16px; background-image:url(/template/image/header/order_management.png); background-repeat:no-repeat; cursor:pointer;
+}
+#header .memberArea .admingoods{
+    float:left; width:70px; height:16px; background-image:url(/template/image/header/admingoods.png); background-repeat:no-repeat; cursor:pointer;
+}
+#header .memberArea .memberlist{
+    float:left; width:70px; height:16px; background-image:url(/template/image/header/member_management.png); background-repeat:no-repeat; cursor:pointer;
+}  
+#header .memberArea .order{ 
+    float:left; width:70px; height:16px; background-image:url(/template/image/header/buy_list.jpg); background-repeat:no-repeat; cursor:pointer;
+}
+</style>
+
 <div class="header_wrap">
     <a href="/showcase/sclist.action">
         <h1 class="logo"></h1>
     </a>
     <div class="searchKeyword">
-        <form name="findgoods" action="/show/scdlist.action" method="post" >
+        <form name="findgoods" action="scdlist.action" method="post" >
             <input class="serchText" type="text" name="searchKeyword" size="10" value=""/>
             <input class="serchButton" type="submit" value=""/> 
         </form>

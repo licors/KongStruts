@@ -6,7 +6,7 @@
 <script>
 		dable('sendLog', 'visit');
 </script>
-<!-- <style type="text/css">
+<style type="text/css">
 .col-md-12 {
 	width: 100% position: relative;
 	min-height: 1px;
@@ -53,7 +53,7 @@
 	padding-right: 15px;
 	padding-left: 15px float: left
 }
-</style> -->
+</style>
 
 		<!-- Dable Code -->
 		<!-- BEGIN PRE-FOOTER -->
