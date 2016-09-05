@@ -12,6 +12,30 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="/css/index.css" />
+<script type="text/javascript">
+/* 	function addModifyText() {
+	    var form = document.getElementById("commentList");
+	    var input = document.createElement("input");
+	    input.type = "text";
+	    var br = document.createElement("br");
+	    var modify = document.createElement("input");
+	    modify.type = "button";
+	    modify.value = "수정";
+	    var cancel = document.createElement("input");
+	    cancel.type = "button";
+	    var br = document.createElement("br");
+	    cancel.value = "취소";
+	    form.appendChild(br);
+	    form.appendChild(input);
+	    form.appendChild(br);
+	    form.appendChild(modify);
+	    form.appendChild(cancel);
+	}
+	 */
+	function commentModifyView(url) {
+        window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
+    }
+</script>
 <title>전시 댓글</title>
 </head>
 
@@ -51,59 +75,67 @@
 	</form>
 
 	<!-- 코멘트 리스트 -->
-	<table width="600" border="0" cellspacing="0" cellpadding="2">
-		<tr align="center" bgcolor="#f3f3f3">
-			<td width="350"><strong>내용</strong></td>
-			<td width="70"><strong>글쓴이</strong></td>
-			<td width="80"><strong>날짜</strong></td>
-		</tr>
-
-		<tr bgcolor="#777777">
-			<td height="1" colspan="5"></td>
-		</tr>
-
-		<s:iterator value="list" status="stat">
-			<s:url id="viewURL" action="viewAction">
-				<s:param name="comment_num">
-					<s:property value="comment_num" />
-				</s:param>
-				<s:param name="currentPage">
-					<s:property value="currentPage" />
-				</s:param>
-			</s:url>
-
-			<tr>
-				<td align="left">
-					<s:if test="re_level != 0">
-						<c:forEach var="i" begin="${re_level}" end="0">&nbsp;</c:forEach>→
-                    </s:if> 
-                    <s:property value="content" />
-				</td>
-				<td><s:property value="name" /></td>
-				<td><s:property value="reg_date" /></td>
-				<td><a href='javascript:location.href="/comment/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>x</a></td>
+	<form id="commentList">
+		<table id="listTable" width="600" border="0" cellspacing="0" cellpadding="2">
+			<tr align="center" bgcolor="#f3f3f3">
+				<td width="350"><strong>내용</strong></td>
+				<td width="70"><strong>글쓴이</strong></td>
+				<td width="80"><strong>날짜</strong></td>
 			</tr>
-
+	
 			<tr bgcolor="#777777">
 				<td height="1" colspan="5"></td>
 			</tr>
-
-		</s:iterator>
-
-		<s:if test="list.size() <= 0">
-			<tr>
-				<td colspan="5" align="center">등록된 게시물이 없습니다</td>
+	
+			<s:iterator value="list" status="stat">
+				<s:url id="viewURL" action="commentModifyFormAction">
+					<s:param name="comment_num">
+						<s:property value="comment_num" />
+					</s:param>
+					<s:param name="showboard_num">
+						<s:property value="showboard_num" />
+					</s:param>
+				</s:url>
+	
+				<tr>
+					<td width="350" align="left">
+						<s:if test="re_level != 0">
+							<c:forEach var="i" begin="${re_level}" end="0">&nbsp;</c:forEach>→
+	                    </s:if> 
+	                    <s:property value="content" />
+					</td>
+					<td width="70" align="center"><s:property value="name" /></td>
+					<td width="80" align="center"><s:property value="reg_date"/></td>
+					<%-- <td width="50" align="center"><a href='javascript:location.href="/comment/commentModifyAction.action?comment_num=<s:property value='%{comment_num}'/>"'>수정</a></td> --%>
+					<td width="50" align="center">
+						<%-- <a href="javascript:commentModifyView('${viewURL}')">수정</a> --%>
+						<a href="javascript:location.href='${viewURL}'">수정</a>
+					</td>
+					<td width="50" align="center">
+						<a href='javascript:location.href="/comment/commentdeleteAction.action?comment_num=<s:property value='%{comment_num}'/>"'>삭제</a>
+					</td>
+				</tr>
+	
+				<tr bgcolor="#777777">
+					<td height="1" colspan="5"></td>
+				</tr>
+	
+			</s:iterator>
+	
+			<s:if test="list.size() <= 0">
+				<tr>
+					<td colspan="5" align="center">등록된 게시물이 없습니다</td>
+				</tr>
+			</s:if>
+	
+			<tr align="center">
+				<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 			</tr>
-		</s:if>
-
-		<tr align="center">
-			<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
-		</tr>
-		<tr>
-			<td align="right"><input name="back" type="button" value="뒤로" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
-		</tr>
-	</table>
-
+			<tr>
+				<td align="right"><input name="back" type="button" value="뒤로" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
+			</tr>
+		</table>
+	</form>
 
 </body>
 </html>

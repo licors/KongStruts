@@ -31,6 +31,12 @@
             </result>
         </action>
         
+        <action name="commentModifyFormAction" class="showcase.CommentModifyAction" method="form">
+            <result>
+            	/showcase/commentModifyForm.jsp
+            </result>
+        </action>
+        
         <action name="commentModifyAction" class="showcase.CommentModifyAction">
             <result type="redirect-action">
             	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
