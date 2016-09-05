@@ -49,9 +49,9 @@ public class AddBasketAction extends ActionSupport {
 
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-        paramBas.setMember_num(memresultClass.getMember_num()); //? 여기는 세션 아이디 어디에 쓰는건가요? getMember_num() 쓰는 것이 아닌가요? 그래서 수정
-        paramBas.setShowboard_num(getShowboard_num());			//그냥 getMember_num()으로만쓰면 값을 못받아와서 무결성에 위배돼서 이렇게 수정했습니다. 
-        paramBas.setBasket_date(today.getTime());				//회원별로 장바구니 구분하려고 세션 아이디가 필요합니다 (유진 0904)
+        paramBas.setMember_num(memresultClass.getMember_num());
+        paramBas.setShowboard_num(getShowboard_num());			
+        paramBas.setBasket_date(today.getTime());				
 
         sqlMapper.insert("basket.basketInsert", paramBas);
         return SUCCESS;
