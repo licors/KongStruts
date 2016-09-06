@@ -22,6 +22,9 @@
                 } else if (frm.showboard_category.value == "") {
                     alert("카테고리를 선택해주세요.");
                     return false;
+                } else if (frm.address1.value == "") {
+                    alert("시/도 구분을 선택해주세요.");
+                    return false;
                 } else if (frm.address1.value == "" || frm.address2.value == "") {
                     alert("전시 장소를 입력해주세요.");
                     return false;
@@ -74,9 +77,9 @@
                             <s:if test="rc == null">
                                 <select name="showboard_category" size="1" >
                                     <option value="">카테고리</option>
-                                <option value="전시">전시</option>
-                                <option value="미술">미술</option>
-                                <option value="이벤트">이벤트</option>
+                                    <option value="전시">전시</option>
+                                    <option value="미술">미술</option>
+                                    <option value="이벤트">이벤트</option>
                                 </select>   
                             </s:if>
                             <s:else>
@@ -93,7 +96,26 @@
                     <tr>
                         <td width="100" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>장소</td>
                         <td width="500" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="address1" value="<s:property value="rc.address1"/>" size="10" maxlength="10"/>&nbsp;(시/도)<br>
+                            <select name="address1" size="1" >
+                                <option value="">시/도</option>
+                                <option value="서울특별시">서울특별시</option>
+                                <option value="부산광역시">부산광역시</option>
+                                <option value="대구광역시">대구광역시</option>
+                                <option value="인천광역시">인천광역시</option>
+                                <option value="광주광역시">광주광역시</option>
+                                <option value="대전광역시">대전광역시</option>
+                                <option value="울산광역시">울산광역시</option>
+                                <option value="세종특별자치시">세종특별자치시</option>
+                                <option value="경기도">경기도</option>
+                                <option value="강원도">강원도</option>
+                                <option value="충청북도">충청북도</option>
+                                <option value="충청남도">충청남도</option>
+                                <option value="전라북도">전라북도</option>
+                                <option value="전라남도">전라남도</option>
+                                <option value="경상북도">경상북도</option>
+                                <option value="경상남도">경상남도</option>
+                                <option value="제주특별자치도">제주특별자치도</option>
+                            </select>   
                             <input class="input" type="text" name="address2" value="<s:property value="rc.address2"/>" size="30" maxlength="100"/>&nbsp;(나머지)
                         </td>
                     </tr>
