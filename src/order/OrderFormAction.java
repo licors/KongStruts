@@ -68,15 +68,11 @@ public class OrderFormAction extends ActionSupport {
         // member 고유넘버로 회원정보빼오기
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
-//        if (memresultClass == null) {
-//            return LOGIN;
-//        }
-
         // 상품번호로 상품정보 꺼내오기
         show_paramClass.setShowboard_num(getShowboard_num());
         showboard_num = show_paramClass.getShowboard_num();
         show_resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", showboard_num);
-        System.out.print(showboard_num);
+
         return SUCCESS;
     }
 

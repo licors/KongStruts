@@ -5,39 +5,47 @@
     
 <struts>
 	<package name="order" namespace="/order" extends="struts-default, tiles-default" >
-<!-- 		<global-results>
-			<result name="LOGIN">/member/memberLogin.jsp</result>
-		</global-results> -->
+		<!-- 전시 신청할 때 중복 신청 방지 -->
+		<action name="order_check" class="order.OrderCheckAction">
+			<result name="input" type="dispatcher">
+				/order/orderCheck.jsp
+			</result>
+			<result type="chain" name="success">
+				<param name="actionName">orderForm</param>
+			</result>
+		</action>
+		
+		<action name="order_checkB" class="order.OrderCheckAction">
+			<result name="input" type="dispatcher">
+				/order/orderCheck.jsp
+			</result>
+			<result type="chain" name="success">
+				<param name="actionName">orderFormB</param>
+			</result>
+		</action>
 		
 		<!-- 상세보기,메인에서 신청폼 (get방식으로 showboard_num 받음)-->
 		<action name="orderForm" class="order.OrderFormAction" method="form">
 			<result type="tiles">orderForm</result>
-			<!-- <result>/order/orderForm.jsp</result> -->
 		</action>
 		
 		<!-- 장바구니에서 신청폼 -->
 		<action name="orderFormB" class="order.OrderFormAction" method="form_B">
 			<result type="tiles">orderForm</result>
-			<!-- <result>/order/orderForm.jsp</result> -->
 		</action>
 		
 		<!-- 신청처리(상세보기,메인) / 바코드 생성-->
 		<action name="orderPro" class="order.OrderProcessAction">
 			<result type="tiles">orderSuccess</result>
-			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		
 		<!-- 신청처리(장바구니) /바코드 생성 -->
 		<action name="orderProB" class="order.OrderProcessAction" method="execute2">
 			<result type="tiles">orderSuccess</result>
-			<!-- <result>/order/orderSuccess.jsp</result> -->
-			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		<!-- 리스트  -->
 	 	<action name="orderList" class="order.OrderListAction">
-			<!-- <result>/order/orderList.jsp</result> -->
 			<result type="tiles">orderList</result>
-			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 		
 		<!-- (관리자용)회원전체 오더리스트-->
@@ -52,9 +60,7 @@
 		
 		<!-- 주문 상세보기 -->
 		<action name="orderView" class="order.OrderViewAction">
-			<!-- <result>/order/orderView.jsp</result> -->
 			<result type="tiles">orderView</result>
-			<!-- <result type="LOGIN">/member/loginForm.jsp</result> -->
 		</action>
 
 		<!-- 티켓 취소-->

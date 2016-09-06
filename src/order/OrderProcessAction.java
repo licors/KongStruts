@@ -150,13 +150,8 @@ public class OrderProcessAction extends ActionSupport {
         memresultClass = new MemberVO();
 
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-        
-        /*		
-		if(memresultClass == null) {
-			return LOGIN;
-		}
-         */
-        System.out.println(memresultClass.getMember_num());
+
+        //System.out.println(memresultClass.getMember_num());
         show_resultClass = new showVO();
         show_resultClass = (showVO) sqlMapper.queryForObject(
                 "show.selectOne", getShowboard_num());
@@ -164,12 +159,6 @@ public class OrderProcessAction extends ActionSupport {
         order_paramClass = new OrderVO();
         order_resultClass = new OrderVO();
 
-        /*		System.out.println(getName());
-		System.out.println(getSex());
-		System.out.println(getCompany());
-		System.out.println(getAddress());
-		System.out.println(getEmail());
-		System.out.println(getTel());*/
         order_paramClass.setName(getName());
         order_paramClass.setSex(getSex());
         order_paramClass.setCompany(getCompany());

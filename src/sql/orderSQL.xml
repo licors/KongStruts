@@ -75,6 +75,12 @@
 		and od.ORDER_DATE=#order_date#
 		order by od.ORDER_NUM DESC
 	</select>
+	
+	<select id="order_check" resultMap="orderRes" parameterClass="orderBean">
+		<include refid="select-all" />
+		and od.MEMBER_NUM=#member_num#
+		and od.SHOWBOARD_NUM=#showboard_num#
+	</select>
 
 	<!-- 관리자 order list 검색 -->
 	<select id="search_id" resultMap="orderRes" parameterClass="orderBean">
