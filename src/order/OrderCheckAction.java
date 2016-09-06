@@ -42,6 +42,9 @@ public class OrderCheckAction extends ActionSupport {
         order_resultClass = new OrderVO();
         
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        if(memresultClass == null) {
+        	return LOGIN;
+        }
 
         order_paramClass.setMember_num(memresultClass.getMember_num());
         order_paramClass.setShowboard_num(showboard_num);

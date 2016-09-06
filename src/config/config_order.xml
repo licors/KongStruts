@@ -5,7 +5,7 @@
     
 <struts>
 	<package name="order" namespace="/order" extends="struts-default, tiles-default" >
-		<!-- 전시 신청할 때 중복 신청 방지 -->
+		<!-- 전시 신청할 때 중복 신청 방지(메인, 상세보기에서) -->
 		<action name="order_check" class="order.OrderCheckAction">
 			<result name="input" type="dispatcher">
 				/order/orderCheck.jsp
@@ -13,14 +13,21 @@
 			<result type="chain" name="success">
 				<param name="actionName">orderForm</param>
 			</result>
+			<result name="login">
+				/member/memberLogin.jsp
+			</result>
 		</action>
 		
+		<!-- 전시 신청할 때 중복 신청 방지(장바구니에서) -->
 		<action name="order_checkB" class="order.OrderCheckAction">
 			<result name="input" type="dispatcher">
 				/order/orderCheck.jsp
 			</result>
 			<result type="chain" name="success">
 				<param name="actionName">orderFormB</param>
+			</result>
+			<result name="login">
+				/member/memberLogin.jsp
 			</result>
 		</action>
 		
@@ -43,9 +50,11 @@
 		<action name="orderProB" class="order.OrderProcessAction" method="execute2">
 			<result type="tiles">orderSuccess</result>
 		</action>
+		
 		<!-- 리스트  -->
 	 	<action name="orderList" class="order.OrderListAction">
 			<result type="tiles">orderList</result>
+			<result name="login">/member/memberLogin.jsp</result>
 		</action>
 		
 		<!-- (관리자용)회원전체 오더리스트-->

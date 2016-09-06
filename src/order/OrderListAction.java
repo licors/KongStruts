@@ -61,9 +61,9 @@ public class OrderListAction extends ActionSupport {
 		orderresultClass = new OrderVO();
 
 		memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-		/*
-		 * if(memresultClass == null) { return LOGIN; }
-		 */
+		if(memresultClass == null) {
+        	return LOGIN;
+        }
 		orderList = sqlMapper.queryForList("order.orderList", memresultClass.getMember_num());
 
 		totalCount = orderList.size();
@@ -89,9 +89,9 @@ public class OrderListAction extends ActionSupport {
 		orderresultClass = new OrderVO();
 
 		memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-		/*
-		 * if(memresultClass == null) { return LOGIN; }
-		 */
+		if(memresultClass == null) {
+        	return LOGIN;
+        }
 		orderList = sqlMapper.queryForList("order.order_selectAll");
 
 		totalCount = orderList.size();

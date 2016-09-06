@@ -8,6 +8,9 @@
 		<!-- basket list -->
 		<action name="basketList" class="basket.BasketAction">
 			<result type="tiles">basketList</result>
+			<result name="login">
+				/member/memberLogin.jsp
+			</result>
 		</action>
 		
 		<!--  basket add -->
@@ -16,11 +19,17 @@
 				/basket/basketCheck.jsp
 			</result>
 			<result type="tiles" name="success">addBasket</result>
+			<result name="login">
+				/member/memberLogin.jsp
+			</result>
 		</action>
 		
 		<!-- basket list에서 개별 삭제-->
 		<action name="deleteBasket" class="basket.BasketAction" method="delete">
 			<result type="tiles">deleteBasket</result>
+			<result name="login">
+				/member/memberLogin.jsp
+			</result>
 		</action>
 	</package>
 </struts>

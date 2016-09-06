@@ -56,12 +56,12 @@ public class BasketAction extends ActionSupport {
         paramBas = new BasketVO();
         resultBas = new BasketVO();
 
-        ActionContext context = ActionContext.getContext();
-        Map<String, Object> session = context.getSession();
-        int sessionid = (Integer) session.get("member_num");
-        memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck", sessionid);
-
-        basketList = sqlMapper.queryForList("basket.basket_list", sessionid); //아닛 여기도...
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        if(memresultClass == null) {
+        	return LOGIN;
+        }
+        
+        basketList = sqlMapper.queryForList("basket.basket_list", memresultClass.getMember_num());
 
         totalCount = basketList.size();// 전체 글의 갯수를 구함
         // 페이지액션 객체 생성
@@ -86,6 +86,9 @@ public class BasketAction extends ActionSupport {
         memresultClass = new MemberVO();
 
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        if(memresultClass == null) {
+        	return LOGIN;
+        }
 
         basketList = sqlMapper.queryForList("basket.basket_list", getMember_num()); //여기도..
         paramBas.setBasket_num(basket_num);

@@ -49,6 +49,9 @@ public class AddBasketAction extends ActionSupport {
         resultBas = new BasketVO();
 
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        if(memresultClass == null) {
+        	return LOGIN;
+        }
 
         paramBas.setMember_num(memresultClass.getMember_num());
         paramBas.setShowboard_num(getShowboard_num());			
