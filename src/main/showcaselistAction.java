@@ -98,15 +98,12 @@ public class showcaselistAction extends ActionSupport {
         System.out.println(searchKeyword); // 키워드를 출력
         System.out.println(showboard_category); //카테고리
         
-        showboard_paramClass = new showVO();
+/*        showboard_paramClass = new showVO();
         showboard_paramClass.setSubject("%" + getSearchKeyword() + "%");
         showboard_paramClass.setShowboard_category(showboard_category);
-        
-/*        System.out.println("showVO:"+showboard_paramClass.getSubject()); // 키워드를 출력
-        System.out.println("showVO:"+showboard_paramClass.getShowboard_category()); //카테고리
-*/        
 		list = sqlMapper.queryForList("show.selectSearch", showboard_paramClass ); // search 쿼리 수행
-		
+*/        
+		list = sqlMapper.queryForList("show.selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
 /*		showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
 */        return SUCCESS;
     }
