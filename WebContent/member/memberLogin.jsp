@@ -6,6 +6,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script>
+function checkIt() {
+	if (!document.loginform.email.value) {
+		alert("아이디를 입력하세요");
+		document.loginform.email.focus();
+		return false;
+	}
+	if (!document.loginform.password.value) {
+		alert("비밀번호를 입력하세요");
+		document.loginform.password.focus();
+		return false;
+	}
+
+}
+</script>
 <body>
 	<form name="loginform" action="/member/memberLogin.action" method="post" onsubmit="return checkIt()">
 	<div align=center>
