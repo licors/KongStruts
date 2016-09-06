@@ -64,11 +64,11 @@
     </a>
     <div class="searchKeyword">
     <s:if test="showboard_category != null">
-        <form name="findgoods" action="scdSlist.action?showboard_category=<s:property value="showboard_category"/>" method="post" >
+        <form name="findgoods" action="/showcase/scdSlist.action?showboard_category=<s:property value="showboard_category"/>" method="post" >
 <%--         	<s:hidden name="showboard_category" value="%{showboard_category}"/> --%>
     </s:if>
     <s:else>
-    	<form name="findgoods" action="scdlist.action" method="post" >
+    	<form name="findgoods" action="/showcase/scdSlist.action" method="post" >
     </s:else>
                 <input class="serchText" type="text" name="searchKeyword" size="10" value="" />
             <input class="serchButton" type="submit" value=""/> 
