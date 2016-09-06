@@ -14,9 +14,13 @@
             <result type="redirect-action">
             	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
             </result>
-            <result name="login">
-            	/member/memberLogin.jsp
-            </result>
+            <result type="chain" name="login">
+	            <param name="namespace">/member</param>
+	            <param name="actionName">memberLoginForm</param>
+        	</result>
+            <!-- <result name="login">
+            	 /member/memberLogin.jsp
+            </result> -->
         </action>
         
         <action name="commentdeleteAction" class="showcase.CommentDeleteAction">
@@ -26,9 +30,10 @@
                 <param name="showboard_num">${paramClass.showboard_num}</param> -->
                 <!-- <![CDATA[/commentListAction?showboard_num=${showboard_num}]]> -->
             </result>	
-            <result name="login">
-            	/member/memberLogin.jsp
-            </result>
+            <result type="chain" name="login">
+	            <param name="namespace">/member</param>
+	            <param name="actionName">memberLoginForm</param>
+        	</result>
         </action>
         
         <action name="commentModifyFormAction" class="showcase.CommentModifyAction" method="form">
@@ -41,9 +46,10 @@
             <result type="redirect-action">
             	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
             </result>
-            <result name="login">
-            	/member/memberLogin.jsp
-            </result>
+            <result type="chain" name="login">
+	            <param name="namespace">/member</param>
+	            <param name="actionName">memberLoginForm</param>
+        	</result>
         </action>
 	</package>
 </struts>
