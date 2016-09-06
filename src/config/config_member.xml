@@ -25,7 +25,8 @@
         <action name="memberLogin" class="member.MemberLoginAction">
             <!-- <result>/member/loginResult.jsp</result> --> <!-- 메인페이지로 이동? -->
 <!--             <result>/main/main.jsp</result> -->
-			<result type="tiles">main</result>   <!-- 0906 05:00 수호 수정.. 일단 로그인시 메인화면 뜨긴뜨는데 body부분이 엑박뜸 왜그런지 잘 이해가안감-->
+			<result>/member/member_LO.jsp</result>
+			<result name="error">/member/member_LO_Error.jsp</result> 
         </action>
 		
         <!-- 로그아웃 처리 -->
