@@ -1,51 +1,52 @@
-/**
- * 
- */
+var map_x;
+var map_y;
+var contents = "";
+var map;
 
-		function initialize() {
+function setLocation(x, y) {
+	map_x = x;
+	map_y = y;
+}
 
-			/*
-				http://openapi.map.naver.com/api/geocode.php?key=f32441ebcd3cc9de474f8081df1e54e3&encoding=euc-kr&coord=LatLng&query=서울특별시 강남구 강남대로 456
-                위의 링크에서 뒤에 주소를 적으면 x,y 값을 구할수 있습니다.
-			*/
-			var Y_point			= 35.87110100714382;		// Y 좌표
-			var X_point			= 128.60169690333006;		// X 좌표
+function initialize() {
+	var cairo = {lat: map_x, lng: map_y};
+	var mapOptions = {
+		zoom : 16,
+		scaleControl: true,
+		/* center: new google.maps.LatLng(35.87110100714382, 128.60169690333006) */
+		center : cairo
+	};
+	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	
+	var infowindow = new google.maps.InfoWindow;
+	infowindow.setContent('<b>' + contents + '</b>');
+	
+	var marker = new google.maps.Marker({map: map, position: cairo});
+	marker.addListener('click', function() {
+	  infowindow.open(map, marker);
+	});
+}
 
-			var zoomLevel		= 16;						// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+function geocode(address1, address2, content) {
+	var address = "";
+	address = address1 + " " + address2;
+	contents = content;
+	var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+		'address' : address,
+		'partialmatch' : true
+	}, geocodeResult);
+}
 
-			var markerTitle		= "위즈소프트";				// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
-			var markerMaxWidth	= 300;						// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-
-			// 말풍선 내용
-			var contentString	= '<div>' +
-			'<h2>위즈소프트</h2>'+
-			'<p>위즈소프트는 WEB Agency & SI 분야에서 10년 이상의 풍부한 경험을 보유한<br />' +
-            '전문 인력으로 구성된 E-Business 전문 기업입니다.</p>' +
-			//'<a href="http://www.daegu.go.kr" target="_blank">http://www.daegu.go.kr</a>'+ //링크도 넣을 수 있음
-			'</div>';
-
-			var myLatlng = new google.maps.LatLng(Y_point, X_point);
-			var mapOptions = {
-								zoom: zoomLevel,
-								center: myLatlng,
-								mapTypeId: google.maps.MapTypeId.ROADMAP
-			}
-			var map = new google.maps.Map(document.getElementById('map_view'), mapOptions);
-
-			var marker = new google.maps.Marker({
-													position: myLatlng,
-													map: map,
-													title: markerTitle
-			});
-
-			var infowindow = new google.maps.InfoWindow(
-														{
-															content: contentString,
-															maxWidth: markerMaxWidth
-														}
-			);
-
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.open(map, marker);
-			});
-		}
+function geocodeResult(results, status) {
+	//if( status == google.maps.GeocoderStatus.OK ) {
+	if (status == 'OK' && results.length > 0) {
+		//map.fitBounds(results[0].geometry.viewport);
+		setLocation(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+		initialize();
+	} else {
+		alert("Geocode was not successful for the following reason: "
+				+ status);
+	}
+}
+/* google.maps.event.addDomListener(window, 'load', geocode());  */
