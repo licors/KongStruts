@@ -23,7 +23,7 @@ function passwdcheck() {
 
 	} else {
 		alert("취소되었습니다");
-		window.location.href = 'memberMF.action';
+		window.location.href = 'memberModifyForm.action';
 		return false;
 	}
 }
