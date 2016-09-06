@@ -14,6 +14,11 @@
         <action name="scdlist" class="main.showcaselistAction">
             <result type="tiles">test_d</result>
         </action>
+        
+        <!-- 검색결과 리스트 -->
+        <action name="scdSlist" class="main.showcaseSearchAction">
+            <result type="tiles">test_d</result>
+        </action>
 
         <!-- 쓰기폼 -->
         <action name="scwrite_form" class="admin.showcase.showcasewriteAction" method="form">

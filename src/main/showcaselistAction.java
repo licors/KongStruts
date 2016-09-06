@@ -51,9 +51,9 @@ public class showcaselistAction extends ActionSupport {
             return category();
             // 검색값이 있으면 search()메서드를 호출
         }
-        if (getSearchKeyword() != null) {
-            return search();
-        }
+//        if (getSearchKeyword() != null) {
+//            return search();
+//        }
 		list = sqlMapper.queryForList("show.selectall");
         System.out.println(list);
         return SUCCESS;
@@ -66,9 +66,9 @@ public class showcaselistAction extends ActionSupport {
         if (getShowboard_category() != null) {
             return category();
         }
-        if (getSearchKeyword() != null) {
-            return search();
-        }
+//        if (getSearchKeyword() != null) {
+//            return search();
+//        }
         showboard_paramClass = new showVO();
 		list = sqlMapper.queryForList("show.selectall", showboard_paramClass);
         System.out.println(list);
@@ -92,21 +92,25 @@ public class showcaselistAction extends ActionSupport {
     }
 
     //일반회원 메인 상품검색
-    public String search() throws Exception {
-        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
-        
-        System.out.println(searchKeyword); // 키워드를 출력
-        System.out.println(showboard_category); //카테고리
-        
-/*        showboard_paramClass = new showVO();
-        showboard_paramClass.setSubject("%" + getSearchKeyword() + "%");
-        showboard_paramClass.setShowboard_category(showboard_category);
-		list = sqlMapper.queryForList("show.selectSearch", showboard_paramClass ); // search 쿼리 수행
-*/        
-		list = sqlMapper.queryForList("show.selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
-/*		showboard_category = new String(getShowboard_category().getBytes("8859_1"), "UTF-8"); //파라메타에서 카테고리 디코딩해서 jsp에 넘겨줌
-*/        return SUCCESS;
-    }
+//    public String search() throws Exception {
+//        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+//
+//        System.out.println("key:"+searchKeyword); // 키워드를 출력
+///*        System.out.println(showboard_category); //카테고리
+//*/        
+//        System.out.println("c:"+getShowboard_category());
+//        if (getShowboard_category() != null && getSearchKeyword() != null) {
+//        	showboard_paramClass = new showVO();
+//        	showboard_paramClass.setSubject("%" + getSearchKeyword() + "%");
+//        	showboard_paramClass.setShowboard_category(new String(getShowboard_category().getBytes("8859_1"), "UTF-8"));
+//        	
+//			list = sqlMapper.queryForList("show.selectSearchC", showboard_paramClass ); // search 쿼리 수행
+//        } else {
+//        	list = sqlMapper.queryForList("show.selectSearch", "%" + getSearchKeyword() + "%"); // search 쿼리 수행
+//        }
+///*
+//*/        return SUCCESS;
+//    }
 
     //관리자  상품메뉴(전시,미술,이벤트) 클릭시
     public String adcategory() throws Exception {

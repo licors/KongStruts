@@ -87,6 +87,13 @@
         and showboard_category = #showboard_category# ORDER BY subject DESC -->
     </select>
     
+    <select id="selectSearchC" parameterClass="show" resultMap="showRes">
+        <include refid="select-all"/>
+        WHERE subject like #subject#
+        and showboard_category = #showboard_category#
+        ORDER BY showboard_num DESC
+    </select>
+    
     
     <!-- ������ ��� ��� �˻�(��ȣ) 08.25.04:50 -->
     <!--    <select id="selectLastNum" resultClass="show">
