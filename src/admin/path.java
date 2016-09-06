@@ -16,7 +16,9 @@ public class path {
 //    public static String savepath = path.class.getResource("").getPath() + "../../../../../WebContent/showcaseImg/"; //업로드용, 넷빈
     // /F:/java/konggaru/build/web/WEB-INF/classes/admin/
     
-    public static String savepath = path.class.getResource("").getPath() + "../../../WebContent/showcaseImg/"; //업로드용, 이클립스
+    public static String savepath = path.class.getResource("").getPath() + "../../../showcaseImg/"; //업로드용, 이클립스
+    public static String barcodesav = path.class.getResource("").getPath() + "../../../barcodeImg/"; //바코드업로드용, 이클립스
+    // C:\java\Yj\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\kong\WEB-INF\classes\admin
     // /F:/java/konggaru/build/classes/admin/
     public static String sql = "sqlMapConfig.xml";
     public static String support_listaction = "/support/supportlist";

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import admin.path;
 import admin.showcase.showVO;
 import member.MemberVO;
 import basket.BasketVO;
@@ -245,7 +246,8 @@ public class OrderProcessAction extends ActionSupport {
 
             try {
                 Barcode barcode = BarcodeFactory.createCode128B(codeStr);
-                File file = new File("C:\\kong\\WebContent\\barcodeImg\\" + codeStr + ".png");
+                File file = new File(path.barcodesav + codeStr + ".png");
+                System.out.println("b:"+path.barcodesav + codeStr + ".png");
                 //File file = new File("C:\\java\\YJ\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
                 BarcodeImageHandler.savePNG(barcode, file);
             } catch (Exception e) {
@@ -401,10 +403,10 @@ public class OrderProcessAction extends ActionSupport {
         order_paramClass.setStatus("티켓 취소");
         order_resultClass = (OrderVO) sqlMapper.queryForObject("order.orderDetail",
         		order_num);
-/*        
+        
         String str = order_resultClass.getBarcode();
         
-        File file = new File("C:\\kong\\WebContent\\barcodeImg\\"+ 
+        File file = new File(path.barcodesav+ 
         					str + ".png");
         if(file.delete()) {
         	System.out.println("바코드 이미지 파일 지우기 성공" + str);
@@ -413,7 +415,7 @@ public class OrderProcessAction extends ActionSupport {
         }
         
         order_paramClass.setBarcode("");
-        */
+        
         sqlMapper.update("order.update_order", order_paramClass);
         
         System.out.println("티켓 취소됨");
