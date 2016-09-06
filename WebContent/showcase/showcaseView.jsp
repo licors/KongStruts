@@ -16,19 +16,19 @@
 <title>전시 상세보기</title>
 <script src="../js/jquery-1.1.3.1.pack.js" type="text/javascript"></script>
 <script src="../js/jquery.history_remote.pack.js" type="text/javascript"></script>
-<%-- <script src="../js/jquery.tabs.pack.js" type="text/javascript"></script> --%>
+<script src="../js/jquery.tabs.pack.js" type="text/javascript"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCRSeEVl3pSPGUVWwW4DSwZNDu0Q3AuSpc"></script>
 <script src="/js/google_map.js" type="text/javascript"></script>
-<!-- <link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen"> -->
+<link rel="stylesheet" href="../js/jquery.tabs.css" type="text/css" media="print, projection, screen"> 
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
 <script type="text/javascript">
-	/* $(function() {
+	 $(function() {
 		$('#detail-tab').tabs({
 			fxSlide : true,
 			fxFade : true,
 			fxSpeed : 'normal'
 		});
-	}); */
+	}); 
 </script>
 </head>
 
@@ -41,9 +41,9 @@
 			<th colspan="3"><b><s:property value="resultClass.subject" /></b></th>
 		</tr>
 		<tr>
-			<td rowspan="6" align="center"><img
+			<td rowspan="5" align="center"><img
 				src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[0]"/>"
-				width="120" height="150" border="1"></td>
+				width="150" height="200" border="0"></td>
 			<td>주소</td>
 			<td><s:property value="resultClass.address1" id="address1"/>&nbsp;<s:property
 					value="resultClass.address2" id="address2"/></td>
@@ -54,7 +54,14 @@
 		</tr>
 		<tr>
 			<td>입장료</td>
-			<td><s:property value="resultClass.pay" /></td>
+			<td>
+				<s:if test="resultClass.pay != 0">
+					<s:property value="resultClass.pay" />
+				</s:if>
+				<s:else>
+					무료
+				</s:else>
+			</td>
 		</tr>
 		<tr>
 			<td>문의전화</td>
@@ -65,8 +72,21 @@
 			<td><s:property value="resultClass.tag" /></td>
 		</tr>
 		<tr>
-			<td>공유하기</td>
-			<td>페이스북</td>
+			<td colspan="3" align="right">
+				<s:if test="memresultClass.admin > 0">
+					<input name="support" type="button" value="수정"
+						onClick="javascript:location.href = 'scmodify_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
+					<input name="support" type="button" value="삭제"
+						onClick="javascript:location.href = 'scdelete_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
+				</s:if> 
+				<input name="basket" type="button" value="관심티켓"
+					onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+				<input name="order" type="button" value="신청하기"
+					onClick="javascript:location.href = '/order/order_check.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+				<input name="comment" type="button" value="댓글달기"
+					onClick="javascript:location.href = '/comment/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+				<!-- <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'"> -->
+			</td>
 		</tr>
 		<tr>
 			<td colspan="3" align="center">
@@ -86,23 +106,6 @@
 			 	<td colspan="3">
 			 		<div id="map-canvas" style="height: 300px; width: 400px"></div>
 			 	</td>
-		</tr>
-		<tr>
-			<td colspan="3" align="right">
-				<s:if test="memresultClass.admin > 0">
-					<input name="support" type="button" value="수정"
-						onClick="javascript:location.href = 'scmodify_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
-					<input name="support" type="button" value="삭제"
-						onClick="javascript:location.href = 'scdelete_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
-				</s:if> 
-				<input name="basket" type="button" value="관심티켓"
-					onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-				<input name="order" type="button" value="신청하기"
-					onClick="javascript:location.href = '/order/order_check.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-				<input name="comment" type="button" value="댓글달기"
-					onClick="javascript:location.href = '/comment/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
-				<!-- <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'"> -->
-			</td>
 		</tr>
 	</table>
 </body>
