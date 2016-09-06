@@ -86,7 +86,7 @@
 						<tr height="40">
 							<td align="right" colspan="6">
 								<input type="button" name="orderB" value="주문하기"
-								onClick="location.href='/order/orderFormB.action'" >
+								onClick="location.href='/order/order_checkB.action'" >
 								<input type="button" name="list" value="메인으로"
 								onClick="location.href='/showcase/sclist.action'">
 							</td>						

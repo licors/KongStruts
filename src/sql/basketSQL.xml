@@ -36,6 +36,13 @@
 		and bs.member_num=#member_num#
 		ORDER BY bs.basket_num DESC
 	</select>
+	
+	<!-- 장바구니에 이미 추가된 전시 인지 확인 -->
+	<select id="basket_check" resultMap="basketRes" parameterClass="basket">
+		<include refid="select-all"/>
+		and bs.member_num=#member_num#
+		and bs.showboard_num=#showboard_num#
+	</select>
 
 	<!-- 장바구니 추가 -->
 	<insert id="basketInsert" parameterClass="basket">

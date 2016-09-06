@@ -44,6 +44,7 @@ public class AddBasketAction extends ActionSupport {
     }
 
     public String execute() throws Exception {
+    	memresultClass = new MemberVO();
         paramBas = new BasketVO();
         resultBas = new BasketVO();
 
@@ -51,10 +52,16 @@ public class AddBasketAction extends ActionSupport {
 
         paramBas.setMember_num(memresultClass.getMember_num());
         paramBas.setShowboard_num(getShowboard_num());			
-        paramBas.setBasket_date(today.getTime());				
+        paramBas.setBasket_date(today.getTime());
+        
+        resultBas = (BasketVO) sqlMapper.queryForObject("basket.basket_check", paramBas);
 
-        sqlMapper.insert("basket.basketInsert", paramBas);
-        return SUCCESS;
+        if(resultBas != null) {
+        	return INPUT;
+        } else {
+        	sqlMapper.insert("basket.basketInsert", paramBas);
+        	return SUCCESS;
+        }
     }
 
     public static Reader getReader() {

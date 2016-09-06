@@ -12,7 +12,10 @@
 		
 		<!--  basket add -->
 		<action name="addBasket" class="basket.AddBasketAction">
-			<result type="tiles">addBasket</result>
+			<result name="input" type="dispatcher">
+				/basket/basketCheck.jsp
+			</result>
+			<result type="tiles" name="success">addBasket</result>
 		</action>
 		
 		<!-- basket list에서 개별 삭제-->
