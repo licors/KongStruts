@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.HashMap"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -68,16 +69,18 @@
 			<td>페이스북</td>
 		</tr>
 		<tr>
-			<td colspan="3" align="center"><s:property
-					value="resultClass.content" /> ${content} <br> <!-- img 가 null 인 경우는 어떻게 처리할 것인가 -->
-
-				<img
-				src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[1]"/>"
-				width="200" height="150" border="0" /><br> <img
-				src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[2]"/>"
-				width="200" height="150" border="0" /><br> <img
-				src="<s:property value="img"/><s:property value="resultClass.file_savname.split(',')[3]"/>"
-				width="200" height="150" border="0" /></td>
+			<td colspan="3" align="center">
+				<s:property value="resultClass.content" /> ${content} <br> 
+				<s:if test="resultClass.file_savname != null">
+					<c:set var="savname" value="${resultClass.file_savname}" />
+                    <c:set var="img_paths" value="${fn:split(savname, ',')}" />
+                    <c:forEach var="file" items="${img_paths}" varStatus="stat">
+                        <c:if test="${stat.index != 0}">
+                            <img src="<s:property value="img"/>${file}" width="200" height="150" border="0" /><br>
+                        </c:if>
+                    </c:forEach>
+				</s:if>
+			</td>
 		</tr>
 		<tr>
 			 	<td colspan="3">
@@ -85,18 +88,19 @@
 			 	</td>
 		</tr>
 		<tr>
-			<td colspan="3" align="right"><s:if
-					test="memresultClass.admin > 0">
+			<td colspan="3" align="right">
+				<s:if test="memresultClass.admin > 0">
 					<input name="support" type="button" value="수정"
 						onClick="javascript:location.href = 'scmodify_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
 					<input name="support" type="button" value="삭제"
 						onClick="javascript:location.href = 'scdelete_form.action?showboard_num=<s:property value="%{resultClass.showboard_num}"/>'">
-				</s:if> <input name="basket" type="button" value="관심티켓"
-				onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+				</s:if> 
+				<input name="basket" type="button" value="관심티켓"
+					onClick="javascript:location.href = '/basket/addBasket.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
 				<input name="order" type="button" value="신청하기"
-				onClick="javascript:location.href = '/order/order_check.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+					onClick="javascript:location.href = '/order/order_check.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
 				<input name="comment" type="button" value="댓글달기"
-				onClick="javascript:location.href = '/comment/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
+					onClick="javascript:location.href = '/comment/commentListAction.action?showboard_num=<s:property value="%{resultClass.showboard_num}" />'">
 				<!-- <input name="basket" type="button" value="메인으로" onClick="javascript:location.href = '/showcase/sclist.action'"> -->
 			</td>
 		</tr>
