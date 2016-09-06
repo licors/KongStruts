@@ -40,7 +40,7 @@ function joinCheck() {
 <body>
         
        
-    <h3 class="subTitle" align="center">회원가입</h3>
+    <h3 align="center">회원가입</h3>
     
 	<div align="center">
 		<input type="checkbox" id="agreement" /><label for="agreement" style="cursor:pointer;">서비스 이용약관에 동의 합니다.</label><a href="./agree.jsp" target="_blank">(자세히보기 )</a><br>

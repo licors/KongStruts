@@ -9,9 +9,8 @@
 <body>
 <div align="center">
 회사소개/제휴문의 광고(제휴)문의 이용약관 개인정보취급방침<br>
-
-서울 강남구 테헤란로63길 14 (삼성2동 142-2) 인화빌딩 4층<br>
-
+서울 강남구 역삼동 콩콩콩콩(콩콩동 142-2) 콩콩빌딩 3층<br>
+Copyright © 2016 CANGOTO Inc. All rights® reserved.
 </div>
 </body>
 </html>

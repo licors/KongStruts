@@ -61,7 +61,7 @@
                 <td colspan="2" align="center">
                     <input class="ok" type="submit" name="confirm" value="정보수정"> 
                     <input class="delete" type="button" value="회원탈퇴" onclick="javascript:window.location.href = 'deleteForm.action'">
-                    <input class="back" type="button" value="취소" onclick="javascript:window.location.href = 'showcase/sclist.action'">
+                    <input class="back" type="button" value="취소" onclick="javascript:window.location.href = '/showcase/sclist.action'">
                 </td>
             </tr>
         </table>

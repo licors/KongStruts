@@ -13,7 +13,7 @@
 		
         <!-- 회원가입 -->
         <action name="memberJoin" class="member.MemberJoinAction">
-            <result>/member/memberLogin.jsp</result>
+            <result type="tiles">login</result>
         </action>
 		
         <!-- 로그인 폼 -->
@@ -21,14 +21,14 @@
             <result type="tiles">login</result>
         </action>
 		
-        <!-- 로그인 처리-->
+        <!-- 로그인 처리 -->
         <action name="memberLogin" class="member.MemberLoginAction">
             <!-- <result>/member/loginResult.jsp</result> --> <!-- 메인페이지로 이동? -->
 <!--             <result>/main/main.jsp</result> -->
 			<result type="tiles">main</result>   <!-- 0906 05:00 수호 수정.. 일단 로그인시 메인화면 뜨긴뜨는데 body부분이 엑박뜸 왜그런지 잘 이해가안감-->
         </action>
 		
-        <!--  로그아웃 처리  -->
+        <!-- 로그아웃 처리 -->
         <action name="memberLogout" class="member.MemberLoginAction" method="logout">
             <!-- <result>/member/memberLogin.jsp</result> -->
             <!-- <result>/main/main.jsp</result> -->
@@ -41,7 +41,7 @@
             <result type="tiles">modify</result>
         </action>
 		
-        <!-- 회원 정보 수정 처리-->
+        <!-- 회원 정보 수정 처리 -->
         <action name="memberM" class="member.MemberModifyAction" >
             <result>/member/member_M.jsp</result>
         </action>
@@ -51,13 +51,13 @@
             <result>/member/pmodifyForm.jsp</result>
         </action> 
 		
-        <!--  회원 정보 수정 비밀번호 체크 처리 -->
+        <!-- 회원 정보 수정 비밀번호 체크 처리 -->
         <action name="memberPMF2" class="member.MemberModifyAction" method="modifyPassword">
             <result>/member/member_PMF.jsp</result>
             <result name="error">/member/member_PMF_Error.jsp</result>
         </action>
 		
-        <!--  회원탈퇴 폼 -->
+        <!-- 회원탈퇴 폼 -->
         <action name="deleteForm" class="member.MemberModifyAction" method="delform">
             <result type="tiles">delete</result>	
         </action> 
@@ -67,17 +67,17 @@
             <result>/member/memberout.jsp</result>
         </action>
 		
-        <!--  비밀번호 찾기 폼 -->
+        <!-- 비밀번호 찾기 폼 -->
         <action name="memberpfindF" class="member.MemberFindAction" method="findpwform">
-            <result>/member/passwordfindForm.jsp</result>
+            <result type="tiles">pfind</result>
         </action>
 		
-        <!--  비밀번호 찾기 처리 -->
+        <!-- 비밀번호 찾기 처리 -->
         <action name="memberpfind" class="member.MemberFindAction" method="findpassword">
             <result>/member/member_pfind.jsp</result>
         </action>
         
-        <!-- 관리자용 리스트  -->
+        <!-- 관리자용 리스트 -->
         <action name="memberlist" class="admin.member.memberadminlistAction">
             <result type="tiles">memberadmin_list</result>
         </action>
@@ -87,7 +87,7 @@
             <result>/admin/member/membermodifyForm.jsp</result>
         </action>
         
-        <!-- 관리자용 회원 정보 수정 처리-->
+        <!-- 관리자용 회원 정보 수정 처리 -->
         <action name="memberadminModify" class="admin.member.memberadminmodifyAction" >
             <result type="redirect-action">
                 <param name="actionName">memberlist</param>

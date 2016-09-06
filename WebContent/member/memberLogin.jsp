@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form name="loginform" action="/member/memberLogin.action" method="post" onsubmit="return checkIt()">
+	<div align=center>
 	<table>
 		<tr>
 			<td align="center">이메일</td>
@@ -31,6 +32,7 @@
 			</td>
 		</tr>
 	</table>
+	</div>
 	</form>
 </body>
 </html>
