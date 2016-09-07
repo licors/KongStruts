@@ -11,6 +11,7 @@
         <title><tiles:getAsString name="title" /></title>
         <!-- 부트스트랩 -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/index.css" rel="stylesheet">
         <script type="text/javascript" src="/js/index.js"></script><!-- 로그인용 -->
         <link rel="shortcut icon" href="/cangoto_ico_16x16.ico" type="image/x-icon" /><!-- 파비콘 추가 -->
     </head>
