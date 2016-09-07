@@ -59,10 +59,10 @@ CREATE TABLE BASKET
 )
 
 alter table BASKET add constraint fk_basket_member_num FOREIGN KEY(MEMBER_NUM) 
-	references MEMBER(MEMBER_NUM) on delete cascade
+	references MEMBER(MEMBER_NUM) on delete cascade;
 	
 alter table BASKET add constraint fk_basket_showboard_num FOREIGN KEY(SHOWBOARD_NUM) 
-	references SHOWBOARD(SHOWBOARD_NUM) on delete cascade
+	references SHOWBOARD(SHOWBOARD_NUM) on delete cascade;
 
 CREATE TABLE SHOWCASECOMMENT
 (COMMENT_NUM NUMBER PRIMARY KEY,
@@ -100,7 +100,7 @@ CREATE TABLE SUPPORT
 	RE_LEVEL NUMBER(10)
 )
 alter table SUPPORT add constraint fk_support_member_num FOREIGN KEY(MEMBER_NUM) 
-	references MEMBER(MEMBER_NUM) on delete cascade
+	references MEMBER(MEMBER_NUM) on delete cascade;
 	
 CREATE TABLE QNA
 (QNA_NUM NUMBER PRIMARY KEY,

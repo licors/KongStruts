@@ -12,25 +12,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import admin.showcase.showVO;
 import member.MemberVO;
 
-/*	CREATE TABLE showboard(
-SHOWBOARD_NUM NUMBER PRIMARY KEY,
-SUBJECT VARCHAR2(100) NOT NULL,
-ADDRESS1 VARCHAR2(20) NOT NULL,
-ADDRESS2 VARCHAR2(200) NOT NULL,
-"DATE" VARCHAR2(25) NOT NULL,
-PAY NUMBER(7) NOT NULL,
-TEL VARCHAR2(13) NOT NULL,
-TAG VARCHAR2(100),
-CONTENT VARCHAR2(4000) NOT NULL,
-FILE_ORGNAME VARCHAR2(50),
-FILE_SAVNAME VARCHAR2(50),
-READCOUNT NUMBER(10),
-ORDERCOUNT NUMBER(10),
-MAP VARCHAR2(50),
-STATUS NUMBER DEFAULT 0,
-SHOWBOARD_CATEGORY VARCHAR2(25) NOT NULL
-)
- */
 public class ShowcaseReadAction extends ActionSupport {
 
     public static Reader reader;
@@ -38,7 +19,7 @@ public class ShowcaseReadAction extends ActionSupport {
 
     private showVO paramClass;
     private showVO resultClass;
-//    private MemberVO memresultClass;
+    private MemberVO memresultClass;
 
     private int showboard_num;
     private int pay;                //무료는 0원
@@ -74,7 +55,7 @@ public class ShowcaseReadAction extends ActionSupport {
         // 해당 번호의 글을 가져온다.
         resultClass = (showVO) sqlMapper.queryForObject("show.selectOne", paramClass.getShowboard_num());
 
-//        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
+        memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         return SUCCESS;
     }
@@ -206,5 +187,13 @@ public class ShowcaseReadAction extends ActionSupport {
     public void setImg(String img) {
         this.img = img;
     }
+
+	public MemberVO getMemresultClass() {
+		return memresultClass;
+	}
+
+	public void setMemresultClass(MemberVO memresultClass) {
+		this.memresultClass = memresultClass;
+	}
 
 }
