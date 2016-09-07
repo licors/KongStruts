@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,6 +24,7 @@
 </script>
 </head>
 <body>
+<div style="width:800px">
 	<form name="detailForm" method="post" action="/order/orderCancel.action"
 		onsubmit="return deletecheck()">
 		<table width="700" border="0" cellspacing="0" cellpadding="2"
@@ -38,8 +40,9 @@
 		</tr>
 		<tr>
 			<td>
+			
 				<table width="700" border="0" cellspacing="1" cellpadding="5"
-					align="center" bgcolor="#CCCCCC">
+					align="center" bgcolor="#CCCCCC" class="table table-bordered">
 
 					<tbody>
 						<tr bgcolor="#F0F0F0">
@@ -54,8 +57,8 @@
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
 							<a href="/order/readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
-							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
-									width="90" />	<!-- 수정수정 -->
+							<img src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
+				width="100px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
 							</a>
 							</td>
 							<td>
@@ -95,6 +98,7 @@
 						</tr>
 					</tbody>
 				</table>
+				
 			</td>
 		</tr>
 		<tr>
@@ -106,14 +110,14 @@
 		</tr>
 		<tr>
 			<td>
-				<table border="0" width="700" cellpadding="7" cellspacing="2"
-					bordercolordark="white" bordercolorlight="#626262" align="center"
-					bgcolor="#E1E1E1">
+				<table width="700" border="0" cellspacing="1" cellpadding="5"
+					align="center" bgcolor="#CCCCCC" class="table table-bordered">
 					<tbody>
-						<tr valign="top">
-							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>신청인 정보</b></font></td>
-							<td bgcolor="#F7F7F7">
+						<tr bgcolor="#F0F0F0">
+							<td colspan="5" align="center"><strong>신청자 정보</strong></td>
+						</tr>
+						<tr valign="top">							
+							<td>
 								<table width="680" border="0" cellspacing="0" cellpadding="1"
 									align="center">
 									<tbody>
@@ -152,23 +156,6 @@
 														value="${order_resultClass.company}" readonly/>	
 											</td>
 										</tr>
-										<%-- <tr>
-											<td width="110">&nbsp;우편번호 :</td>
-											<td>
-												<table width="210" border="0" cellspacing="0"
-													cellpadding="0">
-													<tbody>
-														<tr>
-															<td width="34">
-															<input class="order" type="text" name="order_zipcode" size="7" maxlength="7"
-															value="${memresultClass.zipcode}" readonly></input>
-															</td>	
-															<td width="100"></td>
-														</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr> --%>
 										<tr>
 											<td width="110">&nbsp;주<font color="#F7F7F7">_</font>소 :
 											</td>
@@ -199,13 +186,13 @@
 		<tr>
 			<td align="center" height="20">&nbsp;</td>
 		</tr>
-			<table border="0" width="700" cellpadding="7" cellspacing="2"
-					bordercolordark="white" bordercolorlight="#626262" align="center"
-					bgcolor="#E1E1E1">
+			<table width="700" border="0" cellspacing="1" cellpadding="5"
+					align="center" bgcolor="#CCCCCC" class="table table-bordered">
 					<tbody>
+						<tr bgcolor="#F0F0F0">
+							<td colspan="5" align="center"><strong>전시회 입장 바코드</strong></td>
+						</tr>
 						<tr valign="middle">
-							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
-								valign="middle"><font size="2"><b>전시 입장 바코드</b></font></td>
 							<td bgcolor="#F7F7F7" align="center" valign="middle">
 								<%-- <s:if test='<s:property value="order_resultClass.status" /> == "티켓 신청"'> --%>
 								<s:if test='%{order_resultClass.status  =="티켓 신청"}'>
@@ -213,7 +200,7 @@
 									align="center">
 									<tbody>
 										<tr>
-										<td bgcolor="#F7F7F7" align="center">
+										<td align="center">
 											<img src="../barcodeImg/<s:property value="order_resultClass.barcode"/>.png"
 									width="70%" />
 										</td>
@@ -237,25 +224,29 @@
 		<tr>
 				<td align="center" colspan="5">
 					<s:if test='%{order_resultClass.status == "티켓 만료"}'>
-						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()">
+						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError()" class="btn btn-success btn-sm">
 					</s:if>
 					<s:elseif test='%{order_resultClass.status =="티켓 취소"}'>
-						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError2()">
+						<input type="button" name="cancelTicket" value="티켓취소" onClick="javascript:deleteError2()" class="btn btn-success btn-sm">
 					</s:elseif>
 					<s:else>
-						<input type="submit" name="cancelTicket" value="티켓취소">
+						<input type="submit" name="cancelTicket" value="티켓취소" class="btn btn-success btn-sm">
 					</s:else> 
 					
 					<!-- 리스트로 -->
 					<s:if test='%{memresultClass.member_num == 1}'>
-					<input type="button" name="list" value="목록으로" onClick="location.href='/order/adminOrderList.action?currentPage=<s:property value="%{currentPage}"/>'">
+					<input type="button" name="list" value="목록으로" onClick="location.href='/order/adminOrderList.action?currentPage=<s:property value="%{currentPage}"/>'"
+					class="btn btn-default btn-sm">
 					</s:if>
 					<s:else>
-					<input type="button" name="list" value="목록으로" onClick="location.href='/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'">
+					<input type="button" name="list" value="목록으로" onClick="location.href='/order/orderList.action?currentPage=<s:property value="%{currentPage}"/>'"
+					class="btn btn-default btn-sm">
+					
 					</s:else>
 				</td>
 			</tr>
 		</table>
 	</form>
+	</div>
 </body>
 </html>

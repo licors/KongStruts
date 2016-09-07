@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 
-a:hover{
+/* a:hover{
     color:#C3C;
     text-decoration:none;
 }
@@ -16,21 +16,21 @@ a:active{
 a:link {
     color: #666;
     text-decoration: none; 
-}
+} */
 
 /* *{border:0; padding:0; margin:auto;} */
 li{list-style-type:none;}
 
-body{width:100%; height:auto; }
+/* body{width:100%; height:auto; } */
 
 
 #wrap{
-    width:100%;	
+    width:100%;
 } 
 /*
 header 부분임
 */
-/* #header {
+#header {
     width:100%; height:113px; border-bottom:1px solid #bbbbbb;
 }
 #header .header_wrap{width:1000px;margin:auto;overflow:hidden;}
@@ -77,7 +77,7 @@ header 부분임
 }  
 #header .memberArea .order{ 
     float:left; width:70px; height:16px; background-image:url(/template/image/header/buy_list.jpg); background-repeat:no-repeat; cursor:pointer;
-} */
+}
 
 /*
         navi
@@ -117,3 +117,307 @@ footer
 #footer{width:100%;height:113px;border-top:1px solid #bbb;}
 #footer .footer_wrap{width:1000px;margin:10px auto;overflow:hidden;}
 #footer .footer_wrap .ft_lt{margin:10px auto;}
+
+
+
+
+/* ################### 메인 슬라이드쇼 이미지 css 시작 ###################*/
+/*
+    these are just the default styles used in the Cycle2 demo pages.  
+    you can use these styles or any others that you wish.
+*/
+/* set border-box so that percents can be used for width, padding, etc (personal preference) */
+.cycle-slideshow, .cycle-slideshow * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+
+.cycle-slideshow { width: 45%; min-width: 400px; max-width: 800px; margin: 10px auto; padding: 0; position: relative;
+    background: url(http://malsup.github.com/images/spinner.gif) 50% 50% no-repeat;
+
+ }
+
+/* slideshow images (for most of the demos, these are the actual "slides") */
+.cycle-slideshow img { 
+    /* 
+    some of these styles will be set by the plugin (by default) but setting them here
+    helps avoid flash-of-unstyled-content
+    */
+    position: absolute; top: 0; left: 0;
+    width: 100%; padding: 0; display: block;
+}
+
+/* in case script does not load */
+.cycle-slideshow img:first-child {
+    position: static; z-index: 100;
+}
+
+/* pager */
+.cycle-pager { 
+    text-align: center; width: 100%; z-index: 500; position: absolute; top: 10px; overflow: hidden;
+}
+.cycle-pager span { 
+    font-family: arial; font-size: 50px; width: 16px; height: 16px; 
+    display: inline-block; color: #ddd; cursor: pointer; 
+}
+.cycle-pager span.cycle-pager-active { color: #D69746;}
+.cycle-pager > * { cursor: pointer;}
+
+
+/* caption */
+.cycle-caption { position: absolute; color: white; bottom: 15px; right: 15px; z-index: 700; }
+
+
+/* overlay */
+.cycle-overlay { 
+    font-family: tahoma, arial;
+    position: absolute; bottom: 0; width: 100%; z-index: 600;
+    background: black; color: white; padding: 15px; opacity: .5;
+}
+
+
+/* prev / next links */
+.cycle-prev, .cycle-next { position: absolute; top: 0; width: 30%; opacity: 0; filter: alpha(opacity=0); z-index: 800; height: 100%; cursor: pointer; }
+.cycle-prev { left: 0;  background: url(http://malsup.github.com/images/left.png) 50% 50% no-repeat;}
+.cycle-next { right: 0; background: url(http://malsup.github.com/images/right.png) 50% 50% no-repeat;}
+.cycle-prev:hover, .cycle-next:hover { opacity: .7; filter: alpha(opacity=70) }
+
+.disabled { opacity: .5; filter:alpha(opacity=50); }
+
+
+/* display paused text on top of paused slideshow */
+.cycle-paused:after {
+    content: 'Paused'; color: white; background: black; padding: 10px;
+    z-index: 500; position: absolute; top: 10px; right: 10px;
+    border-radius: 10px;
+    opacity: .5; filter: alpha(opacity=50);
+}
+
+/* 
+    media queries 
+    some style overrides to make things more pleasant on mobile devices
+*/
+
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    .cycle-slideshow { width: 200px;}
+    .cycle-overlay { padding: 4px }
+    .cycle-caption { bottom: 4px; right: 4px }
+}
+/* ################### 메인 슬라이드쇼 이미지 css 끝 ###################*/
+
+/* 상단 네비 스타일 */
+/* 상단 네비 메뉴 스타일 - 색갈 변화 관련 */
+nav {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-right, .navbar-header {
+    padding-top: 4px;
+    margin-right: 30px;
+}
+
+
+    .navbar-header .navbar-brand {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+        .navbar-header .navbar-brand img {
+            display: inline-block;
+            vertical-align: middle;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+
+
+nav.navbar .navbar-collapse .navbar-nav.navbar-right > li > .dropdown-menu:before {
+    content: '';
+    display: inline-block;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    position: absolute;
+    left: auto;
+}
+
+nav.navbar .navbar-collapse .navbar-nav.navbar-right > li > .dropdown-menu:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #FFFFFF;
+    position: absolute;
+    top: -6px;
+    right: 10px;
+    left: auto;
+}
+
+nav.navbar .navbar-collapse .navbar-nav.left > li {
+    background-color: #FFFFFF;
+}
+
+    nav.navbar .navbar-collapse .navbar-nav.left > li > a {
+        line-height: 58px;
+        padding: 0 30px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #000;
+    }
+
+    nav.navbar .navbar-collapse .navbar-nav.left > li:first-child > a {
+        /*margin-left: 30px;*/
+    }
+
+    nav.navbar .navbar-collapse .navbar-nav.left > li.active > a {
+        background-color: #FFFFFF;
+    }
+
+    nav.navbar .navbar-collapse .navbar-nav.left > li > .dropdown-menu:after {
+        content: '';
+        display: inline-block;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        position: absolute;
+        top: -6px;
+        left: 10px;
+    }
+
+
+.cgt-content-wrapper {
+    /*padding-top: 20px;*/
+    padding-bottom: 20px;
+}
+
+ 
+ul.cgt_m_menu_ctype .dropdown-menu {
+    padding: 10px;
+    border-top: none;
+    text-align: center;
+}
+
+    ul.cgt_m_menu_ctype .dropdown-menu a {
+        font-weight: bold;
+    }
+
+div.cgt_m_menu_ctype_1 {
+    float: left;
+    background: #12B1DB;
+    color: #FFF;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.cgt_m_menu_ctype_2 {
+    float: left;
+    background: #EB009F;
+    color: #FFF;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.cgt_m_menu_ctype_3 {
+    float: left;
+    background: #FBA92C;
+    color: #FFF;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.cgt_m_menu_ctype_4 {
+    float: left;
+    background: #E2060A;
+    color: #FFF;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.cgt_m_menu_ctype_1 > a {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+div.cgt_m_menu_ctype_2 > a {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+div.cgt_m_menu_ctype_3 > a {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+div.cgt_m_menu_ctype_4 > a {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+li.cgt_m_menu_ctype_1 > a:hover {
+    color: #eec02f !important;
+}
+
+li.cgt_m_menu_ctype_2 > a:hover {
+    color: #e55557 !important;
+}
+
+li.cgt_m_menu_ctype_3 > a:hover {
+    color: #f147ba !important;
+}
+
+li.cgt_m_menu_ctype_4 > a:hover {
+    color: #2cb6da !important;
+}
+
+ul.cgt_m_menu_ctype .dropdown-menu li:not(:first-child) {
+    margin: 10px;
+}
+
+li.cgt_m_menu_ctype_1 > .dropdown-menu > li > a:hover {
+    background-color: #eec02f;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+li.cgt_m_menu_ctype_2 > .dropdown-menu > li > a:hover {
+    background-color: #e55557;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+li.cgt_m_menu_ctype_3 > .dropdown-menu > li > a:hover {
+    background-color: #f147ba;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+li.cgt_m_menu_ctype_4 > .dropdown-menu > li > a:hover {
+    background-color: #2cb6da;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+li > .dropdown-menu {
+    margin-left: -33px;
+}
+
+/* 상단 네비 스타일 색갈변화 */
+
+
+dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;list-style:none;background-color:#fff;border:1px solid #ccc;border:1px solid rgba(0,0,0,0.15);border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,0.175);box-shadow:0 6px 12px rgba(0,0,0,0.175);background-clip:padding-box}
+
+
+
+
+
+
+
+

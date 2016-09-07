@@ -55,7 +55,10 @@
 				</tr>
 				<s:iterator value="basketList" status="stat">
 					<tr>		<!-- img 수정 -->							
-						<td width="80" align="center"><img src="goods/upload/<s:property value="basket_goods_image.split(',')[0]"/>" width="60" height="60"></td>
+						<td width="80" align="center">
+						<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="100px" height="150px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+						</td>
 						<td width="300" align="center">${subject}</td>
 						<td width="80"align="center">${date}</td>
 						<td width="80"align="center">${address2}</td>

@@ -25,7 +25,7 @@
 	}
 </script>
 
-<table width="700" align="left">
+<table width="700" style="border:0; padding:0; margin:auto;">
 	<tr height="30">
 		<td align="center" style="">
 		<s:if test="showboard_category==null">
@@ -45,7 +45,7 @@
 	</tr>
 </table>
 
-<table width="700" align="center">
+<table width="700" style="border:0; padding:0; margin:auto;">
 	<s:iterator value="list" status="stat">
  		<s:url id="viewURL" action="scread">
 			<s:param name="showboard_num">

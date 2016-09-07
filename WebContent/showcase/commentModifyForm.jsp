@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>¼öÁ¤</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ìˆ˜ì •</title>
 </head>
 <body>
 <form name="commentForm" action="/comment/commentModifyAction.action"
@@ -19,7 +19,7 @@
 				<td height="1" colspan="2"></td>
 			</tr>
 			<tr>
-				<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>³»¿ë</td>
+				<td bgcolor="#F4F4F4"><font color="#FF0000">*</font>ë‚´ìš©</td>
 				<td bgcolor="#FFFFFF"><s:textarea name="content" value="%{commentResultClass.content}" cols="50" rows="3" ></s:textarea>
 				</td>
 			</tr>
@@ -31,8 +31,8 @@
 			</tr>
 			<tr>
 				<td align="right" colspan="2">
-					<input name="submit" type="submit" value="¼öÁ¤" class="inputb">
-					<input name="back" type="button" value="µÚ·Î" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'">
+					<input name="submit" type="submit" value="ìˆ˜ì •" class="inputb">
+					<input name="back" type="button" value="ë’¤ë¡œ" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'">
 				</td>
 			</tr>
 		</table>

@@ -2,8 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -45,41 +46,32 @@ function doImgPop(img){
 </script>
 </head>
 <body>
-	<tr height="20"></tr>
-	<form name="orderList" method="post">
-		<table width="700" align="center">
-			<tr>
-				<td colspan="6" align="center">
-					<h1>주문 내역 페이지</h1>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="6" align="center">
-					<hr>
-				</td>
-			</tr>
-			<tr bgcolor="#FFFFFF" align="center">
+신청 내역 페이지
+	<!-- <div style="display:table-cell; vertical-align:middle; padding-top:15px; padding-bottom:15px; width:1000px;"> -->
+	<form name="orderList" method="post" >
+	
+		<table width="600" class="table table_condensed table-hover">
+
+			<tr valign="middle" class="active"  class="text-center">
 				<td align="center">사진</td>
 				<td align="center">신청일자</td>
 				<td align="center" colspan="2">티켓 정보</td>
 				<td align="center">바코드</td>
 				<td align="center" width="100">상태</td>
 			</tr>
-			<tr>
-				<td colspan="6" align="center">
-					<hr>
-				</td>
-			</tr>
+
 
 			<s:iterator value="orderList" status="stat">
-				<tr height="80">
+			
+				<tr height="80" valign="middle">
 					<td>
-						<img src="">
+						<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="50px" height="100px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
 					</td>
 					<td width="90" align="center">
 						<fmt:formatDate value="${order_date }" pattern="yyyy-MM-dd hh:mm" /></td>
-					<td colspan="2" align="center">
-						<table width="100%" border="0" cellspacing="0" cellpadding="2">
+					<td colspan="2" align="center" height="80">
+						<table>
 							<tbody>
 							<tr height="23">
 								<td width="30" align="right"><b>전시명:</b> </td>
@@ -111,7 +103,8 @@ function doImgPop(img){
 						</tr>
 						<tr>
 							<td>							
-								<input type="button" name="status" value="취소하기" onclick="return deletecheck(${order_num})">
+								<input type="button" name="status" value="취소하기" 
+								onclick="return deletecheck(${order_num})" class="btn btn-xs btn-success">
 							</td>
 						</tr>
 						</tbody>
@@ -132,13 +125,7 @@ function doImgPop(img){
 					신청하신 전시회가 없습니다.</font></td>
 				</tr>
 			</s:if>
-			
-			<tr>
-				<td colspan="6" align="center">
-					<hr>
-				</td>
-			</tr>
-			
+
 			<tr>
 				<td colspan="6" align="center">
 					<s:property value="pagingHtml" escape="false" />
@@ -146,6 +133,8 @@ function doImgPop(img){
 			</tr>
 
 		</table>
+	
 	</form>
+	</div>
 </body>
 </html>

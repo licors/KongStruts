@@ -11,39 +11,58 @@
         <title><tiles:getAsString name="title" /></title>
         <!-- 부트스트랩 -->
         <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/index.css" rel="stylesheet">
         <script type="text/javascript" src="/js/index.js"></script><!-- 로그인용 -->
         <link rel="shortcut icon" href="/cangoto_ico_16x16.ico" type="image/x-icon" /><!-- 파비콘 추가 -->
     </head>
-    <body>
+<body>
+	
+	<div id="wrap">
+		<div id="header">
+    	    <tiles:insertAttribute name="top" />
+ 		</div>
+	</div>
 
-        <div>
-            <div>
-                <tiles:insertAttribute name="top" />
-            </div>
-        </div>
+	<div id="wrap">
+		<div id="navi">
+			<tiles:insertAttribute name="left" />
+		</div>
+	</div>
 
-        <div>
-            <div>
-                <tiles:insertAttribute name="left" />
-            </div>
-        </div>
+	<br /><br />
+	
+	
+	
+<%-- 	<div id="wrap">
+		<div id="content_wrap">
+		<div id="main_content">
+			<tiles:insertAttribute name="body" />
+		</div>
+		</div>
+	</div> --%>
+		<div>
+		<div>
+		<div>
+			<tiles:insertAttribute name="body" />
+		</div>
+		</div>
+	</div>
 
-        <br /><br />
-        <div>
-            <div>
-                <div>
-                    <tiles:insertAttribute name="body" />
-                </div>
-            </div>
-        </div>
 
-        <br /><br />
 
-        <div>
-            <div>
-                <tiles:insertAttribute name="bottom" />
-            </div>
-        </div>
 
-    </body>
+	<br /><br />
+	
+<%-- 	<div id="wrap">
+		<div id="footer">
+			<tiles:insertAttribute name="bottom" />
+		</div>
+	</div> --%>
+		<div id="wrap">
+		<div id="footer">
+			<tiles:insertAttribute name="bottom" />
+		</div>
+	</div>
+	
+</body>
 </html>
