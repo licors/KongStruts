@@ -77,8 +77,8 @@
 		</tr>
 		<tr>
 			<td>
-				<table width="700" border="0" cellspacing="1" cellpadding="5"
-					align="center" bgcolor="#CCCCCC" class="table table-bordered">
+				<table width="700"
+					align="center"class="table table-bordered">
 
 					<tbody>
 						<tr height=30 bgcolor="#F0F0F0" class="active">
@@ -294,21 +294,20 @@
 			</tr>
 		</table>
 
-		<table width="700" border="0" cellspacing="1" cellpadding="5"
-			align="center" bgcolor="#CCCCCC">
+		<table width="700" align="center">
 
 			<tbody>
-				<tr height=30 bgcolor="#F0F0F0">
+				<tr height=30>
 					<td colspan="5" align="center"><strong>신청 티켓</strong></td>
 				</tr>
-				<tr bgcolor="#FFFFFF" align="center">
+				<tr align="center">
 					<td width="90">전시</td>
 					<td>전시회 종류</td>
 					<td width="200">전시 기타사항</td>
 					<!-- <td width="60">주문/취소</td> -->
 				</tr>
 
-				<tr bgcolor="#FFFFFF" align="center">
+				<tr align="center">
 					<td>
 						<img src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
 				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
