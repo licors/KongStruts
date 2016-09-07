@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<style type="text/css">
+<!--<style type="text/css">
 h2{
 	color: red;
 }
@@ -14,8 +14,8 @@ pre{
 	padding: 4px;
 	border: #F90 dotted 1px;
 }
-</style>
-<link href="./css/style.css" rel="stylesheet" type="text/css" />
+</style>-->
+<!--<link href="./css/style.css" rel="stylesheet" type="text/css" />-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 <script>
 function showcaseView(url) {

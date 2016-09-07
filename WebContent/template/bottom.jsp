@@ -6,54 +6,7 @@
 <script>
 		dable('sendLog', 'visit');
 </script>
-<style type="text/css">
-.col-md-12 {
-	width: 100% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px
-}
-
-.col-xs-12 {
-	width: 100% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px
-}
-
-.col-lg-12 {
-	width: 100% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px
-}
-
-.nopadding {
-	padding: 0 !important;
-	margin: 0 !important;
-}
-
-.col-md-9 {
-	width: 75% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px
-}
-
-.col-md-3 {
-	width: 25% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px float: left
-}
-
-.col-xs-6 {
-	width: 50% position: relative;
-	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px float: left
-}
-</style>
+C
 
 		<!-- Dable Code -->
 		<!-- BEGIN PRE-FOOTER -->

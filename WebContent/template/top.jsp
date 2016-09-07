@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>	
 
-<style type="text/css">
+<!--<style type="text/css">
 *{border:0; padding:0; margin:auto;}
 
 #header {
@@ -56,7 +56,7 @@
 #header .memberArea .order{ 
     float:left; width:70px; height:16px; background-image:url(/template/image/header/buy_list.jpg); background-repeat:no-repeat; cursor:pointer;
 }
-</style>
+</style>-->
 
 <div class="header_wrap">
     <a href="/showcase/sclist.action">

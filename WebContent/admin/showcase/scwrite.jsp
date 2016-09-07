@@ -46,10 +46,10 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="sc" action="/showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+            <form name="sc" action="/showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()" class="form-control-static">
             </s:if>
             <s:else>
-                <form name="sc" action="/showcase/scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()">
+                <form name="sc" action="/showcase/scmodify.action" method="post" enctype="multipart/form-data" onsubmit="return check()" class="form-control-static">
                     <s:hidden name="showboard_num" value="%{rc.showboard_num}"/>
                 </s:else>
                 <table align="center" width="600">
