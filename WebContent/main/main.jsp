@@ -25,13 +25,13 @@ function showcaseView(url) {
 </head>
 <body>
                     <s:if test="memresultClass.admin > 0"><!-- 어드민 qna 작성 -->
-                        <input name="support" type="button" value="전시글 작성"
+                        <input name="support" type="button" style="float:right;" value="전시글 작성"
                                onClick="javascript:location.href = '/showcase/scwrite_form.action'">
                     </s:if>
 
 <!-- 리스트1(전시) 출력 -->
 <br/><br/>
-<table width="700" align="left" border="0">
+<table width="700" style="border:0; padding:0; margin:auto;">
 		<tr height="30">
 			<td align="center" style="">
 				<!-- <img src="images/goods/all.jpg"></img> -->
@@ -44,7 +44,7 @@ function showcaseView(url) {
 	
 	
 	<br/>
-	<table width="700" align="center" border="0">
+	<table width="700" style="border:0; padding:0; margin:auto;">
 		<s:iterator value="list1" status="stat">
 				<s:url id="viewURL" action="scread">
 			<s:param name="showboard_num">
@@ -74,7 +74,7 @@ function showcaseView(url) {
 
 <!-- 리스트2(미술) 출력 -->
 <br/><br/>
-<table width="700" align="left" border="0">
+<table width="700" style="border:0; padding:0; margin:auto;">
 		<tr height="30">
 			<td align="center" style="">
 				<img src="images/goods/all.jpg"></img>
@@ -83,7 +83,7 @@ function showcaseView(url) {
 	</table>
 	
 	<br/>
-	<table width="700" align="center" border="0">
+	<table width="700" style="border:0; padding:0; margin:auto;">
 		<s:iterator value="list2" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="300" align="center">
@@ -105,7 +105,7 @@ function showcaseView(url) {
 
 <!-- 리스트3(이벤트) 출력 -->
 <br/><br/>
-<table width="700" align="left" border="0">
+<table width="700" style="border:0; padding:0; margin:auto;">
 		<tr height="30">
 			<td align="center" style="">
 				<img src="images/goods/all.jpg"></img>
@@ -113,7 +113,7 @@ function showcaseView(url) {
 		</tr>
 	</table>
 	<br/>
-	<table width="700" align="center" border="0">
+	<table width="700" style="border:0; padding:0; margin:auto;">
 		<s:iterator value="list3" status="stat">
 <s:if test="#stat.index % 4 eq 0"><tr></tr></s:if>
 <td width="230" align="center">
