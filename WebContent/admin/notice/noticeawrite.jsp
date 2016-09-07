@@ -27,47 +27,45 @@
         </script>
     </head>
     <body>
-        <s:if test="rc == null">
-            <form name="notice" action="noticewrite.action" method="post" onsubmit="return check()">
-            </s:if>
-            <s:else>
-                <form name="notice" action="noticemodify.action" method="post" onsubmit="return check()">
-                    <s:hidden name="notice_num" value="%{rc.notice_num}"/>
-                    <s:hidden name="currentPage" value="%{currentPage}"/>
-                </s:else>
-                <table align="center" width="600">
-                    <tr>
-                        <td align="right" colspan="2">
-                            <font color="#FF0000">*</font>는 필수 입력 사항입니다.
-                        </td>
-                    </tr>
-                    <tr bgcolor="#777777"><!-- 제목 -->
-                        <td height="1" colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>제목</td>
-                        <td width="420" bgcolor="#FFFFFF">
-                            <input class="input" type="text" name="subject" value="<s:property value="rc.subject"/>" size="30" maxlength="25"/>
-                        </td>
-                    </tr>
-                    <tr bgcolor="#777777"><!-- 내용 -->
-                        <td height="1" colspan="2"></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2" width="180" bgcolor="#F4F4F4"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</td>
-                        <td rowspan="2" width="420" bgcolor="#FFFFFF">
-                            <textarea name="content" cols="57" rows="10"><s:property value="rc.content"/></textarea> 
-                        </td>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                        <td align="right" colspan="2">
-                            <input name="submit" type="submit" value="보내기" class="write">
-                        </td>
-                    </tr>
-                </table>
-            </form>
+        <div class="table-bordered">
+            <s:if test="rc == null">
+                <form name="notice" action="noticewrite.action" method="post" onsubmit="return check()" class="form-control-static">
+                </s:if>
+                <s:else>
+                    <form name="notice" action="noticemodify.action" method="post" onsubmit="return check()" class="form-control-static">
+                        <s:hidden name="notice_num" value="%{rc.notice_num}"/>
+                        <s:hidden name="currentPage" value="%{currentPage}"/>
+                    </s:else>
+                    <table align="center" width="600" class="table-condensed">
+                        <tr>
+                            <td align="right" colspan="2">
+                                <font color="#FF0000">*</font>는 필수 입력 사항입니다.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="subject"><font color="#FF0000">&nbsp;&nbsp;*</font>제목</label>
+                            </td>
+                            <td>
+                                <input type="text" name="subject" value="<s:property value="rc.subject"/>" size="30" maxlength="25" placeholder="제목을 입력하세요." class="form-control" id="subject"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="content"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</label><br>
+                            </td>
+                            <td>
+                                <textarea name="content" cols="57" rows="10" placeholder="내용을 입력하세요." class="form-control" id="content"><s:property value="rc.content"/></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right" colspan="2">
+                                <input name="submit" type="submit" value="보내기"  class="btn btn-default btn-xs">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+        </div>
     </body>
 </html>
 
