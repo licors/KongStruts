@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -74,7 +75,8 @@ function doImgPop(img){
 			<s:iterator value="orderList" status="stat">
 				<tr height="80">
 					<td>
-						<img src="">
+						<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="100px" height="150px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
 					</td>
 					<td width="90" align="center">
 						<fmt:formatDate value="${order_date }" pattern="yyyy-MM-dd hh:mm" /></td>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -54,8 +55,8 @@
 						<tr bgcolor="#FFFFFF" align="center">
 							<td>
 							<a href="/order/readAction.action?showboard_num=${show_resultClass.showboard_num }"> <!-- 수정수정수정 -->
-							<img src="showcase/upload/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
-									width="90" />	<!-- 수정수정 -->
+							<img src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
 							</a>
 							</td>
 							<td>

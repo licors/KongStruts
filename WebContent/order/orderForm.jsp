@@ -63,8 +63,7 @@
 		
 		<s:property value="resultBas.showboard_num"/>	<!-- //resultBas.basket_goods_name -->
 	
-		<table width="770" border="0" cellspacing="0" cellpadding="2"
-			align="center">
+		<table width="700" align="center" class="table-condensed">
 			<tbody>
 				<tr>
 					<td width="15">▶</td>
@@ -79,10 +78,10 @@
 		<tr>
 			<td>
 				<table width="700" border="0" cellspacing="1" cellpadding="5"
-					align="center" bgcolor="#CCCCCC">
+					align="center" bgcolor="#CCCCCC" class="table table-bordered">
 
 					<tbody>
-						<tr height=30 bgcolor="#F0F0F0">
+						<tr height=30 bgcolor="#F0F0F0" class="active">
 							<td colspan="5" align="center"><strong>신청 티켓</strong></td>
 						</tr>
 
@@ -97,9 +96,10 @@
 						<s:iterator value="BasketList" status="stat">
 							
 							<tr bgcolor="#FFFFFF" align="center">
-								<td><img
-									src="goods/upload/<s:property value="basket_goods_image.split(',')[0]"/>"
-									width="90" /></td><!-- 수정! 이미지 url수정 -->
+								<td>
+									<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+								</td>
 								<td>
 									<table width="100%" border="0" cellspacing="0" cellpadding="2">
 										<tbody>
@@ -149,8 +149,8 @@
 					bordercolordark="white" bordercolorlight="#626262" align="center"
 					bgcolor="#E1E1E1">
 					<tbody>
-						<tr valign="top">
-							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
+						<tr valign="top" class="active">
+							<td bgcolor="#EFEFEF" height="20" align="center" width="200"
 								valign="middle"><font size="2"><b>신청인 정보</b></font></td>
 							<td bgcolor="#F7F7F7">
 
@@ -260,9 +260,9 @@
 		</tr>
 		<tr height="50">
 			<td colspan="2" bgcolor="white" align="center">
-				<input type="submit" name="submit" value="신청하기">
+				<input type="submit" name="submit" value="신청하기"  class="btn btn-default btn-xs">
 				&nbsp;&nbsp;
-				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"/>
+				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"  class="btn btn-default btn-xs"/>
 			</td>
 		</tr>
 	</tbody>
@@ -309,10 +309,10 @@
 				</tr>
 
 				<tr bgcolor="#FFFFFF" align="center">
-					<td><img
-						src="goods/upload/<s:property value="goods_resultClass.file_savname.split(',')[0]"/>"
-						width="90" /></td>
-					<!-- 수정! 이미지 url수정 -->
+					<td>
+						<img src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
+				width="200px" height="250px" onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+					</td>
 					<td>
 						<table width="100%" border="0" cellspacing="0" cellpadding="2">
 							<tbody>
@@ -356,7 +356,7 @@
 					bgcolor="#E1E1E1">
 					<tbody>
 						<tr valign="top">
-							<td bgcolor="#EFEFEF" height="20" align="center" width="150"
+							<td bgcolor="#EFEFEF" height="20" align="center" width="200"
 								valign="middle"><font size="2"><b>신청인 정보</b></font></td>
 							<td bgcolor="#F7F7F7">
 								<table width="600" border="0" cellspacing="0" cellpadding="1"
@@ -491,9 +491,9 @@
 		</tr> -->
 		<tr height="50">
 			<td colspan="2" bgcolor="white" align="center">
-				<input type="submit" name="submit" value="신청하기">
+				<input type="submit" name="submit" value="신청하기"  class="btn btn-default btn-xs">
 				&nbsp;&nbsp;
-				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"/>
+				<input type="button" name="back" value="돌아가기" onClick="javascript:history.go(-1)"  class="btn btn-default btn-xs"/>
 			</td>
 		</tr>
 	</tbody>

@@ -46,12 +46,14 @@ public class OrderCheckAction extends ActionSupport {
         	return LOGIN;
         }
 
+        //중복 신청 방지
         order_paramClass.setMember_num(memresultClass.getMember_num());
         order_paramClass.setShowboard_num(showboard_num);
+        order_paramClass.setStatus("티켓 신청");
         
         order_resultClass = (OrderVO) sqlMapper.queryForObject("order.order_check", order_paramClass);
 
-        if(order_resultClass != null && order_resultClass.getStatus().equals("티켓 신청")) {
+        if(order_resultClass != null) {
         	return INPUT;
         } else {
         	return SUCCESS;

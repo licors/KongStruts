@@ -80,6 +80,7 @@
 		<include refid="select-all" />
 		and od.MEMBER_NUM=#member_num#
 		and od.SHOWBOARD_NUM=#showboard_num#
+		and od.STATUS=#status#
 	</select>
 
 	<!-- 관리자 order list 검색 -->
