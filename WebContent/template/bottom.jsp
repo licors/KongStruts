@@ -6,7 +6,7 @@
 <script>
 		dable('sendLog', 'visit');
 </script>
-C
+
 
 		<!-- Dable Code -->
 		<!-- BEGIN PRE-FOOTER -->

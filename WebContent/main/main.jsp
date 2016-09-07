@@ -34,7 +34,8 @@ function showcaseView(url) {
 <table width="700" align="left" border="0">
 		<tr height="30">
 			<td align="center" style="">
-				<img src="images/goods/all.jpg"></img>
+				<!-- <img src="images/goods/all.jpg"></img> -->
+				<h1>전시</h1>
 				                <td align="right" colspan="5">
 
 			</td>
