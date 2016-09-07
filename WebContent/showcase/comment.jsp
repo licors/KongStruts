@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<link rel="stylesheet" type="text/css" href="/css/index.css" />
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript">
 /* 	function addModifyText() {
 	    var form = document.getElementById("commentList");
@@ -35,6 +35,10 @@
 	function commentModifyView(url) {
         window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
     }
+	 
+	function popupWindow(url) {
+		window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
+	}
 </script>
 <title>전시 댓글</title>
 </head>

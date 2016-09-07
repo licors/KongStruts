@@ -5,11 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <title>수정</title>
+<script type="text/javascript">
+	function validation() {
+		if (!document.commentForm.content.value) {
+			alert("내용을 입력해 주세요.");
+			
+			return false;
+		}
+	}
+
+</script>
 </head>
 <body>
-<form name="commentForm" action="/comment/commentModifyAction.action"
-		method="post" onsubmit="return validation();">
+<form name="commentForm" action="/comment/commentModifyAction.action" method="post" onsubmit="return validation();">
 		<s:hidden name="showboard_num" value="%{showboard_num}" />
 		<s:hidden name="comment_num" value="%{comment_num}" />
 		<s:hidden name="ref" value="0"></s:hidden>
@@ -32,7 +42,7 @@
 			<tr>
 				<td align="right" colspan="2">
 					<input name="submit" type="submit" value="수정" class="inputb">
-					<input name="back" type="button" value="뒤로" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'">
+					<input name="back" type="button" value="뒤로" onClick="javascript:location.href='/comment/commentListAction.action?showboard_num=<s:property value="%{showboard_num}"/>'">
 				</td>
 			</tr>
 		</table>
