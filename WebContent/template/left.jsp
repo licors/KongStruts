@@ -5,8 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.HashMap"%>
 
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-
 <section style="padding: 0px 0px 0px 0px;">
 
 	<div class="cgt-banner-container slick-initialized slick-slider"
@@ -30,7 +28,8 @@
 							<img src="/content/img/ctype-1-ribbon.png" alt="리본" style="">
 						</div>
 					</div>
-					<img src="https://www.cangoto.kr/Resource/Ticket/TI(147).jpg"
+					<!-- <img src="https://www.cangoto.kr/Resource/Ticket/TI(147).jpg" -->
+					<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 						alt="행사이미지" style="height: 281px; width: 480px; max-width: 600px;"
 						class="cgt-slide-img"> <a id=""
 						href="/Event/1/3575/2016-서울기프트쇼"

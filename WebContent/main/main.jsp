@@ -6,16 +6,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
+<!--<style type="text/css">
+h2{
+	color: red;
+}
+pre{
+	padding: 4px;
+	border: #F90 dotted 1px;
+}
+</style>-->
 <!--<link href="./css/style.css" rel="stylesheet" type="text/css" />-->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script> <!-- 메인 드랍다운용 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
 
-<script>
-function showcaseView(url) {
-	window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
-	}
-</script>
+
 </head>
+
 <body>
 
     <!-- ############################## list1(display) ############################## -->
