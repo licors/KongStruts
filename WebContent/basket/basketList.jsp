@@ -23,36 +23,18 @@
 </script>
 </head> 
 <body>
+<div class="container">
 	<form name="basketList" method="post">
-		<table width="700" align="center">
+		<table width="600" align="center" class="table table_condensed table-hover">
 			<tr>
-				<td colspan="7">
-				<h1>CART</h1>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="7">
-				<h4 color="pink">-장바구니에 담은 상품입니다.</h4>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="7" align="center">
-				<hr>
-				</td>
-			</tr>
-			<tr>
-				<tr bgcolor="#FFFFFF" align="center">
+				<tr align="center" class="active">
 				<td align="center">사진</td>
 				<td align="center">전시명</td>
 				<td align="center">전시기간</td>
 				<td align="center">장소</td>
-				<td align="center">취소</td>
+				<td align="center">취소 </td>
 				</tr>
-				<tr>
-					<td colspan="7" align="center">
-					<hr>
-					</td>
-				</tr>
+
 				<s:iterator value="basketList" status="stat">
 					<tr>		<!-- img 수정 -->							
 						<td width="80" align="center">
@@ -64,14 +46,10 @@
 						<td width="80"align="center">${address2}</td>
 						<td width="80" align="center">
 							<input type="button" name="deleteB" value="삭제" 
-							onClick="location.href='/basket/deleteBasket.action?basket_num=<s:property value="basket_num"/>'">
+							onClick="location.href='/basket/deleteBasket.action?basket_num=<s:property value="basket_num"/>'" class="btn btn-xs btn-danger">
 						</td>
 					</tr> 
-					<tr>  
-						<td colspan="7" align="center">
-							<hr>
-						</td>
-					</tr>
+
 				</s:iterator>
 					<s:if test="basketList.size() == 0">
 						<tr>
@@ -81,7 +59,7 @@
 						<tr height="40">
 							<td align="right" colspan="6">
 								<input type="button" name="list" value="메인으로"
-								onClick="location.href='/showcase/sclist.action'">
+								onClick="location.href='/showcase/sclist.action'" class="btn btn-xs btn-default">
 							</td>
 						</tr>
 					</s:if>
@@ -89,9 +67,9 @@
 						<tr height="40">
 							<td align="right" colspan="6">
 								<input type="button" name="orderB" value="주문하기"
-								onClick="location.href='/order/order_checkB.action'" >
+								onClick="location.href='/order/order_checkB.action'" class="btn btn-xs btn-success">
 								<input type="button" name="list" value="메인으로"
-								onClick="location.href='/showcase/sclist.action'">
+								onClick="location.href='/showcase/sclist.action'" class="btn btn-xs btn-default">
 							</td>						
 						</tr>
 					</s:else>
@@ -100,5 +78,6 @@
 					</tr>
 			</table>
 		</form>
+		</div>
 </body>
 </html>
