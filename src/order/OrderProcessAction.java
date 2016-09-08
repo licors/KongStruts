@@ -70,82 +70,6 @@ public class OrderProcessAction extends ActionSupport {
         reader.close();
     }
 
-    /*	
-	//주문 처리 폼
-	public String form() throws Exception {
-		 
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-
-		show_paramClass = new showVO();
-		show_resultClass = new showVO();
-
-		order_paramClass = new OrderVO();
-		order_resultClass = new OrderVO();
-		
-		// member 고유넘버로 회원정보빼오기
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionid = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
-				sessionid);
-
-		// 상품번호로 상품정보 꺼내오기
-		show_paramClass.setShowboard_num(getShowboard_num());
-		show_resultClass = (showVO) sqlMapper.queryForObject(
-				"show.selectOne", show_paramClass);
-
-		order_goods_amount = getGoods_amount();
-		order_goods_size = getGoods_size();
-		order_goods_color = getGoods_color();
-
-		showboard_num = show_paramClass.getShowboard_num();
-		qr코드는 여기에서 생성! barcode = 
-		order_sum_money = (getGoods_price() * order_goods_amount);
-
-		return SUCCESS;
-	}
-	
-	//장바구니 구매 처리 폼
-	public String form_B() throws SQLException {
-		memparamClass = new MemberVO();
-		memresultClass = new MemberVO();
-
-		show_paramClass = new showVO();
-		show_resultClass = new showVO();
-
-		paramBas = new BasketVO();
-		resultBas = new BasketVO();
-
-		// 주문 신청인 정보 가져오기
-		ActionContext context = ActionContext.getContext();
-		Map<String, Object> session = context.getSession();
-		int sessionid = (Integer) session.get("member_num");
-		memresultClass = (MemberVO) sqlMapper.queryForObject("member.userCheck",
-				sessionid);
-
-		// 해당 아이디의 장바구니 목록 가져오기
-		basketList = sqlMapper.queryForList("basket.basketList", sessionid);
-		// goodsList =
-		// sqlMapper.queryForList("goodsselect",getBasket_goods_name());
-		// System.out.println(goodsList);
-		if (basketList.size() == 0) {
-			return INPUT; // 여기 잘 생각해보기!!!;;;;
-		} else {
-			for (int i = 0; i < basketList.size(); i++) {
-
-				// order_snum_money =0;
-				paramBas = basketList.get(i);
-				order_sum_money += (paramBas.getBasket_goods_price() * paramBas.getBasket_goods_amount());
-				
-				showList = sqlMapper.queryForList("show.select", paramBas.getSubject());
-				for (int j = 0; j < showList.size(); j++) {
-					show_resultClass = showList.get(j);
-				}
-			}
-			return SUCCESS;
-		}
-	}*/
     public String execute() throws Exception {
         memparamClass = new MemberVO();
         memresultClass = new MemberVO();
@@ -153,22 +77,23 @@ public class OrderProcessAction extends ActionSupport {
         memresultClass = admin.MemberLoginCheck.getMember(sqlMapper, memresultClass);
 
         //System.out.println(memresultClass.getMember_num());
+        
         show_resultClass = new showVO();
         show_resultClass = (showVO) sqlMapper.queryForObject(
                 "show.selectOne", getShowboard_num());
 
+        show_paramClass = new showVO();
+        show_paramClass.setShowboard_num(getShowboard_num());
+        sqlMapper.update("show.ordercountPlus", show_paramClass);
+        
         order_paramClass = new OrderVO();
         order_resultClass = new OrderVO();
-        
-        /*paramClass.setShowboard_num(getShowboard_num());
-        sqlMapper.update("show.readcountPlus", paramClass);*/
         
         order_paramClass.setName(getName());
         order_paramClass.setSex(getSex());
         order_paramClass.setCompany(getCompany());
         order_paramClass.setAddress(getAddress());
         order_paramClass.setEmail(getEmail());
-        //order_paramClass.setbarcode(barcode);	//barcode는 계산해서 넣어야되므로
         order_paramClass.setTel(getTel());
 
         order_paramClass.setMember_num(getMember_num());
@@ -226,16 +151,12 @@ public class OrderProcessAction extends ActionSupport {
 
             order_paramClass.setShowboard_num(resultBas.getShowboard_num());
 
-            /*if (getOrder_member_id() == null) {
-				return INPUT;			//로그인이 안되어있을때 구매하기가 되면 처리하기위해 한듯?
-			}*/
-            
-            /*paramClass.setShowboard_num(getShowboard_num());
-            sqlMapper.update("show.readcountPlus", paramClass);*/
+            show_paramClass = new showVO();
+            show_paramClass.setShowboard_num(resultBas.getShowboard_num());
+            sqlMapper.update("show.ordercountPlus", show_paramClass);
             
             order_paramClass.setMember_num(memresultClass.getMember_num());
             order_paramClass.setName(getName());
-            System.out.print(order_paramClass.getName());
             order_paramClass.setSex(getSex());
             order_paramClass.setCompany(getCompany());
             order_paramClass.setAddress(getAddress());
@@ -407,10 +328,15 @@ public class OrderProcessAction extends ActionSupport {
         order_paramClass = new OrderVO();
         order_resultClass = new OrderVO();
         show_paramClass = new showVO();
+        
         order_paramClass.setOrder_num(order_num);
         order_paramClass.setStatus("티켓 취소");
         order_resultClass = (OrderVO) sqlMapper.queryForObject("order.orderDetail",
         		order_num);
+      
+        //신청수 감소
+        show_paramClass.setShowboard_num(order_resultClass.getShowboard_num());
+        sqlMapper.update("show.ordercountMinus", show_paramClass);
         
         String str = order_resultClass.getBarcode();
         

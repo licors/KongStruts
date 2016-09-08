@@ -141,9 +141,15 @@
         UPDATE SHOWBOARD SET readcount = readcount + 1
         <include refid="where-no"/>
     </update>
-    
+    <!-- 유진: 신청수증가 -->
     <update id="ordercountPlus" parameterClass="show">
         UPDATE SHOWBOARD SET ordercount = ordercount + 1
+        <include refid="where-no"/>
+    </update>
+    
+    <!-- 유진: 신청취소시 신청수 감소 -->
+    <update id="ordercountMinus" parameterClass="show">
+        UPDATE SHOWBOARD SET ordercount = ordercount - 1
         <include refid="where-no"/>
     </update>
 

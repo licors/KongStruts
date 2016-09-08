@@ -79,31 +79,35 @@
 				<s:iterator value="orderList" status="stat">
 					<s:url id="viewURL" action="scread">
 						<s:param name="showboard_num">
-						<s:property value="showboard_num" />
+							<s:property value="showboard_num" />
 						</s:param>
 					</s:url>
 					<div class="cgt-latest cgt-list-ctype-1">
 						<div class="cgt_latest_image_area">
-							<img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
-							class="img-responsive"/>
+							<a href="/showcase/scread.action?showboard_category=${show_resultClass.showboard_category}&showboard_num=${show_resultClass.showboard_num }">
+								<img
+								src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
+								class="img-responsive" />
+							</a>
 						</div>
 						<!-- img -->
 						<div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
-						
+
 						<!-- over layer -->
 						<div class="cgt_list_explanation">
 							<!-- title -->
 							<div class="subject">
-								<a href="/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
-												${subject } </a>
+								<a
+									href="/order/orderView.action?order_num=${order_num}&currentPage=${currentPage }">
+									${subject } </a>
 							</div>
-							
+
 							<!-- date -->
 							<div class="schedule">
 								<s:property value="date" />
 							</div>
-							
-							
+
+
 							<div class="place_price">
 								<div class="place">
 									<s:property value="address2" />
@@ -119,44 +123,44 @@
 									${status } 완료<br>
 									</s:else>
 								</div>
-								<div style="width:30px; margin:10px 10px 10px 10px">
-								<s:if test='%{status == "티켓 신청" }'>
-								<img
-								src="../barcodeImg/${barcode}.png" style="cursor: pointer;"
-								onclick="doImgPop('../barcodeImg/${barcode}.png')" width="220" />
-								</s:if>
-								<s:else>
-								<img
-								src="../barcodeImg/default.png" width="220" />
-								</s:else>
+								<div style="width: 30px; margin: 10px 10px 10px 10px">
+									<s:if test='%{status == "티켓 신청" }'>
+										<img src="../barcodeImg/${barcode}.png"
+											style="cursor: pointer;"
+											onclick="doImgPop('../barcodeImg/${barcode}.png')"
+											width="220" />
+									</s:if>
+									<s:else>
+										<img src="../barcodeImg/default.png" width="220" />
+									</s:else>
+								</div>
 							</div>
-							</div>
-							
+
 						</div>
 						<!-- contents-->
 						<!-- social -->
 						<div class="cgt_list_count clearfix"
 							style="font-size: 12px; color: #666;">
 							<div style="float: left;">
-							<s:if test='%{status == "티켓 신청" }'>
-								<input
+								<s:if test='%{status == "티켓 신청" }'>
+									<input
 								type="button" name="status" value="취소하기"
 								onclick="return deletecheck(${order_num});"
 								class="btn btn-xs btn-default">
-							</s:if>
+								</s:if>
 							</div>
 							<div>
-							<div>
-								<img src="/template/image/main/icon_apply.jpg"
-									class="application_icon">
-								<s:property value="ordercount" />
-							</div>
-							<!-- applie -->
-							<div style="margin-right: 10px;">
-								<img src="/template/image/main/icon_eye.jpg" class="view_icon">
-								<s:property value="readcount" />
-							</div>
-							<!-- views -->
+								<div>
+									<img src="/template/image/main/icon_apply.jpg"
+										class="application_icon">
+									<s:property value="ordercount" />
+								</div>
+								<!-- applie -->
+								<div style="margin-right: 10px;">
+									<img src="/template/image/main/icon_eye.jpg" class="view_icon">
+									<s:property value="readcount" />
+								</div>
+								<!-- views -->
 							</div>
 						</div>
 					</div>

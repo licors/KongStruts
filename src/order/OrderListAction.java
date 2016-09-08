@@ -25,7 +25,7 @@ public class OrderListAction extends ActionSupport {
 	private MemberVO memresultClass;
 	private OrderVO orderparamClass;
 	private OrderVO orderresultClass;
-
+	
 	private List<OrderVO> orderList = new ArrayList<OrderVO>();
 
 	private int currentPage = 1; // 현재 페이지

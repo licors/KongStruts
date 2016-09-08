@@ -64,7 +64,8 @@
 
 							<tr bgcolor="#FFFFFF" align="center">
 								<td><a
-									href="/order/readAction.action?showboard_num=${show_resultClass.showboard_num }">
+									href="/showcase/scread.action?showboard_category=${show_resultClass.showboard_category}&showboard_num=${show_resultClass.showboard_num }">
+									
 										<!-- 수정수정수정 --> <img
 										src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
 										width="100px"
