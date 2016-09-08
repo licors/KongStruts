@@ -11,12 +11,12 @@
         </action>
         
         <!-- 메인 디테일 리스트 -->
-        <action name="scdlist" class="main.showcaselistAction">
+        <action name="scsublist" class="main.showcaselistAction">
             <result type="tiles">test_d</result>
         </action>
         
         <!-- 검색결과 리스트 -->
-        <action name="scdSlist" class="main.showcaseSearchAction">
+        <action name="scsearch" class="main.showcaselistAction" method="search">
             <result type="tiles">test_d</result>
         </action>
 

@@ -24,23 +24,23 @@
         <result property="showboard_category" column="showboard_category" />
     </resultMap>
     
-    <!-- select ���� -->
+    <!-- select 정의 -->
     <sql id="select-all">
         SELECT * FROM showboard
     </sql>
     
-    <!-- where ���� -->
+    <!-- where 정의 -->
     <sql id="where-no">
         WHERE showboard_num=#showboard_num#
     </sql>
 
-    <!-- select ������ ���� -->
-    <!-- ����, �̼�, �̺�Ʈ ���� �� ���� ��������? -->
+    <!-- select 쿼리문 정의 -->
+    <!-- 전시, 미술, 이벤트 전부 쓸 일이 있을려나? -->
     <select id="selectall" resultMap="showRes">
         <include refid="select-all"/>
         ORDER BY showboard_num
     </select>
-    <!-- ī�װ� 9��"��" �˻� -->
+    <!-- 카테고리 9개"만" 검색 -->
     <select id="select_9" resultMap="showRes" parameterClass="show">
         <include refid="select-all"/>
         WHERE showboard_category = #showboard_category#
@@ -48,9 +48,9 @@
         AND status = 0
         ORDER BY showboard_num DESC
     </select>
-    <!-- ī�װ��� �������� ���� �۸� �̾ƿ��� sql�� -->
+    <!-- 카테고리를 기준으로 열린 글만 뽑아오는 sql문 -->
     
-    <!-- ��ȣ�� �����̽������ϸ���Ʈ? ������ ����ϼ��� -->
+    <!-- 수호씨 쇼케이스디테일리스트? 용으로 사용하세요 -->
     <select id="select_category" resultMap="showRes">
         <include refid="select-all"/>
         WHERE showboard_category = #showboard_category#
@@ -58,32 +58,32 @@
         ORDER BY showboard_num DESC
     </select>
     
-    <!-- ���� ������ ������ �� ������... ���Ἲ��... -->
+    <!-- 제목 눌러서 들고오는 것 같은대... 무결성이... -->
     <select id="select" resultMap="showRes">
         <include refid="select-all"/>
         WHERE
         subject=#subject#
     </select>
        
-    <!-- ���� : 08.28.02:38 / parameterClass="int"�߰� -->
-    <!-- ��_num���� �� �ϳ� �������� sql -->
+    <!-- 유진 : 08.28.02:38 / parameterClass="int"추가 -->
+    <!-- 글_num으로 글 하나 가져오는 sql -->
     <select id="selectOne" resultMap="showRes" parameterClass="int">
         <include refid="select-all"/>
         <include refid="where-no"/>
     </select>
-    <!-- �̹��� ���ε带 ���� ������ �� ��ȣ ������ sql�� -->
+    <!-- 이미지 업로드를 위해 마지막 글 번호 따오는 sql문 -->
     <select id="selectLastNo" resultClass="show" parameterClass="int">
         <include refid="select-all"/>
         WHERE rownum <![CDATA[<=]]> 1
         ORDER BY showboard_num DESC
     </select>
     
-    <!-- ��� �˻�(��ȣ) 08.25.04:00  -->
+    <!-- 행사 검색(수호) 08.25.04:00  -->
     <select id="selectSearch" parameterClass="string" resultMap="showRes">
         <include refid="select-all"/>
         WHERE subject like #searchKeyword#
         ORDER BY subject DESC
-<!--         WHERE subject like #subject#
+        <!--         WHERE subject like #subject#
         and showboard_category = #showboard_category# ORDER BY subject DESC -->
     </select>
     
@@ -94,14 +94,13 @@
         ORDER BY showboard_num DESC
     </select>
     
-    
-    <!-- ������ ��� ��� �˻�(��ȣ) 08.25.04:50 -->
+    <!-- 마지막 등록 행사 검색(수호) 08.25.04:50 -->
     <!--    <select id="selectLastNum" resultClass="show">
         SELECT max(showboard_num)
         as showboard_num FROM showboard
     </select>-->
 
-    <!-- insert ������ ���� -->
+    <!-- insert 쿼리문 정의 -->
     <insert id="insert" parameterClass="show">
         INSERT INTO showboard(showboard_num, subject, address1, address2, "DATE", pay, tel, tag, content, 
         file_orgname, file_savname, readcount, ordercount, map, showboard_category)
@@ -109,7 +108,7 @@
         #file_orgname#, #file_savname#, #readcount#, #ordercount#, #map#, #showboard_category#)
     </insert>
 
-    <!-- update ������ ���� -->
+    <!-- update 쿼리문 정의 -->
     <update id="update" parameterClass="show">
         UPDATE SHOWBOARD SET
         subject=#subject#,
@@ -124,26 +123,26 @@
         showboard_category=#showboard_category#
         <include refid="where-no"/>
     </update>
-    <!-- �Ⱓ ���� ���ñ� ����� -->
+    <!-- 기간 지난 전시글 숨기기 -->
     <update id="updatestatus" parameterClass="show">
         UPDATE SHOWBOARD SET
         status=#status#
         <include refid="where-no"/>
     </update>
-    <!-- ��������� -->
+    <!-- 사진변경용 -->
     <update id="updatefile" parameterClass="show">
         UPDATE SHOWBOARD SET
         <!--file_orgname=#file_orgname#,-->
         file_savname=#file_savname#
         <include refid="where-no"/>
     </update>
-    <!-- ��ȸ������ -->
+    <!-- 조회수증가 -->
     <update id="readcountPlus" parameterClass="show">
         UPDATE SHOWBOARD SET readcount = readcount + 1
         <include refid="where-no"/>
     </update>
 
-    <!-- delete ������ ���� -->
+    <!-- delete 쿼리문 정의 -->
     <delete id="delete" parameterClass="show">
         DELETE FROM SHOWBOARD
         <include refid="where-no"/>
