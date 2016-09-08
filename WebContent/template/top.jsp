@@ -176,7 +176,7 @@
                 </div>
             </div>
             <div class="box box3" style="text-align:right;">
-                    <img src="/template/image/header/searchrightlogo.png">
+                    <img src="/template/image/header/searchrightjong.png">
             </div>
         </div>
     </div>
