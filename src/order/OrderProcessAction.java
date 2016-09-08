@@ -159,7 +159,10 @@ public class OrderProcessAction extends ActionSupport {
 
         order_paramClass = new OrderVO();
         order_resultClass = new OrderVO();
+        
+        ordercount = show_resultClass.getOrdercount() + 1;
 
+        order_paramClass.setOrdercount(ordercount);
         order_paramClass.setName(getName());
         order_paramClass.setSex(getSex());
         order_paramClass.setCompany(getCompany());
@@ -217,6 +220,7 @@ public class OrderProcessAction extends ActionSupport {
         /*for(int i = 0; i < basketList.size(); i++) {
 			order_paramClass.setbarcode(barcode);
 		} 애매함  수정필요*/
+        
         for (int i = 0; i < basketList.size(); i++) {
             resultBas = basketList.get(i);
 
@@ -225,6 +229,9 @@ public class OrderProcessAction extends ActionSupport {
             /*if (getOrder_member_id() == null) {
 				return INPUT;			//로그인이 안되어있을때 구매하기가 되면 처리하기위해 한듯?
 			}*/
+            
+            order_paramClass.setOrdercount(resultBas.getOrdercount() + 1);
+            
             order_paramClass.setMember_num(memresultClass.getMember_num());
             order_paramClass.setName(getName());
             System.out.print(order_paramClass.getName());
@@ -679,5 +686,13 @@ public class OrderProcessAction extends ActionSupport {
     public static void setSqlMapper(SqlMapClient sqlMapper) {
         OrderProcessAction.sqlMapper = sqlMapper;
     }
+
+	public List<OrderVO> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<OrderVO> orderList) {
+		this.orderList = orderList;
+	}
 
 }
