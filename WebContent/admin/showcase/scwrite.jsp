@@ -43,15 +43,9 @@
                 }
             }
         </script>
-        <style type="text/css">
-            .container { /*컨테이너를 덮어서 고정 폭 사용*/
-                width: 600px;
-                max-width: none !important;
-            }
-        </style>
     </head>
     <body>
-        <div class="container"> <!-- 여기 선언해서 고정폭사용 -->
+        <div class="container" style="width: 600px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
             <div class="panel panel-default"> <!-- 위쪽 제목 -->
                 <div class="panel-heading">글작성하기</div>
                 <div class="panel-body"> <!-- 본문 -->
@@ -173,7 +167,7 @@
                                         <s:file name="upload" theme="simple"/>
                                     </td>
                                 </tr>
-                                <tr class="form-inline">
+                                <tr>
                                     <td width="100"><label for="upload">&nbsp;&nbsp;&nbsp;사진4</label></td>
                                     <td>
                                         <s:file name="upload" theme="simple"/>

@@ -29,11 +29,8 @@
             </div>
             <div style="float:right;height:28px">
                 <ul>
-                
-
-                
                 <!-- #####관리자일 때##### -->
-            <s:if test="memresultClass.getEmail() == 'admin@localhost'">
+                <s:if test="memresultClass.admin > 0">
                 <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" href="/member/memberModifyForm.action">사람 이미지로 바꿀예정</a></li>
                 <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" onclick="return logout()">로그아웃</a></li>
                         <li class="dropdown topshortlink" style="list-style:none; display:inline-block;">
@@ -65,9 +62,7 @@
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
                                 <a href="supportlist.action">광고(제휴)문의</a>
                             </li>
-                            
                     </s:if>
-                    
             <!-- #####회원일 때##### -->
             <s:else>
                 <s:if test="memresultClass.getEmail() != null">
@@ -134,10 +129,6 @@
                     </s:else>
                 </s:else>
 
-
-
-
-                        
                     </li>
                 </ul>
             </div>
@@ -146,41 +137,39 @@
     </div>
 </nav>
 
-<!-- ###############수호 0908 캔고루 소스 상단2(로고, 검색창, 캔고루 종 로고)############### -->
-<div style="background-color:#FFFFFF;">
-    <div style="max-width:900px; margin:0px auto; text-align:center; padding:30px 0px;">
-        <div class="boxes">
-            <div class="box box2" style="text-align:center;padding-top:5px">
-                <div style="display: inline-block; margin: 0px auto;">
-                    <a href="/"><img src="/template/image/header/cangorulogo.jpg" alt="CANGOTO" height="40" style="float:left;margin-right:50px"></a>
-                    <div style="float:left;">
-                    
-                    
-                    <s:if test="showboard_category != null">
-        <form name="findgoods" action="/showcase/scdSlist.action?showboard_category=<s:property value="showboard_category"/>" method="post" >
-        </s:if>
-    <s:else>
-    	<form name="findgoods" action="/showcase/scdSlist.action" method="post" >
-    </s:else>            
-                    <input type="text" class="form-control mainSerchBox" placeholder="검색어, #해시태그" id="txtMainSearch" name="searchKeyword" value=""></div>
-                        <div style="float:left; background-color:#12B1DB; width:40px; height:40px; line-height:40px;margin-right:30px">
-                        
-                        <!-- 수호 0908 이미지경로 수정필요 밑에 이 경로가 아이콘 서치버튼 이미지경로임 -->
-                            <!-- <img src="/template/image/header/icon_search.jpg"> -->
-                            <input class=""  type="submit" value=""/> 
-                            
-                            
+            <!-- ###############수호 0908 캔고루 소스 상단2(로고, 검색창, 캔고루 종 로고)############### -->
+            <div style="background-color:#FFFFFF;">
+                <div style="max-width:900px; margin:0px auto; text-align:center; padding:30px 0px;">
+                    <div class="boxes">
+                        <div class="box box2" style="text-align:center;padding-top:5px">
+                            <div style="display: inline-block; margin: 0px auto;">
+                                <a href="/"><img src="/template/image/header/cangorulogo.jpg" alt="CANGOTO" height="40" style="float:left;margin-right:50px"></a>
+                                <div style="float:left;">
+                                    
+                                        <form name="re" action="/showcase/scsearch.action" method="post" >
+                                            <s:if test="showboard_category != null">
+                                                <s:hidden name="showboard_category" value="%{showboard_category}"/>
+                                            </s:if>
+                                            <input type="text" class="form-control mainSerchBox" placeholder="검색어, #해시태그" id="txtMainSearch" name="searchKeyword" value=""></div>
+                                            <!--<a href="javascript:{}" onclick="document.getElementById('re').submit();" class="form-control mainSerchBox" placeholder="검색어, #해시태그" id="txtMainSearch" name="searchKeyword"></a></div>-->
+
+                                            <div style="float:left; background-color:#12B1DB; width:40px; height:40px; line-height:40px;margin-right:30px">
+                                                <!-- 수호 0908 이미지경로 수정필요 밑에 이 경로가 아이콘 서치버튼 이미지경로임 -->
+                                                <!-- <img src="/template/image/header/icon_search.jpg"> -->
+                                                <!-- 이미지는 넣어드렸는대 작동안하고...인풋 폼에서 엔터쳐야 작동함 -->
+                                                <a href="javascript:{}" onclick="document.getElementById('txtMainSearch').submit();"><img src="/template/image/main/icon_search.jpg"/></a> <!-- /template/image/main/icon_search.jpg -->
+                                        </form>
+                                </div>
+                                </a>
+                                <div style="clear:both;"></div>
+                            </div>
                         </div>
-                    </a>
-                    <div style="clear:both;"></div>
+                        <div class="box box3" style="text-align:right;">
+                            <img src="/template/image/header/searchrightlogo.png">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="box box3" style="text-align:right;">
-                    <img src="/template/image/header/searchrightjong.png">
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- ###############수호 0908 캔고루 소스 상단3(전시, 미술, 이벤트 카테고리 클릭칸)############### -->
@@ -190,11 +179,18 @@
     </div>
     <div style="position: absolute; width: 100%; left: 0px;" align="center" id="cgt-top-menu-front">
         <div style="line-height: 40px; max-width: 1200px; box-sizing: border-box; font-size: 16px; left: 351.5px;" id="menu" data-bind="foreach: TopMenuNavData">
-            <a href="/showcase/scdlist.action?showboard_category=전시" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_1"><span data-bind="text: MENU_NM">전시</span></div></a>
-        
-            <a href="/showcase/scdlist.action?showboard_category=미술" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_2"><span data-bind="text: MENU_NM">미술</span></div></a>
-        
-            <a href="/showcase/scdlist.action?showboard_category=이벤트" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_3"><span data-bind="text: MENU_NM">이벤트</span></div></a>
+            <form id="aticle" action="/showcase/scsublist.action" method="post">
+                <s:hidden name="showboard_category" value="전시"/>
+                <a href="javascript:{}" onclick="document.getElementById('aticle').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_1"><span data-bind="text: MENU_NM">전시</span></div></a>
+            </form>
+            <form id="art" action="/showcase/scsublist.action" method="post">
+                <s:hidden name="showboard_category" value="미술"/>
+                <a href="javascript:{}" onclick="document.getElementById('art').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_2"><span data-bind="text: MENU_NM">미술</span></div></a>
+            </form>
+            <form id="event" action="/showcase/scsublist.action" method="post">
+                <s:hidden name="showboard_category" value="이벤트"/>
+                <a href="javascript:{}" onclick="document.getElementById('event').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }"><div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="float: left; width: 400px;" class="cgt_m_menu_ctype_3"><span data-bind="text: MENU_NM">이벤트</span></div></a>
+            </form>
         </div>
     </div>
 </div>

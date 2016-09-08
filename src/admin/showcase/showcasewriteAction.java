@@ -78,7 +78,7 @@ public class showcasewriteAction extends ActionSupport {
         pc.setMap(getMap());
         pc.setShowboard_num(getShowboard_num());
         sql.insert("show.insert", pc);
-        pc = (showVO) sql.queryForObject("show.selectLastNo");
+        rc = (showVO) sql.queryForObject("show.selectLastNo");
 
         if (getUpload() != null) { //업로드 객체가 널이 아니면
             for (int i = 0; i < upload.size(); i++) { //업로드된 객체만큼 포문돌려서 저장
