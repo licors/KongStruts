@@ -83,6 +83,12 @@ public class CommentBoardVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "CommentBoardVO [comment_num=" + comment_num + ", member_num=" + member_num + ", showboard_num="
+				+ showboard_num + ", content=" + content + ", reg_date=" + reg_date + ", ref=" + ref + ", re_step="
+				+ re_step + ", re_level=" + re_level + ", name=" + name + "]";
+	}
 	
 	
 }

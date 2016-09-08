@@ -34,7 +34,7 @@
         
         <!-- 읽기 -->
         <action name="scread" class="showcase.ShowcaseReadAction">
-            <result>/showcase/showcaseView.jsp</result>
+            <result type="tiles">showcaseView</result>
             <!--  <result type="chain">
                 <param name="actionName">commentListAction</param>
             </result> -->

@@ -90,6 +90,7 @@ public class CommentWriteAction extends ActionSupport {
         CommentParamClass.setContent(getContent());
         CommentParamClass.setReg_date(today.getTime());
 
+        System.out.println("comment write: " + CommentParamClass.toString());
         if (ref == 0) {
             sqlMapper.insert("showcaseDetailComment.insertBoard", CommentParamClass);
         } else {
