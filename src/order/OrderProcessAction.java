@@ -160,9 +160,9 @@ public class OrderProcessAction extends ActionSupport {
         order_paramClass = new OrderVO();
         order_resultClass = new OrderVO();
         
-        ordercount = show_resultClass.getOrdercount() + 1;
-
-        order_paramClass.setOrdercount(ordercount);
+        /*paramClass.setShowboard_num(getShowboard_num());
+        sqlMapper.update("show.readcountPlus", paramClass);*/
+        
         order_paramClass.setName(getName());
         order_paramClass.setSex(getSex());
         order_paramClass.setCompany(getCompany());
@@ -230,7 +230,8 @@ public class OrderProcessAction extends ActionSupport {
 				return INPUT;			//로그인이 안되어있을때 구매하기가 되면 처리하기위해 한듯?
 			}*/
             
-            order_paramClass.setOrdercount(resultBas.getOrdercount() + 1);
+            /*paramClass.setShowboard_num(getShowboard_num());
+            sqlMapper.update("show.readcountPlus", paramClass);*/
             
             order_paramClass.setMember_num(memresultClass.getMember_num());
             order_paramClass.setName(getName());
