@@ -44,6 +44,10 @@ public class CommentModifyAction extends ActionSupport {
         
 		paramClass.setComment_num(getComment_num());
 		paramClass.setContent(getContent());
+		
+		if(commentResultClass == null) {
+			return ERROR;
+		}
         if(memberDataClass.getMember_num() == commentResultClass.getMember_num()) {
         	sqlMapper.update("showcaseDetailComment.updateBoard",paramClass);
         }
