@@ -13,11 +13,11 @@
         <script>
             function del() {
                 if (confirm("정말로 삭제 하시겠습니까?")) {
-                    window.location.href = "noticedelete.action?notice_num=<s:property value="rc.notice_num"/>";
+                    window.location.href = "/notice/noticedelete.action?notice_num=<s:property value="rc.notice_num"/>";
                     self.close();
                 } else {
                     alert("취소되었습니다");
-                    window.location.href = 'noticeread.action?notice_num=<s:property value="rc.notice_num"/>&currentPage=<s:property value="currentPage"/>';
+                    window.location.href = '/notice/noticeread.action?notice_num=<s:property value="rc.notice_num"/>&currentPage=<s:property value="currentPage"/>';
                 }
             }
         </script>

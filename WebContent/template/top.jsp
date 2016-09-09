@@ -58,10 +58,10 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                     </s:if>
             <!-- #####회원일 때##### -->
             <s:else>
@@ -79,7 +79,7 @@
                                 <a href="/basket/basketList.action">관심티켓</a>
                             </li>
                             <li>
-                                <a href="supportlist.action">1:1문의</a>
+                                <a href="/support/supportlist.action">1:1문의</a>
                             </li>
                                                         <li>
                                 <a href="/member/memberModifyForm.action">내 정보</a>
@@ -97,10 +97,10 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                        </ul>
                             
                         </s:if>
@@ -120,10 +120,10 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                        </ul>
                        
                     </s:else>

@@ -14,33 +14,21 @@
         <title>QnA</title>
     </head>
     <body>
-        <div class="table-bordered">
-            <table align="center" width="600" class="table-condensed">
-                <tr>
-                    <td align="left" colspan="3">공지사항</td>
+        <div class="container" style="width: 600px; max-width: none !important;">
+            <div class="panel panel-default">
+                <div class="panel-heading">공지사항</div>
+                <div class="panel-body">
+                    <s:property value="rc.subject"/>
                     <s:if test="memresultClass.admin > 0">
-                        <td align="right" colspan="3">
-                            <input name="support" type="button" value="수정"
-                                   onClick="javascript:location.href = '/notice/noticemodify_form.action?notice_num=<s:property value="rc.notice_num"/>'" class="btn btn-default btn-xs">
-                            <input name="support" type="button" value="삭제"
-                                   onClick="javascript:location.href = '/notice/noticedelete_form.action?notice_num=<s:property value="rc.notice_num"/>&currentPage=<s:property value="currentPage"/>'" class="btn btn-default btn-xs">
-                        </td>
+                        <input name="support" type="button" value="수정"
+                               onClick="javascript:location.href = '/notice/noticemodify_form.action?notice_num=<s:property value="rc.notice_num"/>'" class="btn btn-default btn-xs">
+                        <input name="support" type="button" value="삭제"
+                               onClick="javascript:location.href = '/notice/noticedelete_form.action?notice_num=<s:property value="rc.notice_num"/>&currentPage=<s:property value="currentPage"/>'" class="btn btn-default btn-xs">
                     </s:if>
-                </tr>
-                <tr>
-                    <td colspan="3"><s:property value="rc.subject"/></td>
-                </tr>
-            </table>
-            <table align="center" width="600" class="table-condensed">
-                <tr>
-                    <td colspan="2" align="right" width="400">작성일&nbsp;<s:property value="rc.reg_date"/></td>
-                    <td colspan="3" align="right" width="100">조회수&nbsp;<s:property value="rc.readcount"/></td>
-                </tr>
-                <tr>
-                    <td colspan="3" width="550" bgcolor="#FFFFFF"><s:property value="rc.content"/>
-                    </td>
-                </tr>
-            </table>
+                </div>
+                    <p class="text-right">작성일&nbsp;<s:property value="rc.reg_date"/>&nbsp;&nbsp;&nbsp;조회수&nbsp;<s:property value="rc.readcount"/></p>
+                    <p class="text-left"><s:property value="rc.content"/></p>
+            </div>
         </div>
     </body>
 </html>

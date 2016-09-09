@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
             function Success() {
-                window.location.href = 'sclist.action';
+                window.location.href = '/showcase/sclist.action';
             }
         </script>
     </head>

@@ -28,10 +28,10 @@
     </head>
     <body>
         <s:if test="rc == null">
-            <form name="qna" action="qnawrite.action" method="post" onsubmit="return check()">
+            <form name="qna" action="/qna/qnawrite.action" method="post" onsubmit="return check()">
             </s:if>
             <s:else>
-                <form name="qna" action="qnamodify.action" method="post" onsubmit="return check()">
+                <form name="qna" action="/qna/qnamodify.action" method="post" onsubmit="return check()">
                     <s:hidden name="qna_num" value="%{rc.qna_num}"/>
                 </s:else>
                 <table align="center" width="600">
