@@ -37,9 +37,6 @@
                 } else if (frm.content.value == "") {
                     alert("내용을 입력해주세요.");
                     return false;
-                } else if (frm.map.value == "") {
-                    alert("지도위치를 입력해주세요.");
-                    return false;
                 }
             }
         </script>
