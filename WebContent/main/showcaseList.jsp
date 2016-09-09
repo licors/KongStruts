@@ -69,9 +69,9 @@
                     <span style="color:#00b9ff; font-weight:bold;">검색 결과가 없습니다</span>
                 </s:else>
             </s:if>
-            <s:else> <!-- 검색결과가 있을때 -->
+            <s:elseif test="searchKeyword == \"\""> <!-- 검색결과가 있을때 -->
                 <span style="color:#00b9ff; font-weight:bold;">"<s:property value="searchKeyword"/>"</span>의 검색결과입니다.
-            </s:else>
+            </s:elseif>
             <!-- 검색 출력 결과 부분 종료-->
             <br>
             <s:iterator value="list" status="stat">
@@ -88,7 +88,7 @@
                     <div class="cgt_latest_image_area">
                         <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
                         <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
-                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+                             onerror="javascript:this.src='/template/image/main/noimg.png'"></>
                     </div><!-- img -->
                     <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
                     <div class="cgt_list_button">
