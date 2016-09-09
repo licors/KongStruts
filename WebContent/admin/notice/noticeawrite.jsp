@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>QnA 추가</title>
+        <title>공지사항</title>
         <script type="text/javascript">
             function check() {
                 var frm = document.notice;
@@ -27,44 +27,49 @@
         </script>
     </head>
     <body>
-        <div class="table-bordered">
-            <s:if test="rc == null">
-                <form name="notice" action="/notice/noticewrite.action" method="post" onsubmit="return check()" class="form-control-static">
-                </s:if>
-                <s:else>
-                    <form name="notice" action="/notice/noticemodify.action" method="post" onsubmit="return check()" class="form-control-static">
-                        <s:hidden name="notice_num" value="%{rc.notice_num}"/>
-                        <s:hidden name="currentPage" value="%{currentPage}"/>
-                    </s:else>
-                    <table align="center" width="600" class="table-condensed">
-                        <tr>
-                            <td align="right" colspan="2">
-                                <font color="#FF0000">*</font>는 필수 입력 사항입니다.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="subject"><font color="#FF0000">&nbsp;&nbsp;*</font>제목</label>
-                            </td>
-                            <td>
-                                <input type="text" name="subject" value="<s:property value="rc.subject"/>" size="30" maxlength="25" placeholder="제목을 입력하세요." class="form-control" id="subject"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="content"><font color="#FF0000">&nbsp;&nbsp;*</font>내용</label><br>
-                            </td>
-                            <td>
-                                <textarea name="content" cols="57" rows="10" placeholder="내용을 입력하세요." class="form-control" id="content"><s:property value="rc.content"/></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right" colspan="2">
-                                <input name="submit" type="submit" value="보내기"  class="btn btn-default btn-xs">
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+        <div class="container" style="width: 900px; max-width: none !important;">
+            <div class="panel panel-default">
+                <div class="panel-heading"><p style="font-size:28px; color:#000000; font-weight:bold; margin:0px 0px 0px 0px; padding:0px;">공지사항</p></div>
+                <div class="panel-body">
+                    <s:if test="rc == null">
+                        <form name="notice" action="/notice/noticewrite.action" method="post" onsubmit="return check()">
+                        </s:if>
+                        <s:else>
+                            <form name="notice" action="/notice/noticemodify.action" method="post" onsubmit="return check()">
+                                <s:hidden name="notice_num" value="%{rc.notice_num}"/>
+                                <s:hidden name="currentPage" value="%{currentPage}"/>
+                            </s:else>
+                            <table align="center" class="table-condensed">
+                                <tr>
+                                    <td align="right" colspan="2">
+                                        <font color="#FF0000">*</font>는 필수 입력 사항입니다.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="subject"><font color="#FF0000">*</font>제목</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="subject" value="<s:property value="rc.subject"/>" size="60" maxlength="25" placeholder="제목을 입력하세요." class="form-control" id="subject"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="content"><font color="#FF0000">*</font>내용</label><br>
+                                    </td>
+                                    <td>
+                                        <textarea name="content" rows="10" placeholder="내용을 입력하세요." class="form-control" id="content"><s:property value="rc.content"/></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right" colspan="2">
+                                        <input name="submit" type="submit" value="보내기" class="btn btn-default btn-xs">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                </div>
+            </div>
         </div>
     </body>
 </html>

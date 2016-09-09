@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
             function del() {
-                if (confirm("정말로 삭제 하시겠습니까? num:" + <s:property value="rc.showboard_num"/>)) {
+                if (confirm("정말로 삭제 하시겠습니까?")) {
                     window.location.href = "/showcase/scdelete.action?showboard_num=<s:property value="rc.showboard_num"/>";
 //                    self.close();
                 } else {
