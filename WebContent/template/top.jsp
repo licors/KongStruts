@@ -31,7 +31,7 @@
                 <ul>
                 <!-- #####관리자일 때##### -->
                 <s:if test="memresultClass.admin > 0">
-                <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" href="/member/memberModifyForm.action">사람 이미지로 바꿀예정</a></li>
+                <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" href="/member/memberModifyForm.action"><img src="/template/image/header/loginhuman.gif"></a></li>
                 <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" onclick="return logout()">로그아웃</a></li>
                         <li class="dropdown topshortlink" style="list-style:none; display:inline-block;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이페이지<span class="caret"></span></a>
@@ -58,15 +58,15 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                     </s:if>
             <!-- #####회원일 때##### -->
             <s:else>
                 <s:if test="memresultClass.getEmail() != null">
-                <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" href="/member/memberModifyForm.action">사람 이미지로 바꿀예정</a></li>
+                <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" href="/member/memberModifyForm.action"><img src="/template/image/header/loginhuman.gif"></a></li>
                 <li class="topshortlink" style="list-style:none; display:inline-block;"><a class="login-button" onclick="return logout()">로그아웃</a></li>
                     <!-- <li><input type="button" class="mem_out" value="" onclick="return logout()"/></li> -->
                         <li class="dropdown topshortlink" style="list-style:none; display:inline-block;">
@@ -79,7 +79,7 @@
                                 <a href="/basket/basketList.action">관심티켓</a>
                             </li>
                             <li>
-                                <a href="supportlist.action">1:1문의</a>
+                                <a href="/support/supportlist.action">1:1문의</a>
                             </li>
                                                         <li>
                                 <a href="/member/memberModifyForm.action">내 정보</a>
@@ -97,10 +97,10 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                        </ul>
                             
                         </s:if>
@@ -120,10 +120,10 @@
                             <li>
                                 <a href="/notice/noticelist.action">공지사항</a>
                             </li>
-                            <li>
+                            <!--<li>-->
                                 <!-- <a href="supportlist.action" target="_blank">광고(제휴)문의</a> -->
-                                <a href="supportlist.action">광고(제휴)문의</a>
-                            </li>
+                                <!--<a href="supportlist.action">광고(제휴)문의</a>-->
+                            <!--</li>-->
                        </ul>
                        
                     </s:else>
@@ -143,8 +143,8 @@
                     <div class="boxes">
                         <div class="box box2" style="text-align:center;padding-top:5px">
                             <div style="display: inline-block; margin: 0px auto;">
-                                <a href="/"><img src="/template/image/header/cangorulogo.jpg" alt="CANGOTO" height="40" style="float:left;margin-right:50px"></a>
-                                <div style="float:left;">
+                                <a href="/"><img src="/template/image/header/logotest4.png" alt="CANGOTO" height="50" style="float:left; margin-right:150px"></a>
+                                <div style="float:left;">                                     <!--  alt="CANGOTO" height="40" style="float:left;margin-right:50px"></a> -->
                                     
                                         <form name="re" action="/showcase/scsearch.action" method="post" >
                                             <s:if test="showboard_category != null">

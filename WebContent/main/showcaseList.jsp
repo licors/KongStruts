@@ -6,12 +6,12 @@
 
 <script type="text/javascript">
     function goodsdelete(showboard_num) {
-        document.goodsform.action = "./scdelete_form.action?showboard_num="
+        document.goodsform.action = "/showcase/scdelete_form.action?showboard_num="
                 + showboard_num;
         document.goodsform.submit();
     }
     function goodsmodify(showboard_num) {
-        document.goodsform.action = "./scmodify_form.action?showboard_num="
+        document.goodsform.action = "/showcase/scmodify_form.action?showboard_num="
                 + showboard_num;
         document.goodsform.submit();
     }
@@ -91,7 +91,7 @@
                     </div><!-- img -->
                     <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
                     <div class="cgt_list_button">
-                        <a class="btn-detail cgt-single-load" href ='scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank"><img alt="상세보기" src="/template/image/main/view_small_btn.png"></a>
+                        <a class="btn-detail cgt-single-load" href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank"><img alt="상세보기" src="/template/image/main/view_small_btn.png"></a>
                         <a id="link" href="#" onclick="return fnConfirmMoveUrl('로그인을 하셔야 이용하실수 있습니다.\n로그인 페이지로 이동하시겠습니까??', '/Account/Login');" class="ctype-1 btn-application">
                             <img src="/template/image/main/application_small_btn.png" alt="">
                         </a>

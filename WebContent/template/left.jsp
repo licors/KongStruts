@@ -1,9 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.HashMap"%>
+
+<%-- <script type="text/javascript">
+
+</script>
 
 <section style="padding: 0px 0px 0px 0px;">
 
@@ -18,7 +21,12 @@
 				style="opacity: 1; width: 55000px; transform: translate3d(-2329px, 0px, 0px); transition: transform 1000ms ease;">
 				
 				
-				
+				<s:iterator value="list1" status="stat">
+				<s:url id="viewURL" action="scread">
+			<s:param name="showboard_num">
+				<s:property value="showboard_num" />
+			</s:param>
+			</s:url>
 				
 				<div class="cgt-banner slick-slide slick-cloned"
 					data-slick-index="-2" aria-hidden="true" tabindex="-1">
@@ -41,9 +49,11 @@
 						src="/content/img/application_big_btn.png" alt="신청하기">
 					</a>
 				</div>
+				
+				</s:iterator>
 
 
-				<div class="cgt-banner slick-slide" data-slick-index="6"
+<!-- 				<div class="cgt-banner slick-slide" data-slick-index="6"
 					aria-hidden="true" tabindex="-1" role="option"
 					aria-describedby="slick-slide06">
 					<div class="mask" style="width: 480px; height: 281px; opacity: 0;"></div>
@@ -113,7 +123,7 @@
 						class="ctype-1 btn-application" tabindex="-1"> <img
 						src="/content/img/application_big_btn.png" alt="신청하기">
 					</a>
-				</div>
+				</div> -->
 
 
 				
@@ -127,6 +137,8 @@
 		<button type="button" data-role="none" class="slick-next slick-arrow"
 			aria-label="Next" role="button" style="display: block;">Next</button>
 		<ul class="slick-dots" style="display: block;" role="tablist">
+			
+			
 			<li class="" aria-hidden="true" role="presentation"
 				aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button
 					type="button" data-role="none" role="button" aria-required="false"
@@ -174,7 +186,7 @@
 		</ul>
 	</div>
 	<div style="clear: both;"></div>
-</section>
+</section> --%>
 
 
 

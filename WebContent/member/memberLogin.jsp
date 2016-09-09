@@ -5,11 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <script>
 function checkIt() {
 	if (!document.loginform.email.value) {
-		alert("아이디를 입력하세요");
+		alert("이메일주소를 입력하세요");
 		document.loginform.email.focus();
 		return false;
 	}
@@ -22,31 +24,37 @@ function checkIt() {
 }
 </script>
 <body>
+	<h2 align="center">문화를 즐기는 방법, 캔고루에 오신 것을 환영합니다.</h2>
+
 	<form name="loginform" action="/member/memberLogin.action" method="post" onsubmit="return checkIt()">
-	<div align=center>
+	<div align="center">
 	<table>
 		<tr>
-			<td align="center">이메일</td>
+			<td align="center"></td>
 			<td valign="middle" align="left">
-			<input type="text" name="email" size="30" maxlength="50"></td>
-
-
+				<input type="text" name="email" size="30" maxlength="50" placeholder="이메일주소" class="form-control input-lg"></td>
 		</tr>
+		
 		<tr>
-			<td align="center">비밀번호</td>
+			<td align="center"></td>
 			<td valign="middle" align="left">
-			<input type="password" name="password" size="31" maxlength="20"></td>
-
+				<input type="password" name="password" size="30" maxlength="20" placeholder="비밀번호" class="form-control input-lg"></td>
 		</tr>
+		
 		<tr>
 			<td align="right" colspan="2">
-				<input name="submit" type="submit" value="로그인" class="inputb"> 
-				<input type="button" value="회원가입" 	onClick="javascript:location.href='/member/memberJoinForm.action'">
-				<input type="button" value="비밀번호 찾기" 	onClick="javascript:location.href='/member/memberpfindF.action'">
-				
+				<input name="submit" class="btn btn-success btn-lg btn-block" type="submit" value="로그인" class="inputb"><br>
 			</td>
-		</tr>
-	</table>
+			</table>
+			<table>
+			<tr>
+				<td align="center">
+					<input type="button" class="btn btn-success" value="회원가입" 	onClick="javascript:location.href='/member/memberJoinForm.action'">
+					<input type="button" class="btn btn-success" value="비밀번호 찾기" 	onClick="javascript:location.href='/member/memberpfindF.action'">
+				</td>	
+			</tr>
+				</table>
+		
 	</div>
 	</form>
 </body>

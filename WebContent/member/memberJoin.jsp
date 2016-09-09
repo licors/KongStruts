@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title></title>
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <script type="text/javascript">
 
 function joinCheck() {
@@ -36,11 +39,11 @@ function joinCheck() {
 		 
 }
 </script>
-</head>
+
 <body>
         
        
-    <h3 align="center">회원가입</h3>
+    <h1 align="center">회원가입</h1>
     
 	<div align="center">
 		<input type="checkbox" id="agreement" /><label for="agreement" style="cursor:pointer;">서비스 이용약관에 동의 합니다.</label><a href="./agree.jsp" target="_blank">(자세히보기 )</a><br>
@@ -50,22 +53,44 @@ function joinCheck() {
 	</p>
 	
 	<form name="joinform" method="post" action="/member/memberJoin.action" onsubmit="return joinCheck()">
+		<div align="center">
 		<table>
+		
 			<tr>
-				<td>email</td> <td><input type="text" name="email" size="20" maxlength="50"/> </td>
+				<td align="center"></td>
+				<td>
+					<input type="text" name="email" size="30" maxlength="50" placeholder="이메일주소" class="form-control input-lg"/> 
+				</td>
 			</tr>
 			<tr>
-				<td>password</td> <td><input type="password" name="password" size="20" maxlength="20"/> </td>
+				<td align="center"></td>
+				<td>
+					<input type="password" name="password" size="30" maxlength="20" placeholder="비밀번호" class="form-control input-lg"/> 
+				</td>
 			</tr>
 			<tr> 
-				<td>name</td> <td><input type="text" name="name" size="20" maxlength="20"/> </td>
+				<td align="center"></td>
+				<td>
+					<input type="text" name="name" size="30" maxlength="20" placeholder="이름" class="form-control input-lg"/>
+				</td>
 			</tr>
-			<tr>	
-				<td><input type="submit" name="join" value="가입하기" /></td>
+			<tr> 
+				<td align="center"></td>
+				<td>
+					<input type="text" name="company" size="30" maxlength="20" placeholder="회사" class="form-control input-lg"/> 
+				</td>
+			</tr>
+			
+			<tr>
+				<td align="center"></td>
+				<td>
+					<input class="btn btn-success btn-lg btn-block" type="submit" name="join" value="가입하기" />
+				</td>
 			</tr>
 		</table>
+		</div>
 	</form>
-</div>
+
 
 
 </body>

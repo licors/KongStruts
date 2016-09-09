@@ -7,6 +7,8 @@ public class MemberVO {
     private String password;
     private String name;
     private String address;
+    private String address2;
+    private String zipcode;
     private String company;
     private int admin;
 
@@ -65,5 +67,21 @@ public class MemberVO {
     public void setAdmin(int admin) {
         this.admin = admin;
     }
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 
 }
