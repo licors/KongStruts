@@ -26,6 +26,8 @@ public class MemberModifyAction extends ActionSupport {
     private String password2;
     private String name;
     private String address;
+    private String address2;
+    private String zipcode;
     private String company;
     private int admin;
 
@@ -73,7 +75,9 @@ public class MemberModifyAction extends ActionSupport {
         //System.out.println("리절트클래스 " + memresultClass.getEmail());
 
         memparamClass.setEmail(sessionemail);
+        memparamClass.setZipcode(getZipcode());
         memparamClass.setAddress(getAddress());
+        memparamClass.setAddress2(getAddress2());
         memparamClass.setCompany(getCompany());
 
         sqlMapper.update("member.memberUpdate", memparamClass);
@@ -262,5 +266,21 @@ public class MemberModifyAction extends ActionSupport {
     public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;
     }
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
 
 }

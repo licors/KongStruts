@@ -5,6 +5,7 @@
 <sqlMap namespace="member">
     <!-- member -->
     <typeAlias alias="member" type="member.MemberVO" />
+    <typeAlias alias="zipcode" type="member.zipcodeVO"/>
     <resultMap id="memberRes" class="member">
 
         <result property="member_num" column="member_num" />
@@ -12,10 +13,21 @@
         <result property="password" column="password" />
         <result property="name" column="name" />
         <result property="address" column="address" />
+        <result property="address2" column="address2" />      
+        <result property="zipcode" column="zipcode" />
         <result property="company" column="company" />
         <result property="admin" column="admin" />
 	
     </resultMap>
+    
+    <resultMap id="zipcodeRes" class="zipcode">
+
+		<result property="zipcode" column="zipcode"/>
+		<result property="area1" column="area1"/>
+		<result property="area2" column="area2"/>
+		<result property="area3" column="area3"/>
+		<result property="area4" column="area4"/>
+	</resultMap>
 
 
     <!-- 유저 정보 값 얻어오기 -->
@@ -37,7 +49,9 @@
     <!-- 회원정보 변경 -->
     <update id="memberUpdate" parameterClass="member">
         UPDATE MEMBER SET
+        ZIPCODE=#zipcode#,
         ADDRESS=#address#,
+        ADDRESS2=#address2#,
         COMPANY=#company#
         WHERE EMAIL=#email#
     </update>
@@ -53,10 +67,14 @@
     </delete> 
 	
     <!-- 비밀번호 찾기 -->
-
     <select id="FindPassword" resultMap="memberRes">
         SELECT * FROM MEMBER WHERE EMAIL=#email# AND NAME=#name#
     </select>
+    
+    <!-- 우편번호 검색 -->
+	<select id="zipCheck" resultMap="zipcodeRes" parameterClass="string">
+		SELECT * FROM ZIPCODE WHERE area3 LIKE #area3#
+	</select>
 
     <sql id="select-all">
         SELECT * FROM MEMBER
@@ -71,6 +89,7 @@
         UPDATE MEMBER SET
         EMAIL=#email#,
         NAME=#name#,
+        ZIPCODE=#zipcode#,
         ADDRESS=#address#,
         COMPANY=#company#
         WHERE MEMBER_NUM=#member_num#

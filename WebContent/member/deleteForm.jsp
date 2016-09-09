@@ -5,8 +5,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>
-<link rel="stylesheet" href="css/deleteForm.css" />
-<link rel="stylesheet" href="css/index.css" />
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <script>
 function passwdcheck() {
 	if (!document.passwdcheckform.password.value) {
@@ -54,8 +54,8 @@ function back() {
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-					<input class="delete" type="submit" value="확인"> 
-					<input class="cancel" type="button" value="취소" onclick="return back()">
+					<input class="btn btn-success" type="submit" value="확인"> 
+					<input class="btn btn-default" type="button" value="취소" onclick="return back()">
 				</tr>
 			</table>
 		</form>
