@@ -37,7 +37,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">마이페이지<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="/showcase/scwrite_form.action">상품등록</a>
+                                <a href="/showcase/scwrite_form.action">전시등록</a>
                             </li>
                             <li>
                                 <a href="/order/adminOrderList.action">신청목록</a>

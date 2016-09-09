@@ -23,6 +23,7 @@
 </script>
 </head>
 <body>
+
 	<div
 		style="width: 100%; background-color: #FFF; padding: 0px 20px 20px 20px;">
 		<div id="ContentPanel"></div>
@@ -41,7 +42,27 @@
 				<div style="clear: both;"></div>
 				<div style="height: 0px; margin-top: 24px;"></div>
 			</div>
-
+			<div style="margin: 1px auto; clear: both;">
+				<div style="float: right; font-size: 20px; font-weight: bold;">
+					<div style="box-sizing: border-box; font-size: 16px;">
+						<s:if test="basketList.size() == 0">					
+							<input type="button" name="list" value="메인으로"
+								onClick="location.href='/showcase/sclist.action'"
+								class="btn btn-sm btn-default">
+						</s:if>
+						<s:else>
+							<input type="button" name="orderB" value="전체 신청"
+								onClick="location.href='/order/order_checkB.action'"
+								class="btn btn-sm btn-success">
+							<input type="button" name="list" value="메인으로"
+								onClick="location.href='/showcase/sclist.action'"
+								class="btn btn-sm btn-default">
+						</s:else>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div style="height: 0px; margin-top: 24px;"></div>
+			</div>
 			<div class="clearfix"></div>
 
 			<s:iterator value="basketList" status="stat">
@@ -132,29 +153,9 @@
 				<div style="clear: both;"></div>
 				<div style="height: 0px; margin-top: 24px;"></div>
 			</div>
-			<div style="margin: 1px auto; clear: both; max-width: 1200px;">
-				<div style="float: right; font-size: 20px; font-weight: bold;">
-					<div style="box-sizing: border-box; font-size: 16px;">
-						<s:if test="basketList.size() == 0">					
-							<input type="button" name="list" value="메인으로"
-								onClick="location.href='/showcase/sclist.action'"
-								class="btn btn-sm btn-default">
-						</s:if>
-						<s:else>
-							<input type="button" name="orderB" value="전체 신청"
-								onClick="location.href='/order/order_checkB.action'"
-								class="btn btn-sm btn-success">
-							<input type="button" name="list" value="메인으로"
-								onClick="location.href='/showcase/sclist.action'"
-								class="btn btn-sm btn-default">
-						</s:else>
-					</div>
-				</div>
-				<div style="clear: both;"></div>
-				<div style="height: 0px; margin-top: 24px;"></div>
-			</div>
 		</section>
 	</div>
+
 	<%--원래 장바구니
  <div class="container">
 	<form name="basketList" method="post">
