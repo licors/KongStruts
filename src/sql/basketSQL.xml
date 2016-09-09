@@ -19,6 +19,8 @@
 		<result property="address2" column="address2" />
 		<result property="readcount" column="readcount" />
 		<result property="ordercount" column="ordercount" />
+		<result property="pay" column="pay" />
+		<result property="showboard_category" column="showboard_category" />
 	</resultMap>
 
 
@@ -26,7 +28,7 @@
 	<sql id="select-all">
 		select bs.BASKET_NUM, bs.MEMBER_NUM, bs.SHOWBOARD_NUM, bs.BASKET_DATE,
 		sb.SUBJECT, sb.FILE_ORGNAME, sb.FILE_SAVNAME, sb."DATE", sb.ADDRESS2,
-		sb.READCOUNT, sb.ORDERCOUNT
+		sb.READCOUNT, sb.ORDERCOUNT, sb.PAY, sb.SHOWBOARD_CATEGORY
 		from BASKET bs join SHOWBOARD sb
 		on bs.SHOWBOARD_NUM=sb.SHOWBOARD_NUM
 	</sql>

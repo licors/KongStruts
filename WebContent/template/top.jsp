@@ -40,7 +40,7 @@
                                 <a href="/showcase/scwrite_form.action">상품등록</a>
                             </li>
                             <li>
-                                <a href="/order/adminOrderList.action">주문목록</a>
+                                <a href="/order/adminOrderList.action">신청목록</a>
                             </li>
                             <li>
                                 <a href="/member/memberlist.action">회원관리</a>

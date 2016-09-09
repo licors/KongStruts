@@ -21,6 +21,8 @@ public class BasketVO {
 	private String address2;
 	private int readcount;
 	private int ordercount;
+	private int pay;
+	private String showboard_category;
 	
 	public int getBasket_num() {
 		return basket_num;
@@ -87,6 +89,18 @@ public class BasketVO {
 	}
 	public void setOrdercount(int ordercount) {
 		this.ordercount = ordercount;
+	}
+	public int getPay() {
+		return pay;
+	}
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
+	public String getShowboard_category() {
+		return showboard_category;
+	}
+	public void setShowboard_category(String showboard_category) {
+		this.showboard_category = showboard_category;
 	}
 	
 	

@@ -50,7 +50,7 @@ function doImgPop(img){
 	 imgWin.document.close();
 	}
  	function deletecheck(num) {
- 		if (confirm("주문을 취소하시겠습니까?")) {
+ 		if (confirm("신청을 취소하시겠습니까?")) {
  			location.href("/order/adminOrderCancel.action?order_num="+num);
 		} else {
 			alert("취소되었습니다");
@@ -65,7 +65,7 @@ function doImgPop(img){
 	 		return 2;
 	 	}
 	 	if(num == 3) {
-	 		//주문상태 선택했을 때
+	 		//신청상태 선택했을 때
 	 		return 3;	 		
 	 	}
 	 	return num;
@@ -124,15 +124,15 @@ function doImgPop(img){
 		<table width="100%" align="center" class="tg">
 			<tr>
 				<td colspan="9" align="center">
-					<h1>관리자용 주문 내역 페이지</h1>
+					<h1>관리자용 신청 내역 페이지</h1>
 				</td>
 			</tr>
 			<tr>
-				<th class="tg-2thk" colspan="5">주문 정보</th>
+				<th class="tg-2thk" colspan="5">신청 정보</th>
 				<th class="tg-2thk" colspan="4">신청자 정보</th>
 			</tr>
 			<tr>
-				<td class="tg-j4kc">주문번호</td>
+				<td class="tg-j4kc">신청번호</td>
 				<td class="tg-j4kc">신청일자</td>
 				<td class="tg-j4kc">신청 전시회</td>
 				<td class="tg-j4kc">바코드</td>
@@ -187,7 +187,7 @@ function doImgPop(img){
 			<tr align="center">
 				<td colspan="9">
 				<select name="searchNum">
-						<option value="0">주문자ID(E-mail)</option>
+						<option value="0">신청자ID(E-mail)</option>
 						<option value="1">전시회명</option>
 						<option value="2">신청상태</option>
 				</select>

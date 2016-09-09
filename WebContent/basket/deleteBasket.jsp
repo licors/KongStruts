@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>장바구니 상품 삭제 성공</title>
+<title>관심티켓 삭제 성공</title>
 <script>
 	function Delete(){
-		alert("해당상품 삭제되었습니다.");
+		alert("해당 티켓 삭제되었습니다.");
 		window.location.href='/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
 		//window.location.href='/basket/basketList.action'
 	}

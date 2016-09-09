@@ -37,7 +37,7 @@
 		O = "width=" + W + ",height=" + H + ",scrollbars=yes";
 		imgWin = window.open("", "", O);
 		imgWin.document
-				.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+				.write("<html><head><title>티켓 상세보기</title></head>");
 		imgWin.document.write("<body topmargin=0 leftmargin=0>");
 		imgWin.document
 				.write("<img src="
@@ -46,7 +46,7 @@
 		imgWin.document.close();
 	}
 	function deletecheck(num) {
-		if (confirm("주문을 취소하시겠습니까?")) {
+		if (confirm("신청을 취소하시겠습니까?")) {
 			location.href("/order/orderCancel.action?order_num=" + num);
 		} else {
 			alert("취소되었습니다");
@@ -144,7 +144,7 @@
 							<div style="float: left;">
 								<s:if test='%{status == "티켓 신청" }'>
 									<input
-								type="button" name="status" value="취소하기"
+								type="button" name="status" value="취소"
 								onclick="return deletecheck(${order_num});"
 								class="btn btn-xs btn-default">
 								</s:if>
@@ -165,6 +165,15 @@
 						</div>
 					</div>
 				</s:iterator>
+				<div style="margin: 1px auto; clear: both; max-width: 1200px;">
+				<div style="font-size: 20px; font-weight: bold;">
+					<div style="box-sizing: border-box; font-size: 16px;">
+						<td colspan="7" align="center"><s:property value="pagingHtml" escape="false"/></td>
+					</div>
+				</div>
+				<div style="clear: both;"></div>
+				<div style="height: 0px; margin-top: 24px;"></div>
+			</div>
 		</section>
 	</div>
 
