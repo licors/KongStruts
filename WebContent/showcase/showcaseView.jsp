@@ -14,7 +14,30 @@
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCRSeEVl3pSPGUVWwW4DSwZNDu0Q3AuSpc"></script>
 <script src="/js/google_map.js" type="text/javascript"></script>
 </head>
+<script type="text/javascript">
+function fitImageSize(obj, href, maxWidth, maxHeight) {
+	var image = new Image();
 
+	image.onload = function(){
+	
+		var width = image.width;
+		var height = image.height;
+		
+		var scalex = maxWidth / width;
+		var scaley = maxHeight / height;
+		
+		var scale = (scalex < scaley) ? scalex : scaley;
+		if (scale > 1) 
+			scale = 1;
+		
+		obj.width = scale * width;
+		obj.height = scale * height;
+		
+		obj.style.display = "";
+	}
+	image.src = href;
+}
+</script>
 <body>
 	<div style="background-color: #FDFEFE">
 	<script>
@@ -85,7 +108,8 @@
 	                    <c:set var="img_paths" value="${fn:split(resultClass.file_savname, ',')}" />
 	                    <c:forEach var="file" items="${img_paths}" varStatus="stat">
 	                        <c:if test="${stat.index != 0}">
-	                            <img src="<s:property value="img"/>${file}" width="200" height="150" border="0" align="top" /><br>
+	                            <%-- <img src="<s:property value="img"/>${file}" width="200" height="150" border="0" align="top" /><br> --%>
+	                            <img src="<s:property value="img"/>${file}" onload="javascript:fitImageSize(this, '<s:property value="img"/>${file}', 300, 1000);" style="display:none" >
 	                        </c:if>
 	                    </c:forEach>
 					</s:if>
@@ -95,6 +119,9 @@
 				 	<td colspan="3" align="center">
 				 		<div id="map-canvas" style="height: 300px; width: 550px"></div>
 				 	</td>
+				</tr>
+				<tr>
+					<td><img src="조회할 이미지URL" onload="javascript:fitImageSize(this, '조회할 이미지URL', 300, 1000);" style="display:none" ></td>
 				</tr>
 			</table>
 		</div>
