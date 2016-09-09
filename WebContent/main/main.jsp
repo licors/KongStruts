@@ -6,16 +6,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<!--<style type="text/css">
-h2{
-	color: red;
-}
-pre{
-	padding: 4px;
-	border: #F90 dotted 1px;
-}
-</style>-->
-<!--<link href="./css/style.css" rel="stylesheet" type="text/css" />-->
 
 
 </head>
@@ -61,7 +51,7 @@ pre{
 			</s:url>
             <div class="cgt-latest cgt-list-ctype-1">
                 <div style="position:absolute; width:100%; z-index:100;">
-                    <div style="float:right; width:40px; height:40px; border-radius:20px; background-color:#EB009F; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;">개최중</div>
+                    <div style="float:right; width:40px; height:40px; border-radius:20px;  color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
                 <div class="cgt_latest_image_area">
