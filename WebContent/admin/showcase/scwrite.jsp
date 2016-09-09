@@ -25,7 +25,7 @@
                 } else if (frm.address1.value == "") {
                     alert("시/도 구분을 선택해주세요.");
                     return false;
-                } else if (frm.address1.value == "" || frm.address2.value == "") {
+                } else if (frm.address2.value == "") {
                     alert("전시 장소를 입력해주세요.");
                     return false;
                 } else if (frm.pay.value == "") {
