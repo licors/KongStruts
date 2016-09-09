@@ -119,7 +119,7 @@
 						<tr>
 							<td width="100"><label for="company">회사</label></td>
 							<td><input class="form-control" type="text" name="company"
-								maxlength="20" value="${memresultClass.company}" readonly /></td>
+								maxlength="20" value="${order_resultClass.company}" readonly /></td>
 						</tr>
 						<tr>
 							<td width="100"><label for="address">주소</label></td>
