@@ -40,6 +40,9 @@
             <result>
             	/showcase/commentModifyForm.jsp
             </result>
+            <result name="error" type="redirect-action">
+            	<![CDATA[/commentListAction?showboard_num=${showboard_num}]]>
+            </result>
         </action>
         
         <action name="commentModifyAction" class="showcase.CommentModifyAction">

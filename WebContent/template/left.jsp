@@ -1,11 +1,170 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%-- <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page import="java.util.HashMap"%>
+<%@ page import = "java.util.HashMap" %>	
+<script src="http://code.jquery.com/jquery-latest.min.js"></script> --%>
 
-<section style="padding: 0px 0px 0px 0px;">
+
+
+<script>
+    $(document).ready(function() {
+        $('#myCarousel').carousel('cycle');
+        $('#myCarousel2').carousel('cycle');
+    });
+</script>
+
+<div style="width:100%; padding:20px 20px 20px 20px;">
+
+<div class="container">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+	  <ol class="carousel-indicators">
+	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+	    <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+	    <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+	    <li data-target="#myCarousel" data-slide-to="4" class=""></li>
+	    <li data-target="#myCarousel" data-slide-to="5" class=""></li>
+	    <li data-target="#myCarousel" data-slide-to="6" class=""></li>
+	  </ol>
+	  <div class="carousel-inner" role="listbox">
+	    <div class="item active">
+	      <img src="/template/image/navi/leftslide1.jpg" alt="...">
+	    </div>
+	    <div class="item">
+	      <img src="/template/image/navi/leftslide2.jpg" alt="...">
+	    </div>
+	    <div class="item">
+	      <img src="/template/image/navi/leftslide3.jpg" alt="...">
+	    </div>
+	    	    <div class="item">
+	      <img src="/template/image/navi/leftslide4.jpg" alt="...">
+	    </div>
+	    	    <div class="item">
+	      <img src="/template/image/navi/leftslide5.jpg" alt="...">
+	    </div>
+	    	    <div class="item">
+	      <img src="/template/image/navi/leftslide6.jpg" alt="...">
+	    </div>
+	    	    <div class="item">
+	      <img src="/template/image/navi/leftslide7.jpg" alt="...">
+	    </div>
+	  </div>
+	  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
+</div>
+
+
+
+
+
+<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  Indicators
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+  </ol>
+
+  Wrapper for slides
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="/template/image/navi/leftslide1.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    <div class="item">
+      <img src="/template/image/navi/leftslide2.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+        <div class="item">
+      <img src="/template/image/navi/leftslide3.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+        <div class="item">
+      <img src="/template/image/navi/leftslide4.jpg" alt="...">
+      <div class="carousel-caption">
+        ...
+      </div>
+    </div>
+    ...
+  </div>
+
+  Controls
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> -->
+
+
+
+
+<%--     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="/showcaseImg/display1.jpg" alt="">
+        </div>
+        <div class="item">
+          <img src="/showcaseImg/display2.png" alt="">
+        </div>
+        <div class="item">
+          <img src="/showcaseImg/display3.jpg" alt="">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div> --%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <section style="padding: 0px 0px 0px 0px;">
 
 	<div class="cgt-banner-container slick-initialized slick-slider"
 		style="margin-top: 10px; margin-bottom: 40px; padding-bottom: 20px;"
@@ -18,7 +177,12 @@
 				style="opacity: 1; width: 55000px; transform: translate3d(-2329px, 0px, 0px); transition: transform 1000ms ease;">
 				
 				
-				
+				<s:iterator value="list1" status="stat">
+				<s:url id="viewURL" action="scread">
+			<s:param name="showboard_num">
+				<s:property value="showboard_num" />
+			</s:param>
+			</s:url>
 				
 				<div class="cgt-banner slick-slide slick-cloned"
 					data-slick-index="-2" aria-hidden="true" tabindex="-1">
@@ -41,9 +205,11 @@
 						src="/content/img/application_big_btn.png" alt="신청하기">
 					</a>
 				</div>
+				
+				</s:iterator> --%>
 
 
-				<div class="cgt-banner slick-slide" data-slick-index="6"
+<!-- 				<div class="cgt-banner slick-slide" data-slick-index="6"
 					aria-hidden="true" tabindex="-1" role="option"
 					aria-describedby="slick-slide06">
 					<div class="mask" style="width: 480px; height: 281px; opacity: 0;"></div>
@@ -113,12 +279,12 @@
 						class="ctype-1 btn-application" tabindex="-1"> <img
 						src="/content/img/application_big_btn.png" alt="신청하기">
 					</a>
-				</div>
+				</div> -->
 
 
 				
 
-			</div>
+<%-- 			</div>
 		</div>
 
 
@@ -127,6 +293,8 @@
 		<button type="button" data-role="none" class="slick-next slick-arrow"
 			aria-label="Next" role="button" style="display: block;">Next</button>
 		<ul class="slick-dots" style="display: block;" role="tablist">
+			
+			
 			<li class="" aria-hidden="true" role="presentation"
 				aria-selected="true" aria-controls="navigation00" id="slick-slide00"><button
 					type="button" data-role="none" role="button" aria-required="false"
@@ -174,7 +342,7 @@
 		</ul>
 	</div>
 	<div style="clear: both;"></div>
-</section>
+</section> --%>
 
 
 

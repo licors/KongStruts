@@ -3,7 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.HashMap"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -22,24 +22,24 @@
 </head>
 
 <body>
-	<div class="container" style="width: 600px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
+	<div class="container" style="width: 610px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
             <div class="panel panel-default"> <!-- 위쪽 제목 -->
                 <div class="panel-heading">댓글</div>
                 <div class="panel-body"> <!-- 본문 -->
 					<!-- 코멘트 입력 폼 -->
-					<form name="commentForm" action="/comment/commentWriteAction.action"
-						method="post" onsubmit="return validation();">
+					<form name="commentForm" action="/comment/commentWriteAction.action" method="post" onsubmit="return validation();">
+						<div class="form-group">
 						<s:hidden name="showboard_num" value="%{showboard_num}" />
 						<s:hidden name="member_num" value="%{member_num}" />
 						<s:hidden name="ref" value="0"></s:hidden>
 				
 						<table width="550" border="0" cellspacing="0" cellpadding="0" class="table-condensed">
 							<tr>
-								<td>내용</td>
-							</tr>
-							<tr>
-								<td bgcolor="#FFFFFF">
-									<s:textarea name="content" value="%{CommentResultClass.content}" cols="50" rows="3" ></s:textarea>
+								<td align="left">
+									내용<br>
+									<!-- <textarea class="form-control" rows="" cols="" name="content"></textarea> -->
+									<textarea name="content" rows="3" class="form-control"></textarea>
+									<%-- <s:textarea name="content" value="%{CommentResultClass.content}" rows="3" cols="50" ></s:textarea> --%>
 								</td>
 							</tr>
 	<!-- 						<tr bgcolor="#777777">
@@ -49,30 +49,29 @@
 								<td height="10" colspan="2"></td>
 							</tr> -->
 							<tr>
-								<td align="right" colspan="2"><input name="submit"
-									type="submit" value="댓글입력" class="inputb"></td>
+								<td align="right">
+									<input name="submit" type="submit" value="댓글입력" class="btn btn-success">
+								</td>
 							</tr>
 							<tr>
 								<s:if test="login_member_num == -1">
-									<td colspan="2"><a href="/member/memberLogin.jsp">로그인</a> 하셔야 이용하실 수 있습니다.</td>
+									<td><a href="/member/memberLogin.jsp">로그인</a> 하셔야 이용하실 수 있습니다.</td>
 								</s:if>
 							</tr>
 						</table>
+						</div>
 					</form>
 					<br><br><br>
 					<!-- 코멘트 리스트 -->
 					<form id="commentList">
-						<table id="listTable" width="550" border="0" cellspacing="0" cellpadding="2">
+						<div class="form-group">
+						<table id="listTable" width="550" border="0" cellspacing="0" cellpadding="0" class="table">
 							<tr align="center" bgcolor="#f3f3f3">
-								<td width="340"><strong>내용</strong></td>
-								<td width="50"><strong>글쓴이</strong></td>
+								<td width="300"><strong>내용</strong></td>
+								<td width="70"><strong>글쓴이</strong></td>
 								<td width="80"><strong>날짜</strong></td>
-								<td width="40">수정</td>
-								<td width="40">삭제</td>
-							</tr>
-					
-							<tr bgcolor="#777777">
-								<td height="1" colspan="5"></td>
+								<td width="50">수정</td>
+								<td width="50">삭제</td>
 							</tr>
 					
 							<s:iterator value="list" status="stat">
@@ -86,7 +85,7 @@
 								</s:url>
 					
 								<tr>
-									<td width="350" align="left">
+									<td width="300" align="left">
 										<s:if test="re_level != 0">
 											<c:forEach var="i" begin="${re_level}" end="0">&nbsp;</c:forEach>→
 					                    </s:if> 
@@ -107,11 +106,6 @@
 										</s:if>
 									</td>
 								</tr>
-					
-								<tr bgcolor="#777777">
-									<td height="1" colspan="5"></td>
-								</tr>
-					
 							</s:iterator>
 					
 							<s:if test="list.size() <= 0">
@@ -124,9 +118,10 @@
 								<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 							</tr>
 							<tr>
-								<td align="right"><input name="back" type="button" value="뒤로" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
+								<td colspan="5" align="right"><input name="back" type="button" value="뒤로" class="btn btn-default" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
 							</tr>
 						</table>
+						</div>
 					</form>
 				</div>
 				</div>

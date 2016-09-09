@@ -188,7 +188,7 @@
 						<s:hidden name="subject" value="%{show_resultClass.subject}" />
 						<s:hidden name="address" value="%{show_resultClass.address2}" />
 
-						<table width="600" align="center" class="table-condensed">
+						<table width="500" align="center" class="table-condensed">
 							<tr>
 								<td><img
 									src="../showcaseImg/<s:property value="show_resultClass.file_savname.split(',')[0]"/>"
@@ -213,14 +213,14 @@
 							<tr>
 								<td width="100"><label for="email">ID(E-MAIL)</label></td>
 								<td><input class="form-control" type="text" name="email"
-									size="50" maxlength="70" value="${memresultClass.email}"
+									maxlength="70" value="${memresultClass.email}"
 									readonly /></td>
 							</tr>
 							<tr>
 								<td width="100"><label for="name">성명<font
 										color="#FF0000">&nbsp;&nbsp;*</font></label></td>
 								<td><input class="form-control" type="text" name="name"
-									size="10" maxlength="20" value="${memresultClass.name }"></td>
+									 maxlength="20" value="${memresultClass.name }"></td>
 							</tr>
 							<tr>
 
@@ -233,22 +233,22 @@
 							<tr>
 								<td width="100"><label for="company">회사</label></td>
 								<td><input class="form-control" type="text" name="company"
-									size="10" maxlength="20" value="${memresultClass.company}" /></td>
+									maxlength="20" value="${memresultClass.company}" /></td>
 							</tr>
 							<tr>
 								<td width="100"><label for="address">주소</label></td>
 								<td><input class="form-control" type="text" name="address"
-									size="60" maxlength="100" value="${memresultClass.address}" /></td>
+									maxlength="100" value="${memresultClass.address}" /></td>
 							</tr>
 							<tr>
 								<td width="100"><label for="tel">전화번호<font
 										color="#FF0000">&nbsp;&nbsp;*</font></label></td>
 								<td><input class="form-control" type="text" name="tel"
-									size="15" maxlength="15" /></td>
+									maxlength="15" /></td>
 							</tr>
 
 							<tr>
-								<td colspan="2"><textarea name="agreecheck" cols="60"
+								<td colspan="2"><textarea name="agreecheck" 
 										rows="10" class="form-control">행사 및 서비스를 예약 및 구매하고자 할 경우, 원활한 서비스 제공을 위해 필요한 최소한의 개인정보만을 관련 기업에게 아래와 같이 공유하고 있습니다.
 
 귀하께서 행사 및 서비스의 주최기업(판매자)로부터 상품 및 입장권 및 서비스를 예약하거나 구매하고자 할 경우, 원활한 서비스 제공을 위해서 필요한 최소한의 개인정보만을, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 제 24조의 2 (개인정보 제공 동의 등)에 따라 아래와 같은 사항은 안내하고 동의를 받아 귀하의 개인정보를 판매자에게 공유합니다. “개인정보공유 동의”를 체크하시면 개인정보 공유에 대해 동의한 것으로 간주합니다. 이용목적이 달성되고 보유기간이 종료된 이후에는 고객의 개인정보를 지체없이 파기합니다.
@@ -260,7 +260,7 @@
 								</textarea></td>
 							</tr>
 							<tr>
-								<td width="30" colspan="2" align="center">▶ <b><font
+								<td colspan="2" align="center">▶ <b><font
 										color="black" size="2">개인정보제3자 제공동의</font><br>
 									<label class="checkbox-inline"><input type="checkbox"
 											id="inlineCheckbox1" name="same" value="y"> 예</label> <label

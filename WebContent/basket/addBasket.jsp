@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>장바구니 상품 추가</title>
+<title>관심 티켓 추가</title>
 <script type="text/javascript">
 
 function Add(){
-	alert("장바구니에 상품을 담았습니다.");
+	alert("관심티켓에 티켓을 담았습니다.");
 	window.location.href='/basket/basketList.action?currentPage=<s:property value="%{currentPage}"/>';
 }
 </script>
