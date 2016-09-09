@@ -116,7 +116,7 @@
                                 <tr>
                                     <td width="100"><label for="date"><font color="#FF0000">&nbsp;&nbsp;*</font>일정</label></td>
                                     <td>
-                                        <input class="form-control" type="text" name="date" value="<s:property value="rc.date"/>" size="20" maxlength="25"/>
+                                        <input class="form-control" type="text" name="date" value="<s:property value="rc.date"/>" size="20" maxlength="35"/>
                                     </td>
                                 </tr>
                                 <tr>
