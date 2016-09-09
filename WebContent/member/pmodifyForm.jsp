@@ -2,10 +2,9 @@
 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="css/modifypasswordForm.css" />
-<script language="javascript" type="text/javascript" src="js/index.js">
-</script>
 <script language="javascript">
 	function passwdcheck() {
 	
@@ -39,26 +38,26 @@
 		method="post" onSubmit="return passwdcheck()">
 		<table width="300" cellpadding="1" cellspacing="0" border="1"
 			align="center">
-			<tr>
-				<td align="center" colspan="2"><p>비밀번호 변경</p></td>
+			<tr height="35">
+				<td align="center" colspan="2"><h3>비밀번호 변경</h3></td>
 			</tr>
-			<tr>
+			<tr height="35">
 				<td align="center" width="150">기존 비밀번호</td>
 				<td align="left" size="10" maxlength="12" value=""><input
 					type="password" name="oldpassword"></td>
 			</tr>
-			<tr>
+			<tr height="35">
 				<td align="center" width="150">새 비밀번호</td>
 				<td align="left" size="10" maxlength="12" value=""><input
 					type="password" name="password"></td>
 			</tr>
-			<tr>
+			<tr height="35">
 				<td align="center" width="150">새 비밀번호 확인</td>
 				<td align="left" size="10" maxlength="12" value=""><input
 					type="password" name="password2"></td>
 			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit"
+			<tr height="35">
+				<td colspan="2" align="center"><input type="submit" class="btn btn-default"
 					value="비밀번호 변경"></td>
 			</tr>
 		</table>

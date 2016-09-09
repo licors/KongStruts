@@ -37,15 +37,14 @@
 <center> 
 <h2 align="center">마이페이지</h2>
     <form name="joinform" method="post" action="memberM.action?member_num=<s:property value="memresultClass.member_num"/>">
-        <table class="table table-hover"  border="1" cellspacing="0" cellpadding="1" align="center">
-           
+        <table border="1" cellspacing="0" cellpadding="1" align="center">
             <tr height="35">
                 <td class="email" align="center">이메일</td>
                 <td align="left"><s:property value="memresultClass.email" /></td>
             </tr>	
             <tr height="35">
                 <td align="center">비밀번호</td>
-                <td align="left"><input type="button" class="btn btn-success" value="비밀번호변경" onclick="return openmodifyPassword()"></td>
+                <td align="left"><input type="button" class="btn btn-default btn-sm" value="비밀번호변경" onclick="return openmodifyPassword()"></td>
             </tr>
             <tr height="35">
                 <td class="name" align="center">이름</td>
@@ -65,7 +64,7 @@
 						<td align="left"><input class="zipcode"
 								type="text" name="zipcode" size="7" maxlength="7"
 								value="<s:property value="memresultClass.zipcode"/>" readonly>
-									<input class="btn btn-success" type="button" value="우편번호검색"
+									<input class="btn btn-default btn-sm" type="button" value="우편번호검색"
 									onclick="zipCheck()"></td>
 						
 					</tr>
@@ -83,9 +82,9 @@
 					
             <tr height="35">
                 <td colspan="2" align="center">
-                    <input class="btn btn-success" type="submit" name="confirm" value="정보수정"> 
-                    <input class="btn btn-success" type="button" value="회원탈퇴" onclick="javascript:window.location.href = 'deleteForm.action'">
-                    <input class="btn btn-default" type="button" value="취소" onclick="javascript:window.location.href = '/showcase/sclist.action'">
+                    <input class="btn btn-default btn-sm" type="submit" name="confirm" value="정보수정"> 
+                    <input class="btn btn-default btn-sm" type="button" value="회원탈퇴" onclick="javascript:window.location.href = 'deleteForm.action'">
+                    <input class="btn btn-default btn-sm" type="button" value="취소" onclick="javascript:window.location.href = '/showcase/sclist.action'">
                 </td>
             </tr>
         </table>

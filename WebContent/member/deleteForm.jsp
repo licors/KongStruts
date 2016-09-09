@@ -44,17 +44,17 @@ function back() {
 				<tr>
 					<s:hidden name="id" value="%{resultClass.id}" />
 					<td align="center" width="125">비밀번호</td>
-					<td><input class="password1" type="password" size="20"
+					<td><input class="form-control input" type="password" size="20"
 						maxlength="12" name="password"></td>
 					<tr>
 						<td align="center" width="125">비밀번호확인</td>
-						<td><input class="password2" type="password" size="20"
+						<td><input class="form-control input" type="password" size="20"
 							maxlength="12" name="password2"></td>
 					</tr>
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-					<input class="btn btn-success" type="submit" value="확인"> 
+					<input class="btn btn-default" type="submit" value="확인"> 
 					<input class="btn btn-default" type="button" value="취소" onclick="return back()">
 				</tr>
 			</table>

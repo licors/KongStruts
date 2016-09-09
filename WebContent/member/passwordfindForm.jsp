@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<link rel="stylesheet" href="css/findidForm.css" />
-<link rel="stylesheet" href="css/index.css" />
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <script language="javascript" type="text/javascript"src="js/index.js">
 
 	</script>
@@ -29,7 +29,7 @@ function findpasswordcheckIt(){
 		onSubmit="return findpasswordcheckIt()">
 		<table width="300" align="center">
 			<tr>
-				<td colspan="2" align="center">비밀번호 찾기</td>
+				<td colspan="2" align="center"><h3>비밀번호 찾기</h3></td>
 			</tr>
 			<tr>
 				<td width="150" align="center">이메일</td>
@@ -43,7 +43,7 @@ function findpasswordcheckIt(){
 					style="ime-mode: Disabled;"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" class="find"
+				<td colspan="2" align="center"><input type="submit" class="btn btn-default"
 					 value="확인"></td>
 			</tr>
 

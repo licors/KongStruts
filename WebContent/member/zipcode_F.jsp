@@ -4,9 +4,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <link rel="stylesheet" href="css/style.css" />
-<%-- <script language="javascript" type="text/javascript" src="js/index.js">
-</script>
-<script language="javascript" type="text/javascript" src="js/jquery-1.6.4.js"></script> --%>
+<!-- 부트스트랩 -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <script>
 function dongCheck() {
 	if (document.zipform.area3.value == "") {
@@ -29,7 +28,7 @@ function sendAddress(zipcode, area1, area2, area3, area4) {
 		<form name="zipform" method="post" action="zipcodeF2.action">
 			<tr>
 				<td align="center"><br>동이름 입력 : <input name="area3" type="text">
-					<input type="button" value="검색" onclick="dongCheck();">
+					<input type="button" class="btn btn-default" value="검색" onclick="dongCheck();">
 		
 					</td>
 			</tr>
