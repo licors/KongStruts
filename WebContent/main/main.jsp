@@ -56,7 +56,8 @@
                 </div>
                 <div class="cgt_latest_image_area">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
-                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive">
+                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
                 </div><!-- img -->
                 <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
                 <div class="cgt_list_button">
@@ -129,12 +130,13 @@
 			</s:url>
             <div class="cgt-latest cgt-list-ctype-1">
                 <div style="position:absolute; width:100%; z-index:100;">
-                    <div style="float:right; width:40px; height:40px; border-radius:20px; background-color:#EB009F; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;">개최중</div>
+                    <div style="float:right; width:40px; height:40px; border-radius:20px; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
                 <div class="cgt_latest_image_area">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
-                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive">
+                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
                 </div><!-- img -->
                 <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
                 <div class="cgt_list_button">
@@ -209,12 +211,13 @@
 			</s:url>
             <div class="cgt-latest cgt-list-ctype-1">
                 <div style="position:absolute; width:100%; z-index:100;">
-                    <div style="float:right; width:40px; height:40px; border-radius:20px; background-color:#EB009F; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;">개최중</div>
+                    <div style="float:right; width:40px; height:40px; border-radius:20px; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
                 <div class="cgt_latest_image_area">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
-                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive">
+                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
                 </div><!-- img -->
                 <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
                 <div class="cgt_list_button">

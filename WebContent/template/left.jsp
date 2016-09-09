@@ -15,7 +15,7 @@
     });
 </script>
 
-
+<div style="width:100%; padding:20px 20px 20px 20px;">
 
 <div class="container">
 	<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
