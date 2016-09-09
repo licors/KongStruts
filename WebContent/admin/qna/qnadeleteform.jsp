@@ -13,11 +13,11 @@
         <script>
             function del() {
                 if (confirm("정말로 삭제 하시겠습니까?")) {
-                    window.location.href = "qnadelete.action?qna_num=<s:property value="rc.qna_num"/>";
-                    self.close();
+                    window.location.href = "/qna/qnadelete.action?qna_num=<s:property value="rc.qna_num"/>";
+//                    self.close();
                 } else {
                     alert("취소되었습니다");
-                    window.location.href = 'qnalist.action';
+                    window.location.href = '/qna/qnalist.action';
                 }
             }
         </script>

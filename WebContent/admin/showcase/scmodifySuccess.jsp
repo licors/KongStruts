@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
             function Success() {
-                window.location.href = 'scread.action?showboard_num=<s:property value="rc.showboard_num"/>';
+                window.location.href = '/showcase/scread.action?showboard_num=<s:property value="rc.showboard_num"/>';
             }
         </script>
     </head>

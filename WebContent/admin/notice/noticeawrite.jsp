@@ -29,10 +29,10 @@
     <body>
         <div class="table-bordered">
             <s:if test="rc == null">
-                <form name="notice" action="noticewrite.action" method="post" onsubmit="return check()" class="form-control-static">
+                <form name="notice" action="/notice/noticewrite.action" method="post" onsubmit="return check()" class="form-control-static">
                 </s:if>
                 <s:else>
-                    <form name="notice" action="noticemodify.action" method="post" onsubmit="return check()" class="form-control-static">
+                    <form name="notice" action="/notice/noticemodify.action" method="post" onsubmit="return check()" class="form-control-static">
                         <s:hidden name="notice_num" value="%{rc.notice_num}"/>
                         <s:hidden name="currentPage" value="%{currentPage}"/>
                     </s:else>

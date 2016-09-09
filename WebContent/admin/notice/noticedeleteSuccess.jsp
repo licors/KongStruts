@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script>
             function Success() {
-                window.location.href = 'noticelist.action?currentPage=<s:property value="currentPage"/>';
+                window.location.href = '/notice/noticelist.action?currentPage=<s:property value="currentPage"/>';
             }
         </script>
     </head>
