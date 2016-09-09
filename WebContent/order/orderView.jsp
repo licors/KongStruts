@@ -9,34 +9,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-function doImgPop(img) {
-	img1 = new Image();
-	img1.src = (img);
-	imgControll(img);
-}
-
-function imgControll(img) {
-	if ((img1.width != 0) && (img1.height != 0)) {
-		viewImage(img);
-	} else {
-		controller = "imgControll('" + img + "')";
-		intervalID = setTimeout(controller, 20);
+	function doImgPop(img) {
+		img1 = new Image();
+		img1.src = (img);
+		imgControll(img);
 	}
-}
-function viewImage(img) {
-	W = img1.width;
-	H = img1.height;
-	O = "width=" + W + ",height=" + H + ",scrollbars=yes";
-	imgWin = window.open("", "", O);
-	imgWin.document
-			.write("<html><head><title>티켓 상세보기</title></head>");
-	imgWin.document.write("<body topmargin=0 leftmargin=0>");
-	imgWin.document
-			.write("<img src="
-					+ img
-					+ " onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
-	imgWin.document.close();
-}
+
+	function imgControll(img) {
+		if ((img1.width != 0) && (img1.height != 0)) {
+			viewImage(img);
+		} else {
+			controller = "imgControll('" + img + "')";
+			intervalID = setTimeout(controller, 20);
+		}
+	}
+	function viewImage(img) {
+		W = img1.width;
+		H = img1.height;
+		O = "width=" + W + ",height=" + H + ",scrollbars=yes";
+		imgWin = window.open("", "", O);
+		imgWin.document.write("<html><head><title>티켓 상세보기</title></head>");
+		imgWin.document.write("<body topmargin=0 leftmargin=0>");
+		imgWin.document
+				.write("<img src="
+						+ img
+						+ " onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+		imgWin.document.close();
+	}
 	function deletecheck() {
 		if (confirm("신청을 취소하시겠습니까?")) {
 		} else {
@@ -98,7 +97,9 @@ function viewImage(img) {
 										<s:property value="order_resultClass.status" /> 완료
 								</b></font><br> <s:property value="order_resultClass.order_date" /></td>
 						</tr>
-
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
 						<tr>
 							<td width="100"><label for="email">ID(E-MAIL)</label></td>
 							<td><input class="form-control" type="text" name="email"
@@ -137,11 +138,13 @@ function viewImage(img) {
 							<td width="100"><label for="tel">티켓(바코드)</label></td>
 							<td align="center" colspan="2"><s:if
 									test='%{order_resultClass.status  =="티켓 신청"}'>
-									<img src="../barcodeImg/<s:property value="order_resultClass.barcode"/>.png"
-											style="cursor: pointer;"
-											onclick="doImgPop('../barcodeImg/<s:property value="order_resultClass.barcode"/>.png')"
-											width="100%" />
-								</s:if> <br><small>* 티켓을 취소 하시면 바코드는 즉시 폐기 됩니다.</small></td>
+									<img
+										src="../barcodeImg/<s:property value="order_resultClass.barcode"/>.png"
+										style="cursor: pointer;"
+										onclick="doImgPop('../barcodeImg/<s:property value="order_resultClass.barcode"/>.png')"
+										width="100%" />
+								</s:if> <br>
+							<small>* 티켓을 취소 하시면 바코드는 즉시 폐기 됩니다.</small></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
@@ -175,7 +178,7 @@ function viewImage(img) {
 			</div>
 		</div>
 	</div>
-<%-- 
+	<%-- 
 
 
 	<div style="width: 800px" class="container">

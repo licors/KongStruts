@@ -33,7 +33,9 @@
 				style="margin: 1px auto; padding-top: 48px; clear: both; max-width: 1200px;">
 				<div style="float: left; font-size: 20px; font-weight: bold;">
 					<div style="box-sizing: border-box; font-size: 16px;">
-						<span style="font-size: 18px; font-weight: normal;">관심티켓</span>
+						<span style="font-size: 18px; font-weight: normal;">
+						<img src="../template/image/order_basket/interestLogo.png">
+						</span>
 					</div>
 				</div>
 				<div style="clear: both;"></div>
@@ -121,7 +123,7 @@
 				</div>
 			</s:iterator>
 
-			<div style="margin: 1px auto; clear: both; max-width: 1200px;">
+			<div style="margin: 1px auto; clear: both; max-width: 1200px; text-align:center;">
 				<div style="font-size: 20px; font-weight: bold;">
 					<div style="box-sizing: border-box; font-size: 16px;">
 						<td colspan="7" align="center"><s:property value="pagingHtml" escape="false"/></td>
