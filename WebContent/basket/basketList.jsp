@@ -42,7 +42,7 @@
 				<div style="clear: both;"></div>
 				<div style="height: 0px; margin-top: 24px;"></div>
 			</div>
-			<div style="margin: 1px auto; clear: both;">
+			<div style="margin: 1px auto; clear: both; max-width: 1200px;">
 				<div style="float: right; font-size: 20px; font-weight: bold;">
 					<div style="box-sizing: border-box; font-size: 16px;">
 						<s:if test="basketList.size() == 0">					
@@ -77,8 +77,7 @@
 							href="/showcase/scread.action?showboard_category=<s:property value="showboard_category" />&showboard_num=<s:property value="showboard_num" />">
 							<img
 							src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
-							width="100px" height="150px"
-							onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+							class="img-responsive"/>
 						</a>
 					</div>
 					<!-- img -->
