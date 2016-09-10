@@ -186,7 +186,7 @@
 							value="%{show_resultClass.showboard_num}" />
 						<!-- 클래스명 수정하기 -->
 						<s:hidden name="subject" value="%{show_resultClass.subject}" />
-						<s:hidden name="address" value="%{show_resultClass.address2}" />
+						<s:hidden name="address2" value="%{show_resultClass.address2}" />
 
 						<table width="500" align="center" class="table-condensed">
 							<tr>
