@@ -21,7 +21,7 @@ import member.MemberVO;
  *
  * @author user2
  */
-public class supportwriteAction extends ActionSupport {
+public class supportewriteAction extends ActionSupport {
 
     public static Reader reader;
     public static SqlMapClient sql;
@@ -33,14 +33,20 @@ public class supportwriteAction extends ActionSupport {
     private String type, email, content;
     Calendar today = Calendar.getInstance();
 
-    public supportwriteAction() throws IOException {
+    public supportewriteAction() throws IOException {
         reader = Resources.getResourceAsReader(path.sql);
         sql = SqlMapClientBuilder.buildSqlMapClient(reader);
         reader.close();
     }
 
     public String form() throws Exception {
+        rc = new supportVO();
+
         memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
+
+        rc = (supportVO) sql.queryForObject("support.selectOne", getSupport_num());
+        email = getEmail();
+        support_num = getSupport_num();
 
         return SUCCESS;
     }
@@ -52,17 +58,34 @@ public class supportwriteAction extends ActionSupport {
 
         memresultClass = admin.MemberLoginCheck.getMember(sql, memresultClass);
 
-        pc.setMember_num(getMember_num());
-        pc.setType(getType());
-        pc.setEmail(getEmail());
+        if (ref == 0) {
+            pc.setRe_step(0);
+            pc.setRe_level(0);
+
+        } else {
+
+            pc.setRef(getRef());
+            pc.setRe_step(getRe_step());
+            sql.update("support.updateReplyStep", pc);
+
+            pc.setRe_step(getRe_step() + 1);
+            pc.setRe_level(getRe_level() + 1);
+            pc.setRef(getRef());
+        }
+
+        pc.setType("답변");
+        pc.setMember_num(memresultClass.getMember_num());
+        pc.setEmail(memresultClass.getEmail());
         pc.setContent(getContent());
         pc.setReg_date(today.getTime());
-        pc.setRef(getRef());
-        pc.setRe_step(getRe_step());
-        pc.setRe_level(getRe_level());
-        sql.insert("support.insert", pc);
+//        pc.setRef(rc.getSupport_num()); //어느글의 덧글인지 추적
+//        pc.setRe_step(rc.getRe_step() + 1); //덧글하기
+//        pc.setRe_level(getRe_level());
+
+        sql.insert("support.insertmail", pc);
         //보내는사람,받는사람,보내는사람이름,제목,내용
-        support_email.getInstance().send(getEmail(), support_email.getServer(), support_email.toName(getEmail(), memresultClass.getName()), getType(), getEmail() + "<br>" + getContent());
+        //서버이메일, 문의한사람, 관리자이름(관리자), 제목은 문의답변, 답변내용
+        support_email.getInstance().send(support_email.getServer(), getEmail(), memresultClass.getName(), "문의하신 답변입니다.", getContent());
         return SUCCESS;
     }
 

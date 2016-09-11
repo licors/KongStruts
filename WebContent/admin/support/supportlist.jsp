@@ -32,52 +32,49 @@
                 support()
             </script>
         </s:elseif>
-        <table align="center" width="600">
-            <tr>
-                <td align="left" colspan="2">1:1 문의목록</td>
-            </tr>
-            <tr>
-                <td align="left" colspan="2">캔고루 문의목록</td>
-            </tr>
-            <tr align="center" bgcolor="#FFFFFF">
-                <td width="50"><strong>번호</strong></td>
-                <td width="200"><strong>종류</strong></td>
-                <td width="200"><strong>이메일</strong></td>
-                <td width="50"><strong>등록일</strong></td>
-            </tr>
-            <tr bgcolor="#777777">
-                <td height="1" colspan="4"></td>
-            </tr>
-            <s:iterator value="list" status="stat">
-                <s:url id="viewURL" action="support/supportread">
-                    <s:param name="support_num">
-                        <s:property value="support_num"/>
-                    </s:param>
-                    <s:param name="currentPage">
-                        <s:property value="currentPage"/>
-                    </s:param>
-                </s:url>
-                <tr>
-                    <td><s:property value="support_num"/></td>
-                    <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="type"/></s:a></td>
-                    <td align="center"><s:property value="email"/></td>
-                    <td align="center"><s:property value="reg_date"/></td>
-                </tr>
-                <tr bgcolor="#777777">
-                    <td height="1" colspan="4"></td>
-                </tr>
-            </s:iterator>
-            <s:if test="list.size() <= 0">
-                <tr bgcolor="#FFFFFF" align="center">
-                    <td colspan="5">등록된 문의글이 없습니다.</td>
-                </tr>
-                <tr bgcolor="#777777">
-                    <td height="1" colspan="4"></td>
-                </tr>
-            </s:if>
-            <tr align="center">
-                <td colspan="4"><s:property value="pagingHtml" escape="false"/></td>
-            </tr>
-        </table>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading"><p style="font-size:28px; color:#000000; font-weight:bold; margin:0px 0px 0px 0px; padding:0px;">1:1문의</p></div>
+                <table align="center" width="600" class="table table-hover">
+                    <thead>
+                        <tr align="center">
+                            <td width="50" style="font-size: 16px"><strong>번호</strong></td>
+                            <td width="200" style="font-size: 16px"><strong>종류</strong></td>
+                            <td width="200" style="font-size: 16px"><strong>이메일</strong></td>
+                            <td width="50" style="font-size: 16px"><strong>등록일</strong></td>
+                        </tr>
+                    </thead>
+                    <s:iterator value="list" status="stat">
+                        <s:url id="viewURL" action="support/supportread">
+                            <s:param name="support_num">
+                                <s:property value="support_num"/>
+                            </s:param>
+                            <s:param name="currentPage">
+                                <s:property value="currentPage"/>
+                            </s:param>
+                        </s:url>
+                        <tr>
+                            <td align="center"><s:property value="support_num"/></td>
+                            <s:if test="re_level != 0">
+                                <c:forEach var = "i" begin = "${re_level}" end = "0">&nbsp;</c:forEach>→
+                            </s:if>	
+                            <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="type"/></s:a></td>
+                            <td align="center"><s:property value="email"/></td>
+                            <td align="center"><s:property value="reg_date"/></td>
+                        </tr>
+                    </s:iterator>
+                    <s:if test="list.size() <= 0">
+                        <tr align="center">
+                            <td colspan="5">등록된 문의글이 없습니다.</td>
+                        </tr>
+                    </s:if>
+                    <thead>
+                        <tr align="center">
+                            <td colspan="4"><s:property value="pagingHtml" escape="false"/></td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </body>
 </html>

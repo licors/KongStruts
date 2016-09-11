@@ -28,13 +28,8 @@
     </sql>
 
     <!-- select 쿼리문 정의 -->
-    <select id="selectall" resultMap="Res"><!-- 관리자용 -->
+    <select id="selectall" resultMap="Res">
         <include refid="select-all"/>
-        ORDER BY ref DESC, re_step ASC
-    </select>
-    <select id="selectmemberall" resultMap="Res" parameterClass="support"><!-- 유저용 -->
-        <include refid="select-all"/>
-        WHERE member_num=#member_num#
         ORDER BY ref DESC, re_step ASC
     </select>
     <!--    <select id="select" resultMap="supportRes">
@@ -52,6 +47,11 @@
         INSERT INTO SUPPORT (support_num, member_num, type, email, content, reg_date, ref, re_step, re_level)
         VALUES(ref_num_seq.NEXTVAL, #member_num#, #type#, #email#, #content#, #reg_date#, #ref#, #re_step#, #re_level#)
     </insert>
+    
+    <insert id="insertmail" parameterClass="support">
+        INSERT INTO SUPPORT (support_num, member_num, type, email, content, reg_date, ref, re_step, re_level)
+        VALUES(ref_num_seq.NEXTVAL, #member_num#, #type#, #email#, #content#, #reg_date#, #ref#, #re_step#, #re_level#)
+    </insert>
 
     <!-- update 쿼리문 정의 -->
     <update id="update" parameterClass="support">
@@ -65,6 +65,10 @@
     <update id="readcount" parameterClass="support"><!-- 조회수증가 -->
         UPDATE SUPPORT SET readcount = readcount + 1
         <include refid="where-no"/>
+    </update>
+    
+    <update id="updateReplyStep" parameterClass="support">
+        UPDATE SUPPORT SET re_step=re_step+1 WHERE ref=#ref# AND re_step>#re_step#
     </update>
 
     <!-- delete 쿼리문 정의 -->

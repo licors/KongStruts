@@ -22,6 +22,19 @@
             </result>	
         </action>
         
+        <!-- 답변쓰기폼 -->
+        <action name="supportewrite_form" class="admin.support.supportewriteAction" method="form">
+            <result type="tiles">support_form</result>
+        </action>
+        
+        <!-- 답변쓰기 -->
+        <action name="supportewrite" class="admin.support.supportewriteAction">
+            <result type="redirect-action">
+                <param name="namespace">/support</param>
+                <param name="actionName">supportlist</param>
+            </result>	
+        </action>
+        
         <!-- 읽기 -->
         <action name="supportread" class="admin.support.supportviewAction">
             <result type="tiles">support_view</result>
