@@ -79,7 +79,17 @@ function fitImageSize(obj, href, maxWidth, maxHeight) {
 				</tr>
 				<tr>
 					<td>태그</td>
-					<td><s:property value="resultClass.tag" /></td>
+					<td>
+						<%-- <s:property value="resultClass.tag" /> --%>
+						<s:if test="resultClass.tag != null">
+	                    <c:set var="tags" value="${fn:split(resultClass.tag, ',')}" />
+	                    <c:forEach var="silceTags" items="${tags}" varStatus="stat">
+	                        <c:if test="${stat.index != 0}">
+	                        	<button type="button" class="btn btn-primary btn-xs">${silceTags}</button>&nbsp;
+	                        </c:if>
+	                    </c:forEach>
+					</s:if>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="3" align="right">
