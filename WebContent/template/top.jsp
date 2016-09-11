@@ -143,7 +143,7 @@
                     <div class="boxes">
                         <div class="box box2" style="text-align:center;padding-top:5px">
                             <div style="display: inline-block; margin: 0px auto;">
-                                <a href="/"><img src="/template/image/header/logotest4.png" alt="CANGOTO" height="50" style="float:left; margin-right:150px"></a>
+                                <a href="/"><img src="/template/image/header/konglogo1.bmp" alt="CANGOTO" height="50" style="float:left; margin-right:150px"></a>
                                 <div style="float:left;">                                     <!--  alt="CANGOTO" height="40" style="float:left;margin-right:50px"></a> -->
                                     
                                         <form name="re" action="/showcase/scsearch.action" method="post" >

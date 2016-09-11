@@ -20,6 +20,7 @@
 		value="/main/mainT.jsp" /> </definition> -->
 
 	<definition name="test_d" extends="main">
+		<put-attribute name="left" value="" />
 		<put-attribute name="body" value="/main/showcaseList.jsp" />
 	</definition>
 
