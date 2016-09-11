@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<%@ taglib prefix="sd" uri="/struts-dojo-tags"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="java.util.HashMap"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>전시 상세보기</title>
@@ -15,6 +14,7 @@
 <script src="/js/google_map.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
+//이미지 크기 변환
 function fitImageSize(obj, href, maxWidth, maxHeight) {
 	var image = new Image();
 
@@ -100,15 +100,15 @@ function fitImageSize(obj, href, maxWidth, maxHeight) {
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<pre class="text-left" style="background-color: #FDFEFE !important;	border: none !important; border-radius: none !important"><s:property value="resultClass.content"/></pre>
-						<%-- <textarea name="content" cols="67" rows="10" class="form-control" readonly><s:property value="resultClass.content"/></textarea> --%>
-					 
+						<pre class="text-left" style="background-color: #FDFEFE !important;	border: none !important; border-radius: none !important">
+							<s:property value="resultClass.content"/>
+						</pre>
 					<br><br>
+					
 					<s:if test="resultClass.file_savname != null">
 	                    <c:set var="img_paths" value="${fn:split(resultClass.file_savname, ',')}" />
 	                    <c:forEach var="file" items="${img_paths}" varStatus="stat">
 	                        <c:if test="${stat.index != 0}">
-	                            <%-- <img src="<s:property value="img"/>${file}" width="200" height="150" border="0" align="top" /><br> --%>
 	                            <img src="<s:property value="img"/>${file}" onload="javascript:fitImageSize(this, '<s:property value="img"/>${file}', 300, 1000);" style="display:none" >
 	                        </c:if>
 	                    </c:forEach>

@@ -17,14 +17,22 @@
 	function popupWindow(url) {
 		window.open(url, "post", "toolbar=no, width=600, height=600 ,directories=no, status=no, scrollbars=yes, menubar=no, location=no, resizable=no");
 	}
+	
+	function validation() {
+		if (!document.commentForm.content.value) {
+			alert("내용을 입력해 주세요.");
+			
+			return false;
+		}
+	}
 </script>
 <title>전시 댓글</title>
 </head>
 
 <body>
 	<div class="container" style="width: 610px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
-            <div class="panel panel-default"> <!-- 위쪽 제목 -->
-                <div class="panel-heading">댓글</div>
+	    <div class="panel panel-default"> <!-- 위쪽 제목 -->
+	        <div class="panel-heading">댓글</div>
                 <div class="panel-body"> <!-- 본문 -->
 					<!-- 코멘트 입력 폼 -->
 					<form name="commentForm" action="/comment/commentWriteAction.action" method="post" onsubmit="return validation();">
@@ -37,20 +45,13 @@
 							<tr>
 								<td align="left">
 									내용<br>
-									<!-- <textarea class="form-control" rows="" cols="" name="content"></textarea> -->
 									<textarea name="content" rows="3" class="form-control"></textarea>
-									<%-- <s:textarea name="content" value="%{CommentResultClass.content}" rows="3" cols="50" ></s:textarea> --%>
 								</td>
 							</tr>
-	<!-- 						<tr bgcolor="#777777">
-								<td height="1" colspan="2"></td>
-							</tr>
-							<tr>
-								<td height="10" colspan="2"></td>
-							</tr> -->
 							<tr>
 								<td align="right">
 									<input name="submit" type="submit" value="댓글입력" class="btn btn-success">
+									<input name="back" type="button" value="뒤로" class="btn btn-default" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'">
 								</td>
 							</tr>
 							<tr>
@@ -85,18 +86,11 @@
 								</s:url>
 					
 								<tr>
-									<td width="300" align="left">
-										<s:if test="re_level != 0">
-											<c:forEach var="i" begin="${re_level}" end="0">&nbsp;</c:forEach>→
-					                    </s:if> 
-					                    <s:property value="content" />
-									</td>
+									<td width="300" align="left"><s:property value="content" /></td>
 									<td width="70" align="center"><s:property value="name" /></td>
 									<td width="80" align="center"><s:property value="reg_date"/></td>
-									<%-- <td width="50" align="center"><a href='javascript:location.href="/comment/commentModifyAction.action?comment_num=<s:property value='%{comment_num}'/>"'>수정</a></td> --%>
 									<td width="50" align="center">
 										<s:if test="login_member_num == member_num">
-										<%-- <a href="javascript:commentModifyView('${viewURL}')">수정</a> --%>
 											<a href="javascript:location.href='${viewURL}'">수정</a>
 										</s:if>
 									</td>
@@ -113,18 +107,14 @@
 									<td colspan="5" align="center">등록된 게시물이 없습니다</td>
 								</tr>
 							</s:if>
-					
 							<tr align="center">
 								<td colspan="5"><s:property value="pagingHtml" escape="false" /></td>
 							</tr>
-							<tr>
-								<td colspan="5" align="right"><input name="back" type="button" value="뒤로" class="btn btn-default" onClick="javascript:location.href='/showcase/scread.action?showboard_num=<s:property value="%{showboard_num}"/>'"></td>
-							</tr>
 						</table>
-						</div>
-					</form>
-				</div>
-				</div>
+					</div>
+				</form>
 			</div>
+		</div>
+	</div>
 </body>
 </html>

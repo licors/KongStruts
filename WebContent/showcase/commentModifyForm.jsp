@@ -34,17 +34,9 @@
 						<tr>
 							<td align="left">
 								내용<br>
-								<!-- <textarea class="form-control" rows="" cols="" name="content"></textarea> -->
 								<textarea name="content" rows="3" class="form-control"></textarea>
-								<%-- <s:textarea name="content" value="%{CommentResultClass.content}" rows="3" cols="50" ></s:textarea> --%>
 							</td>
 						</tr>
-<!-- 						<tr bgcolor="#777777">
-							<td height="1" colspan="2"></td>
-						</tr>
-						<tr>
-							<td height="10" colspan="2"></td>
-						</tr> -->
 						<tr>
 							<td align="right">
 								<input name="submit" type="submit" value="댓글수정" class="btn btn-success">

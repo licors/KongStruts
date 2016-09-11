@@ -31,8 +31,6 @@ public class CommentDeleteAction extends ActionSupport {
     public String execute() throws Exception {
         memberDataClass = new MemberVO();
         paramClass = new CommentBoardVO();
-//		resultClass = new CommentBoardVO();
-
         memberDataClass = admin.MemberLoginCheck.getMember(sqlMapper, memberDataClass);
         if(memberDataClass == null) {
         	return LOGIN;
@@ -40,10 +38,6 @@ public class CommentDeleteAction extends ActionSupport {
         
         paramClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne", getComment_num());
 
-        System.out.println("getCommentNum : " + getComment_num());
-        System.out.println("commentDelete : memberData : " + memberDataClass.getMember_num());
-        System.out.println("commentDelete : paramData : " + paramClass.getMember_num());
-//		paramClass.setMember_num(memberDataClass.getMember_num());
         if (paramClass.getMember_num() != memberDataClass.getMember_num()) {
             return ERROR;
         }

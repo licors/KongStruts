@@ -29,7 +29,6 @@
                 /WEB-INF/tiles/tiles-order.xml,
                 /WEB-INF/tiles/tiles-qna.xml,
                 /WEB-INF/tiles/tiles-showcase.xml,
-                /WEB-INF/tiles/tiles-showcaseComment.xml,
                 /WEB-INF/tiles/tiles-showcaseDetail.xml,
                 /WEB-INF/tiles/tiles-support.xml
             </param-value>

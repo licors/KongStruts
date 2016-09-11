@@ -172,14 +172,6 @@ public class ShowcaseReadAction extends ActionSupport {
         this.status = status;
     }
 
-//    public MemberVO getMemresultClass() {
-//        return memresultClass;
-//    }
-//
-//    public void setMemresultClass(MemberVO memresultClass) {
-//        this.memresultClass = memresultClass;
-//    }
-
     public String getImg() {
         return img;
     }

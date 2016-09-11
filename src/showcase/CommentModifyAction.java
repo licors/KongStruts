@@ -51,8 +51,7 @@ public class CommentModifyAction extends ActionSupport {
         if(memberDataClass.getMember_num() == commentResultClass.getMember_num()) {
         	sqlMapper.update("showcaseDetailComment.updateBoard",paramClass);
         }
-		
-		//resultClass = (CommentBoardVO) sqlMapper.queryForObject("showcaseDetailComment.selectOne",getComment_num());
+
 		return SUCCESS;
 	}
 
