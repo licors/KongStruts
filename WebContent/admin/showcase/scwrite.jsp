@@ -44,7 +44,7 @@
     <body>
         <div class="container" style="width: 600px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
             <div class="panel panel-default"> <!-- 위쪽 제목 -->
-                <div class="panel-heading">글작성하기</div>
+                <div class="panel-heading"><p style="font-size:28px; color:#000000; font-weight:bold; margin:0px 0px 0px 0px; padding:0px;">글작성하기</p></div>
                 <div class="panel-body"> <!-- 본문 -->
                     <s:if test="rc == null">
                         <form name="sc" action="/showcase/scwrite.action" method="post" enctype="multipart/form-data" onsubmit="return check()" class="form-control-static">

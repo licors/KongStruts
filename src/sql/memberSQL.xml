@@ -82,7 +82,7 @@
     <!-- 맴버 전체 -->
     <select id="selectall" resultMap="memberRes">
         <include refid="select-all"/>
-        ORDER BY member_num
+        ORDER BY member_num DESC
     </select>
     <!-- 관리자용 회원정보 변경 -->
     <update id="memberadminUpdate" parameterClass="member">
