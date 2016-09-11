@@ -33,7 +33,7 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scdlist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
                     </div>
                 </div>
             </div>
@@ -54,22 +54,18 @@
                     <div style="float:right; width:40px; height:40px; border-radius:20px;  color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
-                <div class="cgt_latest_image_area">
+                <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
                     <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
-                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
-                </div><!-- img -->
-                <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
-                <div class="cgt_list_button">
-                    <a class="btn-detail cgt-single-load" href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank"><img alt="상세보기" src="/template/image/main/view_small_btn.png"></a>
-                            <a id="link" href="#" onclick="return fnConfirmMoveUrl('로그인을 하셔야 이용하실수 있습니다.\n로그인 페이지로 이동하시겠습니까??', '/Account/Login');" class="ctype-1 btn-application">
-                                <img src="/template/image/main/application_small_btn.png" alt="">
-                            </a>
-                </div>
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></></a>
+                <!-- img -->
+    
                 <!-- over layer -->
                 <div class="cgt_list_explanation">
                     <!-- <div class="subject">2016 국제자동화정밀기기전</div> --><!-- title -->
-                    <div class="subject"><s:property value="subject"/></div><!-- title -->
+                    <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
+                    <div class="subject"><s:property value="subject"/></a></div><!-- title -->
+                    
                     <!-- <div class="schedule">09.06(화)~09.09(금) / 4일간</div> --><!-- date -->
                     <div class="schedule"><s:property value="date"/></div><!-- date -->
                     <div class="place_price">
@@ -112,7 +108,7 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scdlist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
                     </div>
                 </div>
             </div>
@@ -130,25 +126,21 @@
 			</s:url>
             <div class="cgt-latest cgt-list-ctype-1">
                 <div style="position:absolute; width:100%; z-index:100;">
-                    <div style="float:right; width:40px; height:40px; border-radius:20px; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
+                    <div style="float:right; width:40px; height:40px; border-radius:20px;  color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
-                <div class="cgt_latest_image_area">
+                <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
                     <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
-                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
-                </div><!-- img -->
-                <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
-                <div class="cgt_list_button">
-                    <a class="btn-detail cgt-single-load" href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank"><img alt="상세보기" src="/template/image/main/view_small_btn.png"></a>
-                            <a id="link" href="#" onclick="return fnConfirmMoveUrl('로그인을 하셔야 이용하실수 있습니다.\n로그인 페이지로 이동하시겠습니까??', '/Account/Login');" class="ctype-1 btn-application">
-                                <img src="/template/image/main/application_small_btn.png" alt="">
-                            </a>
-                </div>
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></></a>
+                <!-- img -->
+                
+                
                 <!-- over layer -->
                 <div class="cgt_list_explanation">
                     <!-- <div class="subject">2016 국제자동화정밀기기전</div> --><!-- title -->
-                    <div class="subject"><s:property value="subject"/></div><!-- title -->
+                    <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
+                    <div class="subject"><s:property value="subject"/></a></div><!-- title -->
                     <!-- <div class="schedule">09.06(화)~09.09(금) / 4일간</div> --><!-- date -->
                     <div class="schedule"><s:property value="date"/></div><!-- date -->
                     <div class="place_price">
@@ -193,7 +185,7 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scdlist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
                     </div>
                 </div>
             </div>
@@ -211,25 +203,21 @@
 			</s:url>
             <div class="cgt-latest cgt-list-ctype-1">
                 <div style="position:absolute; width:100%; z-index:100;">
-                    <div style="float:right; width:40px; height:40px; border-radius:20px; color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
+                    <div style="float:right; width:40px; height:40px; border-radius:20px;  color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
                     <div style="clear:both;"></div>
                 </div>
-                <div class="cgt_latest_image_area">
+                <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
                     <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
                     <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
-                        onerror="javascript:this.src='/template/image/main/noimg.png'"></>
-                </div><!-- img -->
-                <div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
-                <div class="cgt_list_button">
-                    <a class="btn-detail cgt-single-load" href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank"><img alt="상세보기" src="/template/image/main/view_small_btn.png"></a>
-                            <a id="link" href="#" onclick="return fnConfirmMoveUrl('로그인을 하셔야 이용하실수 있습니다.\n로그인 페이지로 이동하시겠습니까??', '/Account/Login');" class="ctype-1 btn-application">
-                                <img src="/template/image/main/application_small_btn.png" alt="">
-                            </a>
-                </div>
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></></a>
+                <!-- img -->
+                
+                
                 <!-- over layer -->
                 <div class="cgt_list_explanation">
                     <!-- <div class="subject">2016 국제자동화정밀기기전</div> --><!-- title -->
-                    <div class="subject"><s:property value="subject"/></div><!-- title -->
+                    <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
+                    <div class="subject"><s:property value="subject"/></a></div><!-- title -->
                     <!-- <div class="schedule">09.06(화)~09.09(금) / 4일간</div> --><!-- date -->
                     <div class="schedule"><s:property value="date"/></div><!-- date -->
                     <div class="place_price">
