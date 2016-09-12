@@ -50,17 +50,17 @@ public class supportlistAction extends ActionSupport {
 
         if (memresultClass != null && memresultClass.getAdmin() > 0) { //운영자 구분 1이면 운영자임
             list = sql.queryForList("support.selectall"); //관리자용
-        }
-        totalCount = list.size();
-        page = new pagingAction(path.support_listaction, currentPage, totalCount, blockCount, blockPage);
-        pagingHtml = page.getPagingHtml().toString();
-        int lastCount = totalCount;
 
-        if (page.getEndCount() < totalCount) {
-            lastCount = page.getEndCount() + 1;
-        }
-        list = list.subList(page.getStartCount(), lastCount);
+            totalCount = list.size();
+            page = new pagingAction(path.support_listaction, currentPage, totalCount, blockCount, blockPage);
+            pagingHtml = page.getPagingHtml().toString();
+            int lastCount = totalCount;
 
+            if (page.getEndCount() < totalCount) {
+                lastCount = page.getEndCount() + 1;
+            }
+            list = list.subList(page.getStartCount(), lastCount);
+        }
         return SUCCESS;
     }
 
