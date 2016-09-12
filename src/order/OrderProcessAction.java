@@ -107,7 +107,7 @@ public class OrderProcessAction extends ActionSupport {
         String codeStr = str1 + str2 + str3;
         try {
             Barcode barcode = BarcodeFactory.createCode128B(codeStr);
-            File file = new File("C:\\kong\\WebContent\\barcodeImg\\" + codeStr + ".png");
+            File file = new File(path.barcodesav + codeStr + ".png");
             //File file = new File("C:\\java\\YJ\\kong\\WebContent\\barcodeImg\\"+codeStr+".png");
             BarcodeImageHandler.savePNG(barcode, file);
         } catch (Exception e) {
