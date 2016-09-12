@@ -54,11 +54,8 @@
                             </s:param>
                         </s:url>
                         <tr>
-                            <td align="center"><s:property value="support_num"/></td>
-                            <s:if test="re_level != 0">
-                                <c:forEach var = "i" begin = "${re_level}" end = "0">&nbsp;</c:forEach>→
-                            </s:if>	
-                            <td align="left">&nbsp;<s:a href="%{viewURL}"><s:property value="type"/></s:a></td>
+                            <td align="center"><s:property value="support_num"/></td>	
+                            <td align="left">&nbsp;<s:if test="re_level != 0"><c:forEach var = "i" begin = "${re_level}" end = "0">&nbsp;</c:forEach>→</s:if><s:a href="%{viewURL}"><s:property value="type"/></s:a></td>
                             <td align="center"><s:property value="email"/></td>
                             <td align="center"><s:property value="reg_date"/></td>
                         </tr>

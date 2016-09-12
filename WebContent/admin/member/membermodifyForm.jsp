@@ -21,9 +21,18 @@
                     return false;
                 }
             }
-            function openmodifyPassword() {
-                var url = "memberPMF.action";
-                window.open(url, "post", "toolbar=no, width=400, height=250, directoris=no, status=yes, scrollbars=no, menubar=no");
+            function openConfirmId(joinform) {
+                if (joinform.id.value == "") {
+                    alert("아이디를 입력해주세요");
+                    return;
+                }
+                url = "checkForm.action?id=" + joinform.id.value;
+                open(url, "confirm", "toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300,height=200");
+            }
+
+            function zipCheck() {
+                var url = "zipcodeF.action";
+                window.open(url, "post", "toolbar=no,width=500,height=300,directoris=no,status=yes,scrollbars=yes,menubar=no");
             }
         </script> 
     </head>
@@ -67,7 +76,7 @@
                             <tr height="35">
                                 <td colspan="2" align="center">
                                     <input type="submit" name="confirm" value="정보수정" class="btn btn-default btn-xs"> 
-                                    <input type="button" value="회원탈퇴" onclick="javascript:window.location.href = '/member/deleteForm.action'" class="btn btn-default btn-xs">
+<!--                                    <input type="button" value="회원탈퇴" onclick="javascript:window.location.href = '/member/deleteForm.action'" class="btn btn-default btn-xs">-->
                                     <input type="button" value="취소" onclick="self.close()" class="btn btn-default btn-xs">
                                 </td>
                             </tr>

@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- 부트스트랩 -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <script>
 function checkIt() {
@@ -20,6 +19,13 @@ function checkIt() {
 		document.loginform.password.focus();
 		return false;
 	}
+
+}
+
+function open_win_noresizable(url, name) {
+	var oWin = window
+			.open(url, name,
+					"scrollbars=no, status=no, resizable=no, width=350, height=150");
 
 }
 </script>
@@ -50,7 +56,7 @@ function checkIt() {
 			<tr>
 				<td align="center">
 					<input type="button" class="btn btn-success" value="회원가입" 	onClick="javascript:location.href='/member/memberJoinForm.action'">
-					<input type="button" class="btn btn-success" value="비밀번호 찾기" 	onClick="javascript:location.href='/member/memberpfindF.action'">
+					<input type="button" class="btn btn-success" value="비밀번호 찾기" 	onClick="javascript:open_win_noresizable('memberpfindF.action')">
 				</td>	
 			</tr>
 				</table>

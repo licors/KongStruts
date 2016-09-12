@@ -4,8 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>
-<!-- 부트스트랩 -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+
 <script>
     function modify() {
         if (confirm("정보를 수정하시겠습니까?")) {

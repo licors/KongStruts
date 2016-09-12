@@ -45,7 +45,7 @@
     <!-- insert Äõ¸®¹® Á¤ÀÇ -->
     <insert id="insert" parameterClass="support">
         INSERT INTO SUPPORT (support_num, member_num, type, email, content, reg_date, ref, re_step, re_level)
-        VALUES(ref_num_seq.NEXTVAL, #member_num#, #type#, #email#, #content#, #reg_date#, #ref#, #re_step#, #re_level#)
+        VALUES(ref_num_seq.NEXTVAL, #member_num#, #type#, #email#, #content#, #reg_date#, ref_num_seq.CURRVAL, #re_step#, #re_level#)
     </insert>
     
     <insert id="insertmail" parameterClass="support">

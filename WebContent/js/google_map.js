@@ -27,13 +27,14 @@ function initialize() {
 	});
 }
 
-function geocode(address1, address2, content) {
-	var address = "";
-	address = address1 + " " + address2;
+function geocode(map, content) {
+	if(map == null || !map) {
+		return false;
+	}
 	contents = content;
 	var geocoder = new google.maps.Geocoder();
 	geocoder.geocode({
-		'address' : address,
+		'address' : map,
 		'partialmatch' : true
 	}, geocodeResult);
 }
@@ -45,8 +46,10 @@ function geocodeResult(results, status) {
 		setLocation(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 		initialize();
 	} else {
-		alert("Geocode was not successful for the following reason: "
-				+ status);
+		var table = document.getElementById('form-group');
+		table.removeChild(document.getElementById('map-canvas'));
+//		alert("Geocode was not successful for the following reason: "
+//				+ status);
 	}
 }
 /* google.maps.event.addDomListener(window, 'load', geocode());  */

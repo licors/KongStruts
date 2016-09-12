@@ -41,7 +41,7 @@ function fitImageSize(obj, href, maxWidth, maxHeight) {
 <body>
 	<div style="background-color: #FDFEFE">
 	<script>
-		geocode('<s:property value="resultClass.address1" />', '<s:property value="resultClass.address2" />', '<s:property value="resultClass.subject" />');
+		geocode('<s:property value="resultClass.map" />', '<s:property value="resultClass.subject" />');
 	</script>
 		<!-- <div style="display:table-cell; align:center; padding-top:15px; padding-bottom:15px; width:600px;"> -->
 		<div class="container" style='width:600px; max-width:none !important;'>
@@ -110,9 +110,7 @@ function fitImageSize(obj, href, maxWidth, maxHeight) {
 				</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<pre class="text-left" style="background-color: #FDFEFE !important;	border: none !important; border-radius: none !important">
-							<s:property value="resultClass.content"/>
-						</pre>
+						<pre class="text-left" style="background-color: #FDFEFE !important;	border: none !important; border-radius: none !important"><s:property value="resultClass.content"/></pre>
 					<br><br>
 					
 					<s:if test="resultClass.file_savname != null">
@@ -125,14 +123,13 @@ function fitImageSize(obj, href, maxWidth, maxHeight) {
 					</s:if>
 					</td>
 				</tr>
-				<tr>
-				 	<td colspan="3" align="center">
-				 		<div id="map-canvas" style="height: 300px; width: 550px"></div>
-				 	</td>
-				</tr>
-				<tr>
-					<td><img src="조회할 이미지URL" onload="javascript:fitImageSize(this, '조회할 이미지URL', 300, 1000);" style="display:none" ></td>
-				</tr>
+				<s:if test="resultClass.map != null">
+					<tr>
+					 	<td colspan="3" align="center">
+					 		<div id="map-canvas" style="height: 300px; width: 550px"></div>
+					 	</td>
+					</tr>
+				</s:if>
 			</table>
 		</div>
 	</div>
