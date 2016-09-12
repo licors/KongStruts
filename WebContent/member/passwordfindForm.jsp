@@ -43,7 +43,7 @@ function findpasswordcheckIt(){
 					style="ime-mode: Disabled;"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" class="btn btn-default"
+				<td colspan="2" align="center"><input type="submit" class="btn btn-success"
 					 value="확인"></td>
 			</tr>
 

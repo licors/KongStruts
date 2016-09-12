@@ -65,12 +65,13 @@
 		
         <!-- 비밀번호 찾기 폼 -->
         <action name="memberpfindF" class="member.MemberFindAction" method="findpwform">
-            <result type="tiles">pfind</result>
+            <result>/member/passwordfindForm.jsp</result>
         </action>
 		
         <!-- 비밀번호 찾기 처리 -->
         <action name="memberpfind" class="member.MemberFindAction" method="findpassword">
             <result>/member/member_pfind.jsp</result>
+            <result name="error">/member/findPwError.jsp</result>
         </action>
         
         <!-- 우편번호 검색 폼 -->
