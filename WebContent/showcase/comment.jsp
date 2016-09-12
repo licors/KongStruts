@@ -30,6 +30,7 @@
 </head>
 
 <body>
+	<br>
 	<div class="container" style="width: 610px; max-width: none !important;"> <!-- 여기 선언해서 고정폭사용 -->
 	    <div class="panel panel-default"> <!-- 위쪽 제목 -->
 	        <div class="panel-heading">댓글</div>
