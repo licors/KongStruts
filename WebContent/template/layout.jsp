@@ -74,11 +74,11 @@
                                 <tiles:insertAttribute name="bottom" />
                         </div>
                 </div> --%>
-        <div>
-            <div>
-                <tiles:insertAttribute name="bottom" />
-            </div>
-        </div>
+	<div id="wrap">
+		<div id="footer">
+			<tiles:insertAttribute name="bottom" />
+		</div>
+	</div>
 
     </body>
 </html>

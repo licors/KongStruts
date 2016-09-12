@@ -1,7 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
+
+<!-- #footer{width:100%;height:113px;border-top:1px solid #bbb;}
+#footer .footer_wrap{width:1000px;margin:10px auto;overflow:hidden;}
+#footer .footer_wrap .ft_lt{margin:10px auto;} -->
+
 <!-- <div style="width:100%; background-color:#FFF; margin-top:20px; padding:0px 20px;"/> -->
-        <section>
+        <section style="margin:10px auto;">
             <!-- ###################### 푸터 - 시작 ###################### -->
             <footer>
     <!-- Dable Code -->
@@ -11,7 +16,7 @@
     <!-- Dable Code -->
     <!-- BEGIN PRE-FOOTER -->
     
-    <div style="max-width:1200px; margin:0px auto; padding:30px 0px;">
+    <div style="max-width:1200px; margin:0px auto; padding:30px 0px; ">
         <div class="col-md-12 col-xs-12 col-lg-12 nopadding">
             <div class="col-md-9 col-xs-12 nopadding">
                 <div style="text-align:left;">
