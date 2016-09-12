@@ -46,22 +46,6 @@
         <put-attribute name="top" value="/template/top.jsp" />
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
-    
-    <!-- 회원탈퇴 폼 -->
-    <definition name="delete" extends="main">
-        <put-attribute name="left" value="" />
-        <put-attribute name="body" value="/member/deleteForm.jsp" />
-        <put-attribute name="top" value="/template/top.jsp" />
-        <put-attribute name="bottom" value="/template/bottom.jsp" />
-    </definition>
-    
-    <!-- 비밀번호 찾기 폼 -->
-    <definition name="pfind" extends="main">
-        <put-attribute name="left" value="" />
-        <put-attribute name="body" value="/member/passwordfindForm.jsp" />
-        <put-attribute name="top" value="/template/top.jsp" />
-        <put-attribute name="bottom" value="/template/bottom.jsp" />
-    </definition>
 
 </tiles-definitions>
 

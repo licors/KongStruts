@@ -31,6 +31,13 @@
 		var url = "zipcodeF.action";
 		window.open(url,"post","toolbar=no,width=500,height=300,directoris=no,status=yes,scrollbars=yes,menubar=no");
 	}
+    
+    function open_win_noresizable(url, name) {
+    	var oWin = window
+    			.open(url, name,
+    					"scrollbars=no, status=no, resizable=no, width=350, height=150");
+
+    }
 </script> 
 
 <center> 
@@ -81,8 +88,8 @@
 					
             <tr height="35">
                 <td colspan="2" align="center">
-                    <input class="btn btn-default btn-sm" type="submit" name="confirm" value="정보수정"> 
-                    <input class="btn btn-default btn-sm" type="button" value="회원탈퇴" onclick="javascript:window.location.href = 'deleteForm.action'">
+                    <input class="btn btn-success btn-sm" type="submit" name="confirm" value="정보수정"> 
+                    <input class="btn btn-success btn-sm" type="button" value="회원탈퇴" onclick="javascript:open_win_noresizable('deleteForm.action')">
                     <input class="btn btn-default btn-sm" type="button" value="취소" onclick="javascript:window.location.href = '/showcase/sclist.action'">
                 </td>
             </tr>

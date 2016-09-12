@@ -6,7 +6,7 @@
 <tiles-definitions>
 
 	<definition name="main" template="/template/layout.jsp">
-		<put-attribute name="title" value="켄고루" />
+		<put-attribute name="title" value="Kong" />
 		<put-attribute name="top" value="/template/top.jsp" />
 		<put-attribute name="left" value="/template/left.jsp" />
 		<put-attribute name="body" value="/main/main.jsp" />

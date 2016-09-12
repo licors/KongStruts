@@ -74,7 +74,6 @@
 						<s:hidden name="address2" value="%{resultBas.address2}" />
 						<s:hidden name="date" value="%{resultBas.date}" />
 
-						<s:property value="resultBas.showboard_num" />
 						<!-- //resultBas.basket_goods_name -->
 
 						<table align="center" class="table-condensed">
@@ -83,7 +82,7 @@
 									<td><img
 										src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>"
 										width="50px"
-										onerror="javascript:this.src='/template/image/main/noimg.png'"></>
+										onerror="javascript:this.src='/template/image/main/noimg.png'"/>
 									</td>
 									<td>
 										<h3>
@@ -167,8 +166,8 @@
 							</tr>
 							<tr height="50">
 								<td colspan="2" align="center"><input type="submit"
-									name="submit" value="신청하기" class="btn btn-success btn-sm">
-									&nbsp;&nbsp; <input type="button" name="back" value="돌아가기"
+									name="submit" value="신청" class="btn btn-success btn-sm">
+									&nbsp;&nbsp; <input type="button" name="back" value="취소"
 									onClick="javascript:history.go(-1)"
 									class="btn btn-default btn-sm" /></td>
 							</tr>
@@ -271,8 +270,8 @@
 							</tr>
 							<tr height="50">
 								<td colspan="2" align="center"><input type="submit"
-									name="submit" value="신청하기" class="btn btn-success btn-sm">
-									&nbsp;&nbsp; <input type="button" name="back" value="돌아가기"
+									name="submit" value="신청" class="btn btn-success btn-sm">
+									&nbsp;&nbsp; <input type="button" name="back" value="취소"
 									onClick="javascript:history.go(-1)"
 									class="btn btn-default btn-sm" /></td>
 							</tr>

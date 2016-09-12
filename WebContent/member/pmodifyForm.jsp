@@ -57,7 +57,7 @@
 					type="password" name="password2"></td>
 			</tr>
 			<tr height="35">
-				<td colspan="2" align="center"><input type="submit" class="btn btn-default"
+				<td colspan="2" align="center"><input type="submit" class="btn btn-success"
 					value="비밀번호 변경"></td>
 			</tr>
 		</table>

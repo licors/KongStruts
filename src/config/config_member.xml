@@ -55,12 +55,13 @@
 		
         <!-- 회원탈퇴 폼 -->
         <action name="deleteForm" class="member.MemberModifyAction" method="delform">
-            <result type="tiles">delete</result>	
+            <result>/member/deleteForm.jsp</result>	
         </action> 
 		
         <!--  회원탈퇴 처리 -->
         <action name="deleteAction" class="member.MemberModifyAction" method="delete">
             <result>/member/memberout.jsp</result>
+            <result name="error">/member/deleteError.jsp</result>
         </action>
 		
         <!-- 비밀번호 찾기 폼 -->

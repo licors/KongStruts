@@ -31,7 +31,7 @@
 					<meta http-equiv="Refresh" content="5;url=/showcase/sclist.action">
 				</tr>
 				<br>
-				<input type="button" value="구매목록"
+				<input type="button" value="신청목록"
 					onclick="javascript:location.href='/order/orderList.action?currentPage=1'"
 					class="btn btn-success btn-sm"> &nbsp;&nbsp;&nbsp;
 				<input type="button" value="메인으로"
