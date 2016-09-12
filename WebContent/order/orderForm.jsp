@@ -157,9 +157,9 @@
 							<tr>
 								<td width="30" colspan="2" align="center">▶ <b><font
 										color="black" size="2">개인정보제3자 제공동의</font><br> <label
-										class="checkbox-inline"><input type="checkbox"
+										class="radio-inline"><input type="radio"
 											id="inlineCheckbox1" name="same" value="y"> 예</label> <label
-										class="checkbox-inline"><input type="checkbox"
+										class="radio-inline"><input type="radio"
 											id="inlineCheckbox2" name="same" value="n" checked="">
 											아니오 </label></b>
 								</td>

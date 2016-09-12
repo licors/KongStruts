@@ -47,7 +47,7 @@
             }
             function deletecheck(num) {
                 if (confirm("주문을 취소하시겠습니까?")) {
-                    location.href("/order/adminOrderCancel.action?order_num=" + num);
+                    window.location.href = "/order/adminOrderCancel.action?order_num=" + num;
                 } else {
                     alert("취소되었습니다");
                     return false;
