@@ -23,13 +23,13 @@ function passwdcheck() {
 
 	} else {
 		alert("취소되었습니다");
-		window.location.href = 'memberModifyForm.action';
+		self.close();
 		return false;
 	}
 }
 
 function back() {
-	history.go(-1);
+	window.close();
 }
 </script>
 <center>
@@ -54,7 +54,7 @@ function back() {
 				</tr>
 				<tr>
 					<td align="center" colspan="2">
-					<input class="btn btn-default" type="submit" value="확인"> 
+					<input class="btn btn-success" type="submit" value="확인"> 
 					<input class="btn btn-default" type="button" value="취소" onclick="return back()">
 				</tr>
 			</table>

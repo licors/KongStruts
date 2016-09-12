@@ -28,7 +28,7 @@ function sendAddress(zipcode, area1, area2, area3, area4) {
 		<form name="zipform" method="post" action="zipcodeF2.action">
 			<tr>
 				<td align="center"><br>동이름 입력 : <input name="area3" type="text">
-					<input type="button" class="btn btn-default" value="검색" onclick="dongCheck();">
+					<input type="button" class="btn btn-success" value="검색" onclick="dongCheck();">
 		
 					</td>
 			</tr>
