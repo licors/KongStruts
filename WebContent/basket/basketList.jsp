@@ -122,7 +122,7 @@
 							<input type="button" name="order" value="신청"
 								onClick="location.href='/order/order_check.action?showboard_num=<s:property value="showboard_num" />'"
 								class="btn btn-xs btn-success"> <input type="button"
-								name="deleteB" value="취소"
+								name="deleteB" value="삭제"
 								onClick="location.href='/basket/deleteBasket.action?basket_num=<s:property value="basket_num"/>'"
 								class="btn btn-xs btn-default">
 						</div>
