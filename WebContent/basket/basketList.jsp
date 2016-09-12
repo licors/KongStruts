@@ -71,7 +71,7 @@
 						<s:property value="showboard_num" />
 					</s:param>
 				</s:url>
-				<div class="cgt-latest cgt-list-ctype-1">
+<%--  				<div class="cgt-latest cgt-list-ctype-1">
 					<div class="cgt_latest_image_area">
 						<a
 							href="/showcase/scread.action?showboard_category=<s:property value="showboard_category" />&showboard_num=<s:property value="showboard_num" />">
@@ -81,7 +81,18 @@
 						</a>
 					</div>
 					<!-- img -->
-					<div class="cgt_list_mask" style="width: 284px; height: 295px;"></div>
+					
+					<div class="cgt_list_mask" style="width: 284px; height: 295px;"></div> --%>
+					            <div class="cgt-latest cgt-list-ctype-1">
+                <div style="position:absolute; width:100%; z-index:100;">
+                    <div style="float:right; width:40px; height:40px; border-radius:20px;  color:#FFF; text-align:center; font-weight:bold; line-height:40px; margin:10px 10px 0px 0px;"></div>
+                    <div style="clear:both;"></div>
+                </div>
+                <a href ='/showcase/scread.action?showboard_category=<s:property value="showboard_category"/>&showboard_num=<s:property value="showboard_num"/>'target="_blank">
+                    <!-- <img src="https://www.cangoto.kr/Resource/Poster/po(58).jpg" class="img-responsive"> -->
+                    <img src="../showcaseImg/<s:property value="file_savname.split(',')[0]"/>" class="img-responsive"
+                        onerror="javascript:this.src='/template/image/main/noimg.png'"></></a>
+                <!-- img -->
 
 					<!-- over layer -->
 					<div class="cgt_list_explanation">
