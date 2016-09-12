@@ -33,7 +33,16 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                        
+                        <!-- 메인화면 바디부분 +더보기 부분(전시) -->
+                        <a href="/showcase/scsublist.action" id="art" method="post">
+                        <s:hidden name="showboard_category" value="전시"/>
+                        <a href="javascript:{}" onclick="document.getElementById('aticle').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }">
+                        <div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="margin-top:7px;">
+                        <span data-bind="text: MENU_NM">
+                        <img src="/template/image/main/more.jpg" style="margin-top:7px;">
+                        </span></div></a>
+                      
                     </div>
                 </div>
             </div>
@@ -108,7 +117,16 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                        
+                        <!-- 메인화면 바디부분 +더보기 부분(미술) -->
+                        <a href="/showcase/scsublist.action" id="art" method="post">
+                        <s:hidden name="showboard_category" value="미술"/>
+                        <a href="javascript:{}" onclick="document.getElementById('art').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }">
+                        <div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="margin-top:7px;">
+                        <span data-bind="text: MENU_NM">
+                        <img src="/template/image/main/more.jpg" style="margin-top:7px;">
+                        </span></div></a>
+                    
                     </div>
                 </div>
             </div>
@@ -185,7 +203,16 @@
             <div style="float:right;">
                 <div class="boxes">
                     <div class="box box1" style="cursor:pointer;">
-                        <a href="/showcase/scsublist.action"><img src="/template/image/main/more.jpg" style="margin-top:7px;"></a>
+                    
+                        <!-- 메인화면 바디부분 +더보기 부분(이벤트) -->
+                        <a href="/showcase/scsublist.action" id="art" method="post">
+                        <s:hidden name="showboard_category" value="이벤트"/>
+                        <a href="javascript:{}" onclick="document.getElementById('event').submit();" data-bind="attr: { href:  '/Event/' + CTYPE }">
+                        <div data-bind="css:'cgt_m_menu_ctype_' + ($index() + 1)" style="margin-top:7px;">
+                        <span data-bind="text: MENU_NM">
+                        <img src="/template/image/main/more.jpg" style="margin-top:7px;">
+                        </span></div></a>
+                        
                     </div>
                 </div>
             </div>
