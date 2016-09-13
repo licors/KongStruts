@@ -55,7 +55,7 @@
 		
         <!-- 회원탈퇴 폼 -->
         <action name="deleteForm" class="member.MemberModifyAction" method="delform">
-            <result>/member/deleteForm.jsp</result>	
+            <result type="tiles">delete</result>	
         </action> 
 		
         <!--  회원탈퇴 처리 -->

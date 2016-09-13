@@ -5,7 +5,7 @@
 <script>
 function deleteError(){
 	alert("비밀번호가 틀립니다");
-	self.close();
+	window.location.href = 'deleteForm.action';
 }
 </script>
 

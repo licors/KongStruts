@@ -46,6 +46,10 @@
         <put-attribute name="top" value="/template/top.jsp" />
         <put-attribute name="bottom" value="/template/bottom.jsp" />
     </definition>
+    
+    <definition name="delete" extends="main">
+        <put-attribute name="body" value="/member/deleteForm.jsp" />
+    </definition>
 
 </tiles-definitions>
 

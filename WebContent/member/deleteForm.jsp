@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import = "java.util.HashMap" %>
 <!-- 부트스트랩 -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="/css/bootstrap.min.css" rel="stylesheet"> -->
 <script>
 function passwdcheck() {
 	if (!document.passwdcheckform.password.value) {
@@ -23,13 +23,13 @@ function passwdcheck() {
 
 	} else {
 		alert("취소되었습니다");
-		self.close();
+		window.location.href = 'memberModifyForm.action';
 		return false;
 	}
 }
 
 function back() {
-	window.close();
+	history.go(-1);
 }
 </script>
 <center>
